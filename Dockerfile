@@ -14,16 +14,14 @@ COPY laravel/ .
 RUN composer dump-autoload --optimize
 
 
-FROM php:8.2-fpm
+FROM php:8.4-fpm
 
 WORKDIR /var/www/html
 
 RUN apt-get update && apt-get install -y \
     libicu-dev \
     libzip-dev \
-    sqlite3 \
-    libsqlite3-dev \
-    && docker-php-ext-install intl pdo pdo_sqlite zip \
+    && docker-php-ext-install intl pdo pdo_mysql zip \
     && rm -rf /var/lib/apt/lists/*
 
 COPY --from=builder /app /var/www/html
