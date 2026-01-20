@@ -28,7 +28,7 @@ coverage
 *.sw?
 
 *.tsbuildinfo
-
+package-lock.json
 .eslintcache
 
 # Cypress
