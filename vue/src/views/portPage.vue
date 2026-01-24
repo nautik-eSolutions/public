@@ -8,6 +8,7 @@ import Header from '@/components/general/header.vue'
 import Footer from '@/components/general/footer.vue'
 import PortProfileHero from '@/components/ports/portProfileHero.vue'
 import { ref } from 'vue'
+import PortProfileImage from '@/components/ports/portProfileImage.vue'
 
 const port = ref({
   portName: "Marina Cala D'Or",
@@ -24,13 +25,37 @@ const port = ref({
   servicesOffered: ['Restaurantes', 'Gasolinera', 'Agua', 'Wifi'],
   nearbyCommerce: ['Restaurante Botavara', 'Mercadona'],
   weatherInformation: {
-
+    windVelocity: 15,
+    windDirection: 323,
+    weather: 'Nublado',
+    waveHeight: 1.87,
+    waveDirection: 277,
+    airTemperature: 15,
+    windTemperature: 16,
   },
 })
 </script>
 <template>
   <Header />
-  <PortProfileHero />
+  <PortProfileHero
+    :portName="port.portName"
+    :images="port.images"
+    :mooringsNumber="port.mooringsNumber"
+    :length="port.length"
+    :draft="port.draft"
+    :chanel="port.chanel"
+    :servicesOffered="port.servicesOffered"
+    :nearbyCommerce="port.nearbyCommerce"
+    :weatherInformation="port.weatherInformation"
+  />
+  <div class="max-w-6xl mx-auto px-4 mb-12">
+   <div class="flex flex-row flex-wrap justify-center">
+      <div v-for="image in port.images">
+        <portProfileImage :imageSrc="image" />
+      </div>
+    </div>
+  </div>
+
   <Footer />
 </template>
 
