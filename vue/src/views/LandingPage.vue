@@ -7,6 +7,7 @@ export default {
 import { ref } from 'vue'
 import Footer from '../components/footer.vue'
 import Header from '../components/header.vue'
+import portCard from '../components/portCard.vue'
 const puertos = ref([
   {
     nombre: 'Port d’Andratx',
@@ -103,19 +104,8 @@ const faqColumnas = ref([
 
     <section class="mt-5 max-w-6xl  px-4 pb-20">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div
-          v-for="puerto in puertos"
-          :key="puerto.nombre"
-          class="group relative rounded-2xl overflow-hidden border-8 border-[#0f172a] shadow-lg"
-        >
-          <img
-            :src="puerto.imagen"
-            :alt="puerto.nombre"
-            :class="['w-full object-cover rounded-l', puerto.clase]"
-          />
-          <div class="bg-[#0f172a] p-3 absolute bottom-0 w-full">
-            <h3 class="text-white text-xl">{{ puerto.nombre }}</h3>
-          </div>
+        <div v-for="puerto in puertos">
+          <portCard :img-src="puerto.imagen" :portName="puerto.nombre" />
         </div>
       </div>
     </section>
