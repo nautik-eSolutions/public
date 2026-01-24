@@ -10,6 +10,7 @@ import PortProfileHero from '@/components/ports/portProfileHero.vue'
 import { ref } from 'vue'
 import PortProfileImage from '@/components/ports/portProfileImage.vue'
 import PortInfoMiniCard from '@/components/ports/cards/portInfoMiniCard.vue'
+import PortInfoCard from '@/components/ports/cards/portInfoCard.vue'
 
 const port = ref({
   portName: "Marina Cala D'Or",
@@ -35,6 +36,11 @@ const port = ref({
     windTemperature: 16,
   },
 })
+
+const servicesOffered = ref({
+  name: 'Tipos de amarres',
+  services: ['Popa al muelle', 'Lineas de amarre'],
+})
 </script>
 <template>
   <Header />
@@ -56,11 +62,16 @@ const port = ref({
       </div>
     </div>
 
-    <div class="mt-5 w-full flex flex-row justify-around">
+    <div class="mt-8 w-full flex flex-row justify-around">
       <port-info-mini-card information-name="Amarres" :information-number="port.mooringsNumber" />
       <port-info-mini-card information-name="Eslora" :information-number="port.length" />
       <port-info-mini-card information-name="Calado" :information-number="port.draft" />
       <port-info-mini-card information-name="Canal VHF" :information-number="port.chanel" />
+    </div>
+    <div class="mt-8 w-full flex flex-row flex-wrap justify-between gap-4">
+      <port-info-card :title="servicesOffered.name" :services="servicesOffered.services" />
+      <port-info-card :title="servicesOffered.name" :services="servicesOffered.services" />
+      <port-info-card :title="servicesOffered.name" :services="servicesOffered.services" />
     </div>
   </div>
 

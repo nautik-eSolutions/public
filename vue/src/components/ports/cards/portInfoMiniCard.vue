@@ -1,6 +1,6 @@
 <script>
 export default {
-  name: 'PortInfoCard',
+  name: 'PortInfoMiniCard',
 }
 </script>
 <script setup>
