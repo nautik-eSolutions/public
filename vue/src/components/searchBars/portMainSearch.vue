@@ -1,6 +1,6 @@
 <script>
 export default {
-  name: 'MainSearch',
+  name: 'PortMainSearch',
 }
 </script>
 

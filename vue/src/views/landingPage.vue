@@ -8,7 +8,7 @@ import { ref } from 'vue'
 import Footer from '../components/general/footer.vue'
 import Header from '../components/general/header.vue'
 import portCard from '../components/portCard.vue'
-import MainSearch from '@/components/searchBars/mainSearch.vue'
+import PortMainSearch from '@/components/searchBars/portMainSearch.vue'
 
 const puertos = ref([
   {
@@ -54,7 +54,7 @@ const faqColumnas = ref([
 
 <template>
   <Header/>
-    <MainSearch/>
+    <PortMainSearch/>
 
     <section class="mt-5 max-w-6xl  px-4 pb-20">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">

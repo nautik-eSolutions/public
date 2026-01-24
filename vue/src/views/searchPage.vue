@@ -1,40 +1,16 @@
 <script>
 import Footer from '@/components/general/footer.vue'
 import Header from '@/components/general/header.vue'
+import PortSearchedBar from '@/components/searchBars/portSearchedBar.vue'
 export default {
   name: 'SearchPage',
-  components: { Header, Footer },
+  components: { PortSearchedBar, Header, Footer },
 }
 </script>
 
 <template>
   <Header />
-  <section class="max-w-6xl mx-auto px-4 mb-12">
-    <div class="bg-[#0f172a] rounded-2xl p-8 md:p-12 shadow-xl">
-      <div class="flex flex-row gap-4 align-middle justify-center text-white">
-        <div class="flex-col w-[30%] justify-center align-middle">
-          <p class="text-sm text-center text-white">Destino</p>
-          <input type="search" class="bg-[#1F3550] w-[100%] h-9 rounded-xl" />
-        </div>
-        <div class="flex-col w-[11%] justify-center align-middle">
-          <p class="text-sm text-center text-white">Eslora</p>
-          <input type="search" class="bg-[#1F3550] w-[100%] h-9 rounded-xl" />
-        </div>
-        <div class="flex-col w-[11%] justify-center align-middle">
-          <p class="text-sm text-center text-white">Eslora</p>
-          <input type="search" class="bg-[#1F3550] w-[100%] h-9 rounded-xl" />
-        </div>
-        <div class="flex-col w-[17%] justify-center align-middle">
-          <p class="text-sm text-center text-white">Llegada</p>
-          <input type="date" class="bg-[#1F3550] w-[100%] h-9 rounded-xl text-center" />
-        </div>
-        <div class="flex-col w-[17%] justify-center align-middle">
-          <p class="text-sm text-center text-white">Salida</p>
-          <input type="date" class="bg-[#1F3550] w-[100%] h-9 rounded-xl text-center" />
-        </div>
-      </div>
-    </div>
-  </section>
+  <PortSearchedBar/>
   <section class="max-w-6xl mx-auto px-4 mb-12">
     <div class="flex flex-col">
       <h2 class="font-bold text-2xl m-2">Resultados</h2>
