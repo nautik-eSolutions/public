@@ -1,3 +1,9 @@
+<script>
+export default {
+  name: "Header"
+}
+</script>
+
 <template>
   <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex justify-between items-center">
     <div class="flex items-center gap-2">

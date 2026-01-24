@@ -1,3 +1,8 @@
+<script>
+export default {
+  name:"Footer"
+}
+</script>
 
 <template>
   <footer class="bg-[#0f172a] text-white py-12">

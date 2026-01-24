@@ -1,13 +1,12 @@
 <script>
-import { ref } from 'vue'
-
 export default {
   name: 'LandingPage',
 }
 </script>
 <script setup>
 import { ref } from 'vue'
-
+import Footer from '../components/footer.vue'
+import Header from '../components/header.vue'
 const puertos = ref([
   {
     nombre: 'Port d’Andratx',
@@ -52,24 +51,11 @@ const faqColumnas = ref([
 
 
 <template>
-  <div id="app">
-    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex justify-between items-center">
-      <div class="flex items-center gap-2">
-        <img src="../assets/logoWOletter.png" class="h-12 p-0 m-0" />
-        <span id="logos" class="text-3xl">NAUTIK®</span>
-      </div>
-      <a
-        href="#"
-        class="bg-[#0f172a] hover:bg-slate-800 text-white text-sm py-2 px-6 rounded qaA shadow-md transition-colors"
-      >
-        Log in
-      </a>
-    </nav>
-    <div></div>
+  <Header/>
     <section class="max-w-6xl mx-auto px-4 mb-12">
       <div class="bg-[#0f172a] rounded-2xl p-8 md:p-12 shadow-xl">
         <h1 class="text-white text-3xl md:text-4xl mb-8">
-          Reserva amarres con <span id="logos" class="">NAUTIK®</span>
+          Reserva amarres con <span id="logos" class="">NAUTIK</span>
         </h1>
         <div
           class="bg-white rounded-lg rounded-r-3xl p-1 flex flex-col md:flex-row shadow-sm overflow-hidden text-slate-900 h-14"
@@ -115,7 +101,7 @@ const faqColumnas = ref([
       </div>
     </section>
 
-    <section class="max-w-6xl mx-auto px-4 pb-20">
+    <section class="mt-5 max-w-6xl  px-4 pb-20">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div
           v-for="puerto in puertos"
@@ -145,26 +131,13 @@ const faqColumnas = ref([
               class="flex justify-between items-center w-full py-4 border-b border-gray-200 text-left hover:bg-gray-50 transition-colors"
             >
               <span class="text-lg text-slate-900">{{ pregunta }}</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="2"
-                stroke="currentColor"
-                class="w-5 h-5 text-slate-900"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M19.5 8.25l-7.5 7.5-7.5-7.5"
-                />
-              </svg>
+
             </button>
           </div>
         </div>
       </div>
     </section>
-  </div>
+  <Footer/>
 </template>
 
 <style scoped></style>
