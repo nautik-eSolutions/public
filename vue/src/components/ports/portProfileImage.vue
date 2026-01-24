@@ -10,7 +10,7 @@ defineProps({
 </script>
 <template>
   <div>
-    <img :src="imageSrc" class="w-50 object-cover shadow-xl rounded-lg h-64 m-2 " />
+    <img :src="imageSrc" class="w-50 object-cover shadow-xl rounded-lg h-64  " />
   </div>
 </template>
 

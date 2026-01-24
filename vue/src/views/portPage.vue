@@ -9,6 +9,7 @@ import Footer from '@/components/general/footer.vue'
 import PortProfileHero from '@/components/ports/portProfileHero.vue'
 import { ref } from 'vue'
 import PortProfileImage from '@/components/ports/portProfileImage.vue'
+import PortInfoMiniCard from '@/components/ports/cards/portInfoMiniCard.vue'
 
 const port = ref({
   portName: "Marina Cala D'Or",
@@ -49,10 +50,17 @@ const port = ref({
     :weatherInformation="port.weatherInformation"
   />
   <div class="max-w-6xl mx-auto px-4 mb-12">
-   <div class="flex flex-row flex-wrap justify-center">
+    <div class="flex flex-row flex-wrap justify-around">
       <div v-for="image in port.images">
         <portProfileImage :imageSrc="image" />
       </div>
+    </div>
+
+    <div class="mt-5 w-full flex flex-row justify-around">
+      <port-info-mini-card information-name="Amarres" :information-number="port.mooringsNumber" />
+      <port-info-mini-card information-name="Eslora" :information-number="port.length" />
+      <port-info-mini-card information-name="Calado" :information-number="port.draft" />
+      <port-info-mini-card information-name="Canal VHF" :information-number="port.chanel" />
     </div>
   </div>
 
