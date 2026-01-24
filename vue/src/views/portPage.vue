@@ -11,6 +11,7 @@ import { ref } from 'vue'
 import PortProfileImage from '@/components/ports/portProfileImage.vue'
 import PortInfoMiniCard from '@/components/ports/cards/portInfoMiniCard.vue'
 import PortInfoCard from '@/components/ports/cards/portInfoCard.vue'
+import PortBookingCard from '@/components/ports/cards/portBookingCard.vue'
 
 const port = ref({
   portName: "Marina Cala D'Or",
@@ -72,6 +73,7 @@ const servicesOffered = ref({
       <port-info-card :title="servicesOffered.name" :services="servicesOffered.services" />
       <port-info-card :title="servicesOffered.name" :services="servicesOffered.services" />
       <port-info-card :title="servicesOffered.name" :services="servicesOffered.services" />
+      <port-booking-card fromPrice="156,00"/>
     </div>
   </div>
 
