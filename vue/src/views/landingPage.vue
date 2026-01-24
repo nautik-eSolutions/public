@@ -5,8 +5,8 @@ export default {
 </script>
 <script setup>
 import { ref } from 'vue'
-import Footer from '../components/footer.vue'
-import Header from '../components/header.vue'
+import Footer from '../components/general/footer.vue'
+import Header from '../components/general/header.vue'
 import portCard from '../components/portCard.vue'
 const puertos = ref([
   {

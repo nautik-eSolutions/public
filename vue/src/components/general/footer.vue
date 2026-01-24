@@ -12,8 +12,8 @@ export default {
       <div class="flex flex-col gap-6">
         <div class="bg-white p-2 rounded-full w-fit">
           <img
-            src="../assets/logoWOletter.png"
-            srcset="../assets/logoWOletter.png"
+            src="../../assets/logoWOletter.png"
+            srcset="../../assets/logoWOletter.png"
             class="h-12 rounded-3xl p-0 m-0"
           />
         </div>
