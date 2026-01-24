@@ -4,9 +4,10 @@ import Header from '@/components/general/header.vue'
 import PortSearchedBar from '@/components/searchBars/portSearchedBar.vue'
 import { ref } from 'vue'
 import ServicesCheckbox from '@/components/checkbox/servicesCheckbox.vue'
+import PortCardBooking from '@/components/ports/cards/portCardBooking.vue'
 export default {
   name: 'SearchPage',
-  components: { ServicesCheckbox, PortSearchedBar, Header, Footer },
+  components: { PortCardBooking, ServicesCheckbox, PortSearchedBar, Header, Footer },
   setup() {
     const services = ref([
       {
@@ -16,10 +17,35 @@ export default {
         name: 'Restaurantes',
       },
       {
-      name: 'Limpieza'
-      }
+        name: 'Limpieza',
+      },
     ])
-    return { services }
+    const ports = ref([
+      {
+        portName: 'Port Adriano',
+        startingNightPrice: '67,75',
+        totalPrice: '127,00',
+        imgSrc:
+          'https://mallorcacaprice.com/wp-content/uploads/2024/10/fira-marinera-port-andratx.webp',
+      },
+      {
+        portName: 'Portocolom',
+        startingNightPrice: '78,75',
+        totalPrice: '148,45',
+
+        imgSrc:
+          'https://e00-elmundo.uecdn.es/assets/multimedia/imagenes/2019/10/08/15705370670358_640x0.jpg',
+      },
+      {
+        portName: 'Palafrugell',
+        startingNightPrice: '48,75',
+        totalPrice: '98,00',
+
+        imgSrc:
+          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_Vj4SL-DMFfqVRCja2-eHMIKZ0Z2ssolQGQ&s',
+      },
+    ])
+    return { services, ports }
   },
 }
 </script>
@@ -38,31 +64,13 @@ export default {
           </div>
         </div>
         <div class="w-[75%] flex flex-col gap-5">
-          <div class="flex flex-row bg-gray-100 w-[100%] rounded-2xl shadow">
-            <div class="w-[50%] p-5">
-              <img
-                class="w-full object-contain rounded"
-                src="https://mallorcacaprice.com/wp-content/uploads/2024/10/fira-marinera-port-andratx.webp"
-              />
-            </div>
-            <div class="p-5 flex flex-col justify-around gap-2">
-              <h2 class="text-3xl">Port Adriano</h2>
-              <h3>64,75€ /noche</h3>
-              <button class="bg-[#1F3550] text-white h-8 rounded shadow">Reservar</button>
-            </div>
-          </div>
-          <div class="flex flex-row bg-gray-100 w-[100%] rounded-2xl shadow">
-            <div class="w-[50%] p-5">
-              <img
-                class="w-full object-contain rounded"
-                src="https://mallorcacaprice.com/wp-content/uploads/2024/10/fira-marinera-port-andratx.webp"
-              />
-            </div>
-            <div class="p-5 flex flex-col justify-around gap-2">
-              <h2 class="text-3xl">Port Adriano</h2>
-              <h3>64,75€ /noche</h3>
-              <button class="bg-[#1F3550] text-white h-8 rounded shadow">Reservar</button>
-            </div>
+          <div v-for="port in ports">
+            <PortCardBooking
+              :totalPrice="port.totalPrice"
+              :imgSrc="port.imgSrc"
+              :portName="port.portName"
+              :startingNightPrice="port.startingNightPrice"
+            />
           </div>
         </div>
       </div>
