@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import LandingPage from '../views/landingPage.vue';
-import SearchPage from '../views/searchPage.vue'
+import SearchPage from '../views/searchPage.vue';
+import PortPage from '@/views/portPage.vue'
 
 
 const router = createRouter({
@@ -15,6 +16,11 @@ const router = createRouter({
       path:'/search',
       name: 'search',
       component: SearchPage
+    },
+    {
+      path:'/port',
+      name:'port',
+      component:PortPage
     }
   ],
 })
