@@ -34,7 +34,9 @@ export default {
         </div>
         <div class="flex-col w-[17%] justify-center align-middle">
           <p class="text-sm text-center text-white">Salida</p>
-          <input type="date" class="bg-[#1F3550] w-[100%] h-9 rounded-xl text-center" />
+          <div class="flex justify-center w-[100%] bg-secondary-blue rounded-md">
+            <input type="date" class="w-[75%] h-9 rounded-xl text-center" />
+          </div>
         </div>
       </div>
     </div>

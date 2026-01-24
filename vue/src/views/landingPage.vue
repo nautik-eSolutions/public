@@ -7,7 +7,7 @@ export default {
 import { ref } from 'vue'
 import Footer from '../components/general/footer.vue'
 import Header from '../components/general/header.vue'
-import portCard from '../components/portCard.vue'
+import portCard from '../components/ports/cards/portCard.vue'
 import PortMainSearch from '@/components/searchBars/portMainSearch.vue'
 
 const puertos = ref([

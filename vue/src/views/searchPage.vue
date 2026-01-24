@@ -2,31 +2,39 @@
 import Footer from '@/components/general/footer.vue'
 import Header from '@/components/general/header.vue'
 import PortSearchedBar from '@/components/searchBars/portSearchedBar.vue'
+import { ref } from 'vue'
+import ServicesCheckbox from '@/components/checkbox/servicesCheckbox.vue'
 export default {
   name: 'SearchPage',
-  components: { PortSearchedBar, Header, Footer },
+  components: { ServicesCheckbox, PortSearchedBar, Header, Footer },
+  setup() {
+    const services = ref([
+      {
+        name: 'Wifi',
+      },
+      {
+        name: 'Restaurantes',
+      },
+      {
+      name: 'Limpieza'
+      }
+    ])
+    return { services }
+  },
 }
 </script>
 
 <template>
   <Header />
-  <PortSearchedBar/>
+  <PortSearchedBar />
+
   <section class="max-w-6xl mx-auto px-4 mb-12">
     <div class="flex flex-col">
       <h2 class="font-bold text-2xl m-2">Resultados</h2>
       <div class="flex flex-row gap-4">
         <div class="w-[25%] flex flex-col gap-3">
-          <div class="flex justify-start gap-2 h-8 w-[100%] shadow rounded border">
-            <input id="filter" class="mx-3" type="checkbox" />
-            <label for="filter">Wifi</label>
-          </div>
-          <div class="flex justify-start gap-2 h-8 w-[100%] shadow rounded border">
-            <input id="filter" class="mx-3" type="checkbox" />
-            <label for="filter">Duchas</label>
-          </div>
-          <div class="flex justify-start gap-2 h-8 w-[100%] shadow rounded border">
-            <input id="filter" class="mx-3" type="checkbox" />
-            <label for="filter">Restaurantes cerca</label>
+          <div v-for="service in services">
+            <ServicesCheckbox :service="service.name" />
           </div>
         </div>
         <div class="w-[75%] flex flex-col gap-5">
@@ -60,7 +68,7 @@ export default {
       </div>
     </div>
   </section>
-  <Footer/>
+  <Footer />
 </template>
 
 <style scoped></style>
