@@ -34,7 +34,7 @@ const port = ref({
     weather: 'Nublado',
     waveHeight: 1.87,
     waveDirection: 277,
-    airTemperature: 15,
+    seaTemperature: 15,
     windTemperature: 16,
   },
 })
@@ -80,7 +80,13 @@ const servicesOffered = ref({
     </div>
 
     <div class="mt-8 w-full flex justify-center justify-items-center">
-      <WeatherCard/>
+
+      <WeatherCard
+        :weather-information="port.weatherInformation"
+
+
+      />
+
     </div>
   </div>
 
