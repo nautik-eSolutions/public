@@ -12,6 +12,7 @@ import PortProfileImage from '@/components/ports/portProfileImage.vue'
 import PortInfoMiniCard from '@/components/ports/cards/portInfoMiniCard.vue'
 import PortInfoCard from '@/components/ports/cards/portInfoCard.vue'
 import PortBookingCard from '@/components/ports/cards/portBookingCard.vue'
+import WeatherCard from '@/components/weather/weatherCard.vue'
 
 const port = ref({
   portName: "Marina Cala D'Or",
@@ -57,6 +58,7 @@ const servicesOffered = ref({
     :weatherInformation="port.weatherInformation"
   />
   <div class="max-w-6xl mx-auto px-4 mb-12">
+
     <div class="flex flex-row flex-wrap justify-around">
       <div v-for="image in port.images">
         <portProfileImage :imageSrc="image" />
@@ -69,11 +71,16 @@ const servicesOffered = ref({
       <port-info-mini-card information-name="Calado" :information-number="port.draft" />
       <port-info-mini-card information-name="Canal VHF" :information-number="port.chanel" />
     </div>
+
     <div class="mt-8 w-full flex flex-row flex-wrap justify-between gap-4">
       <port-info-card :title="servicesOffered.name" :services="servicesOffered.services" />
       <port-info-card :title="servicesOffered.name" :services="servicesOffered.services" />
       <port-info-card :title="servicesOffered.name" :services="servicesOffered.services" />
       <port-booking-card fromPrice="156,00"/>
+    </div>
+
+    <div class="mt-8 w-full flex justify-center justify-items-center">
+      <WeatherCard/>
     </div>
   </div>
 
