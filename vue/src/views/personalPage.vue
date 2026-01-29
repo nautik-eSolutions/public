@@ -52,7 +52,7 @@ import {BoatService} from "@/service/BoatService.js";
                 :name="boat.name"
                 :registerNumber="boat.registerNumber"
                 :length="boat.length"
-                :bream="boat.bream"
+                :bream="boat.beam"
                 :draft="boat.draft"
             />
           </div>

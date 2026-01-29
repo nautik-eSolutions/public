@@ -4,6 +4,7 @@ import SearchPage from '../views/searchPage.vue';
 import PortPage from '@/views/portPage.vue'
 import PersonalPage from "@/views/personalPage.vue";
 import ConfirReserv from "@/views/confirReserv.vue";
+import FormAddBoat from "@/views/FormAddBoat.vue";
 
 
 const router = createRouter({
@@ -33,6 +34,11 @@ const router = createRouter({
       path:'/reserv',
       name:'reservation',
       component:ConfirReserv
+    },
+    {
+      path:'/addBarco',
+      name:'addBarco',
+      component:FormAddBoat
     }
   ],
 })
