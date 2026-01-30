@@ -21,7 +21,7 @@ defineProps({
       <div class="flex justify-center">
         <div class="w-8 h-5 rounded overflow-hidden">
           <div class="h-1/4 bg-red-600"></div>
-          <div class="h-1/2 bg-yellow-400"></div>
+          <div class="h-1/2 bg-yellow-500"></div>
           <div class="h-1/4 bg-red-600"></div>
 
         </div>

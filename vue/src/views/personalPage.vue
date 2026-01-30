@@ -10,7 +10,7 @@ export default {
     }
   },
   async mounted() {
-    this.boats = await BoatService.getBoats();
+    this.boats = await BoatService.getBoats(9);
   }
 }
 </script>
