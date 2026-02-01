@@ -7,8 +7,8 @@ export default {
 import { onMounted, ref } from 'vue'
 import SearchableSelect from '@/components/searchBars/searchSelect.vue'
 import { PortService } from '@/service/PortService.js'
-
-defineProps({
+import { AutoComplete } from 'primevue'
+const props = defineProps({
   ports: Array,
 })
 
@@ -17,6 +17,21 @@ const formData = ref({
   portName: '',
   length: '',
 })
+
+const filteredPorts = ref()
+const selectedPort = ref()
+
+const search = (event) => {
+  setTimeout(() => {
+    if (!event.query.trim().length) {
+      filteredPorts.value = [...props.ports]
+    } else {
+      filteredPorts.value = props.ports.filter((port) => {
+        return port.name.toLowerCase().includes(event.query.toLowerCase())
+      })
+    }
+  }, 250)
+}
 </script>
 
 <template>
@@ -26,11 +41,17 @@ const formData = ref({
         Reserva amarres con <span id="logos" class="">NAUTIK</span>
       </h1>
       <div
-        class="bg-white rounded-lg rounded-r-3xl p-1 flex md:flex-row shadow-sm  text-slate-900 h-14"
+        class="bg-white rounded-lg rounded-r-3xl p-1 flex md:flex-row shadow-sm text-slate-900 h-14"
       >
         <div class="flex-1 p-2 border-b md:border-b-0 md:border-r border-gray-200">
-          <template v-if="ports" >
-            <searchable-select :options="ports" model-value="2" />
+          <template v-if="ports">
+            <AutoComplete
+              v-model="formData.portName"
+              optionLabel="name"
+              :suggestions="filteredPorts"
+              @complete="search"
+              class=""
+            />
           </template>
         </div>
         <div class="flex-1 p-2 border-b md:border-b-0 md:border-r border-gray-200">
@@ -59,4 +80,9 @@ const formData = ref({
   </section>
 </template>
 
-<style scoped></style>
+<style scoped>
+.p-autocomplete-option{
+  background-color: red;
+
+}
+</style>
