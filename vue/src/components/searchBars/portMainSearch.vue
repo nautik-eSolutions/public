@@ -3,6 +3,21 @@ export default {
   name: 'PortMainSearch',
 }
 </script>
+<script setup>
+import { onMounted, ref } from 'vue'
+import SearchableSelect from '@/components/searchBars/searchSelect.vue'
+import { PortService } from '@/service/PortService.js'
+
+defineProps({
+  ports: Array,
+})
+
+const formData = ref({
+  portId: '',
+  portName: '',
+  length: '',
+})
+</script>
 
 <template>
   <section class="max-w-6xl mx-auto px-4 mb-12">
@@ -11,15 +26,12 @@ export default {
         Reserva amarres con <span id="logos" class="">NAUTIK</span>
       </h1>
       <div
-        class="bg-white rounded-lg rounded-r-3xl p-1 flex flex-col md:flex-row shadow-sm overflow-hidden text-slate-900 h-14"
+        class="bg-white rounded-lg rounded-r-3xl p-1 flex md:flex-row shadow-sm  text-slate-900 h-14"
       >
         <div class="flex-1 p-2 border-b md:border-b-0 md:border-r border-gray-200">
-          <label class="block text-xs uppercase">Puerto</label>
-          <input
-            type="text"
-            placeholder="Busca un destino"
-            class="w-full text-sm outline-none mt-1"
-          />
+          <template v-if="ports" >
+            <searchable-select :options="ports" model-value="2" />
+          </template>
         </div>
         <div class="flex-1 p-2 border-b md:border-b-0 md:border-r border-gray-200">
           <label class="block text-xs uppercase">Llegada</label>

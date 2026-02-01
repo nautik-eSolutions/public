@@ -9,18 +9,12 @@ import Footer from '../components/general/footer.vue'
 import Header from '../components/general/header.vue'
 import portCard from '../components/ports/cards/portCard.vue'
 import PortMainSearch from '@/components/searchBars/portMainSearch.vue'
-import axiosInstance from '@/plugins/axios.js'
 import { PortService } from '@/service/PortService.js'
 
-const ports = ref();
-onMounted(async ()=>{
-   const {data}=  await axiosInstance.get("/ports").then(resp => resp.data)
-  ports.value = data.ports
-
-  const test = await PortService.getPorts()
-  console.log(test)
-});
-
+const ports = ref()
+onMounted(async () => {
+  ports.value = await PortService.getPorts()
+})
 
 const puertos = ref([
   {
@@ -65,8 +59,9 @@ const faqColumnas = ref([
 
 <template>
   <Header />
-  <PortMainSearch />
-
+  <template v-if="ports">
+    <PortMainSearch :ports="ports" />
+  </template>
   <section class="max-w-6xl mx-auto px-4 pb-20">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       <div v-for="puerto in puertos">
