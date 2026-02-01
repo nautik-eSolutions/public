@@ -4,11 +4,23 @@ export default {
 }
 </script>
 <script setup>
-import { ref } from 'vue'
+import { onMounted, onUnmounted, ref } from 'vue'
 import Footer from '../components/general/footer.vue'
 import Header from '../components/general/header.vue'
 import portCard from '../components/ports/cards/portCard.vue'
 import PortMainSearch from '@/components/searchBars/portMainSearch.vue'
+import axiosInstance from '@/plugins/axios.js'
+import { PortService } from '@/service/PortService.js'
+
+const ports = ref();
+onMounted(async ()=>{
+   const {data}=  await axiosInstance.get("/ports").then(resp => resp.data)
+  ports.value = data.ports
+
+  const test = await PortService.getPorts()
+  console.log(test)
+});
+
 
 const puertos = ref([
   {
@@ -51,37 +63,36 @@ const faqColumnas = ref([
 ])
 </script>
 
-
 <template>
-  <Header/>
-    <PortMainSearch/>
+  <Header />
+  <PortMainSearch />
 
-    <section class="mt-5 max-w-6xl  px-4 pb-20">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div v-for="puerto in puertos">
-          <portCard :img-src="puerto.imagen" :portName="puerto.nombre" />
+  <section class="max-w-6xl mx-auto px-4 pb-20">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div v-for="puerto in puertos">
+        <portCard :img-src="puerto.imagen" :portName="puerto.nombre" />
+      </div>
+    </div>
+  </section>
+
+  <section class="max-w-6xl mx-auto px-4 py-16">
+    <div class="p-8 md:p-12 bg-white">
+      <h2 class="text-4xl text-slate-900 mb-12">F & Q</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-4">
+        <div v-for="(columna, index) in faqColumnas" :key="index" class="flex flex-col">
+          <button
+            v-for="pregunta in columna"
+            :key="pregunta"
+            class="flex justify-between items-center w-full py-4 border-b border-gray-200 text-left hover:bg-gray-50 transition-colors"
+          >
+            <span class="text-lg text-slate-900">{{ pregunta }}</span>
+          </button>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="max-w-6xl mx-auto px-4 py-16">
-      <div class="p-8 md:p-12 bg-white">
-        <h2 class="text-4xl text-slate-900 mb-12">F & Q</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-4">
-          <div v-for="(columna, idx) in faqColumnas" :key="idx" class="flex flex-col">
-            <button
-              v-for="pregunta in columna"
-              :key="pregunta"
-              class="flex justify-between items-center w-full py-4 border-b border-gray-200 text-left hover:bg-gray-50 transition-colors"
-            >
-              <span class="text-lg text-slate-900">{{ pregunta }}</span>
-
-            </button>
-          </div>
-        </div>
-      </div>
-    </section>
-  <Footer/>
+  <Footer />const
 </template>
 
 <style scoped></style>
