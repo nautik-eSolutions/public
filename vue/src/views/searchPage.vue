@@ -49,10 +49,22 @@ export default {
   },
 }
 </script>
+<script setup>
 
+import { useRoute } from 'vue-router'
+
+const routeParams =  useRoute().params;
+
+console.log(routeParams)
+</script>
 <template>
   <Header />
-  <PortSearchedBar />
+  <PortSearchedBar
+    :portName="routeParams.portName"
+    :length="routeParams.length"
+    :beam="routeParams.beam"
+    :startDate="routeParams.startDate"
+    :endDate="routeParams.endDate"/>
 
   <section class="max-w-6xl mx-auto px-4 mb-12">
     <div class="flex flex-col">
@@ -65,12 +77,12 @@ export default {
         </div>
         <div class="w-[75%] flex flex-col gap-5">
           <div v-for="port in ports">
-            <PortCardBooking
+           <!-- <PortCardBooking
               :totalPrice="port.totalPrice"
               :imgSrc="port.imgSrc"
               :portName="port.portName"
               :startingNightPrice="port.startingNightPrice"
-            />
+            /> -->
           </div>
         </div>
       </div>

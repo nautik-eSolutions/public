@@ -10,11 +10,34 @@ import Header from '../components/general/header.vue'
 import portCard from '../components/ports/cards/portCard.vue'
 import PortMainSearch from '@/components/searchBars/portMainSearch.vue'
 import { PortService } from '@/service/PortService.js'
+import router from '@/router/index.js'
 
 const ports = ref()
+
 onMounted(async () => {
   ports.value = await PortService.getPorts()
 })
+
+function handleSubmit(formData) {
+  const portId = formData.value.port.id
+  const portName = formData.value.port.name
+  const length = formData.value.length
+  const beam = formData.value.beam
+  const startDate = new Date(formData.value.startDate).toLocaleDateString().replaceAll('/', '-')
+  const endDate = new Date(formData.value.endDate).toLocaleDateString().replaceAll('/', '-')
+
+  router.push({
+    name: 'search',
+    params: {
+      id: portId,
+      portName: portName,
+      length: length,
+      beam: beam,
+      startDate: startDate,
+      endDate: endDate,
+    },
+  })
+}
 
 const puertos = ref([
   {
@@ -60,7 +83,7 @@ const faqColumnas = ref([
 <template>
   <Header />
   <template v-if="ports">
-    <PortMainSearch :ports="ports" />
+    <PortMainSearch :ports="ports" v-on:submit="handleSubmit" />
   </template>
   <section class="max-w-6xl mx-auto px-4 pb-20">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -87,7 +110,7 @@ const faqColumnas = ref([
     </div>
   </section>
 
-  <Footer />const
+  <Footer />
 </template>
 
 <style scoped></style>
