@@ -16,9 +16,9 @@ const router = createRouter({
       component: LandingPage
     },
     {
-      path:'/search',
+      path:'/search/:id/:portName/:length/:beam/:startDate/:endDate',
       name: 'search',
-      component: SearchPage
+      component: SearchPage,
     },
     {
       path:'/port',

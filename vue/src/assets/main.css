@@ -1,7 +1,8 @@
-@import './base.css';
-@import 'tailwindcss';
+
 @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&family=Unbounded:wght@200..900&display=swap');
+@import './base.css';
+@import 'tailwindcss';
 @theme{
 
     --color-principal-blue: #05203D;
