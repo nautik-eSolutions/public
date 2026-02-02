@@ -4,11 +4,40 @@ export default {
 }
 </script>
 <script setup>
-import { ref } from 'vue'
+import { onMounted, onUnmounted, ref } from 'vue'
 import Footer from '../components/general/footer.vue'
 import Header from '../components/general/header.vue'
 import portCard from '../components/ports/cards/portCard.vue'
 import PortMainSearch from '@/components/searchBars/portMainSearch.vue'
+import { PortService } from '@/service/PortService.js'
+import router from '@/router/index.js'
+
+const ports = ref()
+
+onMounted(async () => {
+  ports.value = await PortService.getPorts()
+})
+
+function handleSubmit(formData) {
+  const portId = formData.value.port.id
+  const portName = formData.value.port.name
+  const length = formData.value.length
+  const beam = formData.value.beam
+  const startDate = new Date(formData.value.startDate).toLocaleDateString().replaceAll('/', '-')
+  const endDate = new Date(formData.value.endDate).toLocaleDateString().replaceAll('/', '-')
+
+  router.push({
+    name: 'search',
+    params: {
+      id: portId,
+      portName: portName,
+      length: length,
+      beam: beam,
+      startDate: startDate,
+      endDate: endDate,
+    },
+  })
+}
 
 const puertos = ref([
   {
@@ -51,37 +80,37 @@ const faqColumnas = ref([
 ])
 </script>
 
-
 <template>
-  <Header/>
-    <PortMainSearch/>
+  <Header />
+  <template v-if="ports">
+    <PortMainSearch :ports="ports" v-on:submit="handleSubmit" />
+  </template>
+  <section class="max-w-6xl mx-auto px-4 pb-20">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div v-for="puerto in puertos">
+        <portCard :img-src="puerto.imagen" :portName="puerto.nombre" />
+      </div>
+    </div>
+  </section>
 
-    <section class="mt-5 max-w-6xl  px-4 pb-20">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div v-for="puerto in puertos">
-          <portCard :img-src="puerto.imagen" :portName="puerto.nombre" />
+  <section class="max-w-6xl mx-auto px-4 py-16">
+    <div class="p-8 md:p-12 bg-white">
+      <h2 class="text-4xl text-slate-900 mb-12">F & Q</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-4">
+        <div v-for="(columna, index) in faqColumnas" :key="index" class="flex flex-col">
+          <button
+            v-for="pregunta in columna"
+            :key="pregunta"
+            class="flex justify-between items-center w-full py-4 border-b border-gray-200 text-left hover:bg-gray-50 transition-colors"
+          >
+            <span class="text-lg text-slate-900">{{ pregunta }}</span>
+          </button>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="max-w-6xl mx-auto px-4 py-16">
-      <div class="p-8 md:p-12 bg-white">
-        <h2 class="text-4xl text-slate-900 mb-12">F & Q</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-4">
-          <div v-for="(columna, idx) in faqColumnas" :key="idx" class="flex flex-col">
-            <button
-              v-for="pregunta in columna"
-              :key="pregunta"
-              class="flex justify-between items-center w-full py-4 border-b border-gray-200 text-left hover:bg-gray-50 transition-colors"
-            >
-              <span class="text-lg text-slate-900">{{ pregunta }}</span>
-
-            </button>
-          </div>
-        </div>
-      </div>
-    </section>
-  <Footer/>
+  <Footer />
 </template>
 
 <style scoped></style>
