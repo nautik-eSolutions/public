@@ -4,19 +4,20 @@ export default {
 }
 </script>
 <script setup>
-import { onMounted, onUnmounted, ref } from 'vue'
+import { defineAsyncComponent, onMounted, onUnmounted, ref } from 'vue'
 import Footer from '../components/general/footer.vue'
-import Header from '../components/general/header.vue'
 import portCard from '../components/ports/cards/portCard.vue'
-import PortMainSearch from '@/components/searchBars/portMainSearch.vue'
 import { PortService } from '@/service/PortService.js'
 import router from '@/router/index.js'
-
+import PrimeVue from 'primevue/config'
 const ports = ref()
 
 onMounted(async () => {
   ports.value = await PortService.getPorts()
 })
+
+const Header = defineAsyncComponent(() => import('../components/general/header.vue'))
+const PortMainSearch = defineAsyncComponent(()=>import('@/components/searchBars/portMainSearch.vue'))
 
 function handleSubmit(formData) {
   const portId = formData.value.port.id
@@ -113,4 +114,7 @@ const faqColumnas = ref([
   <Footer />
 </template>
 
-<style scoped></style>
+<style  lang="scss" scoped>
+
+
+</style>

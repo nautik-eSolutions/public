@@ -3,6 +3,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&family=Unbounded:wght@200..900&display=swap');
 @import './base.css';
 @import 'tailwindcss';
+@import "tailwindcss-primeui";
+
+
 @theme{
 
     --color-principal-blue: #05203D;
@@ -11,6 +14,7 @@
 
 
 }
+
 
 input[type="search"]::-webkit-search-decoration,
 input[type="search"]::-webkit-search-cancel-button,
@@ -34,3 +38,4 @@ input[type="date"]::-webkit-calendar-picker-indicator{
 #app {
 
 }
+

@@ -68,21 +68,18 @@ function handleSubmit() {
             <label class="block text-xs uppercase">Llegada</label>
             <DatePicker
               v-model="formData.startDate"
+              class=" bg-white text-sm outline-none mt-1"
 
-              placeholder="Añadir fecha"
-              class="w-full bg-white text-sm outline-none mt-1"
             />
           </div>
           <div class="flex-1 p-2 border-b md:border-b-0 md:border-r border-gray-200">
             <label class="block text-xs uppercase">Salida</label>
             <DatePicker
               v-model="formData.endDate"
-
-              placeholder="Añadir fecha"
               class="w-full bg-white text-sm outline-none mt-1"
             />
           </div>
-          <div class="w-full md:w-24 p-2 border-b md:border-b-0 md:border-r border-gray-200">
+          <div class="w-1/6 md:w-24 p-2 border-b md:border-b-0 md:border-r border-gray-200">
             <label class="block text-xs uppercase">Eslora</label>
             <input
               v-model="formData.length"
@@ -91,7 +88,7 @@ function handleSubmit() {
               class="w-full text-sm outline-none mt-1"
             />
           </div>
-          <div class="w-full md:w-24 p-2">
+          <div class="w-1/6 md:w-24 p-2">
             <label class="block text-xs uppercase">Manga</label>
             <input
               v-model="formData.beam"
@@ -112,4 +109,35 @@ function handleSubmit() {
   </section>
 </template>
 
-<style scoped></style>
+<style lang="scss" scoped>
+::v-deep(.p-autocomplete) {
+  width: 100%;
+  .p-autocomplete-input {
+    width: 100%;
+    background-color: white;
+    color: black;
+    outline: none;
+    border: none;
+  }
+
+  .p-autocomplete-option {
+    background-color: white;
+  }
+
+  .p-autocomplete-dropdown {
+    background-color: white;
+  }
+}
+::v-deep(.p-autocomplete-overlay) {
+  background-color: chocolate;
+}
+::v-deep(.p-datepicker) {
+  border-radius: 25px;
+  height: 1rem;
+  width: 100%;
+  outline: none;
+
+
+}
+
+</style>
