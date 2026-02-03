@@ -5,7 +5,7 @@ export default {
 </script>
 
 <script setup>
-import Dialog from 'primevue/dialog'
+import Dialog from '@/volt/Dialog.vue'
 
 import { InputText } from 'primevue'
 
@@ -22,7 +22,7 @@ const visible = ref(false)
       <span id="logos" class="text-3xl">NAUTIK</span>
     </div>
 
-    <Button label="Log in" @click="visible = true" class="bg-black" />
+    <Button label="Log in" @click="visible = true" />
   </nav>
   <Dialog v-model:visible="visible" modal header="Edit Profile" :style="{ width: '25rem' }">
     <span class="text-surface-500 dark:text-surface-400 block mb-8">Update your information.</span>

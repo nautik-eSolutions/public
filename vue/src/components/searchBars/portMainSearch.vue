@@ -5,9 +5,9 @@ export default {
 </script>
 <script setup>
 import { onMounted, ref } from 'vue'
-import { AutoComplete } from 'primevue'
+import AutoComplete from '@/volt/AutoComplete.vue'
 import { Form } from '@primevue/forms'
-import { DatePicker } from 'primevue'
+import DatePicker from '@/volt/DatePicker.vue'
 
 const props = defineProps({
   ports: Array,
@@ -51,9 +51,11 @@ function handleSubmit() {
       </h1>
       <form @submit.prevent="handleSubmit">
         <div
-          class="bg-white rounded-lg rounded-r-3xl p-1 flex md:flex-row shadow-sm text-slate-900 h-14"
+          class="bg-white rounded-lg rounded-r-3xl p-1 flex justify-between md:flex-row shadow-sm text-slate-900 h-14"
         >
-          <div class="flex-1 p-2 border-b md:border-b-0 md:border-r border-gray-200">
+          <div
+            class="justify-center content-center w-3/9 align-middle items-center p-1 border-b md:border-b-0 md:border-r border-gray-200"
+          >
             <template v-if="ports">
               <AutoComplete
                 v-model="formData.port"
@@ -64,15 +66,15 @@ function handleSubmit() {
               />
             </template>
           </div>
-          <div class="flex-1 p-2 border-b md:border-b-0 md:border-r border-gray-200">
+          <div
+            class="justify-center content-center align-middle w-1/10 items-center p-1 border-b md:border-b-0 md:border-r border-gray-200"
+          >
             <label class="block text-xs uppercase">Llegada</label>
-            <DatePicker
-              v-model="formData.startDate"
-              class=" bg-white text-sm outline-none mt-1"
-
-            />
+            <DatePicker v-model="formData.startDate" class="bg-white text-sm outline-none mt-1" />
           </div>
-          <div class="flex-1 p-2 border-b md:border-b-0 md:border-r border-gray-200">
+          <div
+            class="justify-center content-center w-1/10 align-middle items-center p-1 border-b md:border-b-0 md:border-r border-gray-200"
+          >
             <label class="block text-xs uppercase">Salida</label>
             <DatePicker
               v-model="formData.endDate"
@@ -136,8 +138,5 @@ function handleSubmit() {
   height: 1rem;
   width: 100%;
   outline: none;
-
-
 }
-
 </style>
