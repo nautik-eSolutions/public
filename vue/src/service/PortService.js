@@ -8,8 +8,6 @@ export class PortService {
 
     return data.ports.map(port =>this.#fromJson(port))
 
-
-
   }
 
 
