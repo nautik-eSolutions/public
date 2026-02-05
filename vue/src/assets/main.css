@@ -26,7 +26,8 @@ input[type="date"]::-webkit-calendar-picker-indicator{
 
 #logos{
     font-family:"Unbounded",sans-serif;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.3em;
+    color: #05203D;
 
 }
 

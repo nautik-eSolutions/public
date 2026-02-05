@@ -40,14 +40,14 @@ interface Props extends /* @vue-ignore */ DialogProps {}
 defineProps<Props>();
 
 const theme = ref<DialogPassThroughOptions>({
-    root: `max-h-[90%] max-w-screen rounded-md
+    root: `max-h-[90%] max-w-screen rounded-lg
         text-surface-700 bg-white dark:text-surface-0 shadow-lg
         p-maximized:w-screen p-maximized:h-screen p-maximized:top-0 p-maximized:start-0p-maximized: max-h-full `,
     header: `rounded-t-2xl flex items-center bg-white justify-between shrink-0 p-5 rounded`,
     title: `font-semibold text-xl`,
     headerActions: `flex items-center gap-2`,
-    content: `rounded-b-lg overflow-y-auto pt-0 px-5 pb-5 bg-white p-maximized:grow`,
-    footer: `rounded-b-lg shrink-0 pt-0 px-5 pb-5 flex justify-end gap-2`,
+    content: `rounded-b-[80px] overflow-y-auto pt-0 px-5 pb-5 bg-white p-maximized:grow`,
+    footer: `rounded-b-[80px] shrink-0 pt-0 px-5 pb-5 flex justify-end gap-2`,
     mask: `p-modal:bg-black/50 p-modal:fixed p-modal:top-0 p-modal:start-0 p-modal:w-full p-modal:h-full`,
     transition: {
         enterFromClass: 'opacity-0 scale-75',

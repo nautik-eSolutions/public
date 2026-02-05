@@ -24,19 +24,21 @@ const visible = ref(false)
 
     <Button label="Log in" @click="visible = true" />
   </nav>
-  <Dialog v-model:visible="visible" modal header="Edit Profile" :style="{ width: '25rem' }">
-    <span class="text-surface-500 dark:text-surface-400 block mb-8">Update your information.</span>
-    <div class="flex items-center gap-4 mb-4">
-      <label for="username" class="font-semibold w-24">Username</label>
-      <InputText id="username" class="flex-auto" autocomplete="off" />
-    </div>
-    <div class="flex items-center gap-4 mb-8">
-      <label for="email" class="font-semibold w-24">Email</label>
-      <InputText id="email" class="flex-auto" autocomplete="off" />
-    </div>
-    <div class="flex justify-end gap-2">
-      <Button type="button" label="Cancel" severity="secondary" @click="visible = false"></Button>
-      <Button type="button" label="Save" @click="visible = false"></Button>
+  <Dialog v-model:visible="visible" modal header=" " :style="{ width: '30rem' }">
+    <div class="flex flex-col gap-3 py-2 px-2 justify-center content-center align-middle items-center">
+      <div class="logo flex flex-row justify-center gap-2 align-middle content-center items-center">
+        <img class="h-15" src="../../assets/logoWOletter.png" alt="logo" />
+        <h1 class="text-3xl" id="logos">NAUTIK</h1>
+      </div>
+      <h1 class="text-header text-left text-3xl font-extrabold">
+        Todo tu mundo náutico, a un solo inicio de sesión.
+      </h1>
     </div>
   </Dialog>
 </template>
+<style scoped>
+.text-header {
+  font-weight: bold;
+}
+
+</style>
