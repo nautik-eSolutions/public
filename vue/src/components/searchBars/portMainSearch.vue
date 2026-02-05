@@ -17,9 +17,11 @@ const formData = ref({
   port: '',
   length: '',
   beam: '',
-  startDate: '',
-  endDate: '',
+  dates:'',
 })
+
+const date = ref();
+
 
 const filteredPorts = ref()
 const selectedPort = ref()
@@ -67,19 +69,9 @@ function handleSubmit() {
             </template>
           </div>
           <div
-            class="justify-center content-center align-middle w-1/10 items-center p-1 border-b md:border-b-0 md:border-r border-gray-200"
+            class="justify-center content-center align-middle w-3/10 items-center p-1 border-b md:border-b-0 md:border-r border-gray-200"
           >
-            <label class="block text-xs uppercase">Llegada</label>
-            <DatePicker v-model="formData.startDate" class="bg-white text-sm outline-none mt-1" />
-          </div>
-          <div
-            class="justify-center content-center w-1/10 align-middle items-center p-1 border-b md:border-b-0 md:border-r border-gray-200"
-          >
-            <label class="block text-xs uppercase">Salida</label>
-            <DatePicker
-              v-model="formData.endDate"
-              class="w-full bg-white text-sm outline-none mt-1"
-            />
+            <DatePicker v-model="formData.dates" selectionMode="range" :manualInput="false"/>
           </div>
           <div class="w-1/6 md:w-24 p-2 border-b md:border-b-0 md:border-r border-gray-200">
             <label class="block text-xs uppercase">Eslora</label>

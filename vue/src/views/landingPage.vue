@@ -24,8 +24,8 @@ function handleSubmit(formData) {
   const portName = formData.value.port.name
   const length = formData.value.length
   const beam = formData.value.beam
-  const startDate = new Date(formData.value.startDate).toLocaleDateString().replaceAll('/', '-')
-  const endDate = new Date(formData.value.endDate).toLocaleDateString().replaceAll('/', '-')
+  const startDate = new Date(formData.value.dates.at(0)).toLocaleDateString().replaceAll('/', '-')
+  const endDate = new Date(formData.value.dates.at(1)).toLocaleDateString().replaceAll('/', '-')
 
   router.push({
     name: 'search',
