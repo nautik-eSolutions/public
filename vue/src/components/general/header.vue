@@ -13,10 +13,12 @@ import useAuth from '@/stores/authStore.js'
 import Avatar from '@/volt/Avatar.vue'
 import Drawer from '@/volt/Drawer.vue'
 
+const googleClient = import.meta.env.VITE_GOOGLE_CLIENT_ID
 const auth = useAuth()
 const visibleCard = ref(false)
 const visibleDrawer = ref(false)
-const greeting = ref();
+const greeting = ref()
+
 if (auth.isAuthenticated) {
   greeting.value = 'Hola ' + auth.User.userName
 }
@@ -25,9 +27,25 @@ function logout() {
   visibleDrawer.value = false
   auth.logout()
 }
+
+function googleAuth() {
+  window.open(
+    'https://accounts.google.com/o/oauth2/v2/auth?' +
+      'scope=https%3A//www.googleapis.com/auth/drive.metadata.readonly%20https%3A//www.googleapis.com/auth/calendar.readonly&' +
+      'include_granted_scopes=true&' +
+      'response_type=token&' +
+      'state=state_parameter_passthrough_value&' +
+      'redirect_uri=http://localhost:8082&' +
+      'client_id=' +
+      googleClient,
+  )
+}
+
 function redirectToLogin() {
   router.push('/login')
 }
+
+
 </script>
 
 <template>
@@ -37,7 +55,7 @@ function redirectToLogin() {
       <span id="logos" class="text-3xl">NAUTIK</span>
     </div>
     <template v-if="!auth.isAuthenticated">
-      <Button label="Log in" @click="visibleCard = true" />
+      <Button label="Log in" icon="pi pi-sign-in" @click="visibleCard = true" />
     </template>
     <template v-else>
       <div class="flex gap-2">
@@ -47,7 +65,28 @@ function redirectToLogin() {
   </nav>
   <Drawer v-model:visible="visibleDrawer" :header="greeting">
     <p></p>
-    <Button label="Log out" @click="logout" style="background-color: darkred" />
+    <div class="flex flex-col gap-8">
+      <div class="flex flex-col items-center gap-3">
+        <Avatar icon="pi pi-user" size="large" @click="visibleDrawer = true" />
+      </div>
+      <div class="flex flex-col gap-5 mb-4">
+        <div class="flex items-center gap-3 cursor-pointer">
+          <span class="text-sm font-medium">Mis barcos</span>
+        </div>
+        <div class="flex items-center gap-3 cursor-pointer">
+          <span class="text-sm font-medium">Reservas</span>
+        </div>
+        <div class="flex items-center gap-3 cursor-pointer">
+          <span class="text-sm font-medium">Facturas</span>
+        </div>
+      </div>
+      <Button
+        label="Log out"
+        @click="logout"
+        icon="pi pi-sign-out"
+        style="background-color: darkred"
+      />
+    </div>
   </Drawer>
 
   <Dialog v-model:visible="visibleCard" modal header=" " :style="{ width: '30rem' }">
@@ -70,7 +109,11 @@ function redirectToLogin() {
           label="Continuar con correo electrónico"
           @click="redirectToLogin"
         />
-        <Button style="border-radius: 10px" icon=" pi pi-google" label="Google" />
+        <Button
+          style="border-radius: 10px"
+          icon=" pi pi-google"
+          label="Google"
+          @click="googleAuth"/>
         <Button style="border-radius: 10px" icon=" pi pi-facebook" label="Facebook" />
       </div>
     </div>
