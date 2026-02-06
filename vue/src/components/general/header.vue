@@ -16,10 +16,15 @@ import Drawer from '@/volt/Drawer.vue'
 const auth = useAuth()
 const visibleCard = ref(false)
 const visibleDrawer = ref(false)
-function logout() {
-  auth.logout()
+const greeting = ref();
+if (auth.isAuthenticated) {
+  greeting.value = 'Hola ' + auth.User.userName
 }
 
+function logout() {
+  visibleDrawer.value = false
+  auth.logout()
+}
 function redirectToLogin() {
   router.push('/login')
 }
@@ -37,19 +42,15 @@ function redirectToLogin() {
     <template v-else>
       <div class="flex gap-2">
         <Avatar icon="pi pi-user" size="large" @click="visibleDrawer = true" />
-        <Button label="Log out" @click="logout" style="background-color: darkred" />
       </div>
     </template>
   </nav>
-  <Drawer v-model:visible="visibleDrawer" header="Drawer">
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-      labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-      laboris nisi ut aliquip ex ea commodo consequat.
-    </p>
+  <Drawer v-model:visible="visibleDrawer" :header="greeting">
+    <p></p>
+    <Button label="Log out" @click="logout" style="background-color: darkred" />
   </Drawer>
 
-  <Dialog v-model:visible="visible" modal header=" " :style="{ width: '30rem' }">
+  <Dialog v-model:visible="visibleCard" modal header=" " :style="{ width: '30rem' }">
     <div
       class="flex flex-col gap-3 py-2 px-2 justify-center content-center align-middle items-center"
     >

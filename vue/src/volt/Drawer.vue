@@ -31,13 +31,13 @@ defineProps<Props>();
 
 const theme = ref<DrawerPassThroughOptions>({
     root: `flex flex-col pointer-events-auto relative
-        bg-white text-principal-blue
+        bg-principal-blue text-white
 
         shadow-[0_20px_25px_-5px_rgba(0,0,0,0.1),0_8px_10px_-6px_rgba(0,0,0,0.1)]
-        p-left:w-80 p-left:h-full p-left:border-r
-        p-right:w-80 p-right:h-full p-right:border-s
-        p-top:h-40 p-top:w-full p-top:border-b
-        p-bottom:h-40 p-bottom:w-full p-bottom:border-t
+        p-left:w-80 p-left:h-full
+        p-right:w-80 p-right:h-full
+        p-top:h-40 p-top:w-full
+        p-bottom:h-40 p-bottom:w-full
         p-full-screen:transition-opacity p-full-screen:transform-none p-full-screen:w-screen p-full-screen:h-screen p-full-screen:max-h-full p-full-screen:top-0 p-full-screen:left-0`,
     header: `flex items-center justify-between flex-shrink-0 p-5`,
     title: `font-semibold text-2xl`,
