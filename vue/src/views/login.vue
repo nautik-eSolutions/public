@@ -3,15 +3,11 @@ import InputText from '@/volt/InputText.vue'
 import Button from '@/volt/Button.vue'
 import Password from '@/volt/Password.vue'
 import { onMounted, ref } from 'vue'
-import { AuthService } from '@/service/AuthService.js'
+
 
 const password = ref()
 const email = ref()
-const token = ref();
-onMounted(async () => {
-  token.value = await AuthService.loginUser('monds@corp.com', '747281231')
-  console.log(token)
-})
+
 </script>
 
 <template>
@@ -101,17 +97,8 @@ onMounted(async () => {
 
 <style scoped>
 .main-page {
-  --s: 73px; /* control the size*/
-  --c1: #e9eaf7;
-  --c2: #05203d;
-
-  --_g:
-    var(--c2) 6% 14%, var(--c1) 16% 24%, var(--c2) 26% 34%, var(--c1) 36% 44%, var(--c2) 46% 54%,
-    var(--c1) 56% 64%, var(--c2) 66% 74%, var(--c1) 76% 84%, var(--c2) 86% 94%;
-  background:
-    radial-gradient(100% 100% at 100% 0, var(--c1) 4%, var(--_g), #0008 96%, #0000),
-    radial-gradient(100% 100% at 0 100%, #0000, #0008 4%, var(--_g), var(--c1) 96%) var(--c1);
-  background-size: var(--s) var(--s);
+ background-image: url("../assets/layered-peaks-haikei (1).svg");
+  object-fit: cover;
 }
 body {
   height: 100%;
