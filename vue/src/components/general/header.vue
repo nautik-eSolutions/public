@@ -15,11 +15,9 @@ import router from '@/router/index.js'
 
 const visible = ref(false)
 
-function login(){
-  router.push("login")
+function login() {
+  router.push('login')
 }
-
-
 </script>
 
 <template>
@@ -28,8 +26,9 @@ function login(){
       <img src="../../assets/logoWOletter.png" class="h-12 p-0 m-0" />
       <span id="logos" class="text-3xl">NAUTIK</span>
     </div>
-
-    <Button label="Log in" @click="visible = true" />
+    <template>
+      <Button label="Log in" @click="visible = true" />
+    </template>
   </nav>
   <Dialog v-model:visible="visible" modal header=" " :style="{ width: '30rem' }">
     <div
@@ -46,7 +45,11 @@ function login(){
         Controla los precios, organiza tus viajes más fácilmente y haz tus reservas más rápido
       </h1>
       <div class="flex flex-col gap-4">
-        <Button style="border-radius: 10px"  label="Continuar con correo electrónico" @click="login" />
+        <Button
+          style="border-radius: 10px"
+          label="Continuar con correo electrónico"
+          @click="login"
+        />
         <Button style="border-radius: 10px" icon=" pi pi-google" label="Google" />
         <Button style="border-radius: 10px" icon=" pi pi-facebook" label="Facebook" />
       </div>

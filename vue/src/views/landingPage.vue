@@ -10,6 +10,10 @@ import portCard from '../components/ports/cards/portCard.vue'
 import { PortService } from '@/service/PortService.js'
 import router from '@/router/index.js'
 import PrimeVue from 'primevue/config'
+import useAuth  from '../stores/authStore.js'
+
+const auth =  useAuth()
+console.log(auth.token)
 const ports = ref()
 
 onMounted(async () => {
