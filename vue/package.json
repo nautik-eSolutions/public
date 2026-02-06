@@ -19,6 +19,7 @@
     "install": "^0.13.0",
     "npm": "^11.8.0",
     "pinia": "^3.0.4",
+    "pinia-plugin-persistedstate": "^4.7.1",
     "primeicons": "^7.0.0",
     "primevue": "^4.5.4",
     "tailwind-merge": "^3.4.0",

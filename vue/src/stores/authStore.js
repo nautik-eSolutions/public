@@ -22,8 +22,17 @@ export default defineStore('authStore', {
       }
       this.isAuthenticated =  true;
 
-     await  router.push("/")
+     await router.push("/")
+    }
+    ,
+    async logout(){
+      this.User = null
+      this.token = ''
+      this.isAuthenticated = false
+
+      await router.push("/")
     }
 
   },
+  persist:true
 })

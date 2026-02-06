@@ -7,18 +7,19 @@ export default {
 import InputText from '@/volt/InputText.vue'
 import Button from '@/volt/Button.vue'
 import Password from '@/volt/Password.vue'
-import { onMounted, onUnmounted, ref } from 'vue'
+import { ref } from 'vue'
 import useAuth from '@/stores/authStore.js'
 
 const auth = useAuth()
 const password = ref()
 const email = ref()
-
-function handleSubmit(){
-  auth.loginUser(email.value,password.value)
+//email = monds@corp.com
+//password = 747281231
+function handleSubmit() {
+  auth.loginUser(email.value, password.value)
 }
 
-
+console.log(auth)
 
 </script>
 

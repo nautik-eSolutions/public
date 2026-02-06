@@ -5,18 +5,23 @@ export default {
 </script>
 
 <script setup>
-import Dialog from '@/volt/Dialog.vue'
-
-import { InputText } from 'primevue'
-
-import Button from '../../volt/Button.vue'
 import { ref } from 'vue'
+import Dialog from '@/volt/Dialog.vue'
+import Button from '../../volt/Button.vue'
 import router from '@/router/index.js'
+import useAuth from '@/stores/authStore.js'
+import Avatar from '@/volt/Avatar.vue'
+import Drawer from '@/volt/Drawer.vue'
 
-const visible = ref(false)
+const auth = useAuth()
+const visibleCard = ref(false)
+const visibleDrawer = ref(false)
+function logout() {
+  auth.logout()
+}
 
-function login() {
-  router.push('login')
+function redirectToLogin() {
+  router.push('/login')
 }
 </script>
 
@@ -26,10 +31,24 @@ function login() {
       <img src="../../assets/logoWOletter.png" class="h-12 p-0 m-0" />
       <span id="logos" class="text-3xl">NAUTIK</span>
     </div>
-    <template>
-      <Button label="Log in" @click="visible = true" />
+    <template v-if="!auth.isAuthenticated">
+      <Button label="Log in" @click="visibleCard = true" />
+    </template>
+    <template v-else>
+      <div class="flex gap-2">
+        <Avatar icon="pi pi-user" size="large" @click="visibleDrawer = true" />
+        <Button label="Log out" @click="logout" style="background-color: darkred" />
+      </div>
     </template>
   </nav>
+  <Drawer v-model:visible="visibleDrawer" header="Drawer">
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+      labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+      laboris nisi ut aliquip ex ea commodo consequat.
+    </p>
+  </Drawer>
+
   <Dialog v-model:visible="visible" modal header=" " :style="{ width: '30rem' }">
     <div
       class="flex flex-col gap-3 py-2 px-2 justify-center content-center align-middle items-center"
@@ -48,7 +67,7 @@ function login() {
         <Button
           style="border-radius: 10px"
           label="Continuar con correo electrónico"
-          @click="login"
+          @click="redirectToLogin"
         />
         <Button style="border-radius: 10px" icon=" pi pi-google" label="Google" />
         <Button style="border-radius: 10px" icon=" pi pi-facebook" label="Facebook" />

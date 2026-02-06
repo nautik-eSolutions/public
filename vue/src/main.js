@@ -6,13 +6,17 @@ import router from './router/index.js'
 import axiosInstance from '@/plugins/axios.js'
 import PrimeVue from 'primevue/config'
 import { createPinia } from 'pinia'
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 
 const pinia = createPinia()
 const app = createApp(App)
 
+pinia.use(piniaPluginPersistedstate)
+
 
 app.config.globalProperties.$axios = axiosInstance;
 app.use(router)
+
 app.use(PrimeVue, {
   unstyled: true,
 })
