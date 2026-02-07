@@ -6,7 +6,7 @@ import Boats from '@/views/boats.vue'
 import bookings from '@/views/bookings.vue'
 import addBoat from '@/views/addBoat.vue'
 import login from '@/views/login.vue'
-import useAuthStore from '@/stores/authStore.js'
+import {useAuthStore} from '@/stores/authStore.js'
 
 
 

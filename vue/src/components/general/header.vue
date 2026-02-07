@@ -9,7 +9,7 @@ import { ref } from 'vue'
 import Dialog from '@/volt/Dialog.vue'
 import Button from '../../volt/Button.vue'
 import router from '@/router/index.js'
-import useAuth from '@/stores/authStore.js'
+import { useAuthStore } from '@/stores/authStore.js'
 import Avatar from '@/volt/Avatar.vue'
 import Drawer from '@/volt/Drawer.vue'
 import Splitter from '@/volt/Splitter.vue'
@@ -18,7 +18,7 @@ import { faCalendarDays, faReceipt, faShip } from '@fortawesome/free-solid-svg-i
 
 const googleClient = import.meta.env.VITE_GOOGLE_CLIENT_ID
 
-const auth = useAuth()
+const auth = useAuthStore()
 const visibleCard = ref(false)
 const visibleDrawer = ref(false)
 const greeting = ref()
@@ -116,11 +116,9 @@ function redirectToLogin() {
         Controla los precios, organiza tus viajes más fácilmente y haz tus reservas más rápido
       </h1>
       <div class="flex flex-col gap-4">
-        <Button
-          style="border-radius: 10px"
-          label="Continuar con correo electrónico"
-          @click="redirectToLogin"
-        />
+        <RouterLink to="/login">
+          <Button style="border-radius: 10px" label="Continuar con correo electrónico" />
+        </RouterLink>
         <Button
           style="border-radius: 10px"
           icon=" pi pi-google"

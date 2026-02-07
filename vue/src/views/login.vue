@@ -8,9 +8,9 @@ import InputText from '@/volt/InputText.vue'
 import Button from '@/volt/Button.vue'
 import Password from '@/volt/Password.vue'
 import { ref } from 'vue'
-import useAuth from '@/stores/authStore.js'
+import { useAuthStore } from '@/stores/authStore.js'
 
-const auth = useAuth()
+const auth = useAuthStore()
 const password = ref()
 const email = ref()
 //email = monds@corp.com

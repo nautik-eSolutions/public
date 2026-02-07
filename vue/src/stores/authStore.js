@@ -3,7 +3,7 @@ import User from '@/model/User.js'
 import { loginUser } from '@/service/AuthService.js'
 import router from '@/router/index.js'
 
-export default defineStore('authStore', {
+export const useAuthStore  =  defineStore('authStore', {
 
   state: () => {
     return {
