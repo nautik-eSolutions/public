@@ -14,7 +14,7 @@ import Avatar from '@/volt/Avatar.vue'
 import Drawer from '@/volt/Drawer.vue'
 import Splitter from '@/volt/Splitter.vue'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faCalendarDays, faReceipt, faShip } from '@fortawesome/free-solid-svg-icons'
+import { faCalendarDays, faReceipt, faShip, faUsers } from '@fortawesome/free-solid-svg-icons'
 
 const googleClient = import.meta.env.VITE_GOOGLE_CLIENT_ID
 
@@ -75,6 +75,13 @@ function redirectToLogin() {
           <div class="flex items-center gap-3 hover:bg-sky-950 p-2 rounded-md cursor-pointer">
             <FontAwesomeIcon :icon="faShip" size="xl" />
             <span class="text-lg font-medium">Mis barcos</span>
+          </div>
+        </RouterLink>
+        <Splitter />
+        <RouterLink to="bookings">
+          <div class="flex items-center gap-3 hover:bg-sky-950 p-2 rounded-md cursor-pointer">
+            <FontAwesomeIcon :icon="faUsers" size="xl" />
+            <span class="text-lg font-medium">Mi documentación</span>
           </div>
         </RouterLink>
         <Splitter />

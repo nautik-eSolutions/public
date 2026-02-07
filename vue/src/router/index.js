@@ -7,6 +7,7 @@ import bookings from '@/views/bookings.vue'
 import addBoat from '@/views/addBoat.vue'
 import login from '@/views/login.vue'
 import {useAuthStore} from '@/stores/authStore.js'
+import register from '@/views/register.vue'
 
 
 
@@ -51,6 +52,11 @@ const router = createRouter({
       path: '/login',
       name: 'login',
       component: login,
+    },
+    {
+      path:'/register',
+      name: 'register',
+      component: register
     },
   ],
 })
