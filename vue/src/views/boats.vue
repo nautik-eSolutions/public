@@ -31,19 +31,10 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
   <section class="min-h-screen py-8">
     <div class="max-w-7xl mx-auto px-8">
       <div class="flex flex-col gap-6">
-        <div
-          class="w-56 shrink-0 flex flex-col align-middle justify-center content-center items-center bg-principal-blue rounded-lg shadow-2xl"
-        >
-          <div class="text-white flex gap-2 p-4">
-            <FontAwesomeIcon :icon="faPlusCircle" size="xl" />
-            <span class="text-lg font-medium">Añadir barco</span>
-          </div>
-        </div>
-
-        <div class="bg-white rounded-xl border border-gray-200 shadow-sm p-4 w-full">
+        <div class="bg-white rounded-xl border border-gray-200 shadow-sm p-4 h-2/5 w-full shrink-0">
           <header-boat />
 
-          <div class="flex-1">
+          <div class="flex-1 h-full">
             <!--
           <boat-info
               name="F30RD"
@@ -63,6 +54,14 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
               />
             </div>
           </div>
+        </div>
+        <div class="flex flex-row-reverse">
+          <RouterLink to="/boats/add">
+            <div class="text-white bg-principal-blue flex items-center rounded-lg gap-2 p-2">
+              <FontAwesomeIcon :icon="faPlusCircle" size="lg" />
+              <span class="text-md font-medium">Añadir barco</span>
+            </div>
+          </RouterLink>
         </div>
       </div>
     </div>

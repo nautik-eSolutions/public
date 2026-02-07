@@ -13,14 +13,16 @@ const app = createApp(App)
 
 pinia.use(piniaPluginPersistedstate)
 
+app.use(pinia)
 
 app.config.globalProperties.$axios = axiosInstance;
+
 app.use(router)
 
 app.use(PrimeVue, {
   unstyled: true,
 })
-app.use(pinia);
+
 
 
 app.mount('#app')

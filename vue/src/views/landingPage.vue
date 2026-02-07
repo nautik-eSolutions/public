@@ -13,7 +13,7 @@ import PrimeVue from 'primevue/config'
 import useAuth  from '../stores/authStore.js'
 
 const auth =  useAuth()
-console.log(auth.token)
+
 const ports = ref()
 
 onMounted(async () => {
