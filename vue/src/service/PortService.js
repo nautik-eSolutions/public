@@ -3,11 +3,10 @@ import axiosInstance from '@/plugins/axios.js'
 
 export class PortService {
   static async getPorts() {
-    const {data}= await axiosInstance.get("ports").then(resp => resp.data)
+    const {data}= await axiosInstance.get("ports").
+    then(resp => resp.data)
 
     return data.ports.map(port =>this.#fromJson(port))
-
-
 
   }
 

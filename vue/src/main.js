@@ -5,12 +5,17 @@ import App from './App.vue'
 import router from './router/index.js'
 import axiosInstance from '@/plugins/axios.js'
 import PrimeVue from 'primevue/config'
-import Aura from '@primeuix/themes/aura'
-import Lara  from '@primeuix/themes/lara'
-import { definePreset } from '@primeuix/themes'
-const app = createApp(App)
-app.config.globalProperties.$axios = axiosInstance;
+import { createPinia } from 'pinia'
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 
+const pinia = createPinia()
+const app = createApp(App)
+
+pinia.use(piniaPluginPersistedstate)
+
+app.use(pinia)
+
+app.config.globalProperties.$axios = axiosInstance;
 
 app.use(router)
 

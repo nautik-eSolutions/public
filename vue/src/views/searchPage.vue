@@ -32,33 +32,9 @@ const services = ref([
     name: 'Limpieza',
   },
 ])
-const ports = ref([
-  {
-    portName: 'Port Adriano',
-    startingNightPrice: '67,75',
-    totalPrice: '127,00',
-    imgSrc:
-      'https://mallorcacaprice.com/wp-content/uploads/2024/10/fira-marinera-port-andratx.webp',
-  },
-  {
-    portName: 'Portocolom',
-    startingNightPrice: '78,75',
-    totalPrice: '148,45',
-
-    imgSrc:
-      'https://e00-elmundo.uecdn.es/assets/multimedia/imagenes/2019/10/08/15705370670358_640x0.jpg',
-  },
-  {
-    portName: 'Palafrugell',
-    startingNightPrice: '48,75',
-    totalPrice: '98,00',
-
-    imgSrc:
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_Vj4SL-DMFfqVRCja2-eHMIKZ0Z2ssolQGQ&s',
-  },
-])
 
 const mooringCategories = ref()
+
 onMounted(async () => {
   mooringCategories.value = await MooringCategoryService.getMooringCategories(
     routeParams.id,
