@@ -1,29 +1,21 @@
 <script>
-import { BoatService } from '@/service/BoatService.js'
 
 export default {
   name: 'PersonalPage',
-
-  data() {
-    return {
-      boats: [],
-    }
-  },
-  async mounted() {
-    this.boats = await BoatService.getBoats(9)
-  },
 }
 </script>
 
 <script setup>
-import LateralBar from '@/components/user/lateralBar.vue'
 import Header from '@/components/general/header.vue'
 import Footer from '@/components/general/footer.vue'
 import BoatInfo from '@/components/boat/boatInfo.vue'
 import HeaderBoat from '@/components/boat/headerBoats.vue'
-import { BoatService } from '@/service/BoatService.js'
-import { faCalendarDays, faPlusCircle } from '@fortawesome/free-solid-svg-icons'
+import { faPlusCircle } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { ref } from 'vue'
+
+const boats =ref();
+
 </script>
 
 <template>
