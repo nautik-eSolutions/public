@@ -12,13 +12,16 @@ import router from '@/router/index.js'
 import useAuth from '@/stores/authStore.js'
 import Avatar from '@/volt/Avatar.vue'
 import Drawer from '@/volt/Drawer.vue'
+import Splitter from '@/volt/Splitter.vue'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { faCalendarDays, faReceipt, faShip } from '@fortawesome/free-solid-svg-icons'
 
 const googleClient = import.meta.env.VITE_GOOGLE_CLIENT_ID
+
 const auth = useAuth()
 const visibleCard = ref(false)
 const visibleDrawer = ref(false)
 const greeting = ref()
-
 if (auth.isAuthenticated) {
   greeting.value = 'Hola ' + auth.User.userName
 }
@@ -44,8 +47,6 @@ function googleAuth() {
 function redirectToLogin() {
   router.push('/login')
 }
-
-
 </script>
 
 <template>
@@ -63,22 +64,33 @@ function redirectToLogin() {
       </div>
     </template>
   </nav>
-  <Drawer v-model:visible="visibleDrawer" :header="greeting">
+  <Drawer v-model:visible="visibleDrawer" justify-center="justify-center" :header="greeting">
     <p></p>
-    <div class="flex flex-col gap-8">
+    <div class="flex flex-col justify-between h-full gap-8">
       <div class="flex flex-col items-center gap-3">
         <Avatar icon="pi pi-user" size="large" @click="visibleDrawer = true" />
       </div>
-      <div class="flex flex-col gap-5 mb-4">
-        <div class="flex items-center gap-3 cursor-pointer">
-          <span class="text-sm font-medium">Mis barcos</span>
-        </div>
-        <div class="flex items-center gap-3 cursor-pointer">
-          <span class="text-sm font-medium">Reservas</span>
-        </div>
-        <div class="flex items-center gap-3 cursor-pointer">
-          <span class="text-sm font-medium">Facturas</span>
-        </div>
+      <div class="flex flex-col h-full mb-4">
+        <RouterLink to="boats">
+          <div class="flex items-center gap-3 hover:bg-sky-950 p-2 rounded-md cursor-pointer">
+            <FontAwesomeIcon :icon="faShip" size="xl" />
+            <span class="text-lg font-medium">Mis barcos</span>
+          </div>
+        </RouterLink>
+        <Splitter />
+        <RouterLink to="bookings">
+          <div class="flex items-center gap-3 hover:bg-sky-950 p-2 rounded-md cursor-pointer">
+            <FontAwesomeIcon :icon="faCalendarDays" size="xl" />
+            <span class="text-lg font-medium">Reservas</span>
+          </div>
+        </RouterLink>
+        <Splitter />
+        <RouterLink to="invoices">
+          <div class="flex items-center gap-3 hover:bg-sky-950 p-2 rounded-md cursor-pointer">
+            <FontAwesomeIcon :icon="faReceipt" size="xl" />
+            <span class="text-lg font-medium">Facturas</span>
+          </div>
+        </RouterLink>
       </div>
       <Button
         label="Log out"
@@ -113,7 +125,8 @@ function redirectToLogin() {
           style="border-radius: 10px"
           icon=" pi pi-google"
           label="Google"
-          @click="googleAuth"/>
+          @click="googleAuth"
+        />
         <Button style="border-radius: 10px" icon=" pi pi-facebook" label="Facebook" />
       </div>
     </div>

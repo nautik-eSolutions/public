@@ -2,9 +2,9 @@ import { createRouter, createWebHistory } from 'vue-router'
 import LandingPage from '../views/landingPage.vue';
 import SearchPage from '../views/searchPage.vue';
 import PortPage from '@/views/portPage.vue'
-import PersonalPage from "@/views/personalPage.vue";
+import Boats from "@/views/boats.vue";
 import bookings from "@/views/bookings.vue";
-import boats from "@/views/boats.vue";
+import AddBoats from "@/views/addBoats.vue";
 import login from '@/views/login.vue'
 
 
@@ -27,9 +27,9 @@ const router = createRouter({
       component:PortPage
     },
     {
-      path:'/personal',
-      name:'personal',
-      component:PersonalPage
+      path:'/boats',
+      name:'boats',
+      component:Boats
     },
     {
       path:'/bookings',
@@ -37,9 +37,9 @@ const router = createRouter({
       component:bookings
     },
     {
-      path:'/boats',
-      name:'boats',
-      component:boats
+      path:'/add/AddBoats',
+      name:'addBoats',
+      component:AddBoats
     },
     {
       path:'/login',

@@ -18,9 +18,6 @@ const email = ref()
 function handleSubmit() {
   auth.loginUser(email.value, password.value)
 }
-
-console.log(auth)
-
 </script>
 
 <template>
