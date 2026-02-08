@@ -18,6 +18,7 @@ function handleEmailForm(formData){
 }
 function handlePasswordForm(password){
   userStore.register(password.value)
+  router.push("/personal-register")
 }
 </script>
 

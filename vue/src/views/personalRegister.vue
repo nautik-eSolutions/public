@@ -14,23 +14,26 @@ import Button from '@/volt/Button.vue'
 
 const userStore = useUserStore()
 
+function handleSubmit() {
+  userStore.registerPerson(formData)
+}
+
 const formData = ref({
-  firstName: String,
-  lastName: String,
+  firstName: '',
+  lastName: '',
   birthDate: '',
   idDocument: '',
-  idType: '',
 })
 </script>
 
 <template>
-  <form @submit.prevent>
-    <Header />
+  <Header />
+
     <div class="max-w-6xl mx-auto px-4 pb-20">
       <div class="rounded-md text-white shadow-2xl">
         <div class="bg-white rounded-xl flex flex-col border gap-4 border-gray-200 shadow-sm p-8">
           <h1 class="text-2xl text-black">Información personal</h1>
-          <form class="space-y-6 flex align-items justify-center">
+          <form @submit.prevent="handleSubmit" class="space-y-6 flex align-items justify-center">
             <div
               class="w-full flex flex-row gap-2 items-center align-middle justify-around flex-wrap"
             >
@@ -40,7 +43,7 @@ const formData = ref({
                   type="text"
                   name="firstName"
                   id="firstName"
-                  v-model="formData.firstName">
+                  v-model="formData.firstName"
                   class="w-full border p-1.5 px-2 text-black outline-none border-gray-300 rounded-lg"
                 />
               </div>
@@ -78,7 +81,7 @@ const formData = ref({
                 <Button
                   type="submit"
                   label="Enviar registro"
-                  class="w-2/6 py-2  rounded-lg flex justify-center items-center gap-2"
+                  class="w-2/6 py-2 rounded-lg flex justify-center items-center gap-2"
                 >
                 </Button>
               </div>
@@ -87,7 +90,7 @@ const formData = ref({
         </div>
       </div>
     </div>
-  </form>
+
 </template>
 
 <style scoped></style>

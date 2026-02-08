@@ -1,10 +1,8 @@
 import axiosInstance from '@/plugins/axios.js'
-import { useAuthStore } from '@/stores/authStore.js'
+import { auth } from '@/main.js'
 
-const auth = useAuthStore();
+const token = auth.token;
 
-axiosInstance.interceptors.request.use(function(config){
-  const token = auth.token;
-  config.header.Authorization = `Bearer ${token}`
-  return config
+this.$axios.interceptors.request.use((config) => {
+  config.headers['Authorization'] = `Bearer ${token}`
 })
