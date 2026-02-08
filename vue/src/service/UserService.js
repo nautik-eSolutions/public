@@ -11,3 +11,15 @@ export async function registerUser(user,password) {
 
   return res
 }
+
+
+export async function registerPerson(firstName, lastName,idDocument, birthDate ){
+  const res = await axiosInstance.post(
+    'users/persons',{
+      "first_name":firstName,
+      "last_name":lastName,
+      "identification_document":idDocument,
+      "birth_date":birthDate
+    }
+  )
+}

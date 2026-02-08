@@ -10,6 +10,7 @@ import { auth } from '@/main.js'
 import register from '@/views/register.vue'
 import Passwords from '../components/register/passwords.vue';
 import EmailUserName from '@/components/register/emailUserName.vue'
+import PersonalRegister from '@/views/personalRegister.vue'
 
 
 const router = createRouter({
@@ -71,6 +72,11 @@ const router = createRouter({
         }
       ]
     },
+    {
+      path:'/personal-register',
+      name:'personal-register',
+      component: PersonalRegister
+    }
   ],
 })
 
