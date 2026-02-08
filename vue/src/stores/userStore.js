@@ -35,7 +35,7 @@ export const useUserStore = defineStore('userStore', {
         formData.value.idDocument,
         formData.value.birthDate,
       )
-      console.log(resp)
+      await router.push("/")
     },
   },
 })

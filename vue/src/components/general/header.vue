@@ -51,10 +51,12 @@ function redirectToLogin() {
 
 <template>
   <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex justify-between items-center">
-    <div class="flex items-center gap-2">
-      <img src="../../assets/logoWOletter.png" class="h-12 p-0 m-0" />
-      <span id="logos" class="text-3xl">NAUTIK</span>
-    </div>
+    <RouterLink to="/">
+      <div class="flex items-center gap-2">
+        <img src="../../assets/logoWOletter.png" class="h-12 p-0 m-0" />
+        <span id="logos" class="text-3xl">NAUTIK</span>
+      </div>
+    </RouterLink>
     <template v-if="!auth.isAuthenticated">
       <Button label="Log in" icon="pi pi-sign-in" @click="visibleCard = true" />
     </template>

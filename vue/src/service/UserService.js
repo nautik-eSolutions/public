@@ -23,10 +23,7 @@ export async function registerPerson(firstName, lastName,idDocument, birthDate )
       "birth_date":birthDate
     }
   )
-
-  if (res.status === 204 || res.status === 200){
-    await router.push("/")
-  }
+  return res
 }
 
 
