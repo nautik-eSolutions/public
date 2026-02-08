@@ -9,7 +9,7 @@ import login from '@/views/login.vue'
 import {useAuthStore} from '@/stores/authStore.js'
 import register from '@/views/register.vue'
 import Passwords from '../components/register/passwords.vue';
-
+import EmailUserName from '@/components/register/emailUserName.vue'
 
 
 const router = createRouter({
@@ -58,6 +58,11 @@ const router = createRouter({
       name: 'register',
       component: register,
       children:[
+        {
+          path:"email-username",
+          name:"emailUsername",
+          component: EmailUserName
+        },
         {
           path: "passwords",
           name: "passwords",
