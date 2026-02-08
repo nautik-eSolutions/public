@@ -6,7 +6,6 @@ export async function addNewUser(payload) {
       user_name: payload.userName,
       email: payload.email,
       password: payload.password,
-      birth_date: payload.birth_date,
     })
     .then((resp) => resp)
 

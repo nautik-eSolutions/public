@@ -39,14 +39,16 @@ function handleSubmit() {
             >
               Bienvenido otra vez!
             </div>
-            <div class="text-center w-full">
-              <span class="text-surface-700 dark:text-surface-200 leading-normal"
-                >No tienes una cuenta?</span
-              >
-              <a class="text-primary font-medium ml-1 cursor-pointer hover:text-primary-emphasis"
-                >Créate una hoy!</a
-              >
-            </div>
+            <RouterLink to="register">
+              <div class="text-center w-full">
+                <span class="text-surface-700 dark:text-surface-200 leading-normal"
+                  >No tienes una cuenta?</span
+                >
+                <a class="text-primary font-medium ml-1 cursor-pointer hover:text-primary-emphasis"
+                  >Créate una hoy!</a
+                >
+              </div>
+            </RouterLink>
           </div>
         </div>
         <div class="flex flex-col gap-6 w-full">

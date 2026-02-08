@@ -8,7 +8,7 @@ import addBoat from '@/views/addBoat.vue'
 import login from '@/views/login.vue'
 import {useAuthStore} from '@/stores/authStore.js'
 import register from '@/views/register.vue'
-
+import Passwords from '../components/register/passwords.vue';
 
 
 
@@ -56,7 +56,15 @@ const router = createRouter({
     {
       path:'/register',
       name: 'register',
-      component: register
+      component: register,
+      children:[
+        {
+          path: "passwords",
+          name: "passwords",
+          component: Passwords
+
+        }
+      ]
     },
   ],
 })
