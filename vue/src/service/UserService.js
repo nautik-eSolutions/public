@@ -1,11 +1,11 @@
 import axiosInstance from '@/plugins/axios.js'
 
-export async function addNewUser(payload) {
+export async function registerUser(user,password) {
   const res = await axiosInstance
     .post('register', {
-      user_name: payload.userName,
-      email: payload.email,
-      password: payload.password,
+      user_name: user.userName,
+      email: user.email,
+      password: password,
     })
     .then((resp) => resp)
 

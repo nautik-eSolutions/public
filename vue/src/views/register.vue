@@ -4,17 +4,21 @@ export default {
 }
 </script>
 <script setup>
-import InputText from '@/volt/InputText.vue'
-import Button from '@/volt/Button.vue'
-import Password from '@/volt/Password.vue'
 import { ref } from 'vue'
-import { useAuthStore } from '@/stores/authStore.js'
-
-const auth = useAuthStore()
-const password = ref()
-const email = ref()
+import { useUserStore } from '@/stores/userStore.js'
+import router from '@/router/index.js'
 //email = monds@corp.com
 //password = 747281231
+
+const userStore = useUserStore();
+
+function handleEmailForm(formData){
+  userStore.createUser(formData.value.email,formData.value.userName)
+  router.push("/register/passwords")
+}
+function handlePasswordForm(password){
+  userStore.register(password)
+}
 </script>
 
 <template>
@@ -38,14 +42,10 @@ const email = ref()
             </div>
           </div>
         </div>
-        <router-view></router-view>
-        <RouterLink to="/register/passwords">
-          <Button
-            label="Continuar"
-            class="w-full py-2 rounded-lg flex justify-center items-center gap-2"
-          >
-          </Button>
-        </RouterLink>
+        <router-view
+          @submitEmailForm="handleEmailForm"
+          @submitPasswordForm="handlePasswordForm"
+        ></router-view>
       </div>
     </div>
   </form>
