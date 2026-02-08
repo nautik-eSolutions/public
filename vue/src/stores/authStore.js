@@ -19,14 +19,17 @@ export const useAuthStore  =  defineStore('authStore', {
       if (resp.status === 200) {
         this.User =  new User(resp.data.user.userName, resp.data.user.email)
         this.token =  resp.data.token
+        this.isAuthenticated = true
+
       }
-      this.isAuthenticated =  true;
 
      await router.push("/")
     },
-    setAuth(User,token){
+    setAuthenticated(User,token){
       this.User = User
       this.token = token
+      this.isAuthenticated = true
+
     }
     ,
     async logout(){

@@ -6,7 +6,7 @@ import Boats from '@/views/boats.vue'
 import bookings from '@/views/bookings.vue'
 import addBoat from '@/views/addBoat.vue'
 import login from '@/views/login.vue'
-import {useAuthStore} from '@/stores/authStore.js'
+import { auth } from '@/main.js'
 import register from '@/views/register.vue'
 import Passwords from '../components/register/passwords.vue';
 import EmailUserName from '@/components/register/emailUserName.vue'
@@ -77,7 +77,6 @@ const router = createRouter({
 
 
 router.beforeEach( (to, from) => {
-  const auth = useAuthStore();
 
   if (to.meta.requiresAuth && !auth.isAuthenticated) {
     return {

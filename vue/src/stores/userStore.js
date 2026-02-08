@@ -1,11 +1,12 @@
 import {defineStore} from 'pinia'
-import { registerUser } from '@/service/UserService.js'
 import User from '@/model/User.js'
 import router from '@/router/index.js'
-
-
+import { registerUser } from '@/service/UserService.js'
+import {auth} from '@/main.js'
 
 export const useUserStore =  defineStore('userStore',{
+
+
   state:()=>{
     return{
       User:User
@@ -18,6 +19,10 @@ export const useUserStore =  defineStore('userStore',{
       }
       const resp = await registerUser(this.User,password)
 
+      if (resp.status === 200 || resp.status === 201){
+        const user = new User(resp.data.user.userName, resp.data.user.email)
+        auth.setAuthenticated(user,resp.data.token);
+      }
 
     }
     ,

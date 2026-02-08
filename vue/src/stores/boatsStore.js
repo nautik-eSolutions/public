@@ -6,7 +6,6 @@ export const useBoatsStore = defineStore('boatsStore', {
   },
   actions: {
     getBoats(){
-      const data =
     }
   },
 })

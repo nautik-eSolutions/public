@@ -7,6 +7,7 @@ import axiosInstance from '@/plugins/axios.js'
 import PrimeVue from 'primevue/config'
 import { createPinia } from 'pinia'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
+import { useAuthStore } from '@/stores/authStore.js'
 
 const pinia = createPinia()
 const app = createApp(App)
@@ -16,6 +17,8 @@ pinia.use(piniaPluginPersistedstate)
 app.use(pinia)
 
 app.config.globalProperties.$axios = axiosInstance;
+
+export const auth = useAuthStore()
 
 app.use(router)
 
