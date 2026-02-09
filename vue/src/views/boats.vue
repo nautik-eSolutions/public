@@ -12,10 +12,16 @@ import BoatInfo from '@/components/boat/boatInfo.vue'
 import HeaderBoat from '@/components/boat/headerBoats.vue'
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
+import { useBoatsStore } from '@/stores/boatsStore.js'
 
-const boats =ref();
 
+const boatsStore = useBoatsStore();
+const boats = ref()
+
+onMounted(async ()=>{
+  boats.value = await boatsStore.getBoats()
+})
 </script>
 
 <template>

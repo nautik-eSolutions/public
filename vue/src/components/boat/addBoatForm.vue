@@ -8,18 +8,18 @@ export default {
 import { ref } from 'vue'
 
 const formData = ref({
-  boatName: '',
-  registration: '',
+  name: '',
+  registryNumber: '',
   boatType: '',
-  eslora: '',
-  manga: '',
-  calado: '',
+  length: '',
+  beam: '',
+  draft: '',
   insurance: null,
   navigationCertificate: null,
   registrationCertificate: null,
 })
 
-const boatTypes = ['Tipo de barco', 'Motor', 'Vela', 'Catamarán', 'Neumática']
+const boatTypes = ['Tipo de barco', 'motor', 'vela' ]
 
 const emits = defineEmits([
   'submit'
@@ -67,7 +67,7 @@ const handleHelp = () => {
         <div class="grid grid-cols-3 gap-6 items-center">
           <label class="text-sm font-semibold text-gray-900">Nombre del barco</label>
           <input
-            v-model="formData.boatName"
+            v-model="formData.name"
             type="text"
             placeholder="Introduce el nombre del barco"
             class="col-span-2 px-4 py-2.5 border border-gray-300 rounded-lg text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
@@ -78,7 +78,7 @@ const handleHelp = () => {
         <div class="grid grid-cols-3 gap-6 items-center">
           <label class="text-sm font-semibold text-gray-900">Matrícula</label>
           <input
-            v-model="formData.registration"
+            v-model="formData.registryNumber"
             type="text"
             placeholder="Introduce la matrícula del barco"
             class="col-span-2 px-4 py-2.5 border border-gray-300 rounded-lg text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
@@ -107,7 +107,7 @@ const handleHelp = () => {
         <div class="grid grid-cols-3 gap-6 items-center">
           <label class="text-sm font-semibold text-gray-900">Eslora</label>
           <input
-            v-model="formData.eslora"
+            v-model="formData.length"
             type="text"
             placeholder="Introduce metros de eslora"
             class="col-span-2 px-4 py-2.5 border border-gray-300 rounded-lg text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
@@ -118,7 +118,7 @@ const handleHelp = () => {
         <div class="grid grid-cols-3 gap-6 items-center">
           <label class="text-sm font-semibold text-gray-900">Manga</label>
           <input
-            v-model="formData.manga"
+            v-model="formData.beam"
             type="text"
             placeholder="Introduce metros de manga"
             class="col-span-2 px-4 py-2.5 border border-gray-300 rounded-lg text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
@@ -129,7 +129,7 @@ const handleHelp = () => {
         <div class="grid grid-cols-3 gap-6 items-center">
           <label class="text-sm font-semibold text-gray-900">Calado</label>
           <input
-            v-model="formData.calado"
+            v-model="formData.draft"
             type="text"
             placeholder="Introduce metros de calado"
             class="col-span-2 px-4 py-2.5 border border-gray-300 rounded-lg text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
@@ -137,105 +137,11 @@ const handleHelp = () => {
         </div>
 
         <!-- Seguro de embarcación -->
-        <div class="grid grid-cols-3 gap-6 items-center">
-          <label class="text-sm font-semibold text-gray-900">Seguro de embarcación</label>
-          <div class="col-span-2 relative">
-            <input
-              type="text"
-              :value="formData.insurance?.name || 'Introduce la póliza de seguro'"
-              readonly
-              class="w-full px-4 py-2.5 pr-10 border border-gray-300 rounded-lg text-sm text-gray-400 cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              @click="$refs.insuranceInput.click()"
-            />
-            <input
-              ref="insuranceInput"
-              type="file"
-              class="hidden"
-              @change="handleFileUpload('insurance', $event)"
-            />
-            <svg
-              class="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 pointer-events-none"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13"
-              />
-            </svg>
-          </div>
-        </div>
 
         <!-- Certificado de navegabilidad -->
-        <div class="grid grid-cols-3 gap-6 items-start">
-          <label class="text-sm font-semibold text-gray-900 pt-2"
-            >Certificado de navegabilidad</label
-          >
-          <div class="col-span-2 relative">
-            <input
-              type="text"
-              :value="formData.navigationCertificate?.name || 'Certificado de navegabilidad'"
-              readonly
-              class="w-full px-4 py-2.5 pr-10 border border-gray-300 rounded-lg text-sm text-gray-400 cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              @click="$refs.navCertInput.click()"
-            />
-            <input
-              ref="navCertInput"
-              type="file"
-              class="hidden"
-              @change="handleFileUpload('navigationCertificate', $event)"
-            />
-            <svg
-              class="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 pointer-events-none"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13"
-              />
-            </svg>
-          </div>
-        </div>
 
         <!-- Certificado de registro -->
-        <div class="grid grid-cols-3 gap-6 items-center">
-          <label class="text-sm font-semibold text-gray-900">Certificado de registro</label>
-          <div class="col-span-2 relative">
-            <input
-              type="text"
-              :value="formData.registrationCertificate?.name || 'Certificado de registro'"
-              readonly
-              class="w-full px-4 py-2.5 pr-10 border border-gray-300 rounded-lg text-sm text-gray-400 cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              @click="$refs.regCertInput.click()"
-            />
-            <input
-              ref="regCertInput"
-              type="file"
-              class="hidden"
-              @change="handleFileUpload('registrationCertificate', $event)"
-            />
-            <svg
-              class="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 pointer-events-none"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13"
-              />
-            </svg>
-          </div>
-        </div>
+
 
         <!-- Action buttons -->
         <div class="flex items-center justify-end gap-4 pt-4">
