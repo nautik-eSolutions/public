@@ -39,7 +39,7 @@ function handleSubmit() {
             >
               Bienvenido otra vez!
             </div>
-            <RouterLink to="register/email-username">
+            <RouterLink to="register/personal-register">
               <div class="text-center w-full">
                 <span class="text-surface-700 dark:text-surface-200 leading-normal"
                   >No tienes una cuenta?</span

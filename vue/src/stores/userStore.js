@@ -36,6 +36,7 @@ export const useUserStore = defineStore('userStore', {
         formData.value.lastName.$value,
         formData.value.idDocument.$value,
         formData.value.birthDate.$value,
+        formData.value.userName.$value
       )
       if (!resp){
         return
