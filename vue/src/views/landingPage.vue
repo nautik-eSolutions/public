@@ -10,6 +10,8 @@ import portCard from '../components/ports/cards/portCard.vue'
 import { PortService } from '@/service/PortService.js'
 import router from '@/router/index.js'
 import {useAuthStore}  from '../stores/authStore.js'
+import Header from '@/components/general/header.vue'
+import PortMainSearch from '@/components/searchBars/portMainSearch.vue'
 
 const auth =  useAuthStore()
 
@@ -19,8 +21,7 @@ onMounted(async () => {
   ports.value = await PortService.getPorts()
 })
 
-const Header = defineAsyncComponent(() => import('../components/general/header.vue'))
-const PortMainSearch = defineAsyncComponent(()=>import('@/components/searchBars/portMainSearch.vue'))
+
 
 function handleSubmit(formData) {
   const portId = formData.value.port.id
