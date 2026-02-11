@@ -11,6 +11,7 @@ import register from '@/views/register.vue'
 import Passwords from '../components/register/passwords.vue';
 import EmailUserName from '@/components/register/emailUserName.vue'
 import PersonalRegister from '@/views/personalRegister.vue'
+import BoatPage from '@/views/boatPage.vue'
 
 
 const router = createRouter({
@@ -42,6 +43,13 @@ const router = createRouter({
       component: addBoat,
       meta: { requiresAuth: true },
     },
+    {
+      path:'/boats/:id',
+      name:'boatPage',
+      component: BoatPage
+    }
+
+    ,
 
     {
       path: '/bookings',
