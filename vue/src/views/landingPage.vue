@@ -7,18 +7,17 @@ export default {
 import { defineAsyncComponent, onMounted, ref } from 'vue'
 import Footer from '../components/general/footer.vue'
 import portCard from '../components/ports/cards/portCard.vue'
-import { PortService } from '@/service/PortService.js'
 import router from '@/router/index.js'
-import {useAuthStore}  from '../stores/authStore.js'
 import Header from '@/components/general/header.vue'
 import PortMainSearch from '@/components/searchBars/portMainSearch.vue'
+import { usePortsStore } from '@/stores/portsStore.js'
 
-const auth =  useAuthStore()
 
 const ports = ref()
+const portsStore = usePortsStore();
 
 onMounted(async () => {
-  ports.value = await PortService.getPorts()
+  ports.value = await portsStore.getPorts()
 })
 
 

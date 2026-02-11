@@ -12,13 +12,13 @@ export const usePortsStore = defineStore('portStore', {
   actions: {
     async getPorts(){
       const resp =  await getPorts()
-      if (resp.status !== 200){
+      if (resp!== 200){
         return  [];
       } else {
-        return resp.data.ports.map(port=> this.#fromJson(port))
+        return resp.data.ports.map(port=> this.fromJson(port))
       }
     },
-    #fromJson(rawData){
+    fromJson(rawData){
       return new Port(
         rawData.id,
         rawData.name,

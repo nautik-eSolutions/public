@@ -1,5 +1,4 @@
 import axiosInstance from '@/plugins/axios.js'
-import router from '@/router/index.js'
 
 export async function registerUser(user,password) {
   const res = await axiosInstance
@@ -22,7 +21,9 @@ export async function registerPerson(firstName, lastName,idDocument, birthDate )
       "identification_document":idDocument,
       "birth_date":birthDate
     }
-  )
+  ).catch( error => {
+    return { status: 500 }
+  })
   return res
 }
 

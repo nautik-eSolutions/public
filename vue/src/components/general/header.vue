@@ -31,6 +31,10 @@ function logout() {
   auth.logout()
 }
 
+
+
+
+
 function googleAuth() {
   window.open(
     'https://accounts.google.com/o/oauth2/v2/auth?' +
@@ -60,7 +64,7 @@ function redirectToLogin() {
     <template v-if="!auth.isAuthenticated">
       <Button label="Log in" icon="pi pi-sign-in" @click="visibleCard = true" />
     </template>
-    <template v-else>
+    <template v-else="auth.isAuthenticated ">
       <div class="flex gap-2">
         <Avatar icon="pi pi-user" size="large" @click="visibleDrawer = true" />
       </div>

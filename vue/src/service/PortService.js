@@ -3,18 +3,8 @@ import axiosInstance from '@/plugins/axios.js'
 
 
   export  async function getPorts() {
-    const resp = await axiosInstance.get("ports");
+    const resp = await axiosInstance.get("ports").catch(function (error){
+      return []
+    });
     return resp
   }
-
-  function #fromJson(rawData){
-    return new Port(
-      rawData.id,
-      rawData.name,
-      rawData.city,
-      rawData.zones
-    );
-
-
-
-}
