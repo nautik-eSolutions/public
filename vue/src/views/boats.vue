@@ -29,6 +29,7 @@ onMounted(async ()=>{
   <section class="min-h-screen py-8">
     <div class="max-w-7xl mx-auto px-8">
       <div class="flex flex-col gap-6">
+        <h1 id="logos" class="font-bold text-3xl ">BARCOS</h1>
         <div class="bg-white rounded-xl border border-gray-200 shadow-sm p-4 h-2/5 w-full shrink-0">
           <header-boat />
 

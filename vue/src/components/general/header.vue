@@ -64,7 +64,7 @@ function redirectToLogin() {
     <template v-if="!auth.isAuthenticated">
       <Button label="Log in" icon="pi pi-sign-in" @click="visibleCard = true" />
     </template>
-    <template v-else="auth.isAuthenticated ">
+    <template v-else>
       <div class="flex gap-2">
         <Avatar icon="pi pi-user" size="large" @click="visibleDrawer = true" />
       </div>
