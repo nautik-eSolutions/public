@@ -4,15 +4,14 @@ export default {
 }
 </script>
 <script setup>
-import { defineAsyncComponent, onMounted, onUnmounted, ref } from 'vue'
+import { defineAsyncComponent, onMounted, ref } from 'vue'
 import Footer from '../components/general/footer.vue'
 import portCard from '../components/ports/cards/portCard.vue'
 import { PortService } from '@/service/PortService.js'
 import router from '@/router/index.js'
-import PrimeVue from 'primevue/config'
-import useAuth  from '../stores/authStore.js'
+import {useAuthStore}  from '../stores/authStore.js'
 
-const auth =  useAuth()
+const auth =  useAuthStore()
 
 const ports = ref()
 

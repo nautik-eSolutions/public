@@ -12,7 +12,22 @@
 import AddBoatForm from "@/components/boat/addBoatForm.vue";
 import Header from "@/components/general/header.vue";
 import Footer from "@/components/general/footer.vue";
+import { useBoatStore } from '@/stores/boatStore.js'
+import router from '@/router/index.js'
+
+const boatStore = useBoatStore();
+
 function handleSubmit(formData){
+  boatStore.saveBoat(
+   formData.name,
+    formData.registryNumber,
+    formData.length,
+    formData.beam,
+    formData.draft,
+    formData.boatType
+
+  );
+  router.push("/boats")
 
 }
 

@@ -3,7 +3,7 @@ import User from '@/model/User.js'
 import { loginUser } from '@/service/AuthService.js'
 import router from '@/router/index.js'
 
-export default defineStore('authStore', {
+export const useAuthStore  =  defineStore('authStore', {
 
   state: () => {
     return {
@@ -19,10 +19,17 @@ export default defineStore('authStore', {
       if (resp.status === 200) {
         this.User =  new User(resp.data.user.userName, resp.data.user.email)
         this.token =  resp.data.token
+        this.isAuthenticated = true
+
       }
-      this.isAuthenticated =  true;
 
      await router.push("/")
+    },
+    setAuthenticated(User,token){
+      this.User = User
+      this.token = token
+      this.isAuthenticated = true
+
     }
     ,
     async logout(){

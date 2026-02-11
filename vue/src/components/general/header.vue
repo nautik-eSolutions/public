@@ -9,16 +9,16 @@ import { ref } from 'vue'
 import Dialog from '@/volt/Dialog.vue'
 import Button from '../../volt/Button.vue'
 import router from '@/router/index.js'
-import useAuth from '@/stores/authStore.js'
+import { useAuthStore } from '@/stores/authStore.js'
 import Avatar from '@/volt/Avatar.vue'
 import Drawer from '@/volt/Drawer.vue'
 import Splitter from '@/volt/Splitter.vue'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faCalendarDays, faReceipt, faShip } from '@fortawesome/free-solid-svg-icons'
+import { faCalendarDays, faReceipt, faShip, faUsers } from '@fortawesome/free-solid-svg-icons'
 
 const googleClient = import.meta.env.VITE_GOOGLE_CLIENT_ID
 
-const auth = useAuth()
+const auth = useAuthStore()
 const visibleCard = ref(false)
 const visibleDrawer = ref(false)
 const greeting = ref()
@@ -51,10 +51,12 @@ function redirectToLogin() {
 
 <template>
   <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex justify-between items-center">
-    <div class="flex items-center gap-2">
-      <img src="../../assets/logoWOletter.png" class="h-12 p-0 m-0" />
-      <span id="logos" class="text-3xl">NAUTIK</span>
-    </div>
+    <RouterLink to="/">
+      <div class="flex items-center gap-2">
+        <img src="../../assets/logoWOletter.png" class="h-12 p-0 m-0" />
+        <span id="logos" class="text-3xl">NAUTIK</span>
+      </div>
+    </RouterLink>
     <template v-if="!auth.isAuthenticated">
       <Button label="Log in" icon="pi pi-sign-in" @click="visibleCard = true" />
     </template>
@@ -75,6 +77,13 @@ function redirectToLogin() {
           <div class="flex items-center gap-3 hover:bg-sky-950 p-2 rounded-md cursor-pointer">
             <FontAwesomeIcon :icon="faShip" size="xl" />
             <span class="text-lg font-medium">Mis barcos</span>
+          </div>
+        </RouterLink>
+        <Splitter />
+        <RouterLink to="bookings">
+          <div class="flex items-center gap-3 hover:bg-sky-950 p-2 rounded-md cursor-pointer">
+            <FontAwesomeIcon :icon="faUsers" size="xl" />
+            <span class="text-lg font-medium">Mi documentación</span>
           </div>
         </RouterLink>
         <Splitter />
@@ -116,11 +125,9 @@ function redirectToLogin() {
         Controla los precios, organiza tus viajes más fácilmente y haz tus reservas más rápido
       </h1>
       <div class="flex flex-col gap-4">
-        <Button
-          style="border-radius: 10px"
-          label="Continuar con correo electrónico"
-          @click="redirectToLogin"
-        />
+        <RouterLink to="/login">
+          <Button style="border-radius: 10px" label="Continuar con correo electrónico" />
+        </RouterLink>
         <Button
           style="border-radius: 10px"
           icon=" pi pi-google"
