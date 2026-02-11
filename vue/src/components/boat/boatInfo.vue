@@ -5,17 +5,27 @@ export default {
 </script>
 
 <script setup>
-defineProps({
+import router from '@/router/index.js'
+
+const props = defineProps({
   name: String,
   registerNumber: String,
   length: Number,
   bream: Number,
   draft: Number,
+  boatId: Number,
 })
+
+function handleClick(){
+  router.push("/boats/"+props.boatId)
+}
+
 </script>
 
 <template>
-  <div class="grid grid-cols-7 gap-4 items-center justify-center align-middle bg-gray-50 rounded-lg p-3">
+  <div
+    class="grid grid-cols-7 gap-4 items-center justify-center align-middle bg-gray-50 rounded-lg p-3"
+  >
     <div class="text-sm font-medium text-gray-900 text-center">{{ name }}</div>
     <div class="text-sm font-medium text-gray-900 text-center">{{ registerNumber }}</div>
     <div class="flex justify-center">
@@ -28,6 +38,10 @@ defineProps({
     <div class="text-sm font-medium text-gray-900 text-center">{{ length }} m</div>
     <div class="text-sm font-medium text-gray-900 text-center">{{ bream }} m</div>
     <div class="text-sm font-medium text-gray-900 text-center">{{ draft }} m</div>
-    <div class=" text-center rounded-md flex align-middle  content-center items-center justify-center bg-principal-blue h-7 w-20"><i class="text-white pi pi-arrow-right"></i></div>
+      <div @click="handleClick"
+        class="text-center rounded-md flex align-middle content-center items-center justify-center bg-principal-blue h-7 w-20"
+      >
+        <i class="text-white pi pi-arrow-right"></i>
+      </div>
   </div>
 </template>

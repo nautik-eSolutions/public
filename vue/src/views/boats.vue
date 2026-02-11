@@ -21,6 +21,7 @@ const boats = ref()
 
 onMounted(async ()=>{
   boats.value = await boatsStore.getBoats()
+  console.log(boats.value)
 })
 </script>
 
@@ -50,6 +51,7 @@ onMounted(async ()=>{
                 :length="boat.length"
                 :bream="boat.beam"
                 :draft="boat.draft"
+                :boatId="boat.id"
               />
             </div>
           </div>
