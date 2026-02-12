@@ -72,9 +72,11 @@ console.log(mooringCategories)
           <template v-if="mooringCategories">
             <div v-for="mc in mooringCategories" :key="mc.id">
               <MooringCategoryCard
+                :id="mc.id"
                 :price="mc.price"
                 :zoneName="mc.zoneName"
-                :zoneDescription="mc.zoneDescription"
+                :maxBeam="mc.maxBeam"
+                :maxLength="mc.maxLength"
               />
             </div>
           </template>

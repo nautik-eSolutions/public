@@ -12,6 +12,7 @@ import Passwords from '../components/register/passwords.vue';
 import EmailUserName from '@/components/register/emailUserName.vue'
 import PersonalRegister from '@/views/personalRegister.vue'
 import BoatPage from '@/views/boatPage.vue'
+import createBooking from '@/views/createBooking.vue'
 
 
 const router = createRouter({
@@ -84,7 +85,13 @@ const router = createRouter({
       path:'/personal-register',
       name:'personal-register',
       component: PersonalRegister
+    },
+    {
+      path:'/bookings/port/:portId/category/:categoryId/dates/:startDate/:endDate',
+      name:'create-booking',
+      component: createBooking
     }
+
   ],
 })
 

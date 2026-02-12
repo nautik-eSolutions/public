@@ -1,8 +1,9 @@
 export class MooringCategory {
-  constructor(id, zoneName, zoneDescription, price) {
+  constructor(id, zoneName, price, maxBeam, maxLength) {
     this.id = id
     this.zoneName = zoneName
-    this.zoneDescription = zoneDescription
     this.price = price
+    this.maxBeam = maxBeam;
+    this.maxLength = maxLength;
   }
 }
