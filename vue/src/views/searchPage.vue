@@ -73,6 +73,7 @@ console.log(mooringCategories)
             <div v-for="mc in mooringCategories" :key="mc.id">
               <MooringCategoryCard
                 :id="mc.id"
+                :portId="routeParams.id"
                 :price="mc.price"
                 :zoneName="mc.zoneName"
                 :maxBeam="mc.maxBeam"

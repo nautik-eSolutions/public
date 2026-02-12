@@ -6,6 +6,7 @@ export default {
 <script setup>
 defineProps({
   id:'',
+  portId:'',
   zoneName: '',
   maxBeam: '',
   maxLength: '',
