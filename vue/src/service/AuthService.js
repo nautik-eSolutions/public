@@ -1,9 +1,10 @@
 import axiosInstance from '@/plugins/axios.js'
 import User from '@/model/User.js'
+import axiosSpring from '@/plugins/axiosSpring.js'
 
 
 
-export async function loginUser(email,password) {
+export async function loginUserLaravel(email, password) {
     const response = await axiosInstance.post('login', {
         "email": email,
         "password": password,
@@ -14,6 +15,15 @@ export async function loginUser(email,password) {
 
   }
 
+export async function loginUserSpring(userName, password) {
+  const response = await axiosSpring
+    .post('auth/login', {
+      userName: userName,
+      password: password,
+    })
+    .then((resp) => resp)
 
+  return response
+}
 
 
