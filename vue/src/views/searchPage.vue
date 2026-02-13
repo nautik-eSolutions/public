@@ -11,6 +11,7 @@ export default {
 </script>
 <script setup>
 import { useRoute } from 'vue-router'
+import { useBookingStore } from '@/stores/bookingStore.js'
 import { onMounted, ref } from 'vue'
 import Header from '@/components/general/header.vue'
 import PortSearchedBar from '@/components/searchBars/portSearchedBar.vue'
@@ -19,6 +20,7 @@ import PortCardBooking from '@/components/ports/cards/portCardBooking.vue'
 import Footer from '@/components/general/footer.vue'
 import { MooringCategoryService } from '@/service/MooringCategoryService.js'
 import MooringCategoryCard from '@/components/bookings/cards/MooringCategoryCard.vue'
+import router from '@/router/index.js'
 
 const routeParams = useRoute().params
 const services = ref([
@@ -32,8 +34,12 @@ const services = ref([
     name: 'Limpieza',
   },
 ])
-
 const mooringCategories = ref()
+const bookingStore = useBookingStore()
+
+function handleClick(data) {
+  router.push(`/bookings/port/${routeParams.portName}/category/${data.mooringCategoryId}/dates/${routeParams.startDate}/${routeParams.endDate}`)
+}
 
 onMounted(async () => {
   mooringCategories.value = await MooringCategoryService.getMooringCategories(
@@ -43,10 +49,7 @@ onMounted(async () => {
     routeParams.startDate,
     routeParams.endDate,
   )
-
-
 })
-console.log(mooringCategories)
 </script>
 <template>
   <Header />
@@ -78,6 +81,7 @@ console.log(mooringCategories)
                 :zoneName="mc.zoneName"
                 :maxBeam="mc.maxBeam"
                 :maxLength="mc.maxLength"
+                v-on:click="handleClick"
               />
             </div>
           </template>

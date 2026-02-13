@@ -3,13 +3,13 @@ import Header from '@/components/general/header.vue'
 import Footer from '@/components/general/footer.vue'
 import InputText from '@/volt/InputText.vue'
 import Splitter from '@/volt/Splitter.vue'
-import { onMounted } from 'vue'
+import { onMounted, ref } from 'vue'
+import { usePortStore } from '@/stores/portStore.js'
 
+const port =  ref();
+const mooringCategory = ref();
 
-
-
-
-
+const portStore = usePortStore()
 
 </script>
 

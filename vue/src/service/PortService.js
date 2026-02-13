@@ -8,3 +8,11 @@ import axiosInstance from '@/plugins/axios.js'
     });
     return resp
   }
+
+
+  export async function getPort(id){
+  const resp = await axiosInstance.get(`ports/${id}`).catch(function(error){
+    return []
+  });
+  return resp
+  }

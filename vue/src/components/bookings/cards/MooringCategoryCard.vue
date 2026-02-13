@@ -14,8 +14,7 @@ const props = defineProps({
 })
 
 const data = {
-  id:props.id,
-  portId:props.portId,
+  mooringCategoryId:props.id,
   zoneName: props.zoneName,
   maxBeam: props.maxBeam,
   maxLength: props.maxLength,
