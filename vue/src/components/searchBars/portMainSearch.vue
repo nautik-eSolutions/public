@@ -11,6 +11,7 @@ import DatePicker from '@/volt/DatePicker.vue'
 
 const props = defineProps({
   ports: Array,
+  boats:Array,
 })
 
 const formData = ref({

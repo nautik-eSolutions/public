@@ -1,6 +1,7 @@
 import {defineStore} from 'pinia'
 import { getPorts } from '@/service/PortService.js'
-import { Port } from '@/model/Port.js' 
+import { Port } from '@/model/Port.js'
+import { fetchBooking } from '@/service/BookingService.js'
 
 
 
@@ -11,7 +12,13 @@ export const useBookingStore = defineStore('bookingStore', {
     }
   },
   actions: {
-    async createFunction(){
+    async createBooking(mooringCategoryId, startDate, endDate, boatId){
+      const resp =  await fetchBooking(mooringCategoryId,startDate,endDate,boatId)
+      if (resp.data === true){
+        //
+      }else{
+        //
+      }
 
     },
     fromJson(rawData) {

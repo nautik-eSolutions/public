@@ -3,6 +3,14 @@ import Header from '@/components/general/header.vue'
 import Footer from '@/components/general/footer.vue'
 import InputText from '@/volt/InputText.vue'
 import Splitter from '@/volt/Splitter.vue'
+import { onMounted } from 'vue'
+
+
+
+
+
+
+
 </script>
 
 <template>
