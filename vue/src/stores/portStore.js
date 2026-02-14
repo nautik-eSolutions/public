@@ -24,6 +24,7 @@ export const usePortStore = defineStore('portStore',{
       this.Port = new Port(data.value.id, data.value.name, data.value.city, data.value.zones)
       return this.Port
     },
+
     getMooringCategory(){
       //this.Port.zones.
     }

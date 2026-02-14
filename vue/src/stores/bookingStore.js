@@ -21,7 +21,7 @@ export const useBookingStore = defineStore('bookingStore', {
       }
     },
     async getMooringCategory(mooringCategoryId, startDate, endDate){
-      const resp = await getMooringCategory(mooringCategoryId)
+      const resp = await getMooringCategory(mooringCategoryId,startDate,endDate)
       if (resp.status == 200){
 
       }else{

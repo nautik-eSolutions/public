@@ -87,7 +87,7 @@ const router = createRouter({
       component: PersonalRegister
     },
     {
-      path:'/bookings/port/:portId/category/:categoryId/dates/:startDate/:endDate',
+      path:'/bookings/port/:portId/category/:mooringCategoryId/dates/:startDate/:endDate',
       name:'create-booking',
       component: createBooking
     }

@@ -5,16 +5,25 @@ import InputText from '@/volt/InputText.vue'
 import Splitter from '@/volt/Splitter.vue'
 import { onMounted, ref } from 'vue'
 import { usePortStore } from '@/stores/portStore.js'
+import { useBookingStore } from '@/stores/bookingStore.js'
+import { useRoute } from 'vue-router'
 
-const port =  ref();
-const portStore = usePortStore()
-
-onMounted(async()=>{
-  port.value = await portStore.getPort(1)
-
-});
+const bookingStore = useBookingStore()
 
 
+const port = ref()
+const mooringCategory = ref()
+const mounted = ref(false);
+
+const params = useRoute().params;
+
+
+
+
+onMounted(async () => {
+  mooringCategory.value = await bookingStore.getMooringCategory(params.mooringCategoryId,params.startDate, params.endDate);
+  mounted.value=true
+})
 </script>
 
 <template>
@@ -23,6 +32,7 @@ onMounted(async()=>{
   <section class="min-h-screen py-8">
     <div class="max-w-7xl mx-auto px-8">
       <div class="flex flex-col gap-6">
+        <template v-if="mounted">
         <div class="bg-principal-blue text-white rounded-md shadow-md">
           <p class="py-2 px-4 text-3xl">Completar reserva</p>
         </div>
@@ -72,10 +82,10 @@ onMounted(async()=>{
                   <h1 class="">Embarcación</h1>
                 </div>
                 <div class="flex flex-col text-sm text-right">
-                  <h1 class="">Lujo relajado</h1>
-                  <h1 class="">12m x 6m x 2m</h1>
-                  <h1 class="">12/06/2026</h1>
-                  <h1 class="">14/06/2026</h1>
+                  <h1 class="">{{mooringCategory.value.zoneName}}</h1>
+                  <h1 class="">{{mooringCategory.value.maxLength}}m x {{mooringCategory.value.maxBeam}}m x 2m</h1>
+                  <h1 class="">{{mooringCategory.value.startDate}}</h1>
+                  <h1 class="">{{mooringCategory.value.endDate}}</h1>
                   <h1 class="">Sotavent</h1>
                 </div>
               </div>
@@ -102,6 +112,7 @@ onMounted(async()=>{
             </div>
           </div>
         </div>
+        </template>
       </div>
     </div>
   </section>

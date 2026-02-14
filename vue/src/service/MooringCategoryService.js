@@ -8,19 +8,19 @@ export class MooringCategoryService {
       .get('/availability/mooring-categories/port/' + id + '/dimensions/' + length + '/' + beam + '/dates/' + startDate + '/' + endDate)
       .then((resp) => resp.data)
 
-
+    console.log(data)
     return data.map((mc) => this.#fromJson(mc))
   }
 
   static #fromJson(rawData) {
-    return new MooringCategory(rawData.id,rawData.ZoneName,rawData.minPrice,rawData.dimensionsMaxBeam, rawData.dimensionsMaxLength)
+    return new MooringCategory(rawData.id,rawData.zoneName,rawData.portName,rawData.minPrice,rawData.dimensionsMaxBeam, rawData.dimensionsMaxLength)
   }
 }
 
 export async function getMooringCategory(mooringCategoryId, startDate, endDate){
 
   const resp = await axiosSpring
-    .post('/availability/mooring-categories/port/' + id + '/dates/' + startDate + '/' + endDate)
+    .get('/availability/mooring-categories/' + mooringCategoryId + '/dates/' + startDate + '/' + endDate)
 
   return resp
 }
