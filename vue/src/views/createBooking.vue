@@ -11,7 +11,7 @@ const portStore = usePortStore()
 
 onMounted(async()=>{
   port.value = await portStore.getPort(1)
-  console.log(port)
+
 });
 
 

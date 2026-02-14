@@ -16,3 +16,11 @@ export class MooringCategoryService {
     return new MooringCategory(rawData.id,rawData.ZoneName,rawData.minPrice,rawData.dimensionsMaxBeam, rawData.dimensionsMaxLength)
   }
 }
+
+export async function getMooringCategory(mooringCategoryId, startDate, endDate){
+
+  const resp = await axiosSpring
+    .post('/availability/mooring-categories/port/' + id + '/dates/' + startDate + '/' + endDate)
+
+  return resp
+}
