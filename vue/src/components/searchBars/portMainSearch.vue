@@ -11,29 +11,41 @@ import DatePicker from '@/volt/DatePicker.vue'
 
 const props = defineProps({
   ports: Array,
-  boats:Array,
+  boats: Array,
 })
 
 const formData = ref({
   port: '',
-  length: '',
-  beam: '',
-  dates:'',
+  boat: '',
+  dates: '',
 })
 
-const date = ref();
-
+const date = ref()
 
 const filteredPorts = ref()
 const selectedPort = ref()
 
-const search = (event) => {
+const filteredBoats = ref()
+
+const searchPort = (event) => {
   setTimeout(() => {
     if (!event.query.trim().length) {
       filteredPorts.value = [...props.ports]
     } else {
       filteredPorts.value = props.ports.filter((port) => {
         return port.name.toLowerCase().includes(event.query.toLowerCase())
+      })
+    }
+  }, 250)
+}
+
+const searchBoat = (event) => {
+  setTimeout(() => {
+    if (!event.query.trim().length) {
+      filteredBoats.value = [...props.boats]
+    } else {
+      filteredBoats.value = props.boats.filter((boat) => {
+        return boat.name.toLowerCase().includes(event.query.toLowerCase())
       })
     }
   }, 250)
@@ -64,7 +76,7 @@ function handleSubmit() {
                 v-model="formData.port"
                 optionLabel="name"
                 :suggestions="filteredPorts"
-                @complete="search"
+                @complete="searchPort"
                 class=""
               />
             </template>
@@ -72,9 +84,9 @@ function handleSubmit() {
           <div
             class="justify-center content-center align-middle w-3/10 items-center p-1 border-b md:border-b-0 md:border-r border-gray-200"
           >
-            <DatePicker v-model="formData.dates" selectionMode="range" :manualInput="false"/>
+            <DatePicker v-model="formData.dates" selectionMode="range" :manualInput="false" />
           </div>
-          <div class="w-1/6 md:w-24 p-2 border-b md:border-b-0 md:border-r border-gray-200">
+          <!--<div class="w-1/6 md:w-24 p-2 border-b md:border-b-0 md:border-r border-gray-200">
             <label class="block text-xs uppercase">Eslora</label>
             <input
               v-model="formData.length"
@@ -92,6 +104,20 @@ function handleSubmit() {
               class="w-full text-sm outline-none mt-1"
             />
           </div>
+          -->
+          <template v-if="boats">
+            <div
+              class="justify-center content-center w-3/9 align-middle items-center p-1 border-b md:border-b-0 md:border-r border-gray-200"
+            >
+              <AutoComplete
+                v-model="formData.boat"
+                optionLabel="name"
+                :suggestions="filteredBoats"
+                @complete="searchBoat"
+                class=""
+              />
+            </div>
+          </template>
           <button
             type="submit"
             class="bg-[#3b3bf5] hover:bg-blue-700 text-white py-3 px-6 rounded-r-3xl md:rounded-l-none md:ml-1 transition-colors"

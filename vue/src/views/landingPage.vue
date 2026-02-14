@@ -11,13 +11,17 @@ import router from '@/router/index.js'
 import Header from '@/components/general/header.vue'
 import PortMainSearch from '@/components/searchBars/portMainSearch.vue'
 import { usePortsStore } from '@/stores/portsStore.js'
+import { useBoatsStore } from '@/stores/boatsStore.js'
 
 
 const ports = ref()
-const portsStore = usePortsStore();
+const boats = ref()
 
+const portsStore = usePortsStore();
+const boatsStore = useBoatsStore()
 onMounted(async () => {
   ports.value = await portsStore.getPorts()
+  boats.value = await boatsStore.getBoats()
 })
 
 
@@ -25,8 +29,8 @@ onMounted(async () => {
 function handleSubmit(formData) {
   const portId = formData.value.port.id
   const portName = formData.value.port.name
-  const length = formData.value.length
-  const beam = formData.value.beam
+  const length = formData.value.boat.length
+  const beam = formData.value.boat.beam
   const startDate = new Date(formData.value.dates.at(0)).toLocaleDateString().replaceAll('/', '-')
   const endDate = new Date(formData.value.dates.at(1)).toLocaleDateString().replaceAll('/', '-')
 
@@ -87,7 +91,7 @@ const faqColumnas = ref([
 <template>
   <Header />
   <template v-if="ports">
-    <PortMainSearch :ports="ports" v-on:submit="handleSubmit" />
+    <PortMainSearch :ports="ports" :boats="boats" v-on:submit="handleSubmit" />
   </template>
   <section class="max-w-6xl mx-auto px-4 pb-20">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">

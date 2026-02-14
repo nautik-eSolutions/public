@@ -22,7 +22,6 @@ onMounted(async () => {
     params.startDate,
     params.endDate,
   )
-  console.log(mooringCategory)
 
   mounted.value = true
 })
