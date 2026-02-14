@@ -27,22 +27,17 @@ onMounted(async () => {
 
 
 function handleSubmit(formData) {
-  const portId = formData.value.port.id
-  const portName = formData.value.port.name
-  const length = formData.value.boat.length
-  const beam = formData.value.boat.beam
-  const startDate = new Date(formData.value.dates.at(0)).toLocaleDateString().replaceAll('/', '-')
-  const endDate = new Date(formData.value.dates.at(1)).toLocaleDateString().replaceAll('/', '-')
-
   router.push({
     name: 'search',
     params: {
-      id: portId,
-      portName: portName,
-      length: length,
-      beam: beam,
-      startDate: startDate,
-      endDate: endDate,
+      id: formData.value.port.id,
+      portName: formData.value.port.name,
+      boatName:formData.value.boat.name,
+      boatId:formData.value.boat.id,
+      length: formData.value.boat.length,
+      beam: formData.value.boat.beam,
+      startDate: new Date(formData.value.dates.at(0)).toLocaleDateString().replaceAll('/', '-'),
+      endDate: new Date(formData.value.dates.at(1)).toLocaleDateString().replaceAll('/', '-'),
     },
   })
 }
@@ -121,7 +116,4 @@ const faqColumnas = ref([
   <Footer />
 </template>
 
-<style  lang="scss" scoped>
-
-
-</style>
+<style lang="scss" scoped></style>

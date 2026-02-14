@@ -38,7 +38,7 @@ const mooringCategories = ref()
 const bookingStore = useBookingStore()
 
 function handleClick(data) {
-  router.push(`/bookings/port/${routeParams.portName}/category/${data.id}/dates/${routeParams.startDate}/${routeParams.endDate}`)
+  router.push(`/bookings/boat/${routeParams.boatName}/${routeParams.boatId}/port/${routeParams.portName}/category/${data.id}/dates/${routeParams.startDate}/${routeParams.endDate}`)
 }
 
 onMounted(async () => {

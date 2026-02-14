@@ -7,12 +7,14 @@ import { onMounted, ref } from 'vue'
 import { usePortStore } from '@/stores/portStore.js'
 import { useBookingStore } from '@/stores/bookingStore.js'
 import { useRoute } from 'vue-router'
+import { useBoatsStore } from '@/stores/boatsStore.js'
+import { useBoatStore } from '@/stores/boatStore.js'
 
 const bookingStore = useBookingStore()
-
-const port = ref()
+const boatStore = useBoatStore()
 const mooringCategory = ref()
 const mounted = ref(false)
+const boat = ref();
 
 const params = useRoute().params
 
@@ -22,7 +24,7 @@ onMounted(async () => {
     params.startDate,
     params.endDate,
   )
-
+  boat.value = await boatStore.getBoat(params.boatId)
   mounted.value = true
 })
 </script>
@@ -89,7 +91,7 @@ onMounted(async () => {
                     </h1>
                     <h1 class="">{{ mooringCategory.startDate }}</h1>
                     <h1 class="">{{ mooringCategory.endDate }}</h1>
-                    <h1 class="">Sotavent</h1>
+                    <h1 class="">{{boat.value.name}}</h1>
                   </div>
                 </div>
                 <Splitter />
@@ -100,9 +102,9 @@ onMounted(async () => {
                     <h1 class="">Total</h1>
                   </div>
                   <div class="flex flex-col text-sm text-right">
-                    <h1 class="">{{mooringCategory.basePrice}},00 €</h1>
-                    <h1 class="">{{mooringCategory.tax}},00 € </h1>
-                    <h1 class="">{{mooringCategory.totalPrice}},00 €</h1>
+                    <h1 class="">{{ mooringCategory.basePrice }},00 €</h1>
+                    <h1 class="">{{ mooringCategory.tax }},00 €</h1>
+                    <h1 class="">{{ mooringCategory.totalPrice }},00 €</h1>
                   </div>
                 </div>
                 <button class="bg-principal-blue text-white rounded-md shadow-lg p-2 text-center">

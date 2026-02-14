@@ -21,5 +21,7 @@ export const useBoatsStore = defineStore('boatsStore', {
     fromJson(json) {
       return new Boat(json.name, json.registry_number, json.length, json.beam, json.draft,json.id)
     },
+
   },
+  persist: true
 })

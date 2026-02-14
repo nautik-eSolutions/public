@@ -24,7 +24,7 @@ const router = createRouter({
       component: LandingPage,
     },
     {
-      path: '/search/:id/:portName/:length/:beam/:startDate/:endDate',
+      path: '/search/:id/:portName/:boatName/:boatId/:length/:beam/:startDate/:endDate',
       name: 'search',
       component: SearchPage,
     },
@@ -45,12 +45,10 @@ const router = createRouter({
       meta: { requiresAuth: true },
     },
     {
-      path:'/boats/:id',
-      name:'boatPage',
-      component: BoatPage
-    }
-
-    ,
+      path: '/boats/:id',
+      name: 'boatPage',
+      component: BoatPage,
+    },
 
     {
       path: '/bookings',
@@ -64,34 +62,32 @@ const router = createRouter({
       component: login,
     },
     {
-      path:'/register',
+      path: '/register',
       name: 'register',
       component: register,
-      children:[
+      children: [
         {
-          path:"email-username",
-          name:"emailUsername",
-          component: EmailUserName
+          path: 'email-username',
+          name: 'emailUsername',
+          component: EmailUserName,
         },
         {
-          path: "passwords",
-          name: "passwords",
-          component: Passwords
-
-        }
-      ]
+          path: 'passwords',
+          name: 'passwords',
+          component: Passwords,
+        },
+      ],
     },
     {
-      path:'/personal-register',
-      name:'personal-register',
-      component: PersonalRegister
+      path: '/personal-register',
+      name: 'personal-register',
+      component: PersonalRegister,
     },
     {
-      path:'/bookings/port/:portId/category/:mooringCategoryId/dates/:startDate/:endDate',
-      name:'create-booking',
-      component: createBooking
-    }
-
+      path: '/bookings/boat/:boatName/:boatId/port/:portId/category/:mooringCategoryId/dates/:startDate/:endDate',
+      name: 'create-booking',
+      component: createBooking,
+    },
   ],
 })
 
