@@ -7,9 +7,13 @@ import { onMounted, ref } from 'vue'
 import { usePortStore } from '@/stores/portStore.js'
 
 const port =  ref();
-const mooringCategory = ref();
-
 const portStore = usePortStore()
+
+onMounted(async()=>{
+  port.value = await portStore.getPort(1)
+  console.log(port)
+});
+
 
 </script>
 
