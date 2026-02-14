@@ -4,6 +4,7 @@ import { Port } from '@/model/Port.js'
 import { fetchBooking } from '@/service/BookingService.js'
 import { getMooringCategory } from '@/service/MooringCategoryService.js'
 import { MooringCategory } from '@/model/MooringCategory.js'
+import { MooringCategoryPreBooking } from '@/model/MooringCategoryPreBooking.js'
 
 export const useBookingStore = defineStore('bookingStore', {
   state: () => {
@@ -23,11 +24,21 @@ export const useBookingStore = defineStore('bookingStore', {
     async getMooringCategory(mooringCategoryId, startDate, endDate){
       const resp = await getMooringCategory(mooringCategoryId,startDate,endDate)
       if (resp.status == 200){
-
+        console.log(resp)
       }else{
 
       }
-      return new MooringCategory(resp.data.id, resp.data.zoneName, resp.data.minPrice, resp.data.maxBeam, resp.data.maxLength)
+      return new MooringCategoryPreBooking(
+        resp.data.id,
+        resp.data.zoneName,
+        resp.data.zonePortName,
+        resp.data.dimensionsMaxBeam,
+        resp.data.dimensionsMaxLength,
+        resp.data.startDate,
+        resp.data.endDate,
+        resp.data.basePrice,
+        resp.data.tax,
+        resp.data.totalPrice)
     }
   },
 })

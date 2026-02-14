@@ -8,12 +8,11 @@ export class MooringCategoryService {
       .get('/availability/mooring-categories/port/' + id + '/dimensions/' + length + '/' + beam + '/dates/' + startDate + '/' + endDate)
       .then((resp) => resp.data)
 
-    console.log(data)
     return data.map((mc) => this.#fromJson(mc))
   }
 
   static #fromJson(rawData) {
-    return new MooringCategory(rawData.id,rawData.zoneName,rawData.portName,rawData.minPrice,rawData.dimensionsMaxBeam, rawData.dimensionsMaxLength)
+    return new MooringCategory(rawData.id,rawData.zoneName,rawData.zonePortName,rawData.minPrice,rawData.dimensionsMaxBeam, rawData.dimensionsMaxLength)
   }
 }
 
