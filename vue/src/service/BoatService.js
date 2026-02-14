@@ -8,6 +8,12 @@ export async function getBoats(){
   return response
 }
 
+
+export async function getBoat(id){
+  const response = await axiosInstance.get("boats/"+id)
+  return response
+}
+
 export async function createBoat(name , registry_number, length, beam, draft, boat_type){
   const response = await axiosInstance.post('boats',{
     "name":name,

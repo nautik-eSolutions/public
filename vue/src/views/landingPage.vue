@@ -7,38 +7,37 @@ export default {
 import { defineAsyncComponent, onMounted, ref } from 'vue'
 import Footer from '../components/general/footer.vue'
 import portCard from '../components/ports/cards/portCard.vue'
-import { PortService } from '@/service/PortService.js'
 import router from '@/router/index.js'
-import {useAuthStore}  from '../stores/authStore.js'
+import Header from '@/components/general/header.vue'
+import PortMainSearch from '@/components/searchBars/portMainSearch.vue'
+import { usePortsStore } from '@/stores/portsStore.js'
+import { useBoatsStore } from '@/stores/boatsStore.js'
 
-const auth =  useAuthStore()
 
 const ports = ref()
+const boats = ref()
 
+const portsStore = usePortsStore();
+const boatsStore = useBoatsStore()
 onMounted(async () => {
-  ports.value = await PortService.getPorts()
+  ports.value = await portsStore.getPorts()
+  boats.value = await boatsStore.getBoats()
 })
 
-const Header = defineAsyncComponent(() => import('../components/general/header.vue'))
-const PortMainSearch = defineAsyncComponent(()=>import('@/components/searchBars/portMainSearch.vue'))
+
 
 function handleSubmit(formData) {
-  const portId = formData.value.port.id
-  const portName = formData.value.port.name
-  const length = formData.value.length
-  const beam = formData.value.beam
-  const startDate = new Date(formData.value.dates.at(0)).toLocaleDateString().replaceAll('/', '-')
-  const endDate = new Date(formData.value.dates.at(1)).toLocaleDateString().replaceAll('/', '-')
-
   router.push({
     name: 'search',
     params: {
-      id: portId,
-      portName: portName,
-      length: length,
-      beam: beam,
-      startDate: startDate,
-      endDate: endDate,
+      id: formData.value.port.id,
+      portName: formData.value.port.name,
+      boatName:formData.value.boat.name,
+      boatId:formData.value.boat.id,
+      length: formData.value.boat.length,
+      beam: formData.value.boat.beam,
+      startDate: new Date(formData.value.dates.at(0)).toLocaleDateString().replaceAll('/', '-'),
+      endDate: new Date(formData.value.dates.at(1)).toLocaleDateString().replaceAll('/', '-'),
     },
   })
 }
@@ -87,7 +86,7 @@ const faqColumnas = ref([
 <template>
   <Header />
   <template v-if="ports">
-    <PortMainSearch :ports="ports" v-on:submit="handleSubmit" />
+    <PortMainSearch :ports="ports" :boats="boats" v-on:submit="handleSubmit" />
   </template>
   <section class="max-w-6xl mx-auto px-4 pb-20">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -117,7 +116,4 @@ const faqColumnas = ref([
   <Footer />
 </template>
 
-<style  lang="scss" scoped>
-
-
-</style>
+<style lang="scss" scoped></style>

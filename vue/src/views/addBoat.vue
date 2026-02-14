@@ -17,14 +17,14 @@ import router from '@/router/index.js'
 
 const boatStore = useBoatStore();
 
-function handleSubmit(formData){
+function handleSubmit(form){
   boatStore.saveBoat(
-   formData.name,
-    formData.registryNumber,
-    formData.length,
-    formData.beam,
-    formData.draft,
-    formData.boatType
+   form.name.$value,
+    form.registryNumber.$value,
+    form.length.$value,
+    form.beam.$value,
+    form.draft.$value,
+    form.boatType.$value
 
   );
   router.push("/boats")

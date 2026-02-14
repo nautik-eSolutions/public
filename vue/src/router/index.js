@@ -11,6 +11,8 @@ import register from '@/views/register.vue'
 import Passwords from '../components/register/passwords.vue';
 import EmailUserName from '@/components/register/emailUserName.vue'
 import PersonalRegister from '@/views/personalRegister.vue'
+import BoatPage from '@/views/boatPage.vue'
+import createBooking from '@/views/createBooking.vue'
 
 
 const router = createRouter({
@@ -22,7 +24,7 @@ const router = createRouter({
       component: LandingPage,
     },
     {
-      path: '/search/:id/:portName/:length/:beam/:startDate/:endDate',
+      path: '/search/:id/:portName/:boatName/:boatId/:length/:beam/:startDate/:endDate',
       name: 'search',
       component: SearchPage,
     },
@@ -42,6 +44,11 @@ const router = createRouter({
       component: addBoat,
       meta: { requiresAuth: true },
     },
+    {
+      path: '/boats/:id',
+      name: 'boatPage',
+      component: BoatPage,
+    },
 
     {
       path: '/bookings',
@@ -55,28 +62,32 @@ const router = createRouter({
       component: login,
     },
     {
-      path:'/register',
+      path: '/register',
       name: 'register',
       component: register,
-      children:[
+      children: [
         {
-          path:"email-username",
-          name:"emailUsername",
-          component: EmailUserName
+          path: 'email-username',
+          name: 'emailUsername',
+          component: EmailUserName,
         },
         {
-          path: "passwords",
-          name: "passwords",
-          component: Passwords
-
-        }
-      ]
+          path: 'passwords',
+          name: 'passwords',
+          component: Passwords,
+        },
+      ],
     },
     {
-      path:'/personal-register',
-      name:'personal-register',
-      component: PersonalRegister
-    }
+      path: '/personal-register',
+      name: 'personal-register',
+      component: PersonalRegister,
+    },
+    {
+      path: '/bookings/boat/:boatName/:boatId/port/:portId/category/:mooringCategoryId/dates/:startDate/:endDate',
+      name: 'create-booking',
+      component: createBooking,
+    },
   ],
 })
 

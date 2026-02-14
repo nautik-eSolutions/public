@@ -28,13 +28,27 @@ export const useUserStore = defineStore('userStore', {
       this.User = new User(userName, email)
     },
 
-    async registerPerson(formData) {
+    async registerUser(formData) {
       const resp = await registerPerson(
-        formData.value.firstName,
-        formData.value.lastName,
-        formData.value.idDocument,
-        formData.value.birthDate,
+        formData.value.email.$value,
+        formData.value.password.$value,
+        formData.value.firstName.$value,
+        formData.value.lastName.$value,
+        formData.value.idDocument.$value,
+        formData.value.birthDate.$value,
+        formData.value.userName.$value
       )
+      if (!resp){
+        return
+      }
+
+
+      if (resp.status === 200 || resp.status === 201){
+        const user = new User(resp.data.user.userName, resp.data.user.email)
+        auth.setAuthenticated(user, resp.data.token)
+      }
+
+
       await router.push("/")
     },
   },

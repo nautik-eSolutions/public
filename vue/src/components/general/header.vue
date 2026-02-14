@@ -31,6 +31,10 @@ function logout() {
   auth.logout()
 }
 
+
+
+
+
 function googleAuth() {
   window.open(
     'https://accounts.google.com/o/oauth2/v2/auth?' +

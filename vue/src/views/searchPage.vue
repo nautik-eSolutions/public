@@ -11,6 +11,7 @@ export default {
 </script>
 <script setup>
 import { useRoute } from 'vue-router'
+import { useBookingStore } from '@/stores/bookingStore.js'
 import { onMounted, ref } from 'vue'
 import Header from '@/components/general/header.vue'
 import PortSearchedBar from '@/components/searchBars/portSearchedBar.vue'
@@ -19,6 +20,7 @@ import PortCardBooking from '@/components/ports/cards/portCardBooking.vue'
 import Footer from '@/components/general/footer.vue'
 import { MooringCategoryService } from '@/service/MooringCategoryService.js'
 import MooringCategoryCard from '@/components/bookings/cards/MooringCategoryCard.vue'
+import router from '@/router/index.js'
 
 const routeParams = useRoute().params
 const services = ref([
@@ -32,8 +34,12 @@ const services = ref([
     name: 'Limpieza',
   },
 ])
-
 const mooringCategories = ref()
+const bookingStore = useBookingStore()
+
+function handleClick(data) {
+  router.push(`/bookings/boat/${routeParams.boatName}/${routeParams.boatId}/port/${routeParams.portName}/category/${data.id}/dates/${routeParams.startDate}/${routeParams.endDate}`)
+}
 
 onMounted(async () => {
   mooringCategories.value = await MooringCategoryService.getMooringCategories(
@@ -43,10 +49,7 @@ onMounted(async () => {
     routeParams.startDate,
     routeParams.endDate,
   )
-
-
 })
-console.log(mooringCategories)
 </script>
 <template>
   <Header />
@@ -72,9 +75,13 @@ console.log(mooringCategories)
           <template v-if="mooringCategories">
             <div v-for="mc in mooringCategories" :key="mc.id">
               <MooringCategoryCard
+                :id="mc.id"
+                :portId="routeParams.id"
                 :price="mc.price"
                 :zoneName="mc.zoneName"
-                :zoneDescription="mc.zoneDescription"
+                :maxBeam="mc.maxBeam"
+                :maxLength="mc.maxLength"
+                v-on:click="handleClick"
               />
             </div>
           </template>
