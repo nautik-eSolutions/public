@@ -8,6 +8,5 @@ export async function fetchBooking(mooringCategoryId, startDate,endDate,boatId )
     "endDate":endDate,
     "boatId":boatId
   })
-
   return resp
 }

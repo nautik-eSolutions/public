@@ -27,6 +27,16 @@ onMounted(async () => {
   boat.value = await boatStore.getBoat(params.boatId)
   mounted.value = true
 })
+
+function handleSubmit(){
+  console.log("---",boat.value)
+  console.log("----",mooringCategory.value)
+  bookingStore.createBooking(mooringCategory.value.id, mooringCategory.value.startDate, mooringCategory.value.endDate, boat.value.id)
+}
+
+
+
+
 </script>
 
 <template>
@@ -91,7 +101,7 @@ onMounted(async () => {
                     </h1>
                     <h1 class="">{{ mooringCategory.startDate }}</h1>
                     <h1 class="">{{ mooringCategory.endDate }}</h1>
-                    <h1 class="">{{boat.value.name}}</h1>
+                    <h1 class="">{{boat.name}}</h1>
                   </div>
                 </div>
                 <Splitter />
@@ -107,7 +117,7 @@ onMounted(async () => {
                     <h1 class="">{{ mooringCategory.totalPrice }},00 €</h1>
                   </div>
                 </div>
-                <button class="bg-principal-blue text-white rounded-md shadow-lg p-2 text-center">
+                <button @click="handleSubmit" class=" bg-principal-blue text-white rounded-md shadow-lg p-2 text-center">
                   Proceder al pago
                 </button>
               </div>

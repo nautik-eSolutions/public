@@ -18,12 +18,10 @@ export const useBoatStore = defineStore('boatStore', {
     },
     async getBoat(id){
       const resp = await getBoat(id)
-      const boat=ref();
       if (resp.status === 200){
-        boat.value = this.fromJson(resp.data[0])
+        return this.fromJson(resp.data[0])
       }
 
-      return boat
     },
     fromJson(json){
       return new Boat(json.name, json.registry_number, json.length, json.beam, json.draft, json.id)
