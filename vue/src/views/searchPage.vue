@@ -19,7 +19,7 @@ import ServicesCheckbox from '@/components/checkbox/servicesCheckbox.vue'
 import PortCardBooking from '@/components/ports/cards/portCardBooking.vue'
 import Footer from '@/components/general/footer.vue'
 import { MooringCategoryService } from '@/service/MooringCategoryService.js'
-import MooringCategoryCard from '@/components/bookings/cards/MooringCategoryCard.vue'
+import MooringCategoryCard from '@/components/bookings/cards/mooringCategoryCard.vue'
 import router from '@/router/index.js'
 
 const routeParams = useRoute().params

@@ -7,6 +7,7 @@ import { useRoute } from 'vue-router'
 import { onMounted, ref } from 'vue'
 import { useBoatStore } from '@/stores/boatStore.js'
 import router from '@/router/index.js'
+import BookingCard from '@/components/bookings/cards/bookingCard.vue'
 
 const boatStore = useBoatStore()
 const boat = ref()
@@ -44,34 +45,25 @@ function handleClick() {
                   <p class="text-xl text-center">Calado : {{ boat.draft }} m</p>
                 </div>
               </div>
+            <Button
+              label="Edit"
+              @click="handleClick"
+              class="w-1/8"
+            />
             </div>
+
           </div>
         </template>
         <Splitter />
         <template v-if="mounted">
           <section class="text-principal-blue">
             <h2 class="text-2xl">Reservas</h2>
-            <div class="flex gap-1 border border-principal-blue text-principal-blue py-2 px-3">
-              <div class="flex flex-col justify-center w-3/10 text-center">
-                <p class="text-xs">Puerto</p>
-                <p class="text-lg">Real club nautic</p>
-              </div>
-              <Splitter />
-              <div class="flex flex-col justify-center w-3/12 text-center">
-                <p class="text-xs">Llegada</p>
-                <p class="text-lg">24-06-2026</p>
-              </div>
-              <Splitter />
-              <div class="flex flex-col justify-center w-3/12 text-center">
-                <p class="text-xs">Llegada</p>
-                <p class="text-lg">27-06-2026</p>
-              </div>
-              <Splitter />
-              <div class="flex flex-col justify-center w-3/12 text-center">
-                <p class="text-xs">Llegada</p>
-                <p class="text-lg">452,36 €</p>
-              </div>
-            </div>
+            <BookingCard
+            PortName="Real club nautic"
+            StartDate="24/10/2026"
+            EndDate="24/10/2026"
+            TotalPrice="428,90"
+            />
           </section>
         </template>
       </div>
