@@ -31,7 +31,7 @@ function handleClick() {
     <div class="max-w-7xl mx-auto px-8">
       <div class="flex flex-col gap-6">
         <template v-if="mounted">
-          <h1 id="logos" class="font-bold text-xl">Embarcación {{ boat.name }}</h1>
+          <h1 class="font-bold text-2xl">Embarcación {{ boat.name }}</h1>
           <div class="bg-white border border-gray-200 shadow-sm p-4 h-2/5 w-full shrink-0">
             <div class="flex justify-between gap-2 w-full">
               <div class="flex p-2 gap-2 text-lg border border-gray-300 shadow-sm w-7/8">

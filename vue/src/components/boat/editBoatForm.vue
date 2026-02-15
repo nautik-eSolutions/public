@@ -1,6 +1,6 @@
 <script>
 export default {
-  name: 'AddBoatForm',
+  name: 'editBoatForm',
 }
 </script>
 
@@ -8,25 +8,28 @@ export default {
 import { ref } from 'vue'
 import { defineForm, field, isValidForm } from 'vue-yup-form'
 import * as yup from 'yup'
+import { Boat } from '@/model/Boat.js'
 
-
+const props = defineProps({
+  Boat: Boat,
+})
 
 const submitted = ref(false)
 
 const generateForm = () => {
   return defineForm({
-    name: field('', yup.string().required().max(10)),
-    registryNumber: field('', yup.string().required().max(10)),
-    beam: field('', yup.string().required()),
-    length: field('', yup.string().required()),
-    draft: field('', yup.string().required()),
-    boatType: field(''),
+    name: field(props.Boat.name, yup.string().required().max(10)),
+    registryNumber: field(props.Boat.registerNumber, yup.string().required().max(10)),
+    beam: field(props.Boat.beam, yup.string().required()),
+    length: field(props.Boat.length, yup.string().required()),
+    draft: field(props.Boat.draft, yup.string().required()),
+    boatType: field(props.Boat.boatType),
   })
 }
 
 const form = generateForm()
 
-const boatTypes = ['Tipo de barco', 'motor', 'vela']
+const boatTypes = ['motor', 'vela']
 
 const emits = defineEmits(['submit'])
 
