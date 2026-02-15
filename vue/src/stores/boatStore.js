@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import { Boat } from '@/model/Boat.js'
-import { createBoat, getBoat, getBoats } from '@/service/BoatService.js'
+import { createBoat, getBoat, getBoats, updateBoat } from '@/service/BoatService.js'
 import router from '@/router/index.js'
 import { ref } from 'vue'
 
@@ -16,16 +16,22 @@ export const useBoatStore = defineStore('boatStore', {
       if (resp.status === 200 || resp.status === 201) {
       }
     },
-    async getBoat(id){
+    async getBoat(id) {
       const resp = await getBoat(id)
-      if (resp.status === 200){
-        return this.fromJson(resp.data[0])
+      if (resp.status === 200) {
+        this.Boat = this.fromJson(resp.data[0])
+        return this.Boat
       }
-
     },
-    fromJson(json){
+    async editBoat(id, name, registry_number, length, beam, draft) {
+      const resp = await updateBoat(id, name, registry_number, length, beam, draft)
+      if (resp.status === 200 || resp.status === 201) {
+        this.Boat = this.fromJson(resp.data)
+        return this.Boat
+      }
+    },
+    fromJson(json) {
       return new Boat(json.name, json.registry_number, json.length, json.beam, json.draft, json.id)
-
-    }
+    },
   },
 })
