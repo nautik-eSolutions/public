@@ -39,6 +39,15 @@ export const useBookingStore = defineStore('bookingStore', {
         resp.data.basePrice,
         resp.data.tax,
         resp.data.totalPrice)
+    },
+    async getBookingsByBoat(){
+
+    },
+    async getAllBookings(){
+
+
     }
+
+
   },
 })
