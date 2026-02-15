@@ -14,4 +14,10 @@ export async function fetchBooking(mooringCategoryId, startDate,endDate,boatId )
 
 export async function getBookings(){
   const resp = axiosInstance.get("bookings");
+  return resp
+}
+
+export async function getBookingByBoat(boatId){
+  const resp = axiosInstance.get("bookings/boats/"+boatId);
+  return resp
 }
