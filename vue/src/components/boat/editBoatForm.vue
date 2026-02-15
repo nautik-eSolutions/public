@@ -5,40 +5,28 @@ export default {
 </script>
 
 <script setup>
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import { defineForm, field, isValidForm } from 'vue-yup-form'
 import * as yup from 'yup'
 import { Boat } from '@/model/Boat.js'
-
 const props = defineProps({
   Boat: Boat,
 })
-
 const submitted = ref(false)
-
 const generateForm = () => {
-  return defineForm({
-    name: field(props.Boat.name, yup.string().required().max(10)),
-    registryNumber: field(props.Boat.registerNumber, yup.string().required().max(10)),
-    beam: field(props.Boat.beam, yup.string().required()),
-    length: field(props.Boat.length, yup.string().required()),
-    draft: field(props.Boat.draft, yup.string().required()),
-    boatType: field(props.Boat.boatType),
-  })
-}
 
+    return defineForm({
+      name: field(props.Boat.name, yup.string().required().max(10)),
+      registryNumber: field(props.Boat.registerNumber, yup.string().required().max(10)),
+      beam: field(props.Boat.beam, yup.string().required()),
+      length: field(props.Boat.length, yup.string().required()),
+      draft: field(props.Boat.draft, yup.string().required()),
+    })
+
+}
 const form = generateForm()
 
-const boatTypes = ['motor', 'vela']
-
 const emits = defineEmits(['submit'])
-
-const handleFileUpload = (field, event) => {
-  const file = event.target.files[0]
-  if (file) {
-    formData.value[field] = file
-  }
-}
 
 const handleSubmit = () => {
   submitted.value = true
@@ -46,14 +34,6 @@ const handleSubmit = () => {
   } else {
     emits('submit', form)
   }
-}
-
-const handleCancel = () => {
-  console.log('Form cancelled')
-}
-
-const handleHelp = () => {
-  console.log('Help requested')
 }
 </script>
 
@@ -102,24 +82,6 @@ const handleHelp = () => {
           <span class="text-red-500" v-if="submitted && form.registryNumber.$error">{{
             form.registryNumber.$error.message
           }}</span>
-        </div>
-
-        <!-- Tipo de barco -->
-        <div class="grid grid-cols-3 gap-6 items-center">
-          <label class="text-sm font-semibold text-gray-900">Tipo de barco</label>
-          <select
-            v-model.trim="form.boatType.$value"
-            class="col-span-2 px-4 py-2.5 border border-gray-300 rounded-lg text-sm text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent appearance-none bg-white"
-            style="
-              background-image: url('data:image/svg+xml;charset=UTF-8,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27currentColor%27 stroke-width=%272%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27%3e%3cpolyline points=%276 9 12 15 18 9%27%3e%3c/polyline%3e%3c/svg%3e');
-              background-repeat: no-repeat;
-              background-position: right 0.75rem center;
-              background-size: 1.25em 1.25em;
-              padding-right: 2.5rem;
-            "
-          >
-            <option v-for="type in boatTypes" :key="type" :value="type">{{ type }}</option>
-          </select>
         </div>
 
         <!-- Eslora -->

@@ -13,6 +13,7 @@ import EmailUserName from '@/components/register/emailUserName.vue'
 import PersonalRegister from '@/views/personalRegister.vue'
 import BoatPage from '@/views/boatPage.vue'
 import createBooking from '@/views/createBooking.vue'
+import editBoat from '@/views/editBoat.vue'
 
 
 const router = createRouter({
@@ -42,6 +43,12 @@ const router = createRouter({
       path: '/boats/add',
       name: addBoat,
       component: addBoat,
+      meta: { requiresAuth: true },
+    },
+    {
+      path: '/boats/edit/:id',
+      name: editBoat,
+      component: editBoat,
       meta: { requiresAuth: true },
     },
     {

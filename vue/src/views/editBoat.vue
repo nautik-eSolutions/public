@@ -1,44 +1,48 @@
 <script>
-
-
-  export default {
-    name:'addBoat'
-  }
-
+export default {
+  name: 'editBoat',
+}
 </script>
 
 <script setup>
-
-import AddBoatForm from "@/components/boat/addBoatForm.vue";
-import Header from "@/components/general/header.vue";
-import Footer from "@/components/general/footer.vue";
+import Header from '@/components/general/header.vue'
+import Footer from '@/components/general/footer.vue'
 import { useBoatStore } from '@/stores/boatStore.js'
 import router from '@/router/index.js'
+import EditBoatForm from '@/components/boat/editBoatForm.vue'
+import { onMounted, ref } from 'vue'
+import { useRoute } from 'vue-router'
+import { Boat } from '@/model/Boat.js'
 
-const boatStore = useBoatStore();
+const params = useRoute().params
+const boatStore = useBoatStore()
+const mounted = ref(false);
+const boat = ref(Boat)
 
-function handleSubmit(form){
-  boatStore.saveBoat(
-   form.name.$value,
+onMounted(async () => {
+  boat.value = await boatStore.getBoat(params.id);
+  mounted.value = true;
+})
+
+function handleSubmit(form) {
+  boatStore.editBoat(
+    boat.value.id,
+    form.name.$value,
     form.registryNumber.$value,
     form.length.$value,
     form.beam.$value,
     form.draft.$value,
-    form.boatType.$value
-
-  );
-  router.push("/boats")
-
+  )
+  router.push('/boats')
 }
-
 </script>
 
 <template>
-  <Header/>
-  <AddBoatForm v-on:submit="handleSubmit"/>
-  <Footer/>
+  <Header />
+  <template v-if="mounted">
+    <EditBoatForm :Boat="boat" v-on:submit="handleSubmit" />
+  </template>
+  <Footer />
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

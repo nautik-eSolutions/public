@@ -15,8 +15,8 @@ const submitted = ref(false)
 
 const generateForm = () => {
   return defineForm({
-    name: field('', yup.string().required().max(10)),
-    registryNumber: field('', yup.string().required().max(10)),
+    name: field('', yup.string().required().max(15)),
+    registryNumber: field('', yup.string().required().max(15)),
     beam: field('', yup.string().required()),
     length: field('', yup.string().required()),
     draft: field('', yup.string().required()),
