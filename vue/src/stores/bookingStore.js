@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import { getPorts } from '@/service/PortService.js'
 import { Port } from '@/model/Port.js'
-import { fetchBooking } from '@/service/BookingService.js'
+import { fetchBooking, getBookingByBoat, getBookings } from '@/service/BookingService.js'
 import { getMooringCategory } from '@/service/MooringCategoryService.js'
 import { MooringCategory } from '@/model/MooringCategory.js'
 import { MooringCategoryPreBooking } from '@/model/MooringCategoryPreBooking.js'
@@ -40,11 +40,17 @@ export const useBookingStore = defineStore('bookingStore', {
         resp.data.tax,
         resp.data.totalPrice)
     },
-    async getBookingsByBoat(){
+    async getBookingsByBoat(boatId){
+      const resp =  await getBookingByBoat(boatId);
+
+      if (resp.status === 200){
+
+      }
+
 
     },
     async getAllBookings(){
-
+      const resp = await getBookings()
 
     }
 
