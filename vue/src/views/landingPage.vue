@@ -12,19 +12,20 @@ import Header from '@/components/general/header.vue'
 import PortMainSearch from '@/components/searchBars/portMainSearch.vue'
 import { usePortsStore } from '@/stores/portsStore.js'
 import { useBoatsStore } from '@/stores/boatsStore.js'
-
+import { auth } from '@/main.js'
 
 const ports = ref()
 const boats = ref()
 
-const portsStore = usePortsStore();
+const portsStore = usePortsStore()
 const boatsStore = useBoatsStore()
 onMounted(async () => {
   ports.value = await portsStore.getPorts()
-  boats.value = await boatsStore.getBoats()
+
+  if (auth.isAuthenticated) {
+    boats.value = await boatsStore.getBoats()
+  }
 })
-
-
 
 function handleSubmit(formData) {
   router.push({
@@ -32,8 +33,8 @@ function handleSubmit(formData) {
     params: {
       id: formData.value.port.id,
       portName: formData.value.port.name,
-      boatName:formData.value.boat.name,
-      boatId:formData.value.boat.id,
+      boatName: formData.value.boat.name,
+      boatId: formData.value.boat.id,
       length: formData.value.boat.length,
       beam: formData.value.boat.beam,
       startDate: new Date(formData.value.dates.at(0)).toLocaleDateString().replaceAll('/', '-'),
