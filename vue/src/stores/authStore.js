@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import User from '@/model/User.js'
-import { loginUserLaravel, loginUserSpring } from '@/service/AuthService.js'
+import { loginLaravelSpringToken, loginOAuth, loginUserLaravel, loginUserSpring } from '@/service/AuthService.js'
 import router from '@/router/index.js'
 
 export const useAuthStore  =  defineStore('authStore', {
@@ -29,6 +29,19 @@ export const useAuthStore  =  defineStore('authStore', {
 
      await router.push("/")
     },
+    async oAuthLogin(token){
+      const resp = await loginOAuth(token)
+      if (resp.status !== 200){
+
+      }
+      console.log(resp.data)
+      this.springToken = resp.data.token
+      const respLaravel = await loginLaravelSpringToken(resp.data.token)
+
+      this.setAuthenticated(respLaravel.data.user , respLaravel.data.token)
+
+      await router.push('/')
+    },
     setAuthenticated(User,token){
       this.User = User
       this.token = token
@@ -39,6 +52,7 @@ export const useAuthStore  =  defineStore('authStore', {
     async logout(){
       this.User = null
       this.token = ''
+      this.springToken=''
       this.isAuthenticated = false
 
       await router.push("/")

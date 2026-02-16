@@ -14,6 +14,7 @@ import Avatar from '@/volt/Avatar.vue'
 import Drawer from '@/volt/Drawer.vue'
 import Splitter from '@/volt/Splitter.vue'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { GoogleSignInButton} from 'vue3-google-signin'
 import { faCalendarDays, faReceipt, faShip, faUsers } from '@fortawesome/free-solid-svg-icons'
 
 const googleClient = import.meta.env.VITE_GOOGLE_CLIENT_ID
@@ -31,22 +32,11 @@ function logout() {
   auth.logout()
 }
 
-
-
-
-
-function googleAuth() {
-  window.open(
-    'https://accounts.google.com/o/oauth2/v2/auth?' +
-      'scope=https%3A//www.googleapis.com/auth/drive.metadata.readonly%20https%3A//www.googleapis.com/auth/calendar.readonly&' +
-      'include_granted_scopes=true&' +
-      'response_type=token&' +
-      'state=state_parameter_passthrough_value&' +
-      'redirect_uri=http://localhost:8082&' +
-      'client_id=' +
-      googleClient,
-  )
+const handleLoginSuccess = (response)=>{
+  const {credential}=response;
+  auth.oAuthLogin(credential)
 }
+
 
 function redirectToLogin() {
   router.push('/login')
@@ -132,12 +122,10 @@ function redirectToLogin() {
         <RouterLink to="/login">
           <Button style="border-radius: 10px" label="Continuar con correo electrónico" />
         </RouterLink>
-        <Button
-          style="border-radius: 10px"
-          icon=" pi pi-google"
-          label="Google"
-          @click="googleAuth"
-        />
+        <GoogleSignInButton
+        @success="handleLoginSuccess">
+
+        </GoogleSignInButton>
         <Button style="border-radius: 10px" icon=" pi pi-facebook" label="Facebook" />
       </div>
     </div>

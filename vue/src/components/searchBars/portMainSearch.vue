@@ -8,6 +8,7 @@ import { onMounted, ref } from 'vue'
 import AutoComplete from '@/volt/AutoComplete.vue'
 import { Form } from '@primevue/forms'
 import DatePicker from '@/volt/DatePicker.vue'
+import { auth } from '@/main.js'
 
 const props = defineProps({
   ports: Array,
@@ -86,25 +87,26 @@ function handleSubmit() {
           >
             <DatePicker v-model="formData.dates" selectionMode="range" :manualInput="false" />
           </div>
-          <!--<div class="w-1/6 md:w-24 p-2 border-b md:border-b-0 md:border-r border-gray-200">
-            <label class="block text-xs uppercase">Eslora</label>
-            <input
-              v-model="formData.length"
-              type="number"
-              placeholder="Metros"
-              class="w-full text-sm outline-none mt-1"
-            />
-          </div>
-          <div class="w-1/6 md:w-24 p-2">
-            <label class="block text-xs uppercase">Manga</label>
-            <input
-              v-model="formData.beam"
-              type="text"
-              placeholder="Metros"
-              class="w-full text-sm outline-none mt-1"
-            />
-          </div>
-          -->
+          <template v-if="!auth.isAuthenticated">
+            <div class="w-1/6 md:w-24 p-2 border-b md:border-b-0 md:border-r border-gray-200">
+              <label class="block text-xs uppercase">Eslora</label>
+              <input
+                v-model="formData.length"
+                type="number"
+                placeholder="Metros"
+                class="w-full text-sm outline-none mt-1"
+              />
+            </div>
+            <div class="w-1/6 md:w-24 p-2">
+              <label class="block text-xs uppercase">Manga</label>
+              <input
+                v-model="formData.beam"
+                type="text"
+                placeholder="Metros"
+                class="w-full text-sm outline-none mt-1"
+              />
+            </div>
+          </template>
           <template v-if="boats">
             <div
               class="justify-center content-center w-3/9 align-middle items-center p-1 border-b md:border-b-0 md:border-r border-gray-200"

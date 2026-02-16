@@ -1,5 +1,5 @@
 import './assets/main.css'
-
+import GoogleSignInPlugin from 'vue3-google-signin'
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router/index.js'
@@ -11,6 +11,7 @@ import { useAuthStore } from '@/stores/authStore.js'
 
 const pinia = createPinia()
 const app = createApp(App)
+const googleClient = import.meta.env.VITE_GOOGLE_CLIENT_ID
 
 pinia.use(piniaPluginPersistedstate)
 
@@ -19,6 +20,10 @@ app.use(pinia)
 app.config.globalProperties.$axios = axiosInstance;
 
 export const auth = useAuthStore()
+
+app.use(GoogleSignInPlugin,{
+  clientId:googleClient
+})
 
 app.use(router)
 

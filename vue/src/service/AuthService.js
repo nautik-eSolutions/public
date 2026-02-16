@@ -15,6 +15,15 @@ export async function loginUserLaravel(email, password) {
 
   }
 
+
+  export async function loginLaravelSpringToken(token){
+  const response = await axiosInstance.post("login/oauth",{
+    "token":token
+  })
+
+    return response
+  }
+
 export async function loginUserSpring(userName, password) {
   const response = await axiosSpring
     .post('auth/login', {
@@ -23,6 +32,17 @@ export async function loginUserSpring(userName, password) {
     })
     .then((resp) => resp)
 
+  return response
+}
+
+export async function loginOAuth(token){
+  const response = await axiosSpring
+    .post("auth/login/oauth",{},
+      {
+        headers:{
+          'Google-Token':token
+        }
+      })
   return response
 }
 
