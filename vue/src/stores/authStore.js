@@ -16,19 +16,19 @@ export const useAuthStore  =  defineStore('authStore', {
 
   actions: {
     async loginUser(email, password) {
-      const respLaravel = await loginUserLaravel(email, password)
+      //const respLaravel = await loginUserLaravel(email, password)
 
-        if (respLaravel.status === 200 ) {
-          const respSpring = await loginUserSpring(respLaravel.data.user.userName, password)
-          this.User =  new User(respLaravel.data.user.userName, respLaravel.data.user.email)
-        this.token =  respLaravel.data.token
-        this.springToken =respSpring.data.token
+
+          const respSpring = await loginUserSpring(email, password)
+          this.User =  new User(respSpring.data.userName, respSpring.data.email)
+          console.log(respSpring);
+        this.springToken =respSpring.data.token.token
         this.isAuthenticated = true
 
-      }
 
      await router.push("/")
     },
+
     async oAuthLogin(token){
       const resp = await loginOAuth(token)
       if (resp.status !== 200){
@@ -44,7 +44,7 @@ export const useAuthStore  =  defineStore('authStore', {
     },
     setAuthenticated(User,token){
       this.User = User
-      this.token = token
+      this.springToken = token
       this.isAuthenticated = true
 
     }
