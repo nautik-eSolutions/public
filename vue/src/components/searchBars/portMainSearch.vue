@@ -9,6 +9,7 @@ import AutoComplete from '@/volt/AutoComplete.vue'
 import { Form } from '@primevue/forms'
 import DatePicker from '@/volt/DatePicker.vue'
 import { auth } from '@/main.js'
+import Boats from "@/views/boats.vue";
 
 const props = defineProps({
   ports: Array,
@@ -72,6 +73,7 @@ function handleSubmit() {
           <div
             class="justify-center content-center w-3/9 align-middle items-center p-1 border-b md:border-b-0 md:border-r border-gray-200"
           >
+            <label class="block text-s uppercase">Puerto</label>
             <template v-if="ports">
               <AutoComplete
                 v-model="formData.port"
@@ -85,6 +87,7 @@ function handleSubmit() {
           <div
             class="justify-center content-center align-middle w-3/10 items-center p-1 border-b md:border-b-0 md:border-r border-gray-200"
           >
+            <label class="block text-s uppercase">Fecha</label>
             <DatePicker v-model="formData.dates" selectionMode="range" :manualInput="false" />
           </div>
           <template v-if="!auth.isAuthenticated">
@@ -111,13 +114,13 @@ function handleSubmit() {
             <div
               class="justify-center content-center w-3/9 align-middle items-center p-1 border-b md:border-b-0 md:border-r border-gray-200"
             >
-              <AutoComplete
-                v-model="formData.boat"
-                optionLabel="name"
-                :suggestions="filteredBoats"
-                @complete="searchBoat"
-                class=""
-              />
+              <label class="block text-x uppercase">Barco</label>
+              <select
+                  v-model="formData.boat"
+                  class="w-full text-sm outline-none mt-1"
+              >
+                <option v-for="boat in boats" :key="boat" :value="boat">{{ boat.name }}</option>
+              </select>
             </div>
           </template>
           <button

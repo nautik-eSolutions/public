@@ -25,13 +25,14 @@ export async function createBoat(name, registry_number, length, beam, draft, boa
   return response
 }
 export async function updateBoat(id, name, registry_number, length, beam, draft) {
-  const response = await axiosInstance.patch('boats/'+id, {
+  const response = await axiosInstance.put('boats/'+id, {
     name: name,
     registry_number: registry_number,
     length: length,
     beam: beam,
     draft: draft,
   })
+  console.log(response)
 
   return response
 }

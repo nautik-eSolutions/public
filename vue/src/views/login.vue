@@ -39,12 +39,12 @@ function handleSubmit() {
             >
               Bienvenido otra vez!
             </div>
-            <RouterLink to="/personal-register">
+            <RouterLink to="/personal-register" class="text-blue-500 hover:text-blue-700">
               <div class="text-center w-full">
                 <span class="text-surface-700 dark:text-surface-200 leading-normal"
                   >No tienes una cuenta?</span
                 >
-                <a class="text-primary font-medium ml-1 cursor-pointer hover:text-primary-emphasis"
+                <a class="font-medium ml-1 cursor-pointer hover:text-primary-emphasis"
                   >Créate una hoy!</a
                 >
               </div>
