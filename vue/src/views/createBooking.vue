@@ -28,10 +28,45 @@ onMounted(async () => {
   mounted.value = true
 })
 
+/*
+
 function handleSubmit(){
   console.log("---",boat.value)
   console.log("----",mooringCategory.value)
   bookingStore.createBooking(mooringCategory.value.id, mooringCategory.value.startDate, mooringCategory.value.endDate, boat.value.id)
+}
+
+ */
+
+async function handleSubmit() {
+  try {
+    const paymentData = await bookingStore.initPayment(
+        mooringCategory.value.id,
+        mooringCategory.value.startDate,
+        mooringCategory.value.endDate,
+        boat.value.id
+    )
+    const form = document.createElement('form')
+    form.method = 'POST'
+    form.action = paymentData.url
+    form.target = '_self'
+
+    const addField = (name, value) => {
+      const input = document.createElement('input')
+      input.type = 'hidden'
+      input.name = name
+      input.value = value
+      form.appendChild(input)
+    }
+    addField('Ds_SignatureVersion', paymentData.dsSignatureVersion)
+    addField('Ds_MerchantParameters', paymentData.dsMerchantParameters)
+    addField('Ds_Signature', paymentData.dsSignature)
+
+    document.body.appendChild(form)
+    form.submit()
+  } catch (error) {
+    console.log('Error:', error)
+  }
 }
 
 

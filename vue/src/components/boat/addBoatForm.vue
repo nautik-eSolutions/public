@@ -17,9 +17,9 @@ const generateForm = () => {
   return defineForm({
     name: field('', yup.string().required().max(15)),
     registryNumber: field('', yup.string().required().max(15)),
-    beam: field('', yup.number().required()),
-    length: field('', yup.number().required()),
-    draft: field('', yup.number().required()),
+    beam: field('', yup.number().required().max(20)),
+    length: field('', yup.number().required().max(100)),
+    draft: field('', yup.number().required().max(20)),
     boatType: field(''),
   })
 }

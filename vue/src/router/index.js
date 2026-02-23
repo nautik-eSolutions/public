@@ -14,6 +14,7 @@ import PersonalRegister from '@/views/personalRegister.vue'
 import BoatPage from '@/views/boatPage.vue'
 import createBooking from '@/views/createBooking.vue'
 import editBoat from '@/views/editBoat.vue'
+import ReservationsView from "@/views/ReservationsView.vue";
 
 
 const router = createRouter({
@@ -60,7 +61,7 @@ const router = createRouter({
     {
       path: '/bookings',
       name: 'booking',
-      component: bookings,
+      component: ReservationsView,
     },
 
     {
@@ -95,6 +96,12 @@ const router = createRouter({
       name: 'create-booking',
       component: createBooking,
     },
+    {
+      path: '/payment-success',
+      name: 'PaymentSuccess',
+      component: bookings,
+    },
+
   ],
 })
 
