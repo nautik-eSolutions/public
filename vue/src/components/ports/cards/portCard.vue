@@ -1,26 +1,37 @@
+<!-- components/ports/cards/portCard.vue -->
 <script>
 export default {
   name: 'portCard',
   props: {
-    portName:String,
-    imgSrc:String
+    id: [String, Number],
+    portName: String,
+    imgSrc: String,
   },
 }
 </script>
 
 <template>
-  <div
-    class="group relative rounded-2xl overflow-hidden border-8 border-[#0f172a] shadow-lg"
+  <router-link
+    :to="'/port/' + id"
+    class="group relative block w-full h-64 rounded-2xl overflow-hidden shadow-lg transition-transform duration-300 hover:scale-[1.02] hover:shadow-xl"
   >
-    <img
-      :src="imgSrc"
-      :alt="portName"
-      class="w-full object-cover rounded-l h-64"
-    />
-    <div class="bg-[#0f172a] p-3 absolute bottom-0 w-full">
-      <h3 class="text-white text-xl">{{ portName }}</h3>
+    <!-- Imagen de fondo -->
+    <img :src="imgSrc" :alt="portName" class="absolute inset-0 w-full h-full object-cover shadow-lg" />
+    <!-- Overlay gradiente (similar al hero) -->
+    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
+    <!-- Texto del puerto -->
+    <div class="absolute bottom-0 left-0 right-0 p-4 text-white">
+      <h3 class="text-2xl font-bold drop-shadow-lg [text-shadow:1px_1px_2px_rgba(0,0,0,0.8)]">
+        {{ portName }}
+      </h3>
     </div>
-  </div>
+    <!-- Efecto adicional hover: brillo sutil -->
+    <div
+      class="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-colors duration-300"
+    ></div>
+  </router-link>
 </template>
 
-<style scoped></style>
+<style scoped>
+/* No se necesitan estilos adicionales, todo con Tailwind */
+</style>
