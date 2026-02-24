@@ -25,6 +25,7 @@ export const useBoatStore = defineStore('boatStore', {
     },
     async editBoat(id, name, registry_number, length, beam, draft) {
       const resp = await updateBoat(id, name, registry_number, length, beam, draft)
+      console.log(resp)
       if (resp.status === 200 || resp.status === 201) {
         this.Boat = this.fromJson(resp.data)
         return this.Boat

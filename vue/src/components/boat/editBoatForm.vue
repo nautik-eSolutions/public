@@ -16,11 +16,11 @@ const submitted = ref(false)
 const generateForm = () => {
 
     return defineForm({
-      name: field(props.Boat.name, yup.string().required().max(10)),
-      registryNumber: field(props.Boat.registerNumber, yup.string().required().max(10)),
-      beam: field(props.Boat.beam, yup.string().required()),
-      length: field(props.Boat.length, yup.string().required()),
-      draft: field(props.Boat.draft, yup.string().required()),
+      name: field(props.Boat.name, yup.string().required().max(15)),
+      registryNumber: field(props.Boat.registerNumber, yup.string().required().max(15)),
+      beam: field(props.Boat.beam, yup.number().required()),
+      length: field(props.Boat.length, yup.number().required()),
+      draft: field(props.Boat.draft, yup.number().required()),
     })
 
 }
@@ -89,7 +89,8 @@ const handleSubmit = () => {
           <label class="text-sm font-semibold text-gray-900">Eslora</label>
           <input
             v-model.trim="form.length.$value"
-            type="text"
+            type="number"
+            step="0.01"
             placeholder="Introduce metros de eslora"
             class="col-span-2 px-4 py-2.5 border border-gray-300 rounded-lg text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           />
@@ -103,7 +104,8 @@ const handleSubmit = () => {
           <label class="text-sm font-semibold text-gray-900">Manga</label>
           <input
             v-model.trim="form.beam.$value"
-            type="text"
+            type="number"
+            step="0.01"
             placeholder="Introduce metros de manga"
             class="col-span-2 px-4 py-2.5 border border-gray-300 rounded-lg text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           />
@@ -117,7 +119,8 @@ const handleSubmit = () => {
           <label class="text-sm font-semibold text-gray-900">Calado</label>
           <input
             v-model.trim="form.draft.$value"
-            type="text"
+            type="number"
+            step="0.01"
             placeholder="Introduce metros de calado"
             class="col-span-2 px-4 py-2.5 border border-gray-300 rounded-lg text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           />

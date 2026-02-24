@@ -5,6 +5,8 @@ import { fetchBooking, getBookingByBoat, getBookings } from '@/service/BookingSe
 import { getMooringCategory } from '@/service/MooringCategoryService.js'
 import { MooringCategory } from '@/model/MooringCategory.js'
 import { MooringCategoryPreBooking } from '@/model/MooringCategoryPreBooking.js'
+import {Booking} from "@/model/Booking.js";
+import axiosSpring from "@/plugins/axiosSpring.js";
 
 export const useBookingStore = defineStore('bookingStore', {
   state: () => {
@@ -52,8 +54,23 @@ export const useBookingStore = defineStore('bookingStore', {
     async getAllBookings(){
       const resp = await getBookings()
 
-    }
+    },
+    async getAllBookingsByUser(){
+      const resp = await getBookings()
+      console.log(resp.data)
+      return resp.data.data.map(booking => Booking.fromJson(booking));
+    },
 
+    async initPayment(mooringCategoryId, startDate, endDate, boatId) {
+      const resp = await axiosSpring.post('payments/init', {
+        mooringCategoryId,
+        startDate,
+        endDate,
+        boatId
+      })
+      return resp.data
+    },
 
   },
+
 })

@@ -3,20 +3,47 @@ export default {
   name: 'login',
 }
 </script>
+
 <script setup>
 import InputText from '@/volt/InputText.vue'
 import Button from '@/volt/Button.vue'
 import Password from '@/volt/Password.vue'
-import { ref } from 'vue'
-import { useAuthStore } from '@/stores/authStore.js'
+import { ref, shallowRef } from 'vue'
+import { useAuthStore } from '@/stores/authStore'
+import { defineForm, field, isValidForm } from 'vue-yup-form'
+import * as yup from 'yup'
 
 const auth = useAuthStore()
-const password = ref()
-const email = ref()
-//email = monds@corp.com
-//password = 747281231
-function handleSubmit() {
-  auth.loginUser(email.value, password.value)
+const submitted = ref(false)
+
+const generateForm = () => {
+  return defineForm({
+    email: field(
+      '',
+      yup.string().email('Correo electrónico no válido').required('El correo es obligatorio'),
+    ),
+    password: field(
+      '',
+      yup
+        .string()
+        .required('La contraseña es obligatoria')
+        .min(8, 'La contraseña debe tener al menos 8 caracteres')
+        .matches(/[A-Z]/, 'Debe contener al menos una mayúscula')
+        .matches(/[0-9]/, 'Debe contener al menos un número'),
+    ),
+  })
+}
+
+const form = shallowRef(generateForm())
+
+const handleSubmit = async () => {
+  submitted.value = true
+
+  if (!isValidForm(form.value)) {
+    return
+  }
+
+  await auth.loginUser(form.value.email.$value, form.value.password.$value)
 }
 </script>
 
@@ -39,12 +66,12 @@ function handleSubmit() {
             >
               Bienvenido otra vez!
             </div>
-            <RouterLink to="/personal-register">
+            <RouterLink to="/personal-register" class="text-blue-500 hover:text-blue-700">
               <div class="text-center w-full">
                 <span class="text-surface-700 dark:text-surface-200 leading-normal"
                   >No tienes una cuenta?</span
                 >
-                <a class="text-primary font-medium ml-1 cursor-pointer hover:text-primary-emphasis"
+                <a class="font-medium ml-1 cursor-pointer hover:text-primary-emphasis"
                   >Créate una hoy!</a
                 >
               </div>
@@ -62,27 +89,35 @@ function handleSubmit() {
               id="email1"
               name="email1"
               type="text"
-              v-model="email"
+              v-model="form.email.$value"
               placeholder="Email address"
               class="w-full px-3 py-2 shadow-sm rounded-lg"
+              :class="{ 'border-red-500': submitted && form.email.$error }"
             />
+            <span v-if="submitted && form.email.$error" class="text-red-600 text-sm mt-1">
+              {{ form.email.$error.message }}
+            </span>
           </div>
+
           <div class="flex flex-col gap-2 w-full">
             <label
               for="password1"
               class="text-surface-900 dark:text-surface-0 font-medium leading-normal"
               >Password</label
             >
-
             <Password
               id="password1"
               name="password1"
-              v-model="password"
+              v-model="form.password.$value"
               placeholder="Password"
               :toggleMask="true"
               :feedback="false"
               input-class="w-full!"
+              :class="{ 'p-invalid': submitted && form.password.$error }"
             />
+            <span v-if="submitted && form.password.$error" class="text-red-600 text-sm mt-1">
+              {{ form.password.$error.message }}
+            </span>
           </div>
 
           <div

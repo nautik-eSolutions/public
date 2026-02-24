@@ -44,8 +44,8 @@ export const useUserStore = defineStore('userStore', {
 
 
       if (resp.status === 200 || resp.status === 201){
-        const user = new User(resp.data.user.userName, resp.data.user.email)
-        auth.setAuthenticated(user, resp.data.token)
+        const user = new User(resp.data.userName, resp.data.email)
+        auth.setAuthenticated(user, resp.data.token.token)
       }
 
 

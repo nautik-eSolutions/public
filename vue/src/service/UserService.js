@@ -1,4 +1,5 @@
 import axiosInstance from '@/plugins/axios.js'
+import axiosSpring from "@/plugins/axiosSpring.js";
 
 export async function registerUser(user,password) {
   const res = await axiosInstance
@@ -14,6 +15,17 @@ export async function registerUser(user,password) {
 
 
 export async function registerPerson(email, password, firstName, lastName,idDocument, birthDate, userName ){
+
+    const response = await axiosSpring.post("auth/register", {
+        "email":email,
+        "password":password,
+        "firstName":firstName,
+        "lastName":lastName,
+        "identificationDocument":idDocument,
+        "birthDate":birthDate,
+        "userName":userName
+    })
+    /*
   const res = await axiosInstance.post(
     'register',{
       "email":email,
@@ -24,10 +36,11 @@ export async function registerPerson(email, password, firstName, lastName,idDocu
       "birth_date":birthDate,
       "user_name":userName
     }
-  ).catch( error => {
+  )*/.catch( error => {
     return { status: 500 }
   })
-  return res
+    console.log(response)
+  return response
 }
 
 

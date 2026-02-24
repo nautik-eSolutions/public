@@ -24,10 +24,10 @@ export async function loginUserLaravel(email, password) {
     return response
   }
 
-export async function loginUserSpring(userName, password) {
+export async function loginUserSpring(email, password) {
   const response = await axiosSpring
-    .post('auth/login', {
-      userName: userName,
+    .post('auth/login/email', {
+      email: email,
       password: password,
     })
     .then((resp) => resp)

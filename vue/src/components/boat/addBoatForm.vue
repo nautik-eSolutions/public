@@ -17,9 +17,9 @@ const generateForm = () => {
   return defineForm({
     name: field('', yup.string().required().max(15)),
     registryNumber: field('', yup.string().required().max(15)),
-    beam: field('', yup.string().required()),
-    length: field('', yup.string().required()),
-    draft: field('', yup.string().required()),
+    beam: field('', yup.number().required().max(20)),
+    length: field('', yup.number().required().max(100)),
+    draft: field('', yup.number().required().max(20)),
     boatType: field(''),
   })
 }
@@ -124,7 +124,8 @@ const handleHelp = () => {
           <label class="text-sm font-semibold text-gray-900">Eslora</label>
           <input
             v-model.trim="form.length.$value"
-            type="text"
+            type="number"
+            step="0.01"
             placeholder="Introduce metros de eslora"
             class="col-span-2 px-4 py-2.5 border border-gray-300 rounded-lg text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           />
@@ -138,7 +139,8 @@ const handleHelp = () => {
           <label class="text-sm font-semibold text-gray-900">Manga</label>
           <input
             v-model.trim="form.beam.$value"
-            type="text"
+            type="number"
+            step="0.01"
             placeholder="Introduce metros de manga"
             class="col-span-2 px-4 py-2.5 border border-gray-300 rounded-lg text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           />
@@ -152,7 +154,8 @@ const handleHelp = () => {
           <label class="text-sm font-semibold text-gray-900">Calado</label>
           <input
             v-model.trim="form.draft.$value"
-            type="text"
+            type="number"
+            step="0.01"
             placeholder="Introduce metros de calado"
             class="col-span-2 px-4 py-2.5 border border-gray-300 rounded-lg text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           />

@@ -119,11 +119,6 @@ defineProps({
             <p class="text-xs text-gray-500 mb-1">Precio total:</p>
             <p class="text-sm font-semibold text-gray-900">{{ reservation.payment.total }}</p>
           </div>
-
-          <div>
-            <p class="text-xs text-gray-500 mb-1">Método de pago seleccionado:</p>
-            <p class="text-sm font-semibold text-gray-900">{{ reservation.payment.method }}</p>
-          </div>
         </div>
 
         <div class="space-y-4">
