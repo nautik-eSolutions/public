@@ -331,7 +331,6 @@ const handleSubmit = async () => {
 </template>
 
 <style scoped>
-
 input[type='date']::-webkit-calendar-picker-indicator {
   cursor: pointer;
 }

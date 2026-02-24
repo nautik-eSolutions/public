@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import User from '@/model/User.js'
-import { loginLaravelSpringToken, loginUserSpring } from '@/service/AuthService.js'
+import { loginLaravelSpringToken, loginUserSpring, loginOAuth } from '@/service/AuthService.js'
 import router from '@/router'
 import { useLoadingStore } from '@/stores/loadingStore'
 import { useNotificationStore } from '@/stores/notificationStore'
@@ -8,7 +8,6 @@ import { useNotificationStore } from '@/stores/notificationStore'
 export const useAuthStore = defineStore('authStore', {
   state: () => ({
     User: User,
-    token: '',
     springToken: '',
     isAuthenticated: false,
   }),
@@ -51,9 +50,6 @@ export const useAuthStore = defineStore('authStore', {
         }
 
         this.springToken = resp.data.token
-        const respLaravel = await loginLaravelSpringToken(resp.data.token)
-
-        this.setAuthenticated(respLaravel.data.user, respLaravel.data.token)
 
         notificationStore.showNotification('Inicio de sesión con OAuth exitoso', 'success')
         await router.push('/')
