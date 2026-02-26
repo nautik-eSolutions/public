@@ -1,5 +1,5 @@
 export class MooringCategoryPreBooking {
-  constructor(id, zoneName, portName, maxBeam, maxLength,startDate, endDate, basePrice, tax, totalPrice ) {
+  constructor(id, zoneName, portName, maxBeam, maxLength,startDate, endDate, basePrice, tax, totalPrice,minPricePerDay ) {
     this.id = id;
     this.zoneName = zoneName
     this.portName = portName
@@ -10,5 +10,6 @@ export class MooringCategoryPreBooking {
     this.basePrice = basePrice
     this.tax = tax
     this.totalPrice =totalPrice
+    this.minPricePerDay= minPricePerDay
   }
 }

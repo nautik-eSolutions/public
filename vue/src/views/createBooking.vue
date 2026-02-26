@@ -147,9 +147,9 @@ async function handleSubmit() {
                     <h1 class="">Total</h1>
                   </div>
                   <div class="flex flex-col text-sm text-right">
-                    <h1 class="">{{ mooringCategory.basePrice }},00 €</h1>
-                    <h1 class="">{{ mooringCategory.tax }},00 €</h1>
-                    <h1 class="">{{ mooringCategory.totalPrice }},00 €</h1>
+                    <h1 class="">{{ Math.round(mooringCategory.basePrice).toFixed(2) }} €</h1>
+                    <h1 class="">{{Math.round( mooringCategory.tax ).toFixed(2)}} €</h1>
+                    <h1 class="">{{Math.round(mooringCategory.totalPrice).toFixed(2) }} €</h1>
                   </div>
                 </div>
                 <button @click="handleSubmit" class=" bg-principal-blue text-white rounded-md shadow-lg p-2 text-center">
