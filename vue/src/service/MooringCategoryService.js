@@ -1,18 +1,29 @@
 import { MooringCategory } from '@/model/MooringCategory.js'
 import axiosInstance from '@/plugins/axios.js'
 import axiosSpring from '@/plugins/axiosSpring.js'
+import { MooringCategoryPreBooking } from '@/model/MooringCategoryPreBooking.js'
 
 export class MooringCategoryService {
-  static async getMooringCategories(id, length, beam, startDate, endDate) {
+  static async getMooringCategories(id, length, beam, draft,startDate, endDate) {
     const data = await axiosSpring
-      .get('/availability/mooring-categories/port/' + id + '/dimensions/' + length + '/' + beam + '/dates/' + startDate + '/' + endDate)
+      .get('/availability/mooring-categories/port/' + id + '/dimensions/' + length + '/' + beam +'/'+draft+ '/dates/' + startDate + '/' + endDate)
       .then((resp) => resp.data)
-
     return data.map((mc) => this.#fromJson(mc))
   }
 
-  static #fromJson(rawData) {
-    return new MooringCategory(rawData.id,rawData.zoneName,rawData.zonePortName,rawData.minPrice,rawData.dimensionsMaxBeam, rawData.dimensionsMaxLength)
+  static #fromJson(resp) {
+    return new MooringCategoryPreBooking(
+      resp.id,
+      resp.zoneName,
+      resp.zonePortName,
+      resp.dimensionsMaxBeam,
+      resp.dimensionsMaxLength,
+      resp.startDate,
+      resp.endDate,
+      resp.basePrice,
+      resp.tax,
+      resp.totalPrice,
+      resp.minPricePerDay)
   }
 }
 

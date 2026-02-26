@@ -3,7 +3,7 @@ export class MooringCategory {
     this.id = id
     this.zoneName = zoneName,
     this.portName = portName
-    this.price = price
+    this.minPricePerDay = price
     this.maxBeam = maxBeam;
     this.maxLength = maxLength;
   }
