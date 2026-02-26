@@ -39,6 +39,7 @@ function handleSubmit(formData) {
       boatId: formData.value.boat.id,
       length: formData.value.boat.length,
       beam: formData.value.boat.beam,
+      draft: formData.value.boat.draft,
       startDate: new Date(formData.value.dates.at(0)).toLocaleDateString().replaceAll('/', '-'),
       endDate: new Date(formData.value.dates.at(1)).toLocaleDateString().replaceAll('/', '-'),
     },

@@ -16,10 +16,8 @@ const notificationStore = useNotificationStore()
           notif.type === 'error' ? 'border-red-500' : '',
           notif.type === 'warning' ? 'border-yellow-500' : '',
         ]"
-        class="notification-card bg-white border-l-4 border-principal-blue shadow-lg rounded-sm p-4 flex items-center justify-between"
-      >
+        class="notification-card bg-white border-l-4 border-principal-blue shadow-lg rounded-sm p-4 flex items-center justify-between">
         <div class="flex flex-col">
-          >
           <p class="text-gray-700 text-sm font-medium">{{ notif.text }}</p>
         </div>
 
@@ -27,7 +25,6 @@ const notificationStore = useNotificationStore()
           @click="notificationStore.removeNotification(notif.id)"
           class="text-gray-400 hover:text-principal-blue transition-colors ml-2"
         >
-          ✕
         </button>
       </div>
     </TransitionGroup>

@@ -93,8 +93,8 @@ const getServiceIcon = (service) => serviceIcons[service] || 'pi pi-check'
 
       <div class="flex flex-col items-end justify-center ml-6 pl-6 border-l border-gray-200">
         <div class="text-right mb-3">
-          <p class="text-sm text-gray-600 mb-1">Precio por noche</p>
-          <p class="text-3xl font-bold text-gray-900">{{ price }}€</p>
+          <p class="text-sm text-gray-600 mb-1">Precio total</p>
+          <p class="text-3xl font-bold text-gray-900">{{ Math.round(price).toFixed(2)}}€</p>
         </div>
         <button
           class="bg-principal-blue hover:bg-[#2929d4] text-white font-semibold py-3 px-8 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg flex items-center gap-2"

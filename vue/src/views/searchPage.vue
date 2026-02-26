@@ -36,8 +36,8 @@ const filters = ref({
   restaurantes: false,
   limpieza: false,
   priceRange: {
-    min:0,
-    max:100
+    min: 0,
+    max: 100,
   },
 })
 
@@ -60,17 +60,20 @@ function handleDateTabSelect(tab) {
   dateTabs.value.forEach((t) => (t.active = false))
   tab.active = true
 }
-const filteredAndSortedCategories = ref();
+const filteredAndSortedCategories = ref()
 onMounted(async () => {
   mooringCategories.value = await MooringCategoryService.getMooringCategories(
     routeParams.id,
     routeParams.length,
     routeParams.beam,
+    routeParams.draft,
     routeParams.startDate,
     routeParams.endDate,
   )
   if (mooringCategories.value.length > 0) {
-    const calculatedMaxPrice = Math.max(...mooringCategories.value.map((mc) => mc.minPricePerDay))
+    const calculatedMaxPrice = Math.max(
+      ...mooringCategories.value.map((mc) => Math.round(mc.totalPrice)),
+    )
     maxPrice.value = calculatedMaxPrice
     filters.value.priceRange[1] = calculatedMaxPrice
   }
@@ -79,7 +82,6 @@ onMounted(async () => {
     filters,
     sortBy,
   ).filteredAndSorted
-
 })
 </script>
 
@@ -115,26 +117,30 @@ onMounted(async () => {
         @update:filters="filters = $event"
       />
       <main class="max-w-7xl lg:w-3/4">
-        <ResultsHeader v-if="filteredAndSortedCategories"
-          :results-count="filteredAndSortedCategories.length"
+        <!--
+        <ResultsHeader
+          v-if="mooringCategories"
+          :results-count="mooringCategories.length"
           :sort-by="sortBy"
           @update:sort-by="sortBy = $event"
         />
-
+      -->
         <div class="space-y-4">
-          <template v-if="mooringCategories.length > 0">
-            <PortBookingCard
-              v-for="mc in mooringCategories"
-              :key="mc.id"
-              :id="mc.id"
-              :portId="routeParams.id"
-              :price="mc.minPricePerDay"
-              :zoneName="mc.zoneName"
-              :maxBeam="mc.maxBeam"
-              :maxLength="mc.maxLength"
-              :services="mc.services"
-              @click="handleCardClick"
-            />
+          <template v-if="mooringCategories">
+            <template v-if="mooringCategories.length > 0">
+              <PortBookingCard
+                v-for="mc in mooringCategories"
+                :key="mc.id"
+                :id="mc.id"
+                :portId="routeParams.id"
+                :price="mc.totalPrice"
+                :zoneName="mc.zoneName"
+                :maxBeam="mc.maxBeam"
+                :maxLength="mc.maxLength"
+                :services="mc.services"
+                @click="handleCardClick"
+              />
+            </template>
           </template>
           <EmptyState v-else />
         </div>
