@@ -15,6 +15,7 @@ import BoatPage from '@/views/boatPage.vue'
 import createBooking from '@/views/createBooking.vue'
 import editBoat from '@/views/editBoat.vue'
 import ReservationsView from "@/views/ReservationsView.vue";
+import errorBooking from '@/views/errorBooking.vue'
 
 
 const router = createRouter({
@@ -101,7 +102,11 @@ const router = createRouter({
       name: 'PaymentSuccess',
       component: bookings,
     },
-
+    {
+      path: '/payment-error',
+      name: 'PaymentError',
+      component: errorBooking,
+    },
   ],
 })
 

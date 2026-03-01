@@ -21,3 +21,9 @@ export async function getBookingByBoat(boatId){
   const resp = axiosInstance.get("bookings/boats/"+boatId);
   return resp
 }
+
+export async function getBookingById(id){
+  const resp = await axiosInstance.get("bookings/"+id);
+  console.log(resp)
+  return resp
+}

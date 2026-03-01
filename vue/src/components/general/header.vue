@@ -77,28 +77,28 @@ function redirectToLogin() {
           <Avatar icon="pi pi-user" size="large" @click="visibleDrawer = true" />
         </div>
         <div class="flex flex-col h-full mb-4">
-          <RouterLink to="boats">
+          <RouterLink to="/boats">
             <div class="flex items-center gap-3 hover:bg-sky-950 p-2 rounded-md cursor-pointer">
               <FontAwesomeIcon :icon="faShip" size="xl" />
               <span class="text-lg font-medium">Mis barcos</span>
             </div>
           </RouterLink>
           <Splitter />
-          <RouterLink to="bookings">
+          <RouterLink to="/bookings">
             <div class="flex items-center gap-3 hover:bg-sky-950 p-2 rounded-md cursor-pointer">
               <FontAwesomeIcon :icon="faUsers" size="xl" />
               <span class="text-lg font-medium">Mi documentación</span>
             </div>
           </RouterLink>
           <Splitter />
-          <RouterLink to="bookings">
+          <RouterLink to="/bookings">
             <div class="flex items-center gap-3 hover:bg-sky-950 p-2 rounded-md cursor-pointer">
               <FontAwesomeIcon :icon="faCalendarDays" size="xl" />
               <span class="text-lg font-medium">Reservas</span>
             </div>
           </RouterLink>
           <Splitter />
-          <RouterLink to="invoices">
+          <RouterLink to="/invoices">
             <div class="flex items-center gap-3 hover:bg-sky-950 p-2 rounded-md cursor-pointer">
               <FontAwesomeIcon :icon="faReceipt" size="xl" />
               <span class="text-lg font-medium">Facturas</span>

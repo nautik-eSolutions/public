@@ -1,10 +1,11 @@
 <script setup>
 import Footer from '@/components/general/footer.vue'
+import ReservationConfirmation from '@/components/user/reservationConfirmation.vue'
 import Header from '@/components/general/header.vue'
-import Paymentsuccess from '@/components/bookings/Paymentsuccess.vue'
+import PaymentFailed from '@/components/bookings/PaymentFailed.vue'
 import { useRoute, useRouter } from 'vue-router'
-import { onMounted, ref } from 'vue'
 import { useBookingStore } from '@/stores/bookingStore.js'
+import { onMounted, ref } from 'vue'
 
 const router = useRouter()
 const params = useRoute()
@@ -21,15 +22,11 @@ onMounted(async () => {
 const backToHome = () => {
   router.push('/')
 }
-const pageBookings = () => {
-  router.push('/bookings')
-}
 </script>
 
 <template>
   <Header />
-  <Paymentsuccess v-if="booking" :booking="booking"
-                  @back-to-home="backToHome" @view-bookings="pageBookings"/>
+  <PaymentFailed :booking="booking" @back-to-home="backToHome" />
 
   <Footer />
 </template>

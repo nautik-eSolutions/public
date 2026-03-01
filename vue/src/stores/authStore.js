@@ -76,6 +76,7 @@ export const useAuthStore = defineStore('authStore', {
       this.isAuthenticated = false
       await router.push('/')
     },
+
   },
   persist: true,
 })

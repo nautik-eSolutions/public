@@ -1,10 +1,10 @@
 export class Booking{
-  constructor(PortName, startDate, endDate, totalCost, boatId, mooringName) {
+  constructor(PortName, startDate, endDate, totalCost, boatName, mooringName) {
     this.portName=PortName;
     this.startDate=startDate;
     this.endDate =endDate;
     this.totalCost = totalCost;
-    this.boatId = boatId;
+    this.boatName = boatName;
     this.mooringName = mooringName;
     const now = new Date();
     const start = new Date(startDate);
@@ -19,13 +19,13 @@ export class Booking{
     }
   }
 
-   static fromJson(json){
+   static fromJson(json, boat_name){
     return new Booking(
         json.port_name,
         json.start_date,
         json.end_date,
         json.total_cost,
-        json.boat_id,
+        boat_name,
         json.mooring_name
     );
 
