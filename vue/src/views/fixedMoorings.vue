@@ -9,7 +9,15 @@ import AutoComplete from '@/volt/AutoComplete.vue'
 import { useFixedMooringStore } from '@/stores/fixedMooringStore.js'
 import { defineForm, field } from 'vue-yup-form'
 
-const showModal = ref(false)
+
+
+
+onMounted(async () => {
+  ports.value = await portsStore.getPorts()
+  fixedMooringsRequests.value = await fixedMooringStore.getFixedMooringsRequests()
+
+})
+
 const generateForm = defineForm({
   fields: {
     port: field().required().number(),
@@ -17,14 +25,14 @@ const generateForm = defineForm({
     observations: field().required().string().max(255).min(1),
   },
 })
-
+const showModal = ref(false)
 const form = shallowRef(generateForm())
 const submitted = ref(false)
 const fixedMooringStore = useFixedMooringStore();
 const portsStore = usePortsStore()
 const ports = ref()
 const filteredPorts = ref()
-
+const fixedMooringsRequests = ref()
 const searchPort = (event) => {
   setTimeout(() => {
     if (!event.query.trim().length) {
@@ -39,9 +47,7 @@ const searchPort = (event) => {
 
   
 
-onMounted(async () => {
-  ports.value = await portsStore.getPorts()
-})
+
 async function submitRequest () {
   showModal.value = false
   submitted.value = true
@@ -49,7 +55,10 @@ async function submitRequest () {
 
     return 
   }else{
+    
     await fixedMooringStore.createFixedMooringRequest(form.value)
+
+    window.location.reload()
   }
   
   
@@ -73,6 +82,16 @@ async function submitRequest () {
             <span>Añadir solicitud</span>
           </button>
         </div>
+      </div>
+      <div class="bg-white rounded-xl shadow-sm p-8 flex flex-col sm:flex-row  justify-between ">
+        <template v-if="fixedMooringsRequests">
+          <div v-for="fixedMooring in fixedMooringsRequests" :key="fixedMooring.id">
+            <h3>{{ fixedMooring.port.name }}</h3>
+            <p>{{ fixedMooring.mooringNumber }}</p>
+            <p>{{ fixedMooring.observations }}</p>
+            <p>{{ fixedMooring.status }}</p>
+          </div>
+        </template>
       </div>
     </main>
       
