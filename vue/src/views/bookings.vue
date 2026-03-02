@@ -24,12 +24,35 @@ const backToHome = () => {
 const pageBookings = () => {
   router.push('/bookings')
 }
+const downloadInvoice = async () => {
+  try {
+    const orderNumber = params.query.order
+    const resp = await bookingStore.getInvoice(orderNumber)
+    console.log(resp)
+    const blob = resp.data
+    const url = window.URL.createObjectURL(blob)
+    const link = document.createElement('a')
+    link.href = url
+    link.setAttribute('download', `invoice-${orderNumber}.pdf`)
+    document.body.appendChild(link)
+    link.click()
+    link.remove()
+    window.URL.revokeObjectURL(url)
+  } catch (error) {
+    console.error('Error:', error)
+  }
+}
 </script>
 
 <template>
   <Header />
-  <Paymentsuccess v-if="booking" :booking="booking"
-                  @back-to-home="backToHome" @view-bookings="pageBookings"/>
+  <Paymentsuccess
+    v-if="booking"
+    :booking="booking"
+    @back-to-home="backToHome"
+    @view-bookings="pageBookings"
+    @download-invoice="downloadInvoice"
+  />
 
   <Footer />
 </template>

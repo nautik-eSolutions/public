@@ -1,15 +1,11 @@
 import { defineStore } from 'pinia'
-import { getPorts } from '@/service/PortService.js'
-import { Port } from '@/model/Port.js'
+import * as BookingService from '@/service/BookingService.js'
 import { fetchBooking, getBookingByBoat, getBookings } from '@/service/BookingService.js'
 import { getMooringCategory } from '@/service/MooringCategoryService.js'
-import { MooringCategory } from '@/model/MooringCategory.js'
 import { MooringCategoryPreBooking } from '@/model/MooringCategoryPreBooking.js'
-import {Booking} from "@/model/Booking.js";
-import axiosSpring from "@/plugins/axiosSpring.js";
-import * as BookingService from '@/service/BookingService.js'
+import { Booking } from '@/model/Booking.js'
+import axiosSpring from '@/plugins/axiosSpring.js'
 import { useBoatStore } from '@/stores/boatStore.js'
-
 
 
 export const useBookingStore = defineStore('bookingStore', {
@@ -88,6 +84,10 @@ export const useBookingStore = defineStore('bookingStore', {
       console.log(boat)
 
       return Booking.fromJson(resp.data.data[0], boat.name)
+    },
+
+    async getInvoice(order){
+      return await BookingService.getInvoice(order)
     },
 
   },
