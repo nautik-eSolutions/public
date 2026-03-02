@@ -57,7 +57,7 @@ function redirectToLogin() {
       <RouterLink to="/">
         <div class="flex items-center gap-2">
           <img src="../../assets/logoWOletter.png" class="h-12 p-0 m-0" />
-          <span id="logos" class="text-3xl">NAUTIK</span>
+          <span id="logos" class="text-lg sm:text-2xl lg:text-3xl">NAUTIK</span>
         </div>
       </RouterLink>
       </div>
@@ -66,16 +66,12 @@ function redirectToLogin() {
       </template>
       <template v-else>
         <div class="flex gap-2">
-          <span class="text-2xl">{{ greeting }}</span>
+          <span class="text-lg md:text-lg lg:text-2xl">{{ greeting }}</span>
         </div>
       </template>
     </nav>
-    <Drawer v-model:visible="visibleDrawer" justify-center="justify-center" :header="greeting">
-      <p></p>
+    <Drawer v-model:visible="visibleDrawer" justify-center="justify-center" header='Menú'>
       <div class="flex flex-col justify-between h-full gap-8">
-        <div class="flex flex-col items-center gap-3">
-          <Avatar icon="pi pi-user" size="large" @click="visibleDrawer = true" />
-        </div>
         <div class="flex flex-col h-full mb-4">
           <RouterLink to="boats">
             <div class="flex items-center gap-3 hover:bg-sky-950 p-2 rounded-md cursor-pointer">

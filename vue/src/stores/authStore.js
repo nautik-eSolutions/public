@@ -23,7 +23,7 @@ export const useAuthStore = defineStore('authStore', {
         this.springToken = respSpring.data.token.token
         this.isAuthenticated = true
 
-        notificationStore.showNotification('¡Bienvenido! '+ this.User.userName, 'success')
+        notificationStore.showNotification('Bienvenido '+ this.User.userName, 'success')
         await router.push('/')
       } catch (error) {
         let message = 'Error al iniciar sesión'

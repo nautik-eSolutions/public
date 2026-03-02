@@ -86,8 +86,8 @@ function handleSubmit() {
       </h1>
 
       <form @submit.prevent="handleSubmit">
-        <div class="flex content-center justify-center gap-1.5 w-full">
-          <div class="bg-white rounded-tl-2xl rounded-bl-2xl w-4/5 px-2 py-1 shadow-lg">
+        <div class="flex flex-col md:flex-row content-center justify-center gap-1.5 w-full">
+          <div class="bg-white w-full rounded-md md:rounded-tl-2xl md:rounded-bl-2xl md:w-4/5 px-2 py-1 shadow-lg">
             <div class="hidden md:flex items-end gap-2">
               <div class="flex-1 px-4 py-2">
                 <label class="block text-xs font-semibold uppercase text-gray-600 mb-2">
@@ -312,16 +312,8 @@ function handleSubmit() {
           </div>
           <button
             type="submit"
-            class="bg-[#3b3bf5] hover:bg-[#2929d4] text-white font-semibold py-3 px-8 rounded-tr-full rounded-br-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 flex items-center gap-2"
+            class="bg-[#3b3bf5] hover:bg-[#2929d4] text-white text-center rounded-md font-semibold py-3 px-8 md:rounded-tr-full md:rounded-br-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 flex items-center gap-2"
           >
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-              />
-            </svg>
             Buscar
           </button>
         </div>
