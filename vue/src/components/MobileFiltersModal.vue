@@ -53,8 +53,6 @@ const applyFilters = () => {
             <i class="pi pi-times text-xl"></i>
           </button>
         </div>
-
-        <!-- Servicios -->
         <div class="mb-6">
           <h4 class="text-sm font-semibold text-gray-900 mb-3">Servicios</h4>
           <div class="space-y-2">
@@ -88,7 +86,6 @@ const applyFilters = () => {
           </div>
         </div>
 
-        <!-- Precio -->
         <div class="mb-6">
           <h4 class="text-sm font-semibold text-gray-900 mb-3">
             Precio: {{ filters.priceRange[0] }}€ - {{ filters.priceRange[1] }}€

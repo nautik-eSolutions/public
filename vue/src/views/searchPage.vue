@@ -91,7 +91,6 @@ onMounted(async () => {
       <MobileFiltersModal
         v-model:show="showMobileFilters"
         :filters="filters"
-        :max-price="maxPrice"
         @update:filters="filters = $event"
       />
 
