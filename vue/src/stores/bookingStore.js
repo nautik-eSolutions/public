@@ -57,8 +57,8 @@ export const useBookingStore = defineStore('bookingStore', {
     },
     async getAllBookingsByUser(){
       const resp = await getBookings()
-      console.log(resp.data)
       return resp.data.data.map(booking => Booking.fromJson(booking));
+
     },
 
     async initPayment(mooringCategoryId, startDate, endDate, boatId) {

@@ -14,6 +14,7 @@ import {
   faTrash,
   faShower,
   faParking,
+  faPlugCircleBolt,
 } from '@fortawesome/free-solid-svg-icons'
 import Splitter from '@/volt/Splitter.vue'
 const props = defineProps({
@@ -28,7 +29,7 @@ const props = defineProps({
     type: Array,
     default: () => [],
   },
-  description:String
+  description: String,
 })
 
 defineEmits(['click'])
@@ -84,21 +85,21 @@ function getServiceLabel(serviceName) {
             v-if="hasService('Electricity16A')"
             class="flex items-center gap-2 text-sm text-gray-600"
           >
-            <FontAwesomeIcon :icon="faBolt" />
+            <FontAwesomeIcon :icon="faPlugCircleBolt" />
             <span>{{ getServiceLabel('Electricity16A') }}</span>
           </div>
           <div
             v-if="hasService('Electricity32A')"
             class="flex items-center gap-2 text-sm text-gray-600"
           >
-            <FontAwesomeIcon :icon="faBolt" />
+            <FontAwesomeIcon :icon="faPlugCircleBolt" />
             <span>{{ getServiceLabel('Electricity32A') }}</span>
           </div>
           <div
             v-if="hasService('Electricity63A')"
             class="flex items-center gap-2 text-sm text-gray-600"
           >
-            <FontAwesomeIcon :icon="faBolt" />
+            <FontAwesomeIcon :icon="faPlugCircleBolt" />
             <span>{{ getServiceLabel('Electricity63A') }}</span>
           </div>
           <div

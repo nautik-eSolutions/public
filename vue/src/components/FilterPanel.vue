@@ -2,13 +2,14 @@
 import { defineProps, defineEmits } from 'vue'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import {
-  faBolt,
+  faPlugCircleXmark,
   faDroplet,
   faWifi,
   faShield,
   faTrash,
   faShower,
   faParking,
+  faPlugCircleBolt,
 } from '@fortawesome/free-solid-svg-icons'
 
 const props = defineProps({
@@ -52,7 +53,7 @@ const updatePriceRange = (value) => {
             @change="updateFilter('electricity16A', $event.target.checked)"
             class="w-4 h-4 text-[#3b3bf5] border-gray-300 rounded"
           />
-          <FontAwesomeIcon :icon="faBolt"  size="sm" />
+          <FontAwesomeIcon :icon="faPlugCircleBolt" size="sm" />
           <span class="text-sm text-gray-700">Electricidad 16A</span>
         </label>
 
@@ -65,7 +66,7 @@ const updatePriceRange = (value) => {
             @change="updateFilter('electricity32A', $event.target.checked)"
             class="w-4 h-4 text-[#3b3bf5] border-gray-300 rounded"
           />
-          <FontAwesomeIcon :icon="faBolt"  size="sm" />
+          <FontAwesomeIcon :icon="faPlugCircleBolt" size="sm" />
           <span class="text-sm text-gray-700">Electricidad 32A</span>
         </label>
 
@@ -78,7 +79,7 @@ const updatePriceRange = (value) => {
             @change="updateFilter('electricity63A', $event.target.checked)"
             class="w-4 h-4 text-[#3b3bf5] border-gray-300 rounded"
           />
-          <FontAwesomeIcon :icon="faBolt"  size="sm" />
+          <FontAwesomeIcon :icon="faPlugCircleBolt" size="sm" />
           <span class="text-sm text-gray-700">Electricidad 63A</span>
         </label>
         <label
@@ -90,7 +91,7 @@ const updatePriceRange = (value) => {
             @change="updateFilter('freshWater', $event.target.checked)"
             class="w-4 h-4 text-[#3b3bf5] border-gray-300 rounded"
           />
-          <FontAwesomeIcon :icon="faDroplet"  size="sm" />
+          <FontAwesomeIcon :icon="faDroplet" size="sm" />
           <span class="text-sm text-gray-700">Agua Dulce</span>
         </label>
         <label
@@ -115,7 +116,7 @@ const updatePriceRange = (value) => {
             @change="updateFilter('security247', $event.target.checked)"
             class="w-4 h-4 text-[#3b3bf5] border-gray-300 rounded"
           />
-          <FontAwesomeIcon :icon="faShield"  size="sm" />
+          <FontAwesomeIcon :icon="faShield" size="sm" />
           <span class="text-sm text-gray-700">Seguridad 24/7</span>
         </label>
 
@@ -128,7 +129,7 @@ const updatePriceRange = (value) => {
             @change="updateFilter('wasteDisposal', $event.target.checked)"
             class="w-4 h-4 text-[#3b3bf5] border-gray-300 rounded"
           />
-          <FontAwesomeIcon :icon="faTrash"  size="sm" />
+          <FontAwesomeIcon :icon="faTrash" size="sm" />
           <span class="text-sm text-gray-700">Gestión Residuos</span>
         </label>
         <label
@@ -140,7 +141,7 @@ const updatePriceRange = (value) => {
             @change="updateFilter('showersAndLockers', $event.target.checked)"
             class="w-4 h-4 text-[#3b3bf5] border-gray-300 rounded"
           />
-          <FontAwesomeIcon :icon="faShower"  size="sm" />
+          <FontAwesomeIcon :icon="faShower" size="sm" />
           <span class="text-sm text-gray-700">Duchas y Taquillas</span>
         </label>
         <label
@@ -152,7 +153,7 @@ const updatePriceRange = (value) => {
             @change="updateFilter('parking', $event.target.checked)"
             class="w-4 h-4 text-[#3b3bf5] border-gray-300 rounded"
           />
-          <FontAwesomeIcon :icon="faParking"  size="sm" />
+          <FontAwesomeIcon :icon="faParking" size="sm" />
           <span class="text-sm text-gray-700">Aparcamiento</span>
         </label>
       </div>
