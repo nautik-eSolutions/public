@@ -30,7 +30,6 @@ const params = useRoute().params
 const isSubmitting = ref(false)
 const submitted = ref(false)
 
-// Generate form with vue-yup-form
 const generateForm = () => {
   return defineForm({
     address: field(
@@ -53,21 +52,7 @@ const generateForm = () => {
         .string()
         .required('El país es obligatorio')
         .min(2, 'El país debe tener al menos 2 caracteres'),
-    ),
-    email: field(
-      '',
-      yup
-        .string()
-        .required('El correo electrónico es obligatorio')
-        .email('El correo electrónico no es válido'),
-    ),
-    phone: field(
-      '',
-      yup
-        .string()
-        .required('El teléfono es obligatorio')
-        .matches(/^\+?[\d\s\-()]{9,}$/, 'El teléfono no es válido'),
-    ),
+    )
   })
 }
 
@@ -83,13 +68,13 @@ onMounted(async () => {
   mounted.value = true
 })
 
-const handleSubmit = async () => {
+async function handleSubmit() {
   submitted.value = true
 
   if (!isValidForm(form.value)) {
+
     return
   }
-
   isSubmitting.value = true
 
   try {
@@ -98,6 +83,9 @@ const handleSubmit = async () => {
       mooringCategory.value.startDate,
       mooringCategory.value.endDate,
       boat.value.id,
+      form.value.address.$value,
+      form.value.city.$value,
+      form.value.country.$value,
     )
 
     const paymentForm = document.createElement('form')
@@ -333,48 +321,6 @@ function formatDate(dateString) {
                 </div>
 
                 <Splitter class="my-6" />
-
-                <div>
-                  <h2 class="text-xl font-bold text-gray-900 mb-4">Información de contacto</h2>
-
-                  <div class="mb-4">
-                    <label for="email" class="block text-sm font-medium text-gray-700 mb-1">
-                      Correo electrónico <span class="text-red-500">*</span>
-                    </label>
-                    <InputText
-                      id="email"
-                      type="email"
-                      v-model="form.email.$value"
-                      :class="[
-                        'border border-gray-300 rounded-lg w-full',
-                        { 'border-red-500': submitted && form.email.$error },
-                      ]"
-                      placeholder="tucorreo@ejemplo.com"
-                    />
-                    <span v-if="submitted && form.email.$error" class="text-red-500 text-xs mt-1">
-                      {{ form.email.$error.message }}
-                    </span>
-                  </div>
-
-                  <div>
-                    <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">
-                      Teléfono <span class="text-red-500">*</span>
-                    </label>
-                    <InputText
-                      id="phone"
-                      type="tel"
-                      v-model="form.phone.$value"
-                      :class="[
-                        'border border-gray-300 rounded-lg w-full',
-                        { 'border-red-500': submitted && form.phone.$error },
-                      ]"
-                      placeholder="+34 600 000 000"
-                    />
-                    <span v-if="submitted && form.phone.$error" class="text-red-500 text-xs mt-1">
-                      {{ form.phone.$error.message }}
-                    </span>
-                  </div>
-                </div>
               </div>
             </div>
             <div class="lg:col-span-1">
@@ -409,7 +355,6 @@ function formatDate(dateString) {
 
                 <button
                   type="submit"
-                  :disabled="isSubmitting"
                   class="w-full bg-principal-blue text-white rounded-lg shadow-lg p-3 text-center font-semibold transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <span v-if="!isSubmitting">Proceder al pago</span>
@@ -449,7 +394,6 @@ function formatDate(dateString) {
   margin-top: 0.75rem;
 }
 
-/* Placeholders más claros */
 :deep(input::placeholder) {
   color: #d1d5db; /* gray-300 */
   opacity: 1;
@@ -468,10 +412,9 @@ function formatDate(dateString) {
   color: #d1d5db;
 }
 
-/* Asegurar que los inputs tengan borde gris claro por defecto */
 :deep(input) {
-  border: 1px solid #d1d5db; /* gray-300 */
-  border-radius: 0.375rem; /* rounded-lg equivalente */
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem;
   padding: 0.5rem 0.75rem;
   outline: none;
   transition: border-color 0.2s;

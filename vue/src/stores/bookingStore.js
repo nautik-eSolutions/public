@@ -64,12 +64,15 @@ export const useBookingStore = defineStore('bookingStore', {
 
     },
 
-    async initPayment(mooringCategoryId, startDate, endDate, boatId) {
+    async initPayment(mooringCategoryId, startDate, endDate, boatId,billingAddress,city,country) {
       const resp = await axiosSpring.post('payments/init', {
         mooringCategoryId,
         startDate,
         endDate,
-        boatId
+        boatId,
+        billingAddress,
+        city,
+        country
       })
       return resp.data
     },
