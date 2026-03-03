@@ -32,7 +32,7 @@ const router = createRouter({
       component: SearchPage,
     },
     {
-      path: '/port',
+      path: '/port/:id',
       name: 'port',
       component: PortPage,
     },

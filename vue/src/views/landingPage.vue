@@ -52,27 +52,27 @@ const puertos = ref([
     imagen:
       'https://mallorcacaprice.com/wp-content/uploads/2024/10/fira-marinera-port-andratx.webp',
     clase: 'h-64',
-    id: 1,
+    id: 10,
   },
   {
     nombre: 'Porto Colom',
     imagen:
       'https://e00-elmundo.uecdn.es/assets/multimedia/imagenes/2019/10/08/15705370670358_640x0.jpg',
     clase: 'h-64',
-    id: 3,
+    id: 9,
   },
   {
     nombre: 'Marina Cala D’Or',
     imagen: 'https://www.yachtdigest.com/wp-content/uploads/2024/03/marina-de-cala-dor-01.jpg',
     clase: 'h-80',
-    id: 4,
+    id: 11,
   },
   {
     nombre: 'Port Adriano',
     imagen:
       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_Vj4SL-DMFfqVRCja2-eHMIKZ0Z2ssolQGQ&s',
     clase: 'h-80',
-    id: 2,
+    id: 12,
   },
 ])
 const faqItems = ref([
