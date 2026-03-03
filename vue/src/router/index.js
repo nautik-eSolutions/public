@@ -15,8 +15,6 @@ import BoatPage from '@/views/boatPage.vue'
 import createBooking from '@/views/createBooking.vue'
 import editBoat from '@/views/editBoat.vue'
 import ReservationsView from "@/views/ReservationsView.vue";
-import FixedMoorings from '@/views/fixedMoorings.vue'
-import { F } from 'vue-router/dist/devtools-EWN81iOl.mjs'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -101,12 +99,7 @@ const router = createRouter({
       path: '/payment-success',
       name: 'PaymentSuccess',
       component: bookings,
-    },
-    {
-      path: '/fixed-moorings',
-      name: 'fixed-moorings',
-      component: FixedMoorings ,
-    },
+    }
   ],
 })
 

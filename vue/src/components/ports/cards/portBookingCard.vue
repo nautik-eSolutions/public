@@ -5,10 +5,18 @@ export default {
 </script>
 
 <script setup>
-import Chip from 'primevue/chip'
-import { faFaucet, faShip, faTrashCan } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-defineProps({
+import {
+  faBolt,
+  faDroplet,
+  faWifi,
+  faShield,
+  faTrash,
+  faShower,
+  faParking,
+} from '@fortawesome/free-solid-svg-icons'
+import Splitter from '@/volt/Splitter.vue'
+const props = defineProps({
   id: [String, Number],
   portId: [String, Number],
   zoneName: String,
@@ -16,38 +24,31 @@ defineProps({
   price: Number,
   maxBeam: Number,
   maxLength: Number,
-  electricPower: {
-    type: Number,
-    default: 16, // Amperios
-  },
-  waterAvailable: {
-    type: Boolean,
-    default: true,
-  },
-  wasteCollection: {
-    type: Boolean,
-    default: true,
-  },
   services: {
     type: Array,
-    default: () => ['Wifi', 'Duchas', 'Seguridad'],
+    default: () => [],
   },
+  description:String
 })
 
 defineEmits(['click'])
-
-const serviceIcons = {
-  Wifi: 'pi pi-wifi',
-  Restaurantes: 'pi pi-shopping-bag',
-  Limpieza: 'pi pi-sparkles',
-  Duchas: 'pi pi-sun',
-  Seguridad: 'pi pi-shield',
-  Parking: 'pi pi-car',
-  Lavandería: 'pi pi-replay',
-  'Bar/Cafetería': 'pi pi-coffee',
+function hasService(serviceName) {
+  return props.services?.some((service) => service.name === serviceName)
 }
-
-const getServiceIcon = (service) => serviceIcons[service] || 'pi pi-check'
+function getServiceLabel(serviceName) {
+  const labels = {
+    Electricity16A: 'Electricidad 16A',
+    Electricity32A: 'Electricidad 32A',
+    Electricity63A: 'Electricidad 63A',
+    FreshWater: 'Agua Dulce',
+    WiFiPremium: 'WiFi Premium',
+    Security247: 'Seguridad 24/7',
+    WasteDisposal: 'Gestión Residuos',
+    ShowersAndLockers: 'Duchas y Taquillas',
+    Parking: 'Aparcamiento',
+  }
+  return labels[serviceName] || serviceName
+}
 </script>
 
 <template>
@@ -62,7 +63,11 @@ const getServiceIcon = (service) => serviceIcons[service] || 'pi pi-check'
         >
           {{ zoneName }}
         </h3>
-
+        <h3
+          class="text-md font-bold border-b-2 border-b-gray-200 text-gray-900 mb-3 group-hover:text-principal-blue transition-colors"
+        >
+          {{ description }}
+        </h3>
         <div class="grid grid-cols-2 gap-3 mb-4">
           <div class="flex items-center gap-2 text-sm text-gray-600">
             <i class="pi pi-arrows-h text-principal-blue"></i>
@@ -72,21 +77,68 @@ const getServiceIcon = (service) => serviceIcons[service] || 'pi pi-check'
             <i class="pi pi-arrows-v text-principal-blue"></i>
             <span><strong>Manga:</strong> {{ maxBeam }}m</span>
           </div>
-          <div class="flex items-center gap-2 text-sm text-gray-600">
-            <i class="pi pi-bolt text-principal-blue"></i>
-            <span><strong>Potencia:</strong> {{ electricPower }}A</span>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3 mt-2" v-if="services && services.length > 0">
+          <div
+            v-if="hasService('Electricity16A')"
+            class="flex items-center gap-2 text-sm text-gray-600"
+          >
+            <FontAwesomeIcon :icon="faBolt" />
+            <span>{{ getServiceLabel('Electricity16A') }}</span>
           </div>
-          <div class="flex items-center gap-2 text-sm">
-            <FontAwesomeIcon :icon="faFaucet" size="xl" />
-            <span :class="waterAvailable ? 'text-gray-600' : 'text-gray-400'"
-              ><strong>Agua</strong></span
-            >
+          <div
+            v-if="hasService('Electricity32A')"
+            class="flex items-center gap-2 text-sm text-gray-600"
+          >
+            <FontAwesomeIcon :icon="faBolt" />
+            <span>{{ getServiceLabel('Electricity32A') }}</span>
           </div>
-          <div class="flex items-center gap-2 text-sm col-span-2">
-            <FontAwesomeIcon :icon="faTrashCan" />
-            <span :class="wasteCollection ? 'text-gray-600' : 'text-gray-400'"
-              ><strong>Recogida de residuos</strong></span
-            >
+          <div
+            v-if="hasService('Electricity63A')"
+            class="flex items-center gap-2 text-sm text-gray-600"
+          >
+            <FontAwesomeIcon :icon="faBolt" />
+            <span>{{ getServiceLabel('Electricity63A') }}</span>
+          </div>
+          <div
+            v-if="hasService('FreshWater')"
+            class="flex items-center gap-2 text-sm text-gray-600"
+          >
+            <FontAwesomeIcon :icon="faDroplet" />
+            <span>{{ getServiceLabel('FreshWater') }}</span>
+          </div>
+          <div
+            v-if="hasService('WiFiPremium')"
+            class="flex items-center gap-2 text-sm text-gray-600"
+          >
+            <FontAwesomeIcon :icon="faWifi" />
+            <span>{{ getServiceLabel('WiFiPremium') }}</span>
+          </div>
+          <div
+            v-if="hasService('Security247')"
+            class="flex items-center gap-2 text-sm text-gray-600"
+          >
+            <FontAwesomeIcon :icon="faShield" />
+            <span>{{ getServiceLabel('Security247') }}</span>
+          </div>
+          <div
+            v-if="hasService('WasteDisposal')"
+            class="flex items-center gap-2 text-sm text-gray-600"
+          >
+            <FontAwesomeIcon :icon="faTrash" class="text-gray-600" />
+            <span>{{ getServiceLabel('WasteDisposal') }}</span>
+          </div>
+          <div
+            v-if="hasService('ShowersAndLockers')"
+            class="flex items-center gap-2 text-sm text-gray-600"
+          >
+            <FontAwesomeIcon :icon="faShower" />
+            <span>{{ getServiceLabel('ShowersAndLockers') }}</span>
+          </div>
+          <div v-if="hasService('Parking')" class="flex items-center gap-2 text-sm text-gray-600">
+            <FontAwesomeIcon :icon="faParking" class="text-slate-700" />
+            <span>{{ getServiceLabel('Parking') }}</span>
           </div>
         </div>
       </div>
@@ -94,7 +146,7 @@ const getServiceIcon = (service) => serviceIcons[service] || 'pi pi-check'
       <div class="flex flex-col items-end justify-center ml-6 pl-6 border-l border-gray-200">
         <div class="text-right mb-3">
           <p class="text-sm text-gray-600 mb-1">Precio total</p>
-          <p class="text-3xl font-bold text-gray-900">{{ Math.round(price).toFixed(2)}}€</p>
+          <p class="text-3xl font-bold text-gray-900">{{ Math.round(price) }}€</p>
         </div>
         <button
           class="bg-principal-blue hover:bg-[#2929d4] text-white font-semibold py-3 px-8 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg flex items-center gap-2"
@@ -107,34 +159,4 @@ const getServiceIcon = (service) => serviceIcons[service] || 'pi pi-check'
   </div>
 </template>
 
-<style scoped>
-:deep(.p-chip) {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  background-color: #eff6ff;
-  color: #1e40af;
-  padding: 0.375rem 0.875rem;
-  border-radius: 9999px;
-  font-size: 0.875rem;
-  font-weight: 500;
-  transition: all 0.2s;
-}
-
-:deep(.p-chip:hover) {
-  background-color: #dbeafe;
-  transform: translateY(-1px);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-:deep(.p-chip .p-chip-icon) {
-  font-size: 0.875rem;
-  color: #1e40af;
-}
-
-:deep(.p-chip .p-chip-label) {
-  font-size: 0.875rem;
-  line-height: 1.25;
-  font-weight: 500;
-}
-</style>
+<style scoped></style>

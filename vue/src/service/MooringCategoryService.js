@@ -8,6 +8,7 @@ export class MooringCategoryService {
     const data = await axiosSpring
       .get('/availability/mooring-categories/port/' + id + '/dimensions/' + length + '/' + beam +'/'+draft+ '/dates/' + startDate + '/' + endDate)
       .then((resp) => resp.data)
+    console.log(data)
     return data.map((mc) => this.#fromJson(mc))
   }
 
@@ -23,7 +24,9 @@ export class MooringCategoryService {
       resp.basePrice,
       resp.tax,
       resp.totalPrice,
-      resp.minPricePerDay)
+      resp.minPricePerDay,
+      resp.zone
+    )
   }
 }
 

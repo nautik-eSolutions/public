@@ -60,19 +60,6 @@ const updatePriceRange = (value) => {
         </label>
       </div>
     </div>
-    <div class="mb-6">
-      <h4 class="text-sm font-semibold text-gray-900 mb-3">
-        Precio: {{ filters.priceRange[0] }}€ - {{ filters.priceRange[1] }}€
-      </h4>
-      <input
-        type="range"
-        :value="filters.priceRange[1]"
-        @input="updatePriceRange($event.target.value)"
-        :min="filters.priceRange[0]"
-        :max="maxPrice"
-        class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-[#3b3bf5]"
-      />
-    </div>
   </div>
 </template>
 

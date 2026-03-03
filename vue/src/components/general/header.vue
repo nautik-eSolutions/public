@@ -73,7 +73,7 @@ function redirectToLogin() {
     <Drawer v-model:visible="visibleDrawer" justify-center="justify-center" header='Menú'>
       <div class="flex flex-col justify-between h-full gap-8">
         <div class="flex flex-col h-full mb-4">
-          <RouterLink to="boats">
+          <RouterLink to="/boats">
             <div class="flex items-center gap-3 hover:bg-sky-950 p-2 rounded-md cursor-pointer">
               <FontAwesomeIcon :icon="faShip" size="xl" />
               <span class="text-lg font-medium">Mis barcos</span>
@@ -87,17 +87,24 @@ function redirectToLogin() {
             </div>
           </RouterLink>
           <Splitter />
-          <RouterLink to="bookings">
+          <RouterLink to="/bookings">
             <div class="flex items-center gap-3 hover:bg-sky-950 p-2 rounded-md cursor-pointer">
               <FontAwesomeIcon :icon="faCalendarDays" size="xl" />
               <span class="text-lg font-medium">Reservas</span>
             </div>
           </RouterLink>
           <Splitter />
-          <RouterLink to="invoices">
+          <RouterLink to="/invoices">
             <div class="flex items-center gap-3 hover:bg-sky-950 p-2 rounded-md cursor-pointer">
               <FontAwesomeIcon :icon="faReceipt" size="xl" />
               <span class="text-lg font-medium">Facturas</span>
+            </div>
+          </RouterLink>
+          <Splitter />
+          <RouterLink to="/fixed-moorings">
+            <div class="flex items-center gap-3 hover:bg-sky-950 p-2 rounded-md cursor-pointer">
+              <FontAwesomeIcon :icon="faReceipt" size="xl" />
+              <span class="text-lg font-medium">Mis amarres</span>
             </div>
           </RouterLink>
         </div>

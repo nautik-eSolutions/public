@@ -2,6 +2,10 @@ import { computed } from 'vue'
 
 export function useFiltering(categories, filters, sortBy) {
   const filteredAndSorted = computed(() => {
+    if (!categories.value || categories.value.length === 0) {
+      return []
+    }
+
     let result = [...categories.value]
 
     if (filters.value.wifi) {
@@ -13,19 +17,14 @@ export function useFiltering(categories, filters, sortBy) {
     if (filters.value.limpieza) {
       result = result.filter((mc) => mc.services?.includes('Limpieza'))
     }
-    console.log("result1", result)
 
-    result = result.filter(
-      (mc) =>
-        mc.totalPrice >= filters.value.priceRange.min&&
-        mc.totalPrice <= filters.value.priceRange.max,
-    )
+    console.log(filters.value.priceRange)
     switch (sortBy.value) {
       case 'price_low':
-        result.sort((a, b) => a.totalPrice - b.totalPrice)
+        result.sort((a, b) => (a.totalPrice || 0) - (b.totalPrice || 0))
         break
       case 'price_high':
-        result.sort((a, b) => b.totalPrice - a.totalPrice)
+        result.sort((a, b) => (b.totalPrice || 0) - (a.totalPrice || 0))
         break
       case 'distance':
         break
