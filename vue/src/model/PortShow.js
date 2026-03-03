@@ -18,7 +18,7 @@ export class PortShow {
   ) {
     this.id = id
     this.name = name
-    this.city = city?.name ?? city // acepta objeto {name} o string
+    this.city = city?.name ?? city
     this.zones = zones?.[0] ?? zones
     this.description = description
     this.address = address
@@ -32,14 +32,9 @@ export class PortShow {
     // this.images = Array.isArray(images) ? images : []
   }
 
-  /**
-   * Genera URLs públicas desde S3.
-   * Configura en .env: VITE_S3_BASE_URL=https://tu-bucket.s3.eu-west-1.amazonaws.com
-   */
   /*
   get imageUrls() {
-    const base = import.meta.env.VITE_S3_BASE_URL?.replace(/\/$/, '') ?? ''
-    return this.images.map((img) => (img.startsWith('http') ? img : `${base}/${img}`))
+
   }
 
    */
