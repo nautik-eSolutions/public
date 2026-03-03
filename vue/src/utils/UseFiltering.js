@@ -7,18 +7,52 @@ export function useFiltering(categories, filters, sortBy) {
     }
 
     let result = [...categories.value]
-
-    if (filters.value.wifi) {
-      result = result.filter((mc) => mc.services?.includes('Wifi'))
-    }
-    if (filters.value.restaurantes) {
-      result = result.filter((mc) => mc.services?.includes('Restaurantes'))
-    }
-    if (filters.value.limpieza) {
-      result = result.filter((mc) => mc.services?.includes('Limpieza'))
+    if (filters.value.electricity16A) {
+      result = result.filter((mc) =>
+        mc.services?.some((service) => service.name === 'Electricity16A'),
+      )
     }
 
-    console.log(filters.value.priceRange)
+    if (filters.value.electricity32A) {
+      result = result.filter((mc) =>
+        mc.services?.some((service) => service.name === 'Electricity32A'),
+      )
+    }
+
+    if (filters.value.electricity63A) {
+      result = result.filter((mc) =>
+        mc.services?.some((service) => service.name === 'Electricity63A'),
+      )
+    }
+
+    if (filters.value.freshWater) {
+      result = result.filter((mc) => mc.services?.some((service) => service.name === 'FreshWater'))
+    }
+
+    if (filters.value.wifiPremium) {
+      result = result.filter((mc) => mc.services?.some((service) => service.name === 'WiFiPremium'))
+    }
+
+    if (filters.value.security247) {
+      result = result.filter((mc) => mc.services?.some((service) => service.name === 'Security247'))
+    }
+
+    if (filters.value.wasteDisposal) {
+      result = result.filter((mc) =>
+        mc.services?.some((service) => service.name === 'WasteDisposal'),
+      )
+    }
+
+    if (filters.value.showersAndLockers) {
+      result = result.filter((mc) =>
+        mc.services?.some((service) => service.name === 'ShowersAndLockers'),
+      )
+    }
+
+    if (filters.value.parking) {
+      result = result.filter((mc) => mc.services?.some((service) => service.name === 'Parking'))
+    }
+
     switch (sortBy.value) {
       case 'price_low':
         result.sort((a, b) => (a.totalPrice || 0) - (b.totalPrice || 0))
