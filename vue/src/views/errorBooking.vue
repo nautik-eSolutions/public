@@ -26,7 +26,7 @@ const backToHome = () => {
 
 <template>
   <Header />
-  <PaymentFailed :booking="booking" @back-to-home="backToHome" />
+  <PaymentFailed v-if="booking"  :booking="booking" @back-to-home="backToHome" />
 
   <Footer />
 </template>

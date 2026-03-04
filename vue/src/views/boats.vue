@@ -35,15 +35,6 @@ onMounted(async ()=>{
           <header-boat />
 
           <div class="flex-1 h-full">
-            <!--
-          <boat-info
-              name="F30RD"
-              registerNumber="7-PM-1-293-23"
-              length="15.32"
-              bream="4.54"
-              draft="0.96"
-          /> -->
-
             <div v-for="boat in boats" class="mt-4">
               <boat-info
                 :name="boat.name"

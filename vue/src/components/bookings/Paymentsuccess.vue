@@ -23,8 +23,8 @@ const summaryRows = [
 </script>
 
 <template>
-  <div class="min-h-screen bg-gray-100 flex items-start justify-center py-12 px-4">
-    <div class="w-full max-w-2xl flex flex-col gap-5">
+  <div class="min-h-screen flex items-start justify-center py-10 px-4">
+    <div class="w-full max-w-5xl flex flex-col gap-5">
       <div class="flex flex-col items-center gap-3 pt-2">
         <div class="w-14 h-14 rounded-full bg-green-100 flex items-center justify-center">
           <svg
@@ -40,7 +40,7 @@ const summaryRows = [
             <polyline points="20 6 9 17 4 12" />
           </svg>
         </div>
-        <h1 class="text-2xl font-bold text-gray-900">Booking Confirmed</h1>
+        <h1 class="text-3xl font-bold text-gray-900">Booking Confirmed</h1>
         <p class="text-m text-gray-500 text-center">Your mooring has been successfully reserved.</p>
         <span
           class="text-s font-medium px-3 py-1 rounded-full border border-green-400 text-green-600 bg-green-50"

@@ -26,7 +26,7 @@ onMounted(async () => {
 <template>
   <Header />
 
-  <main class="min-h-screen bg-gray-50">
+  <main class="min-h-screen ">
    <!-- cargando con la ruedecita -->
     <div v-if="!mounted" class="flex items-center justify-center py-32 text-gray-400 gap-3">
       <svg class="animate-spin w-5 h-5" viewBox="0 0 24 24" fill="none">
@@ -36,7 +36,7 @@ onMounted(async () => {
       <span class="text-sm tracking-wide">Cargando puerto...</span>
     </div>
 
-    <template v-else-if="port">
+    <template v-else >
 
       <section class="relative w-full bg-principal-blue overflow-hidden">
         <template v-if="port.hasImages">
@@ -271,18 +271,7 @@ onMounted(async () => {
               </h2>
             </div>
             <div class="p-6">
-              <div v-else-if="weather" class="flex flex-col gap-5">
-                <div class="flex items-center gap-4">
-                  <div>
-                  </div>
-                </div>
-                <div class="grid grid-cols-2 gap-2 pt-4 border-t border-gray-100">
-                  <div class="bg-gray-50 rounded-lg p-3">
-                  </div>
-                  <div class="bg-gray-50 rounded-lg p-3">
-                  </div>
-                </div>
-              </div>
+
             </div>
           </div>
 

@@ -21,7 +21,7 @@ const summaryRows = [
 </script>
 
 <template>
-  <div class="min-h-screen bg-gray-100 flex items-start justify-center py-10 px-4">
+  <div class="min-h-screen  flex items-start justify-center py-10 px-4">
     <div class="w-full max-w-5xl flex flex-col gap-5">
       <div class="flex flex-col items-center gap-3 pt-2">
         <div class="w-14 h-14 rounded-full bg-red-100 flex items-center justify-center">
@@ -68,7 +68,7 @@ const summaryRows = [
               <path d="M5 12H2a10 10 0 0 0 20 0h-3" />
             </svg>
           </div>
-          <h2 class="text-m font-semibold text-gray-800">Booking Summary</h2>
+          <h2 class="text-m font-semibold text-gray-800">Booking Details</h2>
         </div>
 
         <div class="flex flex-col divide-y divide-gray-100">
@@ -203,68 +203,11 @@ const summaryRows = [
           <p class="text-m font-semibold text-gray-800 mb-1">No charges were made</p>
           <p class="text-s text-gray-600 leading-relaxed">
             Since the transaction was not completed, no money has been deducted from your account.
-            Your mooring selection is held temporarily — please retry soon to secure it.
           </p>
         </div>
       </div>
 
       <div class="flex flex-wrap gap-2 justify-center pb-6">
-        <button
-          @click="emit('retry-payment')"
-          class="flex items-center gap-2 bg-gray-900 text-white text-m font-medium px-5 py-2.5 rounded-lg hover:bg-gray-800 transition-colors"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="w-4 h-4"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <polyline points="23 4 23 10 17 10" />
-            <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10" />
-          </svg>
-          Retry Payment
-        </button>
-        <button
-          @click="emit('change-payment-method')"
-          class="flex items-center gap-2 bg-white border border-gray-300 text-gray-700 text-m font-medium px-5 py-2.5 rounded-lg hover:bg-gray-50 transition-colors"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="w-4 h-4"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <rect x="1" y="4" width="22" height="16" rx="2" ry="2" />
-            <line x1="1" y1="10" x2="23" y2="10" />
-          </svg>
-          Change Payment Method
-        </button>
-        <button
-          @click="emit('contact-support')"
-          class="flex items-center gap-2 bg-white border border-gray-300 text-gray-700 text-m font-medium px-5 py-2.5 rounded-lg hover:bg-gray-50 transition-colors"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="w-4 h-4"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-          </svg>
-          Contact Support
-        </button>
         <button
           @click="emit('back-to-home')"
           class="flex items-center gap-2 bg-white border border-gray-300 text-gray-700 text-m font-medium px-5 py-2.5 rounded-lg hover:bg-gray-50 transition-colors"

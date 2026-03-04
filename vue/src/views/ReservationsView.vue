@@ -46,7 +46,6 @@ const displayedReservations = computed(() => {
           <p class="text-slate-500 mt-1 text-sm">Gestiona tus reservas de amarres</p>
         </div>
 
-        <!-- Tabs -->
         <div class="flex justify-center mb-8">
           <div class="bg-gray-100 rounded-xl p-1 flex gap-1">
             <button
@@ -95,7 +94,6 @@ const displayedReservations = computed(() => {
           </div>
         </div>
 
-        <!-- Reservation Cards -->
         <div class="flex flex-col gap-4">
           <ReservationCard
               v-for="reservation in displayedReservations"
