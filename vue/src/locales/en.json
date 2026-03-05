@@ -1,0 +1,402 @@
+{
+  "nav": {
+    "search": "Search port",
+    "bookings": "My bookings",
+    "login": "Log in"
+  },
+  "header": {
+    "greeting": "Hello",
+    "myBoats": "My boats",
+    "myDocumentation": "My documentation",
+    "reservations": "Bookings",
+    "invoices": "Invoices",
+    "logIn": "Log in",
+    "logOut": "Log out",
+    "loginDialog": {
+      "tagline": "Your entire nautical world, with a single login.",
+      "subtitle": "Track prices, organise your trips more easily and make your bookings faster",
+      "continueWithEmail": "Continue with email",
+      "continueWithFacebook": "Facebook"
+    }
+  },
+  "footer": {
+    "help": "Help",
+    "cookiePolicy": "Cookie policy",
+    "privacySettings": "Privacy settings",
+    "privacyPolicy": "Privacy policy",
+    "login": "Log in",
+    "termsOfService": "Terms of service",
+    "copyright": "© Port SL 2025"
+  },
+  "landing": {
+    "hero": {
+      "title": "Sail towards your next adventure",
+      "subtitle": "Discover the best ports and live the experience of the sea"
+    },
+    "search": {
+      "title": "Book moorings with",
+      "portLabel": "Port",
+      "portPlaceholder": "Select a port",
+      "datesLabel": "Dates",
+      "datesPlaceholder": "Select dates",
+      "lengthLabel": "Length (m)",
+      "beamLabel": "Beam (m)",
+      "boatLabel": "Boat",
+      "boatPlaceholder": "Select your vessel",
+      "addFirstBoat": "Add my first boat",
+      "submit": "Search"
+    },
+    "featuredPorts": "Featured ports",
+    "faq": {
+      "title": "Frequently asked questions",
+      "items": [
+        {
+          "question": "How does Nautik work?",
+          "answer": "Nautik is a platform that lets you search and book moorings at the best ports. Just select a port, dates and, if you are registered, your vessel. We will show you availability and prices so you can book safely."
+        },
+        {
+          "question": "When do I need to check in?",
+          "answer": "Check-in takes place on the day of arrival at the port, usually from 12:00. We recommend contacting the port in advance to confirm the exact time."
+        },
+        {
+          "question": "Can I deduct VAT from the booking?",
+          "answer": "It depends on your tax situation. If you are self-employed or a company and the boat is used for economic activity, you can consult your advisor. We issue invoices with VAT broken down."
+        },
+        {
+          "question": "What happens if I don't bring the documentation?",
+          "answer": "It is mandatory to present the boat's documentation (navigation permit, insurance, etc.) at check-in. If you don't bring it, the port may deny you access to the mooring."
+        },
+        {
+          "question": "Do I need a passport if I come from another country?",
+          "answer": "If you come from a country outside the Schengen area, you may need a passport. For EU citizens, only a valid national ID or identity document is required."
+        },
+        {
+          "question": "How do I become a regular customer?",
+          "answer": "Register on our website and complete your profile. By making recurring bookings, you will accumulate points and gain access to exclusive discounts for regular customers."
+        },
+        {
+          "question": "Can I use the services without being a customer?",
+          "answer": "Yes, you can search ports and check availability without registering. But to book you will need to create an account and, if you have a vessel, register it."
+        },
+        {
+          "question": "Are there moorings for seaplanes?",
+          "answer": "Currently our partner ports do not have specific moorings for seaplanes. All our moorings are for conventional vessels."
+        }
+      ]
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Welcome back!",
+      "noAccount": "Don't have an account?",
+      "createOne": "Create one today!",
+      "email": "Email address",
+      "emailPlaceholder": "Email address",
+      "password": "Password",
+      "passwordPlaceholder": "Password",
+      "rememberMe": "Remember me",
+      "forgotPassword": "Forgot your password?",
+      "submit": "Log in"
+    },
+    "register": {
+      "title": "Sign up today",
+      "subtitle": "Enjoy all the benefits of being a member",
+      "hasAccount": "Already have an account?",
+      "loginHere": "Log in here",
+      "personalInfo": "Personal Information",
+      "accountInfo": "Account Information",
+      "firstName": "First name",
+      "lastName": "Last name",
+      "birthDate": "Date of birth",
+      "idDocument": "Identity document",
+      "email": "Email address",
+      "emailPlaceholder": "email@example.com",
+      "username": "Username",
+      "usernamePlaceholder": "username123",
+      "password": "Password",
+      "confirmPassword": "Confirm password",
+      "passwordRequirements": "Password requirements:",
+      "passwordReqMin": "Minimum 8 characters",
+      "passwordReqUpper": "At least one uppercase letter",
+      "passwordReqLower": "At least one lowercase letter",
+      "passwordReqNumber": "At least one number",
+      "submit": "Create account"
+    },
+    "validation": {
+      "emailInvalid": "Invalid email address",
+      "emailRequired": "Email is required",
+      "emailValid": "Must be a valid email address",
+      "passwordRequired": "Password is required",
+      "passwordMin": "Password must be at least 8 characters",
+      "passwordUppercase": "Must contain at least one uppercase letter",
+      "passwordLowercase": "Must contain at least one lowercase letter",
+      "passwordNumber": "Must contain at least one number",
+      "passwordsMismatch": "Passwords do not match",
+      "confirmPasswordRequired": "You must confirm your password",
+      "firstNameRequired": "First name is required",
+      "firstNameMin": "First name must be at least 2 characters",
+      "firstNameLetters": "First name must only contain letters",
+      "lastNameRequired": "Last name is required",
+      "lastNameMin": "Last name must be at least 2 characters",
+      "lastNameLetters": "Last name must only contain letters",
+      "birthDateRequired": "Date of birth is required",
+      "birthDateFuture": "Date cannot be in the future",
+      "birthDateAge": "You must be at least 18 years old",
+      "idDocumentRequired": "Identity document is required",
+      "idDocumentFormat": "Invalid document format",
+      "idDocumentMin": "Document must be at least 6 characters",
+      "idDocumentMax": "Document cannot exceed 20 characters",
+      "usernameRequired": "Username is required",
+      "usernameMin": "Username must be at least 4 characters",
+      "usernameMax": "Username cannot exceed 20 characters",
+      "usernameFormat": "Only letters, numbers and underscores"
+    }
+  },
+  "boats": {
+    "pageTitle": "BOATS",
+    "addBoat": "Add boat",
+    "tableHeaders": {
+      "name": "Name",
+      "registry": "Registry",
+      "flag": "Flag",
+      "length": "Length",
+      "beam": "Beam",
+      "draft": "Draft",
+      "viewBoat": "View boat"
+    }
+  },
+  "boat": {
+    "title": "Vessel",
+    "length": "Length",
+    "beam": "Beam",
+    "draft": "Draft",
+    "edit": "Edit",
+    "bookings": "Bookings",
+    "form": {
+      "addTitle": "Add boat",
+      "editTitle": "Edit boat",
+      "back": "Back",
+      "name": "Boat name",
+      "namePlaceholder": "Enter the boat name",
+      "registry": "Registry number",
+      "registryPlaceholder": "Enter the boat registry number",
+      "type": "Boat type",
+      "typeDefault": "Boat type",
+      "lengthPlaceholder": "Enter length in metres",
+      "beamPlaceholder": "Enter beam in metres",
+      "draftPlaceholder": "Enter draft in metres",
+      "help": "Help",
+      "cancel": "Cancel",
+      "submit": "Continue"
+    }
+  },
+  "search": {
+    "title": "Find your mooring",
+    "filters": "Filters",
+    "noResults": "No results for your search",
+    "noResultsMessage": "Try adjusting the filters to see more options",
+    "sortBy": "Sort by",
+    "recommended": "Recommended",
+    "priceAsc": "Price: lowest to highest",
+    "filterPanel": {
+      "title": "Filters",
+      "services": "Services",
+      "wifi": "Wifi",
+      "restaurants": "Restaurants",
+      "cleaning": "Cleaning",
+      "price": "Price",
+      "applyFilters": "Apply filters"
+    },
+    "resultsHeader": {
+      "results": "results",
+      "orderedBy": "sorted by",
+      "bestOption": "Best option",
+      "lowestPrice": "Lowest price",
+      "highestPrice": "Highest price",
+      "distance": "Distance"
+    },
+    "searchBar": {
+      "destination": "Destination",
+      "length": "Length",
+      "beam": "Beam",
+      "arrival": "Arrival",
+      "departure": "Departure"
+    }
+  },
+  "portCard": {
+    "bookButton": "Book",
+    "totalPrice": "Total price",
+    "length": "Length",
+    "beam": "Beam",
+    "power": "Power",
+    "water": "Water",
+    "wasteCollection": "Waste collection",
+    "perNight": "€ /night"
+  },
+  "port": {
+    "loading": "Loading port...",
+    "about": "About the port",
+    "location": "Location",
+    "mooringZones": "Mooring zones",
+    "currentWeather": "Current weather",
+    "portFile": "Port details",
+    "city": "City",
+    "address": "Address",
+    "zones": "Zones",
+    "moorings": "Moorings",
+    "admittedVessels": "Admitted vessels",
+    "maxLength": "Max. length",
+    "maxBeam": "Max. beam",
+    "maxDraft": "Max. draft",
+    "categories": "category",
+    "categoriesPlural": "categories"
+  },
+  "createBooking": {
+    "title": "Complete booking",
+    "billingAddress": "Billing address",
+    "address": "Address",
+    "city": "City",
+    "country": "Country",
+    "contactInfo": "Contact information",
+    "email": "Email address",
+    "phone": "Phone",
+    "summary": {
+      "zone": "Zone",
+      "dimensions": "Dimensions",
+      "arrival": "Arrival",
+      "departure": "Departure",
+      "boat": "Vessel",
+      "mooringPrice": "Mooring price",
+      "vat": "VAT",
+      "total": "Total"
+    },
+    "proceedToPayment": "Proceed to payment"
+  },
+  "reservations": {
+    "title": "My bookings",
+    "subtitle": "Manage your mooring bookings",
+    "tabs": {
+      "future": "Upcoming",
+      "active": "Active",
+      "past": "Past"
+    },
+    "empty": "No bookings in this category.",
+    "card": {
+      "statusFuture": "Upcoming",
+      "statusActive": "Active",
+      "statusPast": "Past",
+      "viewDetails": "View details",
+      "contactSupport": "Contact support",
+      "cancel": "Cancel"
+    },
+    "confirmation": {
+      "title": "Booking",
+      "successBanner": "BOOKING CONFIRMED! ENJOY YOUR STAY.",
+      "back": "Back",
+      "boat": "Boat",
+      "ownerName": "First name",
+      "lastName": "Last name",
+      "arrival": "Arrival",
+      "departure": "Departure",
+      "arrivalTime": "Arrival time",
+      "nights": "Nights",
+      "subtotal": "Subtotal excl. VAT",
+      "vat": "VAT",
+      "totalPrice": "Total price",
+      "boatName": "Boat name",
+      "boatType": "Vessel type",
+      "registry": "Registry",
+      "port": "Port",
+      "vhfChannel": "VHF channel",
+      "contactPhone": "Contact phone",
+      "dniPassport": "ID / Passport",
+      "email": "Email",
+      "reservationNumber": "Booking number",
+      "sportsMarina": "MARINA",
+      "downloadVoucher": "Download voucher",
+      "bookingCard": {
+        "port": "Port",
+        "arrival": "Arrival",
+        "departure": "Departure",
+        "totalPrice": "Total price"
+      }
+    }
+  },
+  "paymentSuccess": {
+    "title": "Booking confirmed",
+    "subtitle": "Your mooring has been successfully reserved.",
+    "badge": "Payment successful",
+    "bookingDetails": "Booking details",
+    "summaryRows": {
+      "port": "Port",
+      "mooring": "Mooring",
+      "boat": "Vessel",
+      "checkIn": "Check-in",
+      "checkOut": "Check-out",
+      "totalPaid": "Total paid"
+    },
+    "confirmationEmail": "Confirmation email sent",
+    "actions": {
+      "viewBookings": "View my bookings",
+      "downloadInvoice": "Download invoice",
+      "backToHome": "Back to home"
+    }
+  },
+  "paymentFailed": {
+    "title": "Payment failed",
+    "subtitle": "We couldn't process your payment. No charges were made.",
+    "badge": "Transaction unsuccessful",
+    "bookingDetails": "Booking details",
+    "summaryRows": {
+      "port": "Port",
+      "mooring": "Mooring",
+      "boat": "Vessel",
+      "checkIn": "Check-in",
+      "checkOut": "Check-out",
+      "totalPaid": "Total paid"
+    },
+    "noCharges": "No charges were made",
+    "noChargesDetail": "Since the transaction was not completed, no money has been deducted from your account.",
+    "actions": {
+      "backToHome": "Back to home"
+    }
+  },
+  "weather": {
+    "title": "Weather forecast",
+    "wind": "Wind",
+    "windSpeed": "Speed",
+    "windDirection": "NW",
+    "waves": "Waves",
+    "waveHeight": "Height",
+    "waveDirection": "NW"
+  },
+  "sidebar": {
+    "myBoats": "My boats",
+    "reservations": "Bookings",
+    "invoices": "Invoices",
+    "settings": "Settings",
+    "help": "Help",
+    "logOut": "Log out"
+  },
+  "errors": {
+    "generic": "An error has occurred",
+    "notFound": "Not found"
+  },
+  "common": {
+    "back": "Back",
+    "continue": "Continue",
+    "cancel": "Cancel",
+    "save": "Save",
+    "edit": "Edit",
+    "help": "Help",
+    "loading": "Loading...",
+    "required": "*"
+  },
+  "booking": {
+    "from": "From",
+    "to": "To",
+    "totalPrice": "Total price",
+    "confirm": "Confirm booking",
+    "cancel": "Cancel"
+  }
+}

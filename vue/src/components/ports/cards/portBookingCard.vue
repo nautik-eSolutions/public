@@ -72,11 +72,15 @@ function getServiceLabel(serviceName) {
         <div class="grid grid-cols-2 gap-3 mb-4">
           <div class="flex items-center gap-2 text-sm text-gray-600">
             <i class="pi pi-arrows-h text-principal-blue"></i>
-            <span><strong>Eslora:</strong> {{ maxLength }}m</span>
+            <span
+              ><strong>{{ $t('searchBar.length') }}:</strong> {{ maxLength }}m</span
+            >
           </div>
           <div class="flex items-center gap-2 text-sm text-gray-600">
             <i class="pi pi-arrows-v text-principal-blue"></i>
-            <span><strong>Manga:</strong> {{ maxBeam }}m</span>
+            <span
+              ><strong>{{ $t('searchBar.beam') }}:</strong> {{ maxBeam }}m</span
+            >
           </div>
         </div>
 
@@ -129,6 +133,11 @@ function getServiceLabel(serviceName) {
           >
             <FontAwesomeIcon :icon="faTrash" class="text-gray-600" />
             <span>{{ getServiceLabel('WasteDisposal') }}</span>
+          <div class="flex items-center gap-2 text-sm text-gray-600">
+            <i class="pi pi-bolt text-principal-blue"></i>
+            <span
+              ><strong>{{ $t('portCard.power') }}:</strong> {{ electricPower }}A</span
+            >
           </div>
           <div
             v-if="hasService('ShowersAndLockers')"
@@ -136,10 +145,20 @@ function getServiceLabel(serviceName) {
           >
             <FontAwesomeIcon :icon="faShower" />
             <span>{{ getServiceLabel('ShowersAndLockers') }}</span>
+          <div class="flex items-center gap-2 text-sm">
+            <FontAwesomeIcon :icon="faFaucet" size="xl" />
+            <span :class="waterAvailable ? 'text-gray-600' : 'text-gray-400'"
+              ><strong>{{ $t('portCard.water') }}</strong></span
+            >
           </div>
           <div v-if="hasService('Parking')" class="flex items-center gap-2 text-sm text-gray-600">
             <FontAwesomeIcon :icon="faParking" class="text-slate-700" />
             <span>{{ getServiceLabel('Parking') }}</span>
+          <div class="flex items-center gap-2 text-sm col-span-2">
+            <FontAwesomeIcon :icon="faTrashCan" />
+            <span :class="wasteCollection ? 'text-gray-600' : 'text-gray-400'"
+              ><strong>{{ $t('portCard.wasteCollection') }}</strong></span
+            >
           </div>
         </div>
       </div>
@@ -147,13 +166,13 @@ function getServiceLabel(serviceName) {
       <div class="flex flex-col items-end justify-center ml-6 pl-6 border-l border-gray-200">
         <div class="text-right mb-3">
           <p class="text-sm text-gray-600 mb-1">Precio total</p>
-          <p class="text-3xl font-bold text-gray-900">{{ Math.round(price) }}€</p>
+          <p class="text-3xl font-bold text-gray-900">{{ Math.round(price).toFixed(2)}}€</p>
         </div>
         <button
           class="bg-principal-blue hover:bg-[#2929d4] text-white font-semibold py-3 px-8 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg flex items-center gap-2"
         >
           <i class="pi pi-calendar"></i>
-          <span>Reservar</span>
+          <span>{{ $t('portCard.bookButton') }}</span>
         </button>
       </div>
     </div>

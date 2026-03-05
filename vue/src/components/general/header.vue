@@ -81,7 +81,7 @@ function redirectToLogin() {
             </div>
           </RouterLink>
           <Splitter />
-          <RouterLink to="bookings">
+          <RouterLink to="/bookings">
             <div class="flex items-center gap-3 hover:bg-sky-950 p-2 rounded-md cursor-pointer">
               <FontAwesomeIcon :icon="faUsers" size="xl" />
               <span class="text-lg font-medium">Mi documentación</span>

@@ -15,12 +15,14 @@ import { useBoatsStore } from '@/stores/boatsStore.js'
 import { auth } from '@/main.js'
 import { Carousel, Slide, Navigation } from 'vue3-carousel'
 import 'vue3-carousel/dist/carousel.css'
+import { useI18n } from 'vue-i18n'
 
 const ports = ref()
 const boats = ref()
 
 const portsStore = usePortsStore()
 const boatsStore = useBoatsStore()
+const { tm } = useI18n()
 onMounted(async () => {
   ports.value = await portsStore.getPorts()
 
@@ -52,71 +54,30 @@ const puertos = ref([
     imagen:
       'https://mallorcacaprice.com/wp-content/uploads/2024/10/fira-marinera-port-andratx.webp',
     clase: 'h-64',
-    id: 1,
+    id: 10,
   },
   {
     nombre: 'Porto Colom',
     imagen:
       'https://e00-elmundo.uecdn.es/assets/multimedia/imagenes/2019/10/08/15705370670358_640x0.jpg',
     clase: 'h-64',
-    id: 3,
+    id: 9,
   },
   {
     nombre: 'Marina Cala D’Or',
     imagen: 'https://www.yachtdigest.com/wp-content/uploads/2024/03/marina-de-cala-dor-01.jpg',
     clase: 'h-80',
-    id: 4,
+    id: 11,
   },
   {
     nombre: 'Port Adriano',
     imagen:
       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_Vj4SL-DMFfqVRCja2-eHMIKZ0Z2ssolQGQ&s',
     clase: 'h-80',
-    id: 2,
+    id: 12,
   },
 ])
-const faqItems = ref([
-  {
-    pregunta: '¿Cómo funciona Nautik?',
-    respuesta:
-      'Nautik es una plataforma que te permite buscar y reservar amarres en los mejores puertos. Solo tienes que seleccionar puerto, fechas y, si estás registrado, tu embarcación. Te mostraremos disponibilidad y precios para que reserves de forma segura.',
-  },
-  {
-    pregunta: '¿Cuándo hay que hacer el check in?',
-    respuesta:
-      'El check-in se realiza el día de llegada al puerto, normalmente a partir de las 12:00 h. Te recomendamos contactar con el puerto con antelación para confirmar la hora exacta.',
-  },
-  {
-    pregunta: '¿Se puede desgravar el I.V.A de la reserva?',
-    respuesta:
-      'Depende de tu situación fiscal. Si eres autónomo o empresa y el barco se utiliza para actividad económica, puedes consultar con tu asesor. Nosotros emitimos factura con IVA desglosado.',
-  },
-  {
-    pregunta: '¿Qué pasa si no llevo la documentación?',
-    respuesta:
-      'Es obligatorio presentar la documentación del barco (permiso de navegación, seguro, etc.) en el momento del check-in. Si no la llevas, el puerto puede denegarte el acceso al amarre.',
-  },
-  {
-    pregunta: '¿Necesito pasaporte si vengo de otro país?',
-    respuesta:
-      'Si vienes de un país no perteneciente al espacio Schengen, es posible que necesites pasaporte. Para ciudadanos de la UE, solo es necesario el DNI o documento de identidad en vigor.',
-  },
-  {
-    pregunta: '¿Cómo me hago cliente fijo?',
-    respuesta:
-      'Regístrate en nuestra web y completa tu perfil. Al hacer reservas recurrentes, acumularás puntos y tendrás acceso a descuentos exclusivos para clientes habituales.',
-  },
-  {
-    pregunta: '¿Puedo utilizar los servicios sin ser cliente?',
-    respuesta:
-      'Sí, puedes buscar puertos y ver disponibilidad sin registrarte. Pero para reservar necesitarás crear una cuenta y, si tienes embarcación, registrarla.',
-  },
-  {
-    pregunta: '¿Hay amarres para hidroavión?',
-    respuesta:
-      'Actualmente nuestros puertos asociados no disponen de amarres específicos para hidroaviones. Todos nuestros amarres son para embarcaciones convencionales.',
-  },
-])
+const faqItems = ref(tm('landing.faq.items'))
 
 const primeraColumna = computed(() => faqItems.value.filter((_, index) => index % 2 === 0))
 const segundaColumna = computed(() => faqItems.value.filter((_, index) => index % 2 !== 0))
@@ -157,18 +118,20 @@ const isOpen = (item) => openItems.value.has(item)
         <h1
           class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight drop-shadow-2xl [text-shadow:2px_2px_4px_rgba(0,0,0,0.5)]"
         >
-          Navega hacia tu próxima aventura
+          {{ $t('landing.hero.title') }}
         </h1>
         <p
           class="text-lg md:text-xl mt-4 font-light drop-shadow-lg [text-shadow:1px_1px_2px_rgba(0,0,0,0.5)]"
         >
-          Descubre los mejores puertos y vive la experiencia del mar
+          {{ $t('landing.hero.subtitle') }}
         </p>
       </div>
     </div>
   </section>
   <section class="max-w-7xl mx-auto p-4">
-    <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-8">Puertos destacados</h2>
+    <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-8">
+      {{ $t('landing.featuredPorts') }}
+    </h2>
     <Carousel
       :items-to-show="3"
       :items-to-scroll="1"
@@ -190,7 +153,7 @@ const isOpen = (item) => openItems.value.has(item)
 
   <section class="max-w-7xl mx-auto px-4 py-16">
     <div class="p-8 md:p-12 bg-white rounded-2xl shadow-lg">
-      <h2 class="text-4xl text-slate-900 mb-12">Preguntas frecuentes</h2>
+      <h2 class="text-4xl text-slate-900 mb-12">{{ $t('landing.faq.title') }}</h2>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
         <div class="flex flex-col gap-4">
@@ -200,7 +163,7 @@ const isOpen = (item) => openItems.value.has(item)
               class="w-full flex justify-between items-center p-5 bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition-all duration-200 text-left"
               :class="{ 'rounded-b-none border-b-0': isOpen(item) }"
             >
-              <span class="text-lg font-medium text-slate-900 pr-4">{{ item.pregunta }}</span>
+              <span class="text-lg font-medium text-slate-900 pr-4">{{ item.question }}</span>
               <svg
                 class="w-5 h-5 text-[#3b3bf5] transform transition-transform duration-300 flex-shrink-0"
                 :class="{ 'rotate-180': isOpen(item) }"
@@ -228,7 +191,7 @@ const isOpen = (item) => openItems.value.has(item)
                 <div
                   class="p-5 bg-gray-50 border border-t-0 border-gray-200 rounded-b-xl text-gray-700"
                 >
-                  {{ item.respuesta }}
+                  {{ item.answer }}
                 </div>
               </div>
             </transition>
@@ -242,7 +205,7 @@ const isOpen = (item) => openItems.value.has(item)
               class="w-full flex justify-between items-center p-5 bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition-all duration-200 text-left"
               :class="{ 'rounded-b-none border-b-0': isOpen(item) }"
             >
-              <span class="text-lg font-medium text-slate-900 pr-4">{{ item.pregunta }}</span>
+              <span class="text-lg font-medium text-slate-900 pr-4">{{ item.question }}</span>
               <svg
                 class="w-5 h-5 text-[#3b3bf5] transform transition-transform duration-300 flex-shrink-0"
                 :class="{ 'rotate-180': isOpen(item) }"
@@ -271,7 +234,7 @@ const isOpen = (item) => openItems.value.has(item)
                 <div
                   class="p-5 bg-gray-50 border border-t-0 border-gray-200 rounded-b-xl text-gray-700"
                 >
-                  {{ item.respuesta }}
+                  {{ item.answer }}
                 </div>
               </div>
             </transition>

@@ -85,7 +85,7 @@ onMounted(async () => {
         class="lg:hidden fixed bottom-4 right-4 bg-[#3b3bf5] text-white px-6 py-3 rounded-full shadow-lg z-50 flex items-center gap-2 hover:bg-[#2f2fcc] transition-colors"
       >
         <i class="pi pi-filter text-lg"></i>
-        Filtros
+        {{$t('search.filters')}}
       </button>
 
       <MobileFiltersModal

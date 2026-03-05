@@ -12,7 +12,6 @@ const selectedReservation = ref(null)
 
 onMounted(async () => {
   reservations.value = await bookingStore.getAllBookingsByUser()
-  console.log(reservations.value)
 })
 
 const activeTab = ref('future')
@@ -41,9 +40,11 @@ function handleCancelReservation(reservation) {
   <Header />
   <div class="min-h-screen bg-gray-50">
     <div class="max-w-4xl mx-auto px-4 py-12">
+      <!-- Header -->
       <div class="mb-8">
-        <h1 class="text-3xl font-bold text-slate-900">Mis reservas</h1>
-        <p class="text-slate-500 mt-1 text-sm">Gestiona tus reservas de amarres</p>
+        {{ $t('reservations.title') }}
+        <h1 class="text-3xl font-bold text-slate-900"></h1>
+        <p class="text-slate-500 mt-1 text-sm">{{ $t('reservations.subtitle') }}</p>
       </div>
 
       <div class="flex justify-center mb-8">
@@ -57,7 +58,8 @@ function handleCancelReservation(reservation) {
                 : 'text-slate-500 hover:text-slate-700',
             ]"
           >
-            Próximas
+            {{ $t('reservations.tabs.future') }}
+
             <span
               v-if="futureReservations.length"
               class="bg-slate-900 text-white text-xs font-semibold rounded-full w-5 h-5 flex items-center justify-center"
@@ -74,7 +76,8 @@ function handleCancelReservation(reservation) {
                 : 'text-slate-500 hover:text-slate-700',
             ]"
           >
-            Activa
+            {{ $t('reservations.tabs.active') }}
+
             <span
               v-if="activeReservations.length"
               class="border border-green-500 text-green-600 text-xs font-semibold rounded-full w-5 h-5 flex items-center justify-center"
@@ -91,7 +94,7 @@ function handleCancelReservation(reservation) {
                 : 'text-slate-500 hover:text-slate-700',
             ]"
           >
-            Pasadas
+            {{ $t('reservations.tabs.past') }}
           </button>
         </div>
       </div>

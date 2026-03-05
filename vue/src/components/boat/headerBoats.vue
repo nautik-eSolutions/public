@@ -8,13 +8,24 @@ export default {
 
 <template>
   <div class="grid grid-cols-7 gap-4 mb-3">
-    <div class="text-xs font-semibold text-gray-600 text-center">Nombre</div>
-    <div class="text-xs font-semibold text-gray-600 text-center">Matrícula</div>
-    <div class="text-xs font-semibold text-gray-600 text-center">Bandera</div>
-    <div class="text-xs font-semibold text-gray-600 text-center">Eslora</div>
-    <div class="text-xs font-semibold text-gray-600 text-center">Manga</div>
-    <div class="text-xs font-semibold text-gray-600 text-center">Calado</div>
-    <div class="text-xs font-semibold text-gray-600 text-center">Ver barco</div>
+    <div class="text-xs font-semibold text-gray-600 text-center">
+      {{ $t('boats.tableHeaders.name') }}
+    </div>
+    <div class="text-xs font-semibold text-gray-600 text-center">
+      {{ $t('boats.tableHeaders.registry') }}
+    </div>
+    <div class="text-xs font-semibold text-gray-600 text-center">
+      {{ $t('boats.tableHeaders.length') }}
+    </div>
+    <div class="text-xs font-semibold text-gray-600 text-center">
+      {{ $t('boats.tableHeaders.beam') }}
+    </div>
+    <div class="text-xs font-semibold text-gray-600 text-center">
+      {{ $t('boats.tableHeaders.draft') }}
+    </div>
+    <div class="text-xs font-semibold text-gray-600 text-center">
+      {{ $t('boats.tableHeaders.viewBoat') }}
+    </div>
   </div>
 </template>
 

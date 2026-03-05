@@ -1,12 +1,12 @@
 import { defineStore } from 'pinia'
-import { getPorts } from '@/service/PortService.js'
-import { Port } from '@/model/Port.js'
+import * as BookingService from '@/service/BookingService.js'
 import { fetchBooking, getBookingByBoat, getBookings } from '@/service/BookingService.js'
 import { getMooringCategory } from '@/service/MooringCategoryService.js'
-import { MooringCategory } from '@/model/MooringCategory.js'
 import { MooringCategoryPreBooking } from '@/model/MooringCategoryPreBooking.js'
-import {Booking} from "@/model/Booking.js";
-import axiosSpring from "@/plugins/axiosSpring.js";
+import { Booking } from '@/model/Booking.js'
+import axiosSpring from '@/plugins/axiosSpring.js'
+import { useBoatStore } from '@/stores/boatStore.js'
+
 
 export const useBookingStore = defineStore('bookingStore', {
   state: () => {
@@ -15,6 +15,8 @@ export const useBookingStore = defineStore('bookingStore', {
     }
   },
   actions: {
+
+
     async createBooking(mooringCategoryId, startDate, endDate, boatId) {
       const resp = await fetchBooking(mooringCategoryId, startDate, endDate, boatId)
       if (resp.data === true) {
@@ -59,6 +61,8 @@ export const useBookingStore = defineStore('bookingStore', {
 
     },
     async getAllBookingsByUser(){
+      const boatStore = useBoatStore()
+
       const resp = await getBookings()
       return resp.data.data.map(booking => Booking.fromJson(booking));
 
@@ -75,6 +79,21 @@ export const useBookingStore = defineStore('bookingStore', {
         country
       })
       return resp.data
+    },
+    async getBookingByOrder(order){
+      const boatStore = useBoatStore()
+
+      console.log(order)
+      const resp = await BookingService.getBookingById(order)
+      console.log(resp.data.data[0].boat_id)
+      const boat = await boatStore.getBoat(resp.data.data[0].boat_id)
+      console.log(boat)
+
+      return Booking.fromJson(resp.data.data[0], boat.name)
+    },
+
+    async getInvoice(order){
+      return await BookingService.getInvoice(order)
     },
 
   },

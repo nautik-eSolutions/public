@@ -64,16 +64,16 @@ const handleSubmit = async () => {
             <div
               class="text-surface-900 dark:text-surface-0 text-2xl font-bold leading-tight text-center w-full"
             >
-              Bienvenido otra vez!
+              {{ $t('auth.login.title') }}
             </div>
             <RouterLink to="/personal-register" class="text-blue-500 hover:text-blue-700">
               <div class="text-center w-full">
-                <span class="text-surface-700 dark:text-surface-200 leading-normal"
-                  >No tienes una cuenta?</span
-                >
-                <a class="font-medium ml-1 cursor-pointer hover:text-primary-emphasis"
-                  >Créate una hoy!</a
-                >
+                <span class="text-surface-700 dark:text-surface-200 leading-normal">{{
+                  $t('auth.login.noAccount')
+                }}</span>
+                <a class="font-medium ml-1 cursor-pointer hover:text-primary-emphasis">{{
+                  $t('auth.login.createOne')
+                }}</a>
               </div>
             </RouterLink>
           </div>
@@ -83,7 +83,7 @@ const handleSubmit = async () => {
             <label
               for="email1"
               class="text-surface-900 dark:text-surface-0 font-medium leading-normal"
-              >Email Address</label
+              >{{ $t('auth.login.email') }}</label
             >
             <InputText
               id="email1"
@@ -103,8 +103,9 @@ const handleSubmit = async () => {
             <label
               for="password1"
               class="text-surface-900 dark:text-surface-0 font-medium leading-normal"
-              >Password</label
             >
+              {{ $t('auth.login.password') }}
+            </label>
             <Password
               id="password1"
               name="password1"
@@ -124,18 +125,20 @@ const handleSubmit = async () => {
             class="flex flex-col sm:flex-row items-start sm:items-center justify-between w-full gap-3 sm:gap-0"
           >
             <div class="flex items-center gap-2">
-              <label for="rememberme1" class="text-surface-900 dark:text-surface-0 leading-normal"
-                >Remember me</label
+              <label
+                for="rememberme1"
+                class="text-surface-900 dark:text-surface-0 leading-normal"
+                >{{ $t('auth.login.rememberMe') }}</label
               >
             </div>
-            <a class="text-primary font-medium cursor-pointer hover:text-primary-emphasis"
-              >Forgot your password?</a
-            >
+            <a class="text-primary font-medium cursor-pointer hover:text-primary-emphasis">
+              {{ $t('auth.login.forgotPassword') }}
+            </a>
           </div>
         </div>
         <Button
           type="submit"
-          label="Sign In"
+          :label="$t('auth.login.submit')"
           icon="pi pi-user"
           class="w-full py-2 rounded-lg flex justify-center items-center gap-2"
         >
