@@ -28,13 +28,6 @@ function handleClick(){
   >
     <div class="text-sm font-medium text-gray-900 text-center">{{ name }}</div>
     <div class="text-sm font-medium text-gray-900 text-center">{{ registerNumber }}</div>
-    <div class="flex justify-center">
-      <div class="w-8 h-5 rounded overflow-hidden">
-        <div class="h-1/4 bg-red-600"></div>
-        <div class="h-1/2 bg-yellow-500"></div>
-        <div class="h-1/4 bg-red-600"></div>
-      </div>
-    </div>
     <div class="text-sm font-medium text-gray-900 text-center">{{ length }} m</div>
     <div class="text-sm font-medium text-gray-900 text-center">{{ bream }} m</div>
     <div class="text-sm font-medium text-gray-900 text-center">{{ draft }} m</div>

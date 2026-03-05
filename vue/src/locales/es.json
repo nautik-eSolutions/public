@@ -1,0 +1,402 @@
+{
+  "nav": {
+    "search": "Buscar puerto",
+    "bookings": "Mis reservas",
+    "login": "Iniciar sesión"
+  },
+  "header": {
+    "greeting": "Hola",
+    "myBoats": "Mis barcos",
+    "myDocumentation": "Mi documentación",
+    "reservations": "Reservas",
+    "invoices": "Facturas",
+    "logIn": "Iniciar sesión",
+    "logOut": "Cerrar sesión",
+    "loginDialog": {
+      "tagline": "Todo tu mundo náutico, a un solo inicio de sesión.",
+      "subtitle": "Controla los precios, organiza tus viajes más fácilmente y haz tus reservas más rápido",
+      "continueWithEmail": "Continuar con correo electrónico",
+      "continueWithFacebook": "Facebook"
+    }
+  },
+  "footer": {
+    "help": "Ayuda",
+    "cookiePolicy": "Política de cookies",
+    "privacySettings": "Configuración de privacidad",
+    "privacyPolicy": "Política de privacidad",
+    "login": "Iniciar Sesión",
+    "termsOfService": "Términos de servicios",
+    "copyright": "© Port SL 2025"
+  },
+  "landing": {
+    "hero": {
+      "title": "Navega hacia tu próxima aventura",
+      "subtitle": "Descubre los mejores puertos y vive la experiencia del mar"
+    },
+    "search": {
+      "title": "Reserva amarres con",
+      "portLabel": "Puerto",
+      "portPlaceholder": "Selecciona un puerto",
+      "datesLabel": "Fechas",
+      "datesPlaceholder": "Selecciona fechas",
+      "lengthLabel": "Eslora (m)",
+      "beamLabel": "Manga (m)",
+      "boatLabel": "Barco",
+      "boatPlaceholder": "Selecciona tu embarcación",
+      "addFirstBoat": "Añadir mi primer barco",
+      "submit": "Buscar"
+    },
+    "featuredPorts": "Puertos destacados",
+    "faq": {
+      "title": "Preguntas frecuentes",
+      "items": [
+        {
+          "question": "¿Cómo funciona Nautik?",
+          "answer": "Nautik es una plataforma que te permite buscar y reservar amarres en los mejores puertos. Solo tienes que seleccionar puerto, fechas y, si estás registrado, tu embarcación. Te mostraremos disponibilidad y precios para que reserves de forma segura."
+        },
+        {
+          "question": "¿Cuándo hay que hacer el check in?",
+          "answer": "El check-in se realiza el día de llegada al puerto, normalmente a partir de las 12:00 h. Te recomendamos contactar con el puerto con antelación para confirmar la hora exacta."
+        },
+        {
+          "question": "¿Se puede desgravar el I.V.A de la reserva?",
+          "answer": "Depende de tu situación fiscal. Si eres autónomo o empresa y el barco se utiliza para actividad económica, puedes consultar con tu asesor. Nosotros emitimos factura con IVA desglosado."
+        },
+        {
+          "question": "¿Qué pasa si no llevo la documentación?",
+          "answer": "Es obligatorio presentar la documentación del barco (permiso de navegación, seguro, etc.) en el momento del check-in. Si no la llevas, el puerto puede denegarte el acceso al amarre."
+        },
+        {
+          "question": "¿Necesito pasaporte si vengo de otro país?",
+          "answer": "Si vienes de un país no perteneciente al espacio Schengen, es posible que necesites pasaporte. Para ciudadanos de la UE, solo es necesario el DNI o documento de identidad en vigor."
+        },
+        {
+          "question": "¿Cómo me hago cliente fijo?",
+          "answer": "Regístrate en nuestra web y completa tu perfil. Al hacer reservas recurrentes, acumularás puntos y tendrás acceso a descuentos exclusivos para clientes habituales."
+        },
+        {
+          "question": "¿Puedo utilizar los servicios sin ser cliente?",
+          "answer": "Sí, puedes buscar puertos y ver disponibilidad sin registrarte. Pero para reservar necesitarás crear una cuenta y, si tienes embarcación, registrarla."
+        },
+        {
+          "question": "¿Hay amarres para hidroavión?",
+          "answer": "Actualmente nuestros puertos asociados no disponen de amarres específicos para hidroaviones. Todos nuestros amarres son para embarcaciones convencionales."
+        }
+      ]
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Bienvenido otra vez!",
+      "noAccount": "¿No tienes una cuenta?",
+      "createOne": "¡Créate una hoy!",
+      "email": "Correo electrónico",
+      "emailPlaceholder": "Correo electrónico",
+      "password": "Contraseña",
+      "passwordPlaceholder": "Contraseña",
+      "rememberMe": "Recuérdame",
+      "forgotPassword": "¿Olvidaste tu contraseña?",
+      "submit": "Iniciar sesión"
+    },
+    "register": {
+      "title": "Regístrate hoy",
+      "subtitle": "Disfruta de todas las ventajas de ser miembro",
+      "hasAccount": "¿Ya tienes una cuenta?",
+      "loginHere": "Inicia sesión aquí",
+      "personalInfo": "Información Personal",
+      "accountInfo": "Información de Cuenta",
+      "firstName": "Nombre",
+      "lastName": "Apellidos",
+      "birthDate": "Fecha de Nacimiento",
+      "idDocument": "Documento de Identidad",
+      "email": "Correo Electrónico",
+      "emailPlaceholder": "correo@ejemplo.com",
+      "username": "Nombre de Usuario",
+      "usernamePlaceholder": "usuario123",
+      "password": "Contraseña",
+      "confirmPassword": "Confirmar Contraseña",
+      "passwordRequirements": "Requisitos de la contraseña:",
+      "passwordReqMin": "Mínimo 8 caracteres",
+      "passwordReqUpper": "Al menos una letra mayúscula",
+      "passwordReqLower": "Al menos una letra minúscula",
+      "passwordReqNumber": "Al menos un número",
+      "submit": "Crear cuenta"
+    },
+    "validation": {
+      "emailInvalid": "Correo electrónico no válido",
+      "emailRequired": "El correo es obligatorio",
+      "emailValid": "Debe ser un correo electrónico válido",
+      "passwordRequired": "La contraseña es obligatoria",
+      "passwordMin": "La contraseña debe tener al menos 8 caracteres",
+      "passwordUppercase": "Debe contener al menos una mayúscula",
+      "passwordLowercase": "Debe contener al menos una letra minúscula",
+      "passwordNumber": "Debe contener al menos un número",
+      "passwordsMismatch": "Las contraseñas no coinciden",
+      "confirmPasswordRequired": "Debes confirmar tu contraseña",
+      "firstNameRequired": "El nombre es obligatorio",
+      "firstNameMin": "El nombre debe tener al menos 2 caracteres",
+      "firstNameLetters": "El nombre solo debe contener letras",
+      "lastNameRequired": "Los apellidos son obligatorios",
+      "lastNameMin": "Los apellidos deben tener al menos 2 caracteres",
+      "lastNameLetters": "Los apellidos solo deben contener letras",
+      "birthDateRequired": "La fecha de nacimiento es obligatoria",
+      "birthDateFuture": "La fecha no puede ser futura",
+      "birthDateAge": "Debes ser mayor de 18 años",
+      "idDocumentRequired": "El documento de identidad es obligatorio",
+      "idDocumentFormat": "Formato de documento inválido",
+      "idDocumentMin": "El documento debe tener al menos 6 caracteres",
+      "idDocumentMax": "El documento no puede exceder 20 caracteres",
+      "usernameRequired": "El nombre de usuario es obligatorio",
+      "usernameMin": "El nombre de usuario debe tener al menos 4 caracteres",
+      "usernameMax": "El nombre de usuario no puede exceder 20 caracteres",
+      "usernameFormat": "Solo letras, números y guiones bajos"
+    }
+  },
+  "boats": {
+    "pageTitle": "BARCOS",
+    "addBoat": "Añadir barco",
+    "tableHeaders": {
+      "name": "Nombre",
+      "registry": "Matrícula",
+      "flag": "Bandera",
+      "length": "Eslora",
+      "beam": "Manga",
+      "draft": "Calado",
+      "viewBoat": "Ver barco"
+    }
+  },
+  "boat": {
+    "title": "Embarcación",
+    "length": "Eslora",
+    "beam": "Manga",
+    "draft": "Calado",
+    "edit": "Editar",
+    "bookings": "Reservas",
+    "form": {
+      "addTitle": "Añadir barco",
+      "editTitle": "Editar barco",
+      "back": "Volver",
+      "name": "Nombre del barco",
+      "namePlaceholder": "Introduce el nombre del barco",
+      "registry": "Matrícula",
+      "registryPlaceholder": "Introduce la matrícula del barco",
+      "type": "Tipo de barco",
+      "typeDefault": "Tipo de barco",
+      "lengthPlaceholder": "Introduce metros de eslora",
+      "beamPlaceholder": "Introduce metros de manga",
+      "draftPlaceholder": "Introduce metros de calado",
+      "help": "Ayuda",
+      "cancel": "Cancelar",
+      "submit": "Continuar"
+    }
+  },
+  "search": {
+    "title": "Encuentra tu amarre",
+    "filters": "Filtros",
+    "noResults": "No hay resultados para tu búsqueda",
+    "noResultsMessage": "Intenta ajustar los filtros para ver más opciones",
+    "sortBy": "Ordenar por",
+    "recommended": "Recomendados",
+    "priceAsc": "Precio: menor a mayor",
+    "filterPanel": {
+      "title": "Filtros",
+      "services": "Servicios",
+      "wifi": "Wifi",
+      "restaurants": "Restaurantes",
+      "cleaning": "Limpieza",
+      "price": "Precio",
+      "applyFilters": "Aplicar filtros"
+    },
+    "resultsHeader": {
+      "results": "resultados",
+      "orderedBy": "ordenados por",
+      "bestOption": "Mejor opción",
+      "lowestPrice": "Precio más bajo",
+      "highestPrice": "Precio más alto",
+      "distance": "Distancia"
+    },
+    "searchBar": {
+      "destination": "Destino",
+      "length": "Eslora",
+      "beam": "Manga",
+      "arrival": "Llegada",
+      "departure": "Salida"
+    }
+  },
+  "portCard": {
+    "bookButton": "Reservar",
+    "totalPrice": "Precio total",
+    "length": "Eslora",
+    "beam": "Manga",
+    "power": "Potencia",
+    "water": "Agua",
+    "wasteCollection": "Recogida de residuos",
+    "perNight": "€ /noche"
+  },
+  "port": {
+    "loading": "Cargando puerto...",
+    "about": "Sobre el puerto",
+    "location": "Ubicación",
+    "mooringZones": "Zonas de amarre",
+    "currentWeather": "Tiempo actual",
+    "portFile": "Ficha del puerto",
+    "city": "Ciudad",
+    "address": "Dirección",
+    "zones": "Zonas",
+    "moorings": "Amarres",
+    "admittedVessels": "Embarcaciones admitidas",
+    "maxLength": "Eslora máx.",
+    "maxBeam": "Manga máx.",
+    "maxDraft": "Calado máx.",
+    "categories": "categoría",
+    "categoriesPlural": "categorías"
+  },
+  "createBooking": {
+    "title": "Completar reserva",
+    "billingAddress": "Dirección de facturación",
+    "address": "Domicilio",
+    "city": "Ciudad",
+    "country": "País",
+    "contactInfo": "Información de contacto",
+    "email": "Correo electrónico",
+    "phone": "Teléfono",
+    "summary": {
+      "zone": "Zona",
+      "dimensions": "Dimensiones",
+      "arrival": "Llegada",
+      "departure": "Salida",
+      "boat": "Embarcación",
+      "mooringPrice": "Precio amarre",
+      "vat": "I.V.A",
+      "total": "Total"
+    },
+    "proceedToPayment": "Proceder al pago"
+  },
+  "reservations": {
+    "title": "Mis reservas",
+    "subtitle": "Gestiona tus reservas de amarres",
+    "tabs": {
+      "future": "Futuras",
+      "active": "Activas",
+      "past": "Pasadas"
+    },
+    "empty": "No hay reservas en esta categoría.",
+    "card": {
+      "statusFuture": "Próxima",
+      "statusActive": "Activa",
+      "statusPast": "Pasada",
+      "viewDetails": "Ver detalles",
+      "contactSupport": "Contactar soporte",
+      "cancel": "Cancelar"
+    },
+    "confirmation": {
+      "title": "Reserva",
+      "successBanner": "RESERVA REALIZADA CON ÉXITO!! DISFRUTA TU ESTANCIA.",
+      "back": "Volver",
+      "boat": "Barco",
+      "ownerName": "Nombre",
+      "lastName": "Apellidos",
+      "arrival": "Llegada",
+      "departure": "Salida",
+      "arrivalTime": "Hora de llegada",
+      "nights": "Noches",
+      "subtotal": "Subtotal sin IVA",
+      "vat": "IVA",
+      "totalPrice": "Precio total",
+      "boatName": "Nombre del barco",
+      "boatType": "Tipo de embarcación",
+      "registry": "Matrícula",
+      "port": "Puerto",
+      "vhfChannel": "Canal VHF",
+      "contactPhone": "Teléfono de contacto",
+      "dniPassport": "DNI/Pasaporte",
+      "email": "Email",
+      "reservationNumber": "Número de reserva",
+      "sportsMarina": "PUERTO DEPORTIVO",
+      "downloadVoucher": "Descargar comprobante",
+      "bookingCard": {
+        "port": "Puerto",
+        "arrival": "Llegada",
+        "departure": "Salida",
+        "totalPrice": "Precio total"
+      }
+    }
+  },
+  "paymentSuccess": {
+    "title": "Reserva confirmada",
+    "subtitle": "Tu amarre ha sido reservado con éxito.",
+    "badge": "Pago realizado",
+    "bookingDetails": "Detalles de la reserva",
+    "summaryRows": {
+      "port": "Puerto",
+      "mooring": "Amarre",
+      "boat": "Embarcación",
+      "checkIn": "Entrada",
+      "checkOut": "Salida",
+      "totalPaid": "Total pagado"
+    },
+    "confirmationEmail": "Correo de confirmación enviado",
+    "actions": {
+      "viewBookings": "Ver mis reservas",
+      "downloadInvoice": "Descargar factura",
+      "backToHome": "Volver al inicio"
+    }
+  },
+  "paymentFailed": {
+    "title": "Pago fallido",
+    "subtitle": "No hemos podido procesar tu pago. No se ha realizado ningún cargo.",
+    "badge": "Transacción fallida",
+    "bookingDetails": "Detalles de la reserva",
+    "summaryRows": {
+      "port": "Puerto",
+      "mooring": "Amarre",
+      "boat": "Embarcación",
+      "checkIn": "Entrada",
+      "checkOut": "Salida",
+      "totalPaid": "Total pagado"
+    },
+    "noCharges": "No se han realizado cargos",
+    "noChargesDetail": "Como la transacción no se completó, no se ha descontado ningún importe de tu cuenta.",
+    "actions": {
+      "backToHome": "Volver al inicio"
+    }
+  },
+  "weather": {
+    "title": "Previsión meteorológica",
+    "wind": "Viento",
+    "windSpeed": "Velocidad",
+    "windDirection": "NO",
+    "waves": "Oleaje",
+    "waveHeight": "Altura",
+    "waveDirection": "NO"
+  },
+  "sidebar": {
+    "myBoats": "Mis barcos",
+    "reservations": "Reservas",
+    "invoices": "Facturas",
+    "settings": "Configuración",
+    "help": "Ayuda",
+    "logOut": "Log Out"
+  },
+  "errors": {
+    "generic": "Ha ocurrido un error",
+    "notFound": "No encontrado"
+  },
+  "common": {
+    "back": "Volver",
+    "continue": "Continuar",
+    "cancel": "Cancelar",
+    "save": "Guardar",
+    "edit": "Editar",
+    "help": "Ayuda",
+    "loading": "Cargando...",
+    "required": "*"
+  },
+  "booking": {
+    "from": "Desde",
+    "to": "Hasta",
+    "totalPrice": "Precio total",
+    "confirm": "Confirmar reserva",
+    "cancel": "Cancelar"
+  }
+}

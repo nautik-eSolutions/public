@@ -1,5 +1,16 @@
 <script setup>
 import { defineProps, defineEmits } from 'vue'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import {
+  faPlugCircleXmark,
+  faDroplet,
+  faWifi,
+  faShield,
+  faTrash,
+  faShower,
+  faParking,
+  faPlugCircleBolt,
+} from '@fortawesome/free-solid-svg-icons'
 
 const props = defineProps({
   filters: {
@@ -13,6 +24,7 @@ const props = defineProps({
 })
 
 const emit = defineEmits(['update:filters'])
+
 const updateFilter = (key, value) => {
   emit('update:filters', { ...props.filters, [key]: value })
 }
@@ -28,50 +40,123 @@ const updatePriceRange = (value) => {
 <template>
   <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 sticky top-4">
     <h3 class="text-lg font-bold text-gray-900 mb-4">Filtros</h3>
+
     <div class="mb-6">
       <h4 class="text-sm font-semibold text-gray-900 mb-3">Servicios</h4>
-      <div class="space-y-2">
-        <label class="flex items-center gap-2 cursor-pointer">
+      <div class="flex flex-col gap-0.5">
+        <label
+          class="flex items-center gap-2 cursor-pointer hover:bg-gray-50 p-2 rounded transition-colors"
+        >
           <input
             type="checkbox"
-            :checked="filters.wifi"
-            @change="updateFilter('wifi', $event.target.checked)"
+            :checked="filters.electricity16A"
+            @change="updateFilter('electricity16A', $event.target.checked)"
             class="w-4 h-4 text-[#3b3bf5] border-gray-300 rounded"
           />
-          <span class="text-sm text-gray-700">Wifi</span>
+          <FontAwesomeIcon :icon="faPlugCircleBolt" size="sm" />
+          <span class="text-sm text-gray-700">Electricidad 16A</span>
         </label>
-        <label class="flex items-center gap-2 cursor-pointer">
+
+        <label
+          class="flex items-center gap-2 cursor-pointer hover:bg-gray-50 p-2 rounded transition-colors"
+        >
           <input
             type="checkbox"
-            :checked="filters.restaurantes"
-            @change="updateFilter('restaurantes', $event.target.checked)"
+            :checked="filters.electricity32A"
+            @change="updateFilter('electricity32A', $event.target.checked)"
             class="w-4 h-4 text-[#3b3bf5] border-gray-300 rounded"
           />
-          <span class="text-sm text-gray-700">Restaurantes</span>
+          <FontAwesomeIcon :icon="faPlugCircleBolt" size="sm" />
+          <span class="text-sm text-gray-700">Electricidad 32A</span>
         </label>
-        <label class="flex items-center gap-2 cursor-pointer">
+
+        <label
+          class="flex items-center gap-2 cursor-pointer hover:bg-gray-50 p-2 rounded transition-colors"
+        >
           <input
             type="checkbox"
-            :checked="filters.limpieza"
-            @change="updateFilter('limpieza', $event.target.checked)"
+            :checked="filters.electricity63A"
+            @change="updateFilter('electricity63A', $event.target.checked)"
             class="w-4 h-4 text-[#3b3bf5] border-gray-300 rounded"
           />
-          <span class="text-sm text-gray-700">Limpieza</span>
+          <FontAwesomeIcon :icon="faPlugCircleBolt" size="sm" />
+          <span class="text-sm text-gray-700">Electricidad 63A</span>
+        </label>
+        <label
+          class="flex items-center gap-2 cursor-pointer hover:bg-gray-50 p-2 rounded transition-colors"
+        >
+          <input
+            type="checkbox"
+            :checked="filters.freshWater"
+            @change="updateFilter('freshWater', $event.target.checked)"
+            class="w-4 h-4 text-[#3b3bf5] border-gray-300 rounded"
+          />
+          <FontAwesomeIcon :icon="faDroplet" size="sm" />
+          <span class="text-sm text-gray-700">Agua Dulce</span>
+        </label>
+        <label
+          class="flex items-center gap-2 cursor-pointer hover:bg-gray-50 p-2 rounded transition-colors"
+        >
+          <input
+            type="checkbox"
+            :checked="filters.wifiPremium"
+            @change="updateFilter('wifiPremium', $event.target.checked)"
+            class="w-4 h-4 text-[#3b3bf5] border-gray-300 rounded"
+          />
+          <FontAwesomeIcon :icon="faWifi" size="sm" />
+          <span class="text-sm text-gray-700">WiFi Premium</span>
+        </label>
+
+        <label
+          class="flex items-center gap-2 cursor-pointer hover:bg-gray-50 p-2 rounded transition-colors"
+        >
+          <input
+            type="checkbox"
+            :checked="filters.security247"
+            @change="updateFilter('security247', $event.target.checked)"
+            class="w-4 h-4 text-[#3b3bf5] border-gray-300 rounded"
+          />
+          <FontAwesomeIcon :icon="faShield" size="sm" />
+          <span class="text-sm text-gray-700">Seguridad 24/7</span>
+        </label>
+
+        <label
+          class="flex items-center gap-2 cursor-pointer hover:bg-gray-50 p-2 rounded transition-colors"
+        >
+          <input
+            type="checkbox"
+            :checked="filters.wasteDisposal"
+            @change="updateFilter('wasteDisposal', $event.target.checked)"
+            class="w-4 h-4 text-[#3b3bf5] border-gray-300 rounded"
+          />
+          <FontAwesomeIcon :icon="faTrash" size="sm" />
+          <span class="text-sm text-gray-700">Gestión Residuos</span>
+        </label>
+        <label
+          class="flex items-center gap-2 cursor-pointer hover:bg-gray-50 p-2 rounded transition-colors"
+        >
+          <input
+            type="checkbox"
+            :checked="filters.showersAndLockers"
+            @change="updateFilter('showersAndLockers', $event.target.checked)"
+            class="w-4 h-4 text-[#3b3bf5] border-gray-300 rounded"
+          />
+          <FontAwesomeIcon :icon="faShower" size="sm" />
+          <span class="text-sm text-gray-700">Duchas y Taquillas</span>
+        </label>
+        <label
+          class="flex items-center gap-2 cursor-pointer hover:bg-gray-50 p-2 rounded transition-colors"
+        >
+          <input
+            type="checkbox"
+            :checked="filters.parking"
+            @change="updateFilter('parking', $event.target.checked)"
+            class="w-4 h-4 text-[#3b3bf5] border-gray-300 rounded"
+          />
+          <FontAwesomeIcon :icon="faParking" size="sm" />
+          <span class="text-sm text-gray-700">Aparcamiento</span>
         </label>
       </div>
-    </div>
-    <div class="mb-6">
-      <h4 class="text-sm font-semibold text-gray-900 mb-3">
-        Precio: {{ filters.priceRange[0] }}€ - {{ filters.priceRange[1] }}€
-      </h4>
-      <input
-        type="range"
-        :value="filters.priceRange[1]"
-        @input="updatePriceRange($event.target.value)"
-        :min="filters.priceRange[0]"
-        :max="maxPrice"
-        class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-[#3b3bf5]"
-      />
     </div>
   </div>
 </template>

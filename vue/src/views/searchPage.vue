@@ -1,26 +1,15 @@
-<script>
-import Footer from '@/components/general/footer.vue'
-import Header from '@/components/general/header.vue'
-import PortSearchedBar from '@/components/searchBars/portSearchedBar.vue'
-export default {
-  name: 'SearchPage',
-}
-</script>
-
 <script setup>
 import { useRoute, useRouter } from 'vue-router'
-import { onMounted, ref } from 'vue'
-import Header from '@/components/general/header.vue'
-import PortSearchedBar from '@/components/searchBars/portSearchedBar.vue'
-import Footer from '@/components/general/footer.vue'
-import DateTabs from '@/components/DateTabs.vue'
-import FilterPanel from '@/components/FilterPanel.vue'
-import MobileFiltersModal from '@/components/MobileFiltersModal.vue'
-import ResultsHeader from '@/components/ResultsHeader.vue'
-import EmptyState from '@/components/EmptyState.vue'
-import PortBookingCard from '@/components/ports/cards/portBookingCard.vue'
+import { computed, onMounted, ref, watch } from 'vue'
 import { MooringCategoryService } from '@/service/MooringCategoryService.js'
 import { useFiltering } from '@/utils/UseFiltering.js'
+import Footer from '@/components/general/footer.vue'
+import EmptyState from '@/components/EmptyState.vue'
+import PortBookingCard from '@/components/ports/cards/portBookingCard.vue'
+import MobileFiltersModal from '@/components/MobileFiltersModal.vue'
+import FilterPanel from '@/components/FilterPanel.vue'
+import PortSearchedBar from '@/components/searchBars/portSearchedBar.vue'
+import Header from '@/components/general/header.vue'
 
 const route = useRoute()
 const router = useRouter()
@@ -29,26 +18,30 @@ const routeParams = route.params
 const mooringCategories = ref([])
 const sortBy = ref('recommended')
 const showMobileFilters = ref(false)
-const maxPrice = ref(1000)
+
+const maxPrice = computed(() => {
+  if (!mooringCategories.value || mooringCategories.value.length === 0) {
+    return 1000
+  }
+  const prices = mooringCategories.value.map((mc) => mc.totalPrice).filter((p) => !isNaN(p))
+  return prices.length > 0 ? Math.max(...prices) : 1000
+})
+
+const minPrice = computed(() => {
+  if (!mooringCategories.value || mooringCategories.value.length === 0) {
+    return 0
+  }
+  const prices = mooringCategories.value.map((mc) => mc.totalPrice).filter((p) => !isNaN(p))
+  return prices.length > 0 ? Math.min(...prices) : 0
+})
 
 const filters = ref({
   wifi: false,
   restaurantes: false,
   limpieza: false,
-  priceRange: {
-    min: 0,
-    max: 100,
-  },
 })
 
-const dateTabs = ref([
-  { label: '28 feb.-7 mar.', price: 73, dates: ['2025-02-28', '2025-03-07'] },
-  { label: '1 mar.-8 mar.', price: 53, dates: ['2025-03-01', '2025-03-08'] },
-  { label: '2 mar.-9 mar.', price: 34, dates: ['2025-03-02', '2025-03-09'], active: true },
-  { label: '3 mar.-10 mar.', price: 31, dates: ['2025-03-03', '2025-03-10'] },
-  { label: '4 mar.-11 mar.', price: 34, dates: ['2025-03-04', '2025-03-11'] },
-  { label: '5 mar.-12 mar.', price: 37, dates: ['2025-03-05', '2025-03-12'] },
-])
+const { filteredAndSorted } = useFiltering(mooringCategories, filters, sortBy)
 
 function handleCardClick(data) {
   router.push(
@@ -56,11 +49,6 @@ function handleCardClick(data) {
   )
 }
 
-function handleDateTabSelect(tab) {
-  dateTabs.value.forEach((t) => (t.active = false))
-  tab.active = true
-}
-const filteredAndSortedCategories = ref()
 onMounted(async () => {
   mooringCategories.value = await MooringCategoryService.getMooringCategories(
     routeParams.id,
@@ -70,18 +58,8 @@ onMounted(async () => {
     routeParams.startDate,
     routeParams.endDate,
   )
-  if (mooringCategories.value.length > 0) {
-    const calculatedMaxPrice = Math.max(
-      ...mooringCategories.value.map((mc) => Math.round(mc.totalPrice)),
-    )
-    maxPrice.value = calculatedMaxPrice
-    filters.value.priceRange[1] = calculatedMaxPrice
-  }
-  filteredAndSortedCategories.value = useFiltering(
-    mooringCategories,
-    filters,
-    sortBy,
-  ).filteredAndSorted
+  console.log(mooringCategories
+  )
 })
 </script>
 
@@ -96,51 +74,42 @@ onMounted(async () => {
     :endDate="routeParams.endDate"
   />
 
-  <!-- <DateTabs :tabs="dateTabs" @select="handleDateTabSelect" /> -->
-
   <section class="max-w-6xl mx-auto px-4 mb-12">
     <div class="flex flex-col lg:flex-row gap-6">
       <aside class="hidden lg:block w-full lg:w-1/4">
         <FilterPanel :filters="filters" :max-price="maxPrice" @update:filters="filters = $event" />
       </aside>
+
       <button
         @click="showMobileFilters = true"
         class="lg:hidden fixed bottom-4 right-4 bg-[#3b3bf5] text-white px-6 py-3 rounded-full shadow-lg z-50 flex items-center gap-2 hover:bg-[#2f2fcc] transition-colors"
       >
         <i class="pi pi-filter text-lg"></i>
-        Filtros
+        {{$t('search.filters')}}
       </button>
+
       <MobileFiltersModal
         v-model:show="showMobileFilters"
         :filters="filters"
-        :max-price="maxPrice"
         @update:filters="filters = $event"
       />
+
       <main class="max-w-7xl lg:w-3/4">
-        <!--
-        <ResultsHeader
-          v-if="mooringCategories"
-          :results-count="mooringCategories.length"
-          :sort-by="sortBy"
-          @update:sort-by="sortBy = $event"
-        />
-      -->
         <div class="space-y-4">
-          <template v-if="mooringCategories">
-            <template v-if="mooringCategories.length > 0">
-              <PortBookingCard
-                v-for="mc in mooringCategories"
-                :key="mc.id"
-                :id="mc.id"
-                :portId="routeParams.id"
-                :price="mc.totalPrice"
-                :zoneName="mc.zoneName"
-                :maxBeam="mc.maxBeam"
-                :maxLength="mc.maxLength"
-                :services="mc.services"
-                @click="handleCardClick"
-              />
-            </template>
+          <template v-if="filteredAndSorted && filteredAndSorted.length > 0">
+            <PortBookingCard
+              v-for="mc in filteredAndSorted"
+              :key="mc.id"
+              :id="mc.id"
+              :portId="routeParams.id"
+              :price="mc.totalPrice"
+              :zoneName="mc.zoneName"
+              :maxBeam="mc.maxBeam"
+              :maxLength="mc.maxLength"
+              :services="mc.services"
+              :description="mc.description"
+              @click="handleCardClick"
+            />
           </template>
           <EmptyState v-else />
         </div>
