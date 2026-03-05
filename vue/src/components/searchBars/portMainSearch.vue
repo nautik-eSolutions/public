@@ -82,7 +82,7 @@ function handleSubmit() {
   <section class="max-w-7xl mx-auto px-4 mb-12">
     <div class="bg-gradient-to-br from-[#0f172a] to-[#1e293b] rounded-2xl p-8 md:p-12 shadow-2xl">
       <h1 class="text-white text-3xl md:text-4xl font-bold mb-8">
-        Reserva amarres con <span id="logos">NAUTIK</span>
+        {{ $t('landing.search.title') }} <span id="logos">NAUTIK</span>
       </h1>
 
       <form @submit.prevent="handleSubmit">
@@ -91,7 +91,7 @@ function handleSubmit() {
             <div class="hidden md:flex items-end gap-2">
               <div class="flex-1 px-4 py-2">
                 <label class="block text-xs font-semibold uppercase text-gray-600 mb-2">
-                  Puerto
+                  {{ $t('landing.search.portLabel') }}
                 </label>
                 <template v-if="ports">
                   <AutoComplete
@@ -107,7 +107,7 @@ function handleSubmit() {
               <Splitter />
               <div class="flex-1 px-4 py-2">
                 <label class="block text-xs font-semibold uppercase text-gray-600 mb-2">
-                  Fechas
+                  {{ $t('landing.search.datesLabel') }}
                 </label>
                 <DatePicker
                   v-model="formData.dates"
@@ -122,7 +122,7 @@ function handleSubmit() {
               <template v-if="!auth.isAuthenticated">
                 <div class="w-32 px-4 py-2">
                   <label class="block text-xs font-semibold uppercase text-gray-600 mb-2">
-                    Eslora (m)
+                    {{ $t('landing.search.lengthLabel') }}
                   </label>
                   <input
                     v-model="formData.length"
@@ -135,7 +135,7 @@ function handleSubmit() {
                 </div>
                 <div class="w-32 px-4 py-2">
                   <label class="block text-xs font-semibold uppercase text-gray-600 mb-2">
-                    Manga (m)
+                    {{ $t('landing.search.beamLabel') }}
                   </label>
                   <input
                     v-model="formData.beam"
@@ -150,16 +150,18 @@ function handleSubmit() {
               <template v-if="auth.isAuthenticated && boats">
                 <template v-if="boats.length >= 1">
                   <div class="w-2/6">
-                    <label class="search-label text-gray-450 text-xs">BARCO</label>
+                    <label class="search-label text-gray-450 text-xs">{{
+                      $t('landing.search.boatLabel')
+                    }}</label>
                     <Select
                       v-model="formData.boat"
                       :options="boats"
                       optionLabel="name"
-                      placeholder="Selecciona tu embarcación"
+                      :placeholder="$t('landing.search.portPlaceholder')"
                       class="w-full"
                       :pt="{
                         root: 'w-full flex items-center content-center py-2',
-                        label:'text-gray-400 px-1',
+                        label: 'text-gray-400 px-1',
                         input:
                           'w-full border-none outline-none bg-white outline-none text-base text-gray-900 cursor-pointer p-0',
                         trigger: 'flex items-center outline-none justify-center text-gray-500 w-4',
@@ -174,7 +176,7 @@ function handleSubmit() {
                 </template>
                 <template v-else>
                   <div class="search-field">
-                    <label class="search-label">Barco</label>
+                    <label class="search-label">{{ $t('landing.search.boatLabel') }}</label>
                     <router-link
                       to="/boats/add"
                       class="flex items-center justify-center gap-2 w-full px-4 py-2 bg-gray-50 border-2 border-dashed border-gray-400 rounded-lg text-[#3b3bf5] text-base font-semibold transition-all duration-200 hover:bg-blue-50 hover:border-[#3b3bf5] hover:text-[#2929d4] hover:-translate-y-0.5 active:translate-y-0 no-underline cursor-pointer"
@@ -192,7 +194,7 @@ function handleSubmit() {
                           d="M12 6v6m0 0v6m0-6h6m-6 0H6"
                         />
                       </svg>
-                      <span>Añadir mi primer barco</span>
+                      <span>{{ $t('landing.search.addFirstBoat') }}</span>
                     </router-link>
                   </div>
                 </template>
@@ -210,21 +212,21 @@ function handleSubmit() {
                     optionLabel="name"
                     :suggestions="filteredPorts"
                     @complete="searchPort"
-                    placeholder="Selecciona un puerto"
+                    :placeholder="$t('landing.search.portPlaceholder')"
                     class="w-full"
                   />
                 </template>
               </div>
               <div class="px-4 py-2">
                 <label class="block text-xs font-semibold uppercase text-gray-600 mb-2">
-                  Fechas
+                  {{ $t('landing.search.datesLabel') }}
                 </label>
                 <DatePicker
                   v-model="formData.dates"
                   selectionMode="range"
                   :manualInput="false"
                   :minDate="minDate"
-                  placeholder="Selecciona fechas"
+                  :placeholder="$t('landing.search.datesPlaceholder')"
                   dateFormat="dd/mm/yy"
                   class="w-full"
                 />
@@ -233,7 +235,7 @@ function handleSubmit() {
                 <div class="grid grid-cols-2 gap-4 px-4 py-2">
                   <div>
                     <label class="block text-xs font-semibold uppercase text-gray-600 mb-2">
-                      Eslora (m)
+                      {{ $t('landing.search.lengthLabel') }}
                     </label>
                     <input
                       v-model="formData.length"
@@ -246,7 +248,7 @@ function handleSubmit() {
                   </div>
                   <div>
                     <label class="block text-xs font-semibold uppercase text-gray-600 mb-2">
-                      Manga (m)
+                      {{ $t('landing.search.beamLabel') }}
                     </label>
                     <input
                       v-model="formData.beam"
@@ -262,10 +264,12 @@ function handleSubmit() {
               <template v-if="auth.isAuthenticated && boats">
                 <template v-if="auth.isAuthenticated && boats.length >= 1">
                   <div class="mobile-field">
-                    <label class="search-label">Barco</label>
+                    <label class="search-label">{{ $t('landing.search.boatLabel') }}</label>
                     <div class="relative">
                       <select v-model="formData.boat" class="search-select">
-                        <option value="" disabled selected>Selecciona tu embarcación</option>
+                        <option value="" disabled selected>
+                          {{ $t('landing.search.boatPlaceholder') }}
+                        </option>
                         <option v-for="boat in boats" :key="boat.id || boat.name" :value="boat">
                           {{ boat.name }}
                         </option>
@@ -285,7 +289,7 @@ function handleSubmit() {
                 </template>
                 <template v-else>
                   <div class="mobile-field">
-                    <label class="search-label">Barco</label>
+                    <label class="search-label">{{ $t('landing.search.boatLabel') }}</label>
                     <router-link
                       to="/boats/add"
                       class="flex items-center justify-center gap-2 w-full px-4 py-2.5 bg-gray-50 border-2 border-dashed border-gray-400 rounded-lg text-[#3b3bf5] text-base font-semibold transition-all duration-200 hover:bg-blue-50 hover:border-[#3b3bf5] hover:text-[#2929d4] active:scale-95 no-underline"
@@ -303,7 +307,7 @@ function handleSubmit() {
                           d="M12 6v6m0 0v6m0-6h6m-6 0H6"
                         />
                       </svg>
-                      <span>Añadir mi primer barco</span>
+                      <span>{{ $t('landing.search.addFirstBoat') }}</span>
                     </router-link>
                   </div>
                 </template>
@@ -322,7 +326,7 @@ function handleSubmit() {
                 d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
               />
             </svg>
-            Buscar
+            {{ $t('landing.search.submit') }}
           </button>
         </div>
       </form>

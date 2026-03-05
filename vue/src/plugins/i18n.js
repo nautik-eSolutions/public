@@ -5,6 +5,6 @@ import en from '@/locales/en.json'
 export const i18n = createI18n({
   legacy: false,
   locale: localStorage.getItem('lang') || 'es',
-  fallbackLocale: 'es',
+  fallbackLocale: 'en',
   messages: { es, en },
 })

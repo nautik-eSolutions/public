@@ -12,7 +12,9 @@ import Header from '@/components/general/header.vue'
 import Button from '@/volt/Button.vue'
 import { defineForm, field, isValidForm } from 'vue-yup-form'
 import * as yup from 'yup'
+import { useI18n } from 'vue-i18n'
 
+const { t } = useI18n()
 const userStore = useUserStore()
 const submitted = ref(false)
 
@@ -21,12 +23,12 @@ const generateForm = () => {
     '',
     yup
       .string()
-      .label('Contraseña')
-      .required('La contraseña es obligatoria')
-      .min(8, 'La contraseña debe tener al menos 8 caracteres')
-      .matches(/[a-z]/, 'Debe contener al menos una letra minúscula')
-      .matches(/[A-Z]/, 'Debe contener al menos una letra mayúscula')
-      .matches(/[0-9]/, 'Debe contener al menos un número'),
+      .label(t('auth.register.password'))
+      .required(t('auth.validation.passwordRequired'))
+      .min(8, t('auth.validation.passwordMin'))
+      .matches(/[a-z]/, t('auth.validation.passwordLowercase'))
+      .matches(/[A-Z]/, t('auth.validation.passwordUppercase'))
+      .matches(/[0-9]/, t('auth.validation.passwordNumber')),
   )
 
   return defineForm({
@@ -34,28 +36,28 @@ const generateForm = () => {
       '',
       yup
         .string()
-        .label('Nombre')
-        .required('El nombre es obligatorio')
-        .min(2, 'El nombre debe tener al menos 2 caracteres')
-        .matches(/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/, 'El nombre solo debe contener letras'),
+        .label(t('auth.register.firstName'))
+        .required(t('auth.validation.firstNameRequired'))
+        .min(2, t('auth.validation.firstNameMin'))
+        .matches(/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/, t('auth.validation.firstNameLetters')),
     ),
     lastName: field(
       '',
       yup
         .string()
-        .label('Apellidos')
-        .required('Los apellidos son obligatorios')
-        .min(2, 'Los apellidos deben tener al menos 2 caracteres')
-        .matches(/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/, 'Los apellidos solo deben contener letras'),
+        .label(t('auth.register.lastName'))
+        .required(t('auth.validation.lastNameRequired'))
+        .min(2, t('auth.validation.lastNameMin'))
+        .matches(/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/, t('auth.validation.lastNameLetters')),
     ),
     birthDate: field(
       '',
       yup
         .date()
-        .label('Fecha de nacimiento')
-        .required('La fecha de nacimiento es obligatoria')
-        .max(new Date(), 'La fecha no puede ser futura')
-        .test('age', 'Debes ser mayor de 18 años', function (value) {
+        .label(t('auth.register.birthDate'))
+        .required(t('auth.validation.birthDateRequired'))
+        .max(new Date(), t('auth.validation.birthDateFuture'))
+        .test('age', t('auth.validation.birthDateAge'), function (value) {
           const cutoff = new Date()
           cutoff.setFullYear(cutoff.getFullYear() - 18)
           return value <= cutoff
@@ -65,38 +67,38 @@ const generateForm = () => {
       '',
       yup
         .string()
-        .label('Documento de identidad')
-        .required('El documento de identidad es obligatorio')
-        .matches(/^[A-Z0-9]+$/, 'Formato de documento inválido')
-        .min(6, 'El documento debe tener al menos 6 caracteres')
-        .max(20, 'El documento no puede exceder 20 caracteres'),
+        .label(t('auth.register.idDocument'))
+        .required(t('auth.validation.idDocumentRequired'))
+        .matches(/^[A-Z0-9]+$/, t('auth.validation.idDocumentFormat'))
+        .min(6, t('auth.validation.idDocumentMin'))
+        .max(20, t('auth.validation.idDocumentMax')),
     ),
     email: field(
       '',
       yup
         .string()
-        .label('Correo electrónico')
-        .required('El correo electrónico es obligatorio')
-        .email('Debe ser un correo electrónico válido')
-        .lowercase('El correo debe estar en minúsculas'),
+        .label(t('auth.register.email'))
+        .required(t('auth.validation.emailRequired'))
+        .email(t('auth.validation.emailValid'))
+        .lowercase(),
     ),
     userName: field(
       '',
       yup
         .string()
-        .label('Nombre de usuario')
-        .required('El nombre de usuario es obligatorio')
-        .min(4, 'El nombre de usuario debe tener al menos 4 caracteres')
-        .max(20, 'El nombre de usuario no puede exceder 20 caracteres')
-        .matches(/^[a-zA-Z0-9_]+$/, 'Solo letras, números y guiones bajos'),
+        .label(t('auth.register.username'))
+        .required(t('auth.validation.usernameRequired'))
+        .min(4, t('auth.validation.usernameMin'))
+        .max(20, t('auth.validation.usernameMax'))
+        .matches(/^[a-zA-Z0-9_]+$/, t('auth.validation.usernameFormat')),
     ),
     password,
     passwordValidation: field('', () =>
       yup
         .string()
-        .label('Confirmación de contraseña')
-        .required('Debes confirmar tu contraseña')
-        .oneOf([password.$value], 'Las contraseñas no coinciden'),
+        .label(t('auth.register.confirmPassword'))
+        .required(t('auth.validation.confirmPasswordRequired'))
+        .oneOf([password.$value], t('auth.validation.passwordsMismatch')),
     ),
   })
 }
@@ -126,18 +128,25 @@ const handleSubmit = async () => {
     <div class="w-full max-w-4xl">
       <div class="bg-white rounded-xl shadow-lg border border-gray-200 p-8">
         <div class="mb-8 text-center">
-          <h1 class="text-3xl font-bold text-gray-900 mb-2">Régistrate hoy</h1>
-          <p class="text-gray-600">Disfruta de todas las ventajas de ser miembro</p>
+          <h1 class="text-3xl font-bold text-gray-900 mb-2">
+            {{ $t('auth.register.title') }}
+          </h1>
+          <p class="text-gray-600">
+            {{ $t('auth.register.subtitle') }}
+          </p>
         </div>
 
         <form @submit.prevent="handleSubmit" class="space-y-6">
           <div class="space-y-4">
-            <h2 class="text-lg font-semibold text-gray-900 border-b pb-2">Información Personal</h2>
+            <h2 class="text-lg font-semibold text-gray-900 border-b pb-2">
+              {{ $t('auth.register.personalInfo') }}
+            </h2>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div class="flex flex-col gap-1.5">
                 <label for="firstName" class="text-sm font-medium text-gray-700">
-                  Nombre <span class="text-red-500">*</span>
+                  {{ $t('auth.register.firstName') }}
+                  <span class="text-red-500">*</span>
                 </label>
                 <input
                   type="text"
@@ -157,7 +166,8 @@ const handleSubmit = async () => {
               </div>
               <div class="flex flex-col gap-1.5">
                 <label for="lastName" class="text-sm font-medium text-gray-700">
-                  Apellidos <span class="text-red-500">*</span>
+                  {{ $t('auth.register.lastName') }}
+                  <span class="text-red-500">*</span>
                 </label>
                 <input
                   type="text"
@@ -177,7 +187,8 @@ const handleSubmit = async () => {
               </div>
               <div class="flex flex-col gap-1.5">
                 <label for="birthDate" class="text-sm font-medium text-gray-700">
-                  Fecha de Nacimiento <span class="text-red-500">*</span>
+                  {{ $t('auth.register.birthDate') }}
+                  <span class="text-red-500">*</span>
                 </label>
                 <input
                   type="date"
@@ -196,7 +207,8 @@ const handleSubmit = async () => {
               </div>
               <div class="flex flex-col gap-1.5">
                 <label for="idDocument" class="text-sm font-medium text-gray-700">
-                  Documento de Identidad <span class="text-red-500">*</span>
+                  {{ $t('auth.register.idDocument') }}
+                  <span class="text-red-500">*</span>
                 </label>
                 <input
                   type="text"
@@ -217,12 +229,15 @@ const handleSubmit = async () => {
             </div>
           </div>
           <div class="space-y-4">
-            <h2 class="text-lg font-semibold text-gray-900 border-b pb-2">Información de Cuenta</h2>
+            <h2 class="text-lg font-semibold text-gray-900 border-b pb-2">
+              {{ $t('auth.register.accountInfo') }}
+            </h2>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div class="flex flex-col gap-1.5">
                 <label for="email" class="text-sm font-medium text-gray-700">
-                  Correo Electrónico <span class="text-red-500">*</span>
+                  {{ $t('auth.register.email') }}
+                  <span class="text-red-500">*</span>
                 </label>
                 <input
                   type="email"
@@ -242,7 +257,8 @@ const handleSubmit = async () => {
               </div>
               <div class="flex flex-col gap-1.5">
                 <label for="userName" class="text-sm font-medium text-gray-700">
-                  Nombre de Usuario <span class="text-red-500">*</span>
+                  {{ $t('auth.register.username') }}
+                  <span class="text-red-500">*</span>
                 </label>
                 <input
                   type="text"
@@ -262,7 +278,8 @@ const handleSubmit = async () => {
               </div>
               <div class="flex flex-col gap-1.5">
                 <label for="password" class="text-sm font-medium text-gray-700">
-                  Contraseña <span class="text-red-500">*</span>
+                  {{ $t('auth.register.password') }}
+                  <span class="text-red-500">*</span>
                 </label>
                 <input
                   type="password"
@@ -282,7 +299,8 @@ const handleSubmit = async () => {
               </div>
               <div class="flex flex-col gap-1.5">
                 <label for="passwordValidation" class="text-sm font-medium text-gray-700">
-                  Confirmar Contraseña <span class="text-red-500">*</span>
+                  {{ $t('auth.register.confirmPassword') }}
+                  <span class="text-red-500">*</span>
                 </label>
                 <input
                   type="password"
@@ -304,24 +322,33 @@ const handleSubmit = async () => {
             <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
               <p class="text-sm font-medium text-blue-900 mb-2">Requisitos de la contraseña:</p>
               <ul class="text-sm text-blue-800 space-y-1 list-disc list-inside">
-                <li>Mínimo 8 caracteres</li>
-                <li>Al menos una letra mayúscula</li>
-                <li>Al menos una letra minúscula</li>
-                <li>Al menos un número</li>
+                <li>
+                  {{ $t('auth.register.passwordReqMin') }}
+                </li>
+                <li>
+                  {{ $t('auth.register.passwordReqUpper') }}
+                </li>
+                <li>
+                  {{ $t('auth.register.passwordReqLower') }}
+                </li>
+                <li>
+                  {{ $t('auth.register.passwordReqNumber') }}
+                </li>
               </ul>
             </div>
           </div>
           <div class="pt-4">
             <Button
               type="submit"
-              label="Crear cuenta"
+              :label="$t('auth.register.submit')"
               class="w-full py-3 rounded-lg flex justify-center items-center gap-2 text-base font-semibold hover:opacity-90 transition"
             />
           </div>
           <div class="text-center text-sm text-gray-600">
-            ¿Ya tienes una cuenta?
+            {{ $t('auth.register.hasAccount') }}
+
             <a href="/login" class="text-blue-600 hover:text-blue-700 font-medium">
-              Inicia sesión aquí
+              {{ $t('auth.register.loginHere') }}
             </a>
           </div>
         </form>
