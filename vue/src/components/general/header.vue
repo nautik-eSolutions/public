@@ -18,7 +18,6 @@ import { GoogleSignInButton } from 'vue3-google-signin'
 import { faCalendarDays, faReceipt, faShip, faUsers } from '@fortawesome/free-solid-svg-icons'
 import 'primeicons/primeicons.css'
 
-const googleClient = import.meta.env.VITE_GOOGLE_CLIENT_ID
 
 const auth = useAuthStore()
 const visibleCard = ref(false)
@@ -47,19 +46,21 @@ function redirectToLogin() {
   <header>
     <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex justify-between items-center">
       <div class="flex gap-4">
-      <button
-        @click="visibleDrawer = true"
-        class="p-2 rounded-md hover:bg-gray-100 focus:outline-none "
-        aria-label="Menú"
-      >
-        <i class="pi pi-bars text-2xl"></i>
-      </button>
-      <RouterLink to="/">
-        <div class="flex items-center gap-2">
-          <img src="../../assets/logoWOletter.png" class="h-12 p-0 m-0" />
-          <span id="logos" class="text-lg sm:text-2xl lg:text-3xl">NAUTIK</span>
-        </div>
-      </RouterLink>
+        <template v-if="auth.isAuthenticated">
+          <button
+            @click="visibleDrawer = true"
+            class="p-2 rounded-md hover:bg-gray-100 focus:outline-none"
+            aria-label="Menú"
+          >
+            <i class="pi pi-bars text-2xl"></i>
+          </button>
+        </template>
+        <RouterLink to="/">
+          <div class="flex items-center gap-2">
+            <img src="../../assets/logoWOletter.png" class="h-12 p-0 m-0" />
+            <span id="logos" class="text-lg sm:text-2xl lg:text-3xl">NAUTIK</span>
+          </div>
+        </RouterLink>
       </div>
       <template v-if="!auth.isAuthenticated">
         <Button label="Log in" icon="pi pi-sign-in" @click="visibleCard = true" />
@@ -70,7 +71,7 @@ function redirectToLogin() {
         </div>
       </template>
     </nav>
-    <Drawer v-model:visible="visibleDrawer" justify-center="justify-center" header='Menú'>
+    <Drawer v-model:visible="visibleDrawer" justify-center="justify-center" header="Menú">
       <div class="flex flex-col justify-between h-full gap-8">
         <div class="flex flex-col h-full mb-4">
           <RouterLink to="/boats">
