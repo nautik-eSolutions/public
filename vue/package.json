@@ -10,7 +10,8 @@
     "dev": "vite --host 0.0.0.0",
     "build": "vite build",
     "preview": "vite preview",
-    "format": "prettier --write --experimental-cli src"
+    "format": "prettier --write --experimental-cli src",
+    "generate:locales": "node generate-locales.mjs"
   },
   "dependencies": {
     "@fortawesome/free-solid-svg-icons": "^7.1.0",

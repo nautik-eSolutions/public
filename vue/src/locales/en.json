@@ -1,203 +1,202 @@
 {
-  "nav": {
-    "search": "Search port",
-    "bookings": "My bookings",
-    "login": "Log in"
-  },
   "header": {
     "greeting": "Hello",
     "myBoats": "My boats",
-    "myDocumentation": "My documentation",
-    "reservations": "Bookings",
-    "invoices": "Invoices",
-    "logIn": "Log in",
+    "logIn": "Login",
     "logOut": "Log out",
     "loginDialog": {
-      "tagline": "Your entire nautical world, with a single login.",
-      "subtitle": "Track prices, organise your trips more easily and make your bookings faster",
+      "tagline": "Your entire nautical world, just a login away.",
       "continueWithEmail": "Continue with email",
+      "subtitle": "Control prices, organize your trips more easily, and make your bookings faster.",
       "continueWithFacebook": "Facebook"
-    }
+    },
+    "invoices": "Invoices",
+    "reservations": "Reservations",
+    "myDocumentation": "My documentation"
+  },
+  "nav": {
+    "bookings": "My reservations",
+    "login": "Login",
+    "search": "Search for port"
   },
   "footer": {
-    "help": "Help",
-    "cookiePolicy": "Cookie policy",
+    "help": "Aid",
+    "cookiePolicy": "Cookies policy",
     "privacySettings": "Privacy settings",
-    "privacyPolicy": "Privacy policy",
-    "login": "Log in",
-    "termsOfService": "Terms of service",
-    "copyright": "© Port SL 2025"
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service",
+    "copyright": "© Port SL 2025",
+    "login": "Login"
   },
   "landing": {
     "hero": {
-      "title": "Sail towards your next adventure",
-      "subtitle": "Discover the best ports and live the experience of the sea"
+      "title": "Set sail for your next adventure",
+      "subtitle": "Discover the best ports and experience the sea"
     },
     "search": {
-      "title": "Book moorings with",
       "portLabel": "Port",
+      "title": "Book moorings with",
       "portPlaceholder": "Select a port",
       "datesLabel": "Dates",
       "datesPlaceholder": "Select dates",
       "lengthLabel": "Length (m)",
-      "beamLabel": "Beam (m)",
-      "boatLabel": "Boat",
-      "boatPlaceholder": "Select your vessel",
+      "beamLabel": "Sleeve (m)",
+      "boatLabel": "Ship",
+      "submit": "Look for",
       "addFirstBoat": "Add my first boat",
-      "submit": "Search"
+      "boatPlaceholder": "Select your boat"
     },
-    "featuredPorts": "Featured ports",
     "faq": {
-      "title": "Frequently asked questions",
       "items": [
         {
-          "question": "How does Nautik work?",
-          "answer": "Nautik is a platform that lets you search and book moorings at the best ports. Just select a port, dates and, if you are registered, your vessel. We will show you availability and prices so you can book safely."
+          "question": "¿Cómo funciona Nautik?",
+          "answer": "Nautik es una plataforma que te permite buscar y reservar amarres en los mejores puertos. Solo tienes que seleccionar puerto, fechas y, si estás registrado, tu embarcación. Te mostraremos disponibilidad y precios para que reserves de forma segura."
         },
         {
-          "question": "When do I need to check in?",
-          "answer": "Check-in takes place on the day of arrival at the port, usually from 12:00. We recommend contacting the port in advance to confirm the exact time."
+          "question": "¿Cuándo hay que hacer el check in?",
+          "answer": "El check-in se realiza el día de llegada al puerto, normalmente a partir de las 12:00 h. Te recomendamos contactar con el puerto con antelación para confirmar la hora exacta."
         },
         {
-          "question": "Can I deduct VAT from the booking?",
-          "answer": "It depends on your tax situation. If you are self-employed or a company and the boat is used for economic activity, you can consult your advisor. We issue invoices with VAT broken down."
+          "question": "¿Se puede desgravar el I.V.A de la reserva?",
+          "answer": "Depende de tu situación fiscal. Si eres autónomo o empresa y el barco se utiliza para actividad económica, puedes consultar con tu asesor. Nosotros emitimos factura con IVA desglosado."
         },
         {
-          "question": "What happens if I don't bring the documentation?",
-          "answer": "It is mandatory to present the boat's documentation (navigation permit, insurance, etc.) at check-in. If you don't bring it, the port may deny you access to the mooring."
+          "question": "¿Qué pasa si no llevo la documentación?",
+          "answer": "Es obligatorio presentar la documentación del barco (permiso de navegación, seguro, etc.) en el momento del check-in. Si no la llevas, el puerto puede denegarte el acceso al amarre."
         },
         {
-          "question": "Do I need a passport if I come from another country?",
-          "answer": "If you come from a country outside the Schengen area, you may need a passport. For EU citizens, only a valid national ID or identity document is required."
+          "question": "¿Necesito pasaporte si vengo de otro país?",
+          "answer": "Si vienes de un país no perteneciente al espacio Schengen, es posible que necesites pasaporte. Para ciudadanos de la UE, solo es necesario el DNI o documento de identidad en vigor."
         },
         {
-          "question": "How do I become a regular customer?",
-          "answer": "Register on our website and complete your profile. By making recurring bookings, you will accumulate points and gain access to exclusive discounts for regular customers."
+          "question": "¿Cómo me hago cliente fijo?",
+          "answer": "Regístrate en nuestra web y completa tu perfil. Al hacer reservas recurrentes, acumularás puntos y tendrás acceso a descuentos exclusivos para clientes habituales."
         },
         {
-          "question": "Can I use the services without being a customer?",
-          "answer": "Yes, you can search ports and check availability without registering. But to book you will need to create an account and, if you have a vessel, register it."
+          "question": "¿Puedo utilizar los servicios sin ser cliente?",
+          "answer": "Sí, puedes buscar puertos y ver disponibilidad sin registrarte. Pero para reservar necesitarás crear una cuenta y, si tienes embarcación, registrarla."
         },
         {
-          "question": "Are there moorings for seaplanes?",
-          "answer": "Currently our partner ports do not have specific moorings for seaplanes. All our moorings are for conventional vessels."
+          "question": "¿Hay amarres para hidroavión?",
+          "answer": "Actualmente nuestros puertos asociados no disponen de amarres específicos para hidroaviones. Todos nuestros amarres son para embarcaciones convencionales."
         }
-      ]
-    }
+      ],
+      "title": "Frequently Asked Questions"
+    },
+    "featuredPorts": "Featured ports"
   },
   "auth": {
     "login": {
+      "noAccount": "Don't you have an account?",
       "title": "Welcome back!",
-      "noAccount": "Don't have an account?",
+      "email": "Email",
       "createOne": "Create one today!",
-      "email": "Email address",
-      "emailPlaceholder": "Email address",
+      "emailPlaceholder": "Email",
       "password": "Password",
       "passwordPlaceholder": "Password",
-      "rememberMe": "Remember me",
       "forgotPassword": "Forgot your password?",
-      "submit": "Log in"
+      "rememberMe": "Remember me",
+      "submit": "Login"
     },
     "register": {
-      "title": "Sign up today",
+      "title": "Register today",
+      "hasAccount": "Do you already have an account?",
       "subtitle": "Enjoy all the benefits of being a member",
-      "hasAccount": "Already have an account?",
-      "loginHere": "Log in here",
       "personalInfo": "Personal Information",
       "accountInfo": "Account Information",
-      "firstName": "First name",
-      "lastName": "Last name",
-      "birthDate": "Date of birth",
-      "idDocument": "Identity document",
-      "email": "Email address",
+      "firstName": "Name",
+      "birthDate": "Birthdate",
+      "lastName": "Surnames",
+      "email": "Email",
       "emailPlaceholder": "email@example.com",
-      "username": "Username",
-      "usernamePlaceholder": "username123",
+      "idDocument": "Identity Document",
+      "username": "User name",
+      "usernamePlaceholder": "user123",
       "password": "Password",
-      "confirmPassword": "Confirm password",
+      "loginHere": "Log in here",
       "passwordRequirements": "Password requirements:",
+      "confirmPassword": "Confirm Password",
       "passwordReqMin": "Minimum 8 characters",
-      "passwordReqUpper": "At least one uppercase letter",
+      "passwordReqUpper": "At least one capital letter",
       "passwordReqLower": "At least one lowercase letter",
       "passwordReqNumber": "At least one number",
       "submit": "Create account"
     },
     "validation": {
       "emailInvalid": "Invalid email address",
+      "emailValid": "It must be a valid email address.",
       "emailRequired": "Email is required",
-      "emailValid": "Must be a valid email address",
-      "passwordRequired": "Password is required",
-      "passwordMin": "Password must be at least 8 characters",
-      "passwordUppercase": "Must contain at least one uppercase letter",
-      "passwordLowercase": "Must contain at least one lowercase letter",
-      "passwordNumber": "Must contain at least one number",
-      "passwordsMismatch": "Passwords do not match",
+      "passwordRequired": "A password is required.",
+      "passwordMin": "The password must be at least 8 characters long",
+      "passwordUppercase": "It must contain at least one capital letter",
+      "passwordLowercase": "It must contain at least one lowercase letter",
+      "passwordNumber": "It must contain at least one number",
+      "passwordsMismatch": "The passwords do not match",
       "confirmPasswordRequired": "You must confirm your password",
-      "firstNameRequired": "First name is required",
-      "firstNameMin": "First name must be at least 2 characters",
-      "firstNameLetters": "First name must only contain letters",
-      "lastNameRequired": "Last name is required",
-      "lastNameMin": "Last name must be at least 2 characters",
-      "lastNameLetters": "Last name must only contain letters",
+      "firstNameRequired": "Name is required",
+      "firstNameLetters": "The name must only contain letters.",
+      "firstNameMin": "The name must be at least 2 characters long",
+      "lastNameRequired": "Surnames are required",
+      "lastNameMin": "Surnames must have at least 2 characters",
       "birthDateRequired": "Date of birth is required",
-      "birthDateFuture": "Date cannot be in the future",
-      "birthDateAge": "You must be at least 18 years old",
-      "idDocumentRequired": "Identity document is required",
+      "birthDateAge": "You must be over 18 years old",
+      "lastNameLetters": "Surnames must only contain letters",
+      "idDocumentRequired": "An identity document is required",
       "idDocumentFormat": "Invalid document format",
-      "idDocumentMin": "Document must be at least 6 characters",
-      "idDocumentMax": "Document cannot exceed 20 characters",
-      "usernameRequired": "Username is required",
-      "usernameMin": "Username must be at least 4 characters",
-      "usernameMax": "Username cannot exceed 20 characters",
-      "usernameFormat": "Only letters, numbers and underscores"
+      "birthDateFuture": "The date cannot be in the future.",
+      "usernameRequired": "The username is required",
+      "idDocumentMax": "The document cannot exceed 20 characters",
+      "idDocumentMin": "The document must have at least 6 characters",
+      "usernameMin": "The username must be at least 4 characters long",
+      "usernameMax": "The username cannot exceed 20 characters",
+      "usernameFormat": "Only letters, numbers, and underscores"
     }
   },
   "boats": {
-    "pageTitle": "BOATS",
-    "addBoat": "Add boat",
     "tableHeaders": {
       "name": "Name",
-      "registry": "Registry",
+      "registry": "Tuition",
       "flag": "Flag",
       "length": "Length",
-      "beam": "Beam",
+      "beam": "Sleeve",
       "draft": "Draft",
-      "viewBoat": "View boat"
-    }
+      "viewBoat": "View ship"
+    },
+    "pageTitle": "SHIPS",
+    "addBoat": "Add boat"
   },
   "boat": {
     "title": "Vessel",
     "length": "Length",
-    "beam": "Beam",
-    "draft": "Draft",
+    "beam": "Sleeve",
+    "bookings": "Reservations",
     "edit": "Edit",
-    "bookings": "Bookings",
+    "draft": "Draft",
     "form": {
+      "back": "Return",
       "addTitle": "Add boat",
-      "editTitle": "Edit boat",
-      "back": "Back",
-      "name": "Boat name",
-      "namePlaceholder": "Enter the boat name",
-      "registry": "Registry number",
-      "registryPlaceholder": "Enter the boat registry number",
-      "type": "Boat type",
-      "typeDefault": "Boat type",
-      "lengthPlaceholder": "Enter length in metres",
-      "beamPlaceholder": "Enter beam in metres",
-      "draftPlaceholder": "Enter draft in metres",
-      "help": "Help",
+      "editTitle": "Edit ship",
+      "name": "Ship name",
+      "registry": "Tuition",
+      "namePlaceholder": "Enter the ship's name",
+      "registryPlaceholder": "Enter the ship's registration number",
+      "type": "Type of ship",
+      "beamPlaceholder": "Enter sleeve length in meters",
+      "lengthPlaceholder": "Enter length in meters",
+      "typeDefault": "Type of ship",
       "cancel": "Cancel",
+      "help": "Aid",
+      "draftPlaceholder": "Enter meters of draft",
       "submit": "Continue"
     }
   },
   "search": {
-    "title": "Find your mooring",
+    "noResults": "There are no results for your search.",
     "filters": "Filters",
-    "noResults": "No results for your search",
-    "noResultsMessage": "Try adjusting the filters to see more options",
-    "sortBy": "Sort by",
+    "sortBy": "sort by",
+    "title": "Find your love spell",
+    "noResultsMessage": "Try adjusting the filters to see more options.",
     "recommended": "Recommended",
-    "priceAsc": "Price: lowest to highest",
     "filterPanel": {
       "title": "Filters",
       "services": "Services",
@@ -205,29 +204,39 @@
       "restaurants": "Restaurants",
       "cleaning": "Cleaning",
       "price": "Price",
-      "applyFilters": "Apply filters"
+      "electricity16A": "Electricity 16A",
+      "electricity32A": "Electricity 32A",
+      "electricity63A": "Electricity 63A",
+      "freshWater": "Fresh water",
+      "wifiPremium": "WiFi Premium",
+      "security247": "24/7 Security",
+      "wasteDisposal": "Waste Management",
+      "parking": "Parking",
+      "applyFilters": "Apply filters",
+      "showersAndLockers": "Showers and Lockers"
     },
+    "priceAsc": "Price: Low to High",
     "resultsHeader": {
       "results": "results",
       "orderedBy": "sorted by",
       "bestOption": "Best option",
       "lowestPrice": "Lowest price",
-      "highestPrice": "Highest price",
+      "highestPrice": "Higher price",
       "distance": "Distance"
     },
     "searchBar": {
       "destination": "Destination",
       "length": "Length",
-      "beam": "Beam",
+      "beam": "Sleeve",
       "arrival": "Arrival",
-      "departure": "Departure"
+      "departure": "Exit"
     }
   },
   "portCard": {
-    "bookButton": "Book",
+    "bookButton": "Reserve",
     "totalPrice": "Total price",
     "length": "Length",
-    "beam": "Beam",
+    "beam": "Sleeve",
     "power": "Power",
     "water": "Water",
     "wasteCollection": "Waste collection",
@@ -237,164 +246,164 @@
     "loading": "Loading port...",
     "about": "About the port",
     "location": "Location",
-    "mooringZones": "Mooring zones",
-    "currentWeather": "Current weather",
-    "portFile": "Port details",
+    "currentWeather": "Current time",
     "city": "City",
+    "mooringZones": "Mooring areas",
     "address": "Address",
+    "portFile": "Port information",
     "zones": "Zones",
     "moorings": "Moorings",
-    "admittedVessels": "Admitted vessels",
     "maxLength": "Max. length",
-    "maxBeam": "Max. beam",
-    "maxDraft": "Max. draft",
+    "maxBeam": "max sleeve",
+    "admittedVessels": "Permitted vessels",
     "categories": "category",
-    "categoriesPlural": "categories"
+    "categoriesPlural": "categories",
+    "maxDraft": "Max. draft"
   },
   "createBooking": {
-    "title": "Complete booking",
+    "title": "Complete reservation",
     "billingAddress": "Billing address",
-    "address": "Address",
+    "address": "Home",
     "city": "City",
     "country": "Country",
     "contactInfo": "Contact information",
-    "email": "Email address",
+    "email": "Email",
     "phone": "Phone",
     "summary": {
-      "zone": "Zone",
+      "zone": "Area",
       "dimensions": "Dimensions",
       "arrival": "Arrival",
-      "departure": "Departure",
+      "departure": "Exit",
       "boat": "Vessel",
-      "mooringPrice": "Mooring price",
       "vat": "VAT",
-      "total": "Total"
+      "total": "Total",
+      "mooringPrice": "Mooring price"
     },
     "proceedToPayment": "Proceed to payment"
   },
   "reservations": {
-    "title": "My bookings",
-    "subtitle": "Manage your mooring bookings",
+    "title": "My reservations",
     "tabs": {
-      "future": "Upcoming",
+      "future": "Future",
       "active": "Active",
       "past": "Past"
     },
-    "empty": "No bookings in this category.",
+    "subtitle": "Manage your mooring reservations",
     "card": {
-      "statusFuture": "Upcoming",
+      "statusFuture": "Next",
       "statusActive": "Active",
-      "statusPast": "Past",
+      "statusPast": "Pass",
       "viewDetails": "View details",
       "contactSupport": "Contact support",
       "cancel": "Cancel"
     },
+    "empty": "There are no reservations in this category.",
     "confirmation": {
       "title": "Booking",
-      "successBanner": "BOOKING CONFIRMED! ENJOY YOUR STAY.",
-      "back": "Back",
-      "boat": "Boat",
-      "ownerName": "First name",
-      "lastName": "Last name",
+      "back": "Return",
+      "boat": "Ship",
+      "ownerName": "Name",
+      "successBanner": "YOUR RESERVATION WAS SUCCESSFUL!! ENJOY YOUR STAY.",
+      "lastName": "Surnames",
       "arrival": "Arrival",
-      "departure": "Departure",
+      "departure": "Exit",
       "arrivalTime": "Arrival time",
       "nights": "Nights",
-      "subtotal": "Subtotal excl. VAT",
+      "subtotal": "Subtotal excluding VAT",
       "vat": "VAT",
       "totalPrice": "Total price",
-      "boatName": "Boat name",
-      "boatType": "Vessel type",
-      "registry": "Registry",
+      "boatName": "Ship name",
+      "boatType": "Type of vessel",
+      "registry": "Tuition",
       "port": "Port",
-      "vhfChannel": "VHF channel",
-      "contactPhone": "Contact phone",
-      "dniPassport": "ID / Passport",
-      "email": "Email",
-      "reservationNumber": "Booking number",
+      "vhfChannel": "VHF Channel",
+      "contactPhone": "Contact phone number",
+      "dniPassport": "ID/Passport",
+      "email": "E-mail",
+      "reservationNumber": "Reservation number",
       "sportsMarina": "MARINA",
-      "downloadVoucher": "Download voucher",
+      "downloadVoucher": "Download receipt",
       "bookingCard": {
         "port": "Port",
         "arrival": "Arrival",
-        "departure": "Departure",
+        "departure": "Exit",
         "totalPrice": "Total price"
       }
     }
   },
   "paymentSuccess": {
-    "title": "Booking confirmed",
-    "subtitle": "Your mooring has been successfully reserved.",
-    "badge": "Payment successful",
+    "title": "Reservation confirmed",
+    "badge": "Payment made",
+    "subtitle": "Your love spell has been successfully booked.",
     "bookingDetails": "Booking details",
     "summaryRows": {
       "port": "Port",
       "mooring": "Mooring",
       "boat": "Vessel",
-      "checkIn": "Check-in",
-      "checkOut": "Check-out",
+      "checkIn": "Entrance",
+      "checkOut": "Exit",
       "totalPaid": "Total paid"
     },
     "confirmationEmail": "Confirmation email sent",
     "actions": {
       "viewBookings": "View my bookings",
       "downloadInvoice": "Download invoice",
-      "backToHome": "Back to home"
+      "backToHome": "Back to top"
     }
   },
   "paymentFailed": {
     "title": "Payment failed",
-    "subtitle": "We couldn't process your payment. No charges were made.",
-    "badge": "Transaction unsuccessful",
+    "badge": "Transaction failed",
     "bookingDetails": "Booking details",
+    "subtitle": "We were unable to process your payment. No charge was made.",
     "summaryRows": {
       "port": "Port",
       "mooring": "Mooring",
       "boat": "Vessel",
-      "checkIn": "Check-in",
-      "checkOut": "Check-out",
+      "checkIn": "Entrance",
+      "checkOut": "Exit",
       "totalPaid": "Total paid"
     },
-    "noCharges": "No charges were made",
-    "noChargesDetail": "Since the transaction was not completed, no money has been deducted from your account.",
+    "noCharges": "No charges have been filed",
     "actions": {
-      "backToHome": "Back to home"
-    }
+      "backToHome": "Back to top"
+    },
+    "noChargesDetail": "Since the transaction was not completed, no amount has been deducted from your account."
   },
   "weather": {
     "title": "Weather forecast",
     "wind": "Wind",
     "windSpeed": "Speed",
-    "windDirection": "NW",
-    "waves": "Waves",
+    "windDirection": "NO",
+    "waves": "Surf",
     "waveHeight": "Height",
-    "waveDirection": "NW"
+    "waveDirection": "NO"
   },
   "sidebar": {
     "myBoats": "My boats",
-    "reservations": "Bookings",
+    "reservations": "Reservations",
     "invoices": "Invoices",
-    "settings": "Settings",
-    "help": "Help",
-    "logOut": "Log out"
+    "settings": "Configuration",
+    "help": "Aid",
+    "logOut": "Log Out"
   },
   "errors": {
     "generic": "An error has occurred",
     "notFound": "Not found"
   },
   "common": {
-    "back": "Back",
+    "back": "Return",
     "continue": "Continue",
+    "save": "Keep",
     "cancel": "Cancel",
-    "save": "Save",
     "edit": "Edit",
-    "help": "Help",
-    "loading": "Loading...",
+    "help": "Aid",
+    "loading": "Charging...",
     "required": "*"
   },
   "booking": {
     "from": "From",
-    "to": "To",
+    "to": "Until",
     "totalPrice": "Total price",
     "confirm": "Confirm booking",
     "cancel": "Cancel"

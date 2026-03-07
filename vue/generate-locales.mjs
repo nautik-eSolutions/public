@@ -4,7 +4,7 @@ import path from "node:path";
 //to generate
 // npm run generate:locales -- --langs=es,ca,fr
 
-const API_BASE = process.env.TRANSLATE_API_BASE || "http://theteacher.codiblau.com";
+const API_BASE = process.env.TRANSLATE_API_BASE || "https://theteacher.codiblau.com";
 const OUT_DIR = process.env.LOCALES_DIR || path.resolve("src/locales");
 const SOURCE_LOCALE = process.env.SOURCE_LOCALE || "es";
 const SOURCE_FILE = path.join(OUT_DIR, `${SOURCE_LOCALE}.json`);

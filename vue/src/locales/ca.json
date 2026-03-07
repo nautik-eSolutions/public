@@ -1,0 +1,411 @@
+{
+  "header": {
+    "myBoats": "Els meus vaixells",
+    "greeting": "Hola",
+    "myDocumentation": "La meva documentació",
+    "invoices": "Factures",
+    "logOut": "Tancar sessió",
+    "loginDialog": {
+      "tagline": "Tot el teu món nàutic, a un sol inici de sessió.",
+      "subtitle": "Controla els preus, organitza els teus viatges més fàcilment i fes les teves reserves més ràpid",
+      "continueWithEmail": "Continuar amb correu electrònic",
+      "continueWithFacebook": "Facebook"
+    },
+    "reservations": "Reserves",
+    "logIn": "Inicia sessió"
+  },
+  "nav": {
+    "login": "Inicia sessió",
+    "bookings": "Les meves reserves",
+    "search": "Buscar port"
+  },
+  "footer": {
+    "cookiePolicy": "Política de cookies",
+    "privacySettings": "Configuració de privadesa",
+    "help": "Ajuda",
+    "privacyPolicy": "Política de privadesa",
+    "login": "Iniciar Sessió",
+    "termsOfService": "Termes de serveis",
+    "copyright": "© Port SL 2025"
+  },
+  "landing": {
+    "hero": {
+      "subtitle": "Descobriu els millors ports i viviu l'experiència del mar",
+      "title": "Navega cap a la propera aventura"
+    },
+    "search": {
+      "portLabel": "Port",
+      "portPlaceholder": "Seleccioneu un port",
+      "title": "Reserva amarratges amb",
+      "lengthLabel": "Eslora (m)",
+      "datesPlaceholder": "Selecciona dates",
+      "datesLabel": "Dates",
+      "beamLabel": "Màniga (m)",
+      "boatLabel": "Vaixell",
+      "boatPlaceholder": "Selecciona la teva embarcació",
+      "submit": "Cerca",
+      "addFirstBoat": "Afegir el meu primer vaixell"
+    },
+    "faq": {
+      "items": [
+        {
+          "question": "¿Cómo funciona Nautik?",
+          "answer": "Nautik es una plataforma que te permite buscar y reservar amarres en los mejores puertos. Solo tienes que seleccionar puerto, fechas y, si estás registrado, tu embarcación. Te mostraremos disponibilidad y precios para que reserves de forma segura."
+        },
+        {
+          "question": "¿Cuándo hay que hacer el check in?",
+          "answer": "El check-in se realiza el día de llegada al puerto, normalmente a partir de las 12:00 h. Te recomendamos contactar con el puerto con antelación para confirmar la hora exacta."
+        },
+        {
+          "question": "¿Se puede desgravar el I.V.A de la reserva?",
+          "answer": "Depende de tu situación fiscal. Si eres autónomo o empresa y el barco se utiliza para actividad económica, puedes consultar con tu asesor. Nosotros emitimos factura con IVA desglosado."
+        },
+        {
+          "question": "¿Qué pasa si no llevo la documentación?",
+          "answer": "Es obligatorio presentar la documentación del barco (permiso de navegación, seguro, etc.) en el momento del check-in. Si no la llevas, el puerto puede denegarte el acceso al amarre."
+        },
+        {
+          "question": "¿Necesito pasaporte si vengo de otro país?",
+          "answer": "Si vienes de un país no perteneciente al espacio Schengen, es posible que necesites pasaporte. Para ciudadanos de la UE, solo es necesario el DNI o documento de identidad en vigor."
+        },
+        {
+          "question": "¿Cómo me hago cliente fijo?",
+          "answer": "Regístrate en nuestra web y completa tu perfil. Al hacer reservas recurrentes, acumularás puntos y tendrás acceso a descuentos exclusivos para clientes habituales."
+        },
+        {
+          "question": "¿Puedo utilizar los servicios sin ser cliente?",
+          "answer": "Sí, puedes buscar puertos y ver disponibilidad sin registrarte. Pero para reservar necesitarás crear una cuenta y, si tienes embarcación, registrarla."
+        },
+        {
+          "question": "¿Hay amarres para hidroavión?",
+          "answer": "Actualmente nuestros puertos asociados no disponen de amarres específicos para hidroaviones. Todos nuestros amarres son para embarcaciones convencionales."
+        }
+      ],
+      "title": "Preguntes freqüents"
+    },
+    "featuredPorts": "Ports destacats"
+  },
+  "auth": {
+    "login": {
+      "noAccount": "No tens un compte?",
+      "title": "Benvingut una altra vegada!",
+      "createOne": "Crea't una avui!",
+      "email": "Correu electrònic",
+      "passwordPlaceholder": "Contrasenya",
+      "forgotPassword": "Has oblidat la contrasenya?",
+      "emailPlaceholder": "Correu electrònic",
+      "rememberMe": "Recorda'm",
+      "password": "Contrasenya",
+      "submit": "Inicia sessió"
+    },
+    "register": {
+      "title": "Registra't avui",
+      "personalInfo": "Informació Personal",
+      "hasAccount": "Ja tens un compte?",
+      "loginHere": "Inicia sessió aquí",
+      "subtitle": "Gaudeix de tots els avantatges de ser-ne membre",
+      "accountInfo": "Informació de Compte",
+      "idDocument": "Document d'identitat",
+      "birthDate": "Data de Naixement",
+      "email": "Correu Electrònic",
+      "lastName": "Cognoms",
+      "firstName": "Nom",
+      "emailPlaceholder": "correu@exemple.com",
+      "password": "Contrasenya",
+      "username": "Nom d'usuari",
+      "confirmPassword": "Confirmar Contrasenya",
+      "usernamePlaceholder": "usuario123",
+      "passwordReqMin": "Mínim 8 caràcters",
+      "passwordReqUpper": "Almenys una lletra majúscula",
+      "passwordRequirements": "Requisits de la contrasenya:",
+      "passwordReqNumber": "Almenys un número",
+      "submit": "Crear compte",
+      "passwordReqLower": "Almenys una lletra minúscula"
+    },
+    "validation": {
+      "emailInvalid": "Correu electrònic no vàlid",
+      "passwordRequired": "La contrasenya és obligatòria",
+      "emailRequired": "El correu és obligatori",
+      "passwordMin": "La contrasenya ha de tenir almenys 8 caràcters",
+      "emailValid": "Ha de ser un correu electrònic vàlid",
+      "passwordUppercase": "Ha de contenir almenys una majúscula",
+      "passwordLowercase": "Ha de contenir com a mínim una lletra minúscula",
+      "passwordsMismatch": "Les contrasenyes no coincideixen",
+      "confirmPasswordRequired": "Heu de confirmar la contrasenya",
+      "passwordNumber": "Ha de contenir almenys un número",
+      "firstNameRequired": "El nom és obligatori",
+      "firstNameMin": "El nom ha de tenir com a mínim 2 caràcters",
+      "firstNameLetters": "El nom només ha de contenir lletres",
+      "lastNameRequired": "Els cognoms són obligatoris",
+      "birthDateRequired": "La data de naixement és obligatòria",
+      "birthDateAge": "Has de ser més gran de 18 anys",
+      "lastNameLetters": "Els cognoms només han de contenir lletres",
+      "lastNameMin": "Els cognoms han de tenir almenys 2 caràcters",
+      "birthDateFuture": "La data no pot ser futura",
+      "idDocumentRequired": "El document d'identitat és obligatori",
+      "idDocumentFormat": "Format de document invàlid",
+      "idDocumentMin": "El document ha de tenir almenys 6 caràcters",
+      "idDocumentMax": "El document no pot excedir 20 caràcters",
+      "usernameRequired": "El nom d'usuari és obligatori",
+      "usernameMax": "El nom d'usuari no pot excedir 20 caràcters",
+      "usernameMin": "El nom d'usuari ha de tenir com a mínim 4 caràcters",
+      "usernameFormat": "Només lletres, números i guions baixos"
+    }
+  },
+  "boats": {
+    "tableHeaders": {
+      "name": "Nom",
+      "registry": "Matrícula",
+      "flag": "Bandera",
+      "length": "Eslora",
+      "beam": "Màniga",
+      "draft": "Calat",
+      "viewBoat": "Veure vaixell"
+    },
+    "pageTitle": "VAIXELLS",
+    "addBoat": "Afegir vaixell"
+  },
+  "boat": {
+    "title": "Embarcació",
+    "length": "Eslora",
+    "beam": "Màniga",
+    "draft": "Calat",
+    "edit": "Edita",
+    "bookings": "Reserves",
+    "form": {
+      "back": "Tornar",
+      "name": "Nom del vaixell",
+      "editTitle": "Editar vaixell",
+      "addTitle": "Afegir vaixell",
+      "registry": "Matrícula",
+      "namePlaceholder": "Introdueix el nom del vaixell",
+      "type": "Tipus de vaixell",
+      "registryPlaceholder": "Introdueix la matrícula del vaixell",
+      "typeDefault": "Tipus de vaixell",
+      "lengthPlaceholder": "Introdueix metres d'eslora",
+      "draftPlaceholder": "Introdueix metres de calat",
+      "beamPlaceholder": "Introdueix metres de màniga",
+      "cancel": "Cancel·la",
+      "help": "Ajuda",
+      "submit": "Continuar"
+    }
+  },
+  "search": {
+    "noResults": "No hi ha resultats per a la cerca",
+    "filters": "Filtres",
+    "sortBy": "Ordenar per",
+    "recommended": "Recomanats",
+    "priceAsc": "Preu: menor a major",
+    "filterPanel": {
+      "title": "Filtres",
+      "services": "Serveis",
+      "wifi": "Wifi",
+      "restaurants": "Restaurants",
+      "cleaning": "Neteja",
+      "price": "Preu",
+      "freshWater": "Aigua Dolça",
+      "security247": "Seguretat 24/7",
+      "wasteDisposal": "Gestió Residus",
+      "parking": "Aparcament",
+      "electricity16A": "Electricitat 16A",
+      "applyFilters": "Aplicar filtres",
+      "electricity63A": "Electricitat 63A",
+      "electricity32A": "Electricitat 32A",
+      "showersAndLockers": "Dutxes i Taquilles",
+      "wifiPremium": "WiFi Premium"
+    },
+    "title": "Troba el teu amarratge",
+    "noResultsMessage": "Intenta ajustar els filtres per veure més opcions",
+    "resultsHeader": {
+      "results": "resultats",
+      "bestOption": "Millor opció",
+      "lowestPrice": "Preu més baix",
+      "highestPrice": "Preu més alt",
+      "distance": "Distància",
+      "orderedBy": "ordenats per"
+    },
+    "searchBar": {
+      "destination": "Destinació",
+      "length": "Eslora",
+      "beam": "Màniga",
+      "arrival": "Arribada",
+      "departure": "Sortida"
+    }
+  },
+  "portCard": {
+    "totalPrice": "Preu total",
+    "bookButton": "Reservar",
+    "length": "Eslora",
+    "beam": "Màniga",
+    "power": "Potència",
+    "wasteCollection": "Recollida de residus",
+    "water": "Aigua",
+    "perNight": "€ /nit"
+  },
+  "port": {
+    "location": "Ubicació",
+    "currentWeather": "Temps actual",
+    "mooringZones": "Zones d'amarratge",
+    "about": "Sobre el port",
+    "loading": "Carregant port...",
+    "city": "Ciutat",
+    "address": "Direcció",
+    "zones": "Zones",
+    "portFile": "Fitxa del port",
+    "moorings": "Amarradors",
+    "admittedVessels": "Embarcacions admeses",
+    "maxLength": "Eslora màx.",
+    "maxBeam": "Màniga màx.",
+    "categories": "categoria",
+    "maxDraft": "Calat màx.",
+    "categoriesPlural": "categories"
+  },
+  "createBooking": {
+    "title": "Completar reserva",
+    "address": "Domicili",
+    "billingAddress": "Adreça de facturació",
+    "city": "Ciutat",
+    "country": "País",
+    "contactInfo": "Informació de contacte",
+    "email": "Correu electrònic",
+    "summary": {
+      "zone": "Zona",
+      "dimensions": "Dimensions",
+      "arrival": "Arribada",
+      "departure": "Sortida",
+      "boat": "Embarcació",
+      "vat": "IVA",
+      "total": "Total",
+      "mooringPrice": "Preu amarratge"
+    },
+    "phone": "Telèfon",
+    "proceedToPayment": "Procedir al pagament"
+  },
+  "reservations": {
+    "title": "Les meves reserves",
+    "tabs": {
+      "future": "Futures",
+      "active": "Actives",
+      "past": "Passades"
+    },
+    "subtitle": "Gestiona les reserves d'amarradors",
+    "card": {
+      "statusFuture": "Pròxima",
+      "statusActive": "Activa",
+      "statusPast": "Passada",
+      "viewDetails": "Veure detalls",
+      "contactSupport": "Contactar suport",
+      "cancel": "Cancel·la"
+    },
+    "empty": "No hi ha reserves en aquesta categoria.",
+    "confirmation": {
+      "title": "Reserva",
+      "back": "Tornar",
+      "boat": "Vaixell",
+      "ownerName": "Nom",
+      "successBanner": "RESERVA REALITZADA AMB ÈXIT!! GAUDEIX LA TEVA ESTADA.",
+      "lastName": "Cognoms",
+      "arrival": "Arribada",
+      "departure": "Sortida",
+      "arrivalTime": "Hora d'arribada",
+      "nights": "Nits",
+      "vat": "IVA",
+      "totalPrice": "Preu total",
+      "subtotal": "Subtotal sense IVA",
+      "boatName": "Nom del vaixell",
+      "registry": "Matrícula",
+      "port": "Port",
+      "boatType": "Tipus d'embarcació",
+      "contactPhone": "Telèfon de contacte",
+      "dniPassport": "DNI/Passaport",
+      "vhfChannel": "Canal VHF",
+      "email": "Email",
+      "reservationNumber": "Número de reserva",
+      "sportsMarina": "PORT ESPORTIU",
+      "downloadVoucher": "Descarregar comprovant",
+      "bookingCard": {
+        "port": "Port",
+        "arrival": "Arribada",
+        "departure": "Sortida",
+        "totalPrice": "Preu total"
+      }
+    }
+  },
+  "paymentSuccess": {
+    "title": "Reserva confirmada",
+    "badge": "Pagament realitzat",
+    "bookingDetails": "Detalls de la reserva",
+    "summaryRows": {
+      "port": "Port",
+      "mooring": "Amarratge",
+      "boat": "Embarcació",
+      "checkIn": "Entrada",
+      "checkOut": "Sortida",
+      "totalPaid": "Total pagat"
+    },
+    "subtitle": "El teu amarratge ha estat reservat amb èxit.",
+    "actions": {
+      "viewBookings": "Veure les meves reserves",
+      "downloadInvoice": "Descarregar factura",
+      "backToHome": "Tornar a l'inici"
+    },
+    "confirmationEmail": "Correu de confirmació enviat"
+  },
+  "paymentFailed": {
+    "title": "Pagament fallit",
+    "subtitle": "No hem pogut processar el pagament. No s'ha fet cap càrrec.",
+    "bookingDetails": "Detalls de la reserva",
+    "summaryRows": {
+      "port": "Port",
+      "mooring": "Amarratge",
+      "boat": "Embarcació",
+      "checkIn": "Entrada",
+      "checkOut": "Sortida",
+      "totalPaid": "Total pagat"
+    },
+    "badge": "Transacció fallida",
+    "actions": {
+      "backToHome": "Tornar a l'inici"
+    },
+    "noCharges": "No s'han fet càrrecs",
+    "noChargesDetail": "Com que la transacció no s'ha completat, no s'ha descomptat cap import del vostre compte."
+  },
+  "weather": {
+    "title": "Previsió meteorològica",
+    "wind": "Vent",
+    "windSpeed": "Velocitat",
+    "windDirection": "NO",
+    "waves": "Onatge",
+    "waveHeight": "Alçada",
+    "waveDirection": "NO"
+  },
+  "sidebar": {
+    "reservations": "Reserves",
+    "invoices": "Factures",
+    "settings": "Configuració",
+    "help": "Ajuda",
+    "logOut": "Log Out",
+    "myBoats": "Els meus vaixells"
+  },
+  "errors": {
+    "generic": "Ha passat un error",
+    "notFound": "No trobat"
+  },
+  "common": {
+    "back": "Tornar",
+    "continue": "Continuar",
+    "cancel": "Cancel·la",
+    "save": "Desa",
+    "edit": "Edita",
+    "loading": "Carregant...",
+    "required": "*",
+    "help": "Ajuda"
+  },
+  "booking": {
+    "from": "Des de",
+    "to": "Fins",
+    "totalPrice": "Preu total",
+    "cancel": "Cancel·la",
+    "confirm": "Confirmar reserva"
+  }
+}
