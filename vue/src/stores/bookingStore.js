@@ -49,10 +49,7 @@ export const useBookingStore = defineStore('bookingStore', {
     },
     async getBookingsByBoat(boatId){
       const resp =  await getBookingByBoat(boatId);
-
-      if (resp.status === 200){
-
-      }
+      return resp.data.data
 
 
     },
