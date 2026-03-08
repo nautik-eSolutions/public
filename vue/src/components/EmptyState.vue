@@ -1,13 +1,17 @@
 <script setup>
+import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
-defineProps({
+
+const props = defineProps({
   message: {
     type: String,
-    default: t('search.filterPanel.noResultsMessage'),
+    default: null,
   },
 })
+
+const displayMessage = computed(() => props.message || t('search.filterPanel.noResultsMessage'))
 </script>
 
 <template>
@@ -16,6 +20,6 @@ defineProps({
     <h3 class="text-lg font-semibold text-gray-900 mb-2">
       {{ $t('search.noResults') }}
     </h3>
-    <p class="text-gray-600">{{ message }}</p>
+    <p class="text-gray-600">{{ displayMessage }}</p>
   </div>
 </template>

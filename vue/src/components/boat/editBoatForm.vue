@@ -39,7 +39,6 @@ const handleSubmit = () => {
 
 <template>
   <div class="max-w-5xl mx-auto px-6 py-8">
-    <!-- Back link -->
     <RouterLink to="/boats">
       <button
         class="text-blue-600 text-sm font-medium mb-6 hover:underline flex items-center gap-1"
@@ -48,15 +47,15 @@ const handleSubmit = () => {
         <span>Volver</span>
       </button>
     </RouterLink>
-    <!-- Title card -->
+
     <div class="bg-principal-blue text-white rounded-xl px-8 py-6 mb-6">
       <h1 class="text-2xl font-bold">Añadir barco</h1>
     </div>
 
-    <!-- Form card -->
+
     <div class="bg-white rounded-xl border border-gray-200 shadow-sm p-8">
       <form @submit.prevent="handleSubmit" class="space-y-6">
-        <!-- Nombre del barco -->
+
         <div class="grid grid-cols-3 gap-6 items-center">
           <label class="text-sm font-semibold text-gray-900">Nombre del barco</label>
           <input
@@ -70,7 +69,7 @@ const handleSubmit = () => {
           }}</span>
         </div>
 
-        <!-- Matrícula -->
+
         <div class="grid grid-cols-3 gap-6 items-center">
           <label class="text-sm font-semibold text-gray-900">Matrícula</label>
           <input
@@ -84,7 +83,6 @@ const handleSubmit = () => {
           }}</span>
         </div>
 
-        <!-- Eslora -->
         <div class="grid grid-cols-3 gap-6 items-center">
           <label class="text-sm font-semibold text-gray-900">Eslora</label>
           <input
@@ -99,7 +97,7 @@ const handleSubmit = () => {
           }}</span>
         </div>
 
-        <!-- Manga -->
+
         <div class="grid grid-cols-3 gap-6 items-center">
           <label class="text-sm font-semibold text-gray-900">Manga</label>
           <input
@@ -114,7 +112,7 @@ const handleSubmit = () => {
           }}</span>
         </div>
 
-        <!-- Calado -->
+
         <div class="grid grid-cols-3 gap-6 items-center">
           <label class="text-sm font-semibold text-gray-900">Calado</label>
           <input
@@ -129,13 +127,7 @@ const handleSubmit = () => {
           }}</span>
         </div>
 
-        <!-- Seguro de embarcación -->
 
-        <!-- Certificado de navegabilidad -->
-
-        <!-- Certificado de registro -->
-
-        <!-- Action buttons -->
         <div class="flex items-center justify-end gap-4 pt-4">
           <button
             type="button"

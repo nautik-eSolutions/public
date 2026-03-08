@@ -22,18 +22,21 @@ export class Booking{
     }
   }
 
-   static fromJson(json){
-    return new Booking(
-        json.port_name,
-        json.start_date,
-        json.end_date,
-        json.total_cost,
-        json.boat_id,
-        json.boat_name,
-        json.mooring_number,
-      json.zone_name,
-      json.zone_description
-    );
+   static async fromJson(json, boatStore) {
 
-  }
+     const boat = await boatStore.getBoat(json.boat_id)
+
+     return new Booking(
+       json.port_name,
+       json.start_date,
+       json.end_date,
+       json.total_cost,
+       json.boat_id,
+       boat.name,
+       json.mooring_number,
+       json.zone_name,
+       json.zone_description
+     );
+
+   }
 }

@@ -4,46 +4,50 @@ export default {
 }
 </script>
 <script setup>
-  defineProps({
-    portName:'',
-    startDate:'',
-    endDate:'',
-    length:'',
-    beam:''
-  })
+defineProps({
+  portName: '',
+  startDate: '',
+  endDate: '',
+  length: '',
+  beam: '',
+})
 </script>
 <template>
   <section class="max-w-6xl mx-auto px-4 mb-12">
     <div class="bg-[#0f172a] rounded-2xl p-8 md:p-12 shadow-xl">
       <div class="flex flex-row gap-4 align-middle justify-center text-white">
         <div class="flex-col w-[30%] justify-center align-middle">
-          <p class="text-sm text-center text-white">Destino</p>
+          <p class="text-sm text-center text-white">{{ $t('search.searchBar.destination') }}</p>
           <div class="bg-secondary-blue rounded-md flex justify-center align-middle">
-            <p class="w-[95%] h-7 rounded-xl outline-0 text-center align-middle items-center justify-center" >{{portName}}</p>
+            <p
+              class="w-[95%] h-7 rounded-xl outline-0 text-center align-middle items-center justify-center"
+            >
+              {{ portName }}
+            </p>
           </div>
         </div>
         <div class="flex-col w-[11%] justify-center align-middle">
-          <p class="text-sm text-center text-white">Eslora</p>
+          <p class="text-sm text-center text-white">{{ $t('search.searchBar.length') }}</p>
           <div class="bg-secondary-blue rounded-md flex justify-center">
-            <p  class="w-[90%] h-7 rounded-xl outline-0 text-center">{{length}}</p>
+            <p class="w-[90%] h-7 rounded-xl outline-0 text-center">{{ length }}</p>
           </div>
         </div>
         <div class="flex-col w-[11%] justify-center align-middle">
-          <p class="text-sm text-center text-white">Manga</p>
+          <p class="text-sm text-center text-white">{{ $t('search.searchBar.beam') }}</p>
           <div class="bg-secondary-blue rounded-md flex justify-center">
-            <p class="w-[90%] h-7 rounded-xl outline-0 text-center">{{beam}}</p>
+            <p class="w-[90%] h-7 rounded-xl outline-0 text-center">{{ beam }}</p>
           </div>
         </div>
         <div class="flex-col w-[17%] justify-center align-middle">
-          <p class="text-sm text-center text-white">Llegada</p>
+          <p class="text-sm text-center text-white">{{ $t('search.searchBar.arrival') }}</p>
           <div class="flex justify-center w-[100%] bg-secondary-blue rounded-md">
-            <p class="w-[75%] h-7 rounded-xl text-center">{{startDate}}</p>
+            <p class="w-[75%] h-7 rounded-xl text-center">{{ startDate }}</p>
           </div>
         </div>
         <div class="flex-col w-[17%] justify-center align-middle">
-          <p class="text-sm text-center text-white">Salida</p>
+          <p class="text-sm text-center text-white">{{ $t('search.searchBar.departure') }}</p>
           <div class="flex justify-center w-[100%] bg-secondary-blue rounded-md">
-            <p class="w-[75%] h-7 rounded-xl text-center" >{{endDate}}</p>
+            <p class="w-[75%] h-7 rounded-xl text-center">{{ endDate }}</p>
           </div>
         </div>
       </div>

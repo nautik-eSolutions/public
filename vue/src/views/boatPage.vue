@@ -41,7 +41,7 @@ function handleClick() {
             <div class="flex justify-between gap-2 w-full">
               <div class="flex p-2 gap-2 text-lg border border-gray-300 shadow-sm w-7/8">
                 <div class="w-1/3 p-2 text-white bg-principal-blue">
-                  <p class="text-xl text-center">{{ $t('boat.lenth') }} : {{ boat.length }} m</p>
+                  <p class="text-xl text-center">{{ $t('boat.length') }} : {{ boat.length }} m</p>
                 </div>
                 <div class="w-1/3 p-2 text-white bg-principal-blue">
                   <p class="text-xl text-center">{{ $t('boat.beam') }} : {{ boat.beam }} m</p>
@@ -50,7 +50,7 @@ function handleClick() {
                   <p class="text-xl text-center">{{ $t('boat.draft') }} : {{ boat.draft }} m</p>
                 </div>
               </div>
-              <Button label="Edit" @click="handleClick" class="w-1/8" />
+              <Button :label="$t('boat.edit')" @click="handleClick" class="w-1/8" />
             </div>
           </div>
         </template>

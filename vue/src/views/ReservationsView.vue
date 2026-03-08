@@ -12,6 +12,7 @@ const selectedReservation = ref(null)
 
 onMounted(async () => {
   reservations.value = await bookingStore.getAllBookingsByUser()
+  console.log(reservations.value)
 })
 
 const activeTab = ref('future')
@@ -38,7 +39,6 @@ function handleCancelReservation(reservation) {}
   <Header />
   <div class="min-h-screen bg-gray-50">
     <div class="max-w-4xl mx-auto px-4 py-12">
-      <!-- Header -->
       <div class="mb-8">
         {{ $t('reservations.title') }}
         <h1 class="text-3xl font-bold text-slate-900"></h1>

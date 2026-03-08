@@ -87,7 +87,9 @@ function handleSubmit() {
 
       <form @submit.prevent="handleSubmit">
         <div class="flex flex-col md:flex-row content-center justify-center gap-1.5 w-full">
-          <div class="bg-white w-full rounded-md md:rounded-tl-2xl md:rounded-bl-2xl md:w-4/5 px-2 py-1 shadow-lg">
+          <div
+            class="bg-white w-full rounded-md md:rounded-tl-2xl md:rounded-bl-2xl md:w-4/5 px-2 py-1 shadow-lg"
+          >
             <div class="hidden md:flex items-end gap-2">
               <div class="flex-1 px-4 py-2">
                 <label class="block text-xs font-semibold uppercase text-gray-600 mb-2">
@@ -99,7 +101,7 @@ function handleSubmit() {
                     optionLabel="name"
                     :suggestions="filteredPorts"
                     @complete="searchPort"
-                    placeholder="Selecciona un puerto"
+                    :placeholder="$t('landing.search.portPlaceholder')"
                     class="w-full"
                   />
                 </template>
@@ -114,7 +116,7 @@ function handleSubmit() {
                   selectionMode="range"
                   :manualInput="false"
                   :minDate="minDate"
-                  placeholder="Selecciona fechas"
+                  :placeholder="$t('landing.search.datesPlaceholder')"
                   dateFormat="dd/mm/yy"
                   class="w-full"
                 />
@@ -204,7 +206,7 @@ function handleSubmit() {
             <div class="flex md:hidden flex-col gap-4">
               <div class="px-4 py-2">
                 <label class="block text-xs font-semibold uppercase text-gray-600 mb-2">
-                  Puerto
+                  {{ $t('landing.search.portLabel') }}
                 </label>
                 <template v-if="ports">
                   <AutoComplete

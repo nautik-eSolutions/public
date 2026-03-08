@@ -61,8 +61,10 @@ export const useBookingStore = defineStore('bookingStore', {
       const boatStore = useBoatStore()
 
       const resp = await getBookings()
-      return resp.data.data.map(booking => Booking.fromJson(booking));
-
+      console.log(resp)
+      return await Promise.all(
+        resp.data.data.map((booking) => Booking.fromJson(booking, boatStore)),
+      )
     },
 
     async initPayment(mooringCategoryId, startDate, endDate, boatId,billingAddress,city,country) {
@@ -86,7 +88,7 @@ export const useBookingStore = defineStore('bookingStore', {
       const boat = await boatStore.getBoat(resp.data.data[0].boat_id)
       console.log(boat)
 
-      return Booking.fromJson(resp.data.data[0], boat.name)
+      return await Booking.fromJson(resp.data.data[0], boatStore)
     },
 
     async getInvoice(order){

@@ -7,18 +7,16 @@ export default {
 import { ref } from 'vue'
 import { useUserStore } from '@/stores/userStore.js'
 import router from '@/router/index.js'
-//email = monds@corp.com
-//password = 747281231
 
-const userStore = useUserStore();
+const userStore = useUserStore()
 
-function handleEmailForm(formData){
-  userStore.createUser(formData.value.email,formData.value.userName)
-  router.push("/register/passwords")
+function handleEmailForm(formData) {
+  userStore.createUser(formData.value.email, formData.value.userName)
+  router.push('/register/passwords')
 }
-function handlePasswordForm(password){
+function handlePasswordForm(password) {
   userStore.register(password.value)
-  router.push("/personal-register")
+  router.push('/personal-register')
 }
 </script>
 
@@ -39,7 +37,7 @@ function handlePasswordForm(password){
             <div
               class="text-surface-900 dark:text-surface-0 text-2xl font-bold leading-tight text-center w-full"
             >
-              Registráte
+              {{ $t('auth.register.title') }}
             </div>
           </div>
         </div>

@@ -9,27 +9,32 @@ import InputText from '@/volt/InputText.vue'
 import Button from '@/volt/Button.vue'
 import Password from '@/volt/Password.vue'
 import { ref, shallowRef } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { useAuthStore } from '@/stores/authStore'
 import { defineForm, field, isValidForm } from 'vue-yup-form'
 import * as yup from 'yup'
 
 const auth = useAuthStore()
+const { t } = useI18n()
 const submitted = ref(false)
 
 const generateForm = () => {
   return defineForm({
     email: field(
       '',
-      yup.string().email('Correo electrónico no válido').required('El correo es obligatorio'),
+      yup
+        .string()
+        .email(t('auth.validation.emailInvalid'))
+        .required(t('auth.validation.emailRequired')),
     ),
     password: field(
       '',
       yup
         .string()
-        .required('La contraseña es obligatoria')
-        .min(8, 'La contraseña debe tener al menos 8 caracteres')
-        .matches(/[A-Z]/, 'Debe contener al menos una mayúscula')
-        .matches(/[0-9]/, 'Debe contener al menos un número'),
+        .required(t('auth.validation.passwordRequired'))
+        .min(8, t('auth.validation.passwordMin'))
+        .matches(/[A-Z]/, t('auth.validation.passwordUppercase'))
+        .matches(/[0-9]/, t('auth.validation.passwordNumber')),
     ),
   })
 }
@@ -90,7 +95,7 @@ const handleSubmit = async () => {
               name="email1"
               type="text"
               v-model="form.email.$value"
-              placeholder="Email address"
+              :placeholder="$t('auth.login.emailPlaceholder')"
               class="w-full px-3 py-2 shadow-sm rounded-lg"
               :class="{ 'border-red-500': submitted && form.email.$error }"
             />
@@ -110,7 +115,7 @@ const handleSubmit = async () => {
               id="password1"
               name="password1"
               v-model="form.password.$value"
-              placeholder="Password"
+              :placeholder="$t('auth.login.passwordPlaceholder')"
               :toggleMask="true"
               :feedback="false"
               input-class="w-full!"

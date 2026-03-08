@@ -48,8 +48,7 @@ export default {
   name: 'searchable-select',
   emits: ['update:modelValue', 'search'],
   setup(props, ctx) {
-    // ///// Data //////
-    // /////////////////
+
     const data = reactive({
       inputText: '',
       activeIndex: 0,
@@ -58,16 +57,8 @@ export default {
       showPlaceHolder: true,
       selectedText: 'Click to choose',
     })
-    // Element Ref
     const searchInput = ref(null)
     const wrapperEl = ref(null)
-    // //////// Life Cycle Hooks  /////////
-    // ///////////////////////////////////
-    // Mounted
-
-    // //// Computed /////
-    // //////////////////
-    // Filter options by inputText
     const filteredOptions = computed(() => {
       const searchOptions = (val, i) =>
         val.toLocaleLowerCase().includes(data.inputText.toLocaleLowerCase()) && i < props.max
@@ -78,13 +69,9 @@ export default {
         return searchOptions(opt, i)
       })
     })
-    // /// Methods //////
-    // /////////////////
-    // Set Dropdown value
     function toggleDropdown() {
       data.showDropdown = Boolean(data.inputText && filteredOptions.value.length)
     }
-    // Toggle searchbox
     function toggleSearchbox() {
       data.showPlaceHolder = false
       data.showSearchbox = !data.showSearchbox
@@ -100,41 +87,34 @@ export default {
         data.showSearchbox = false
       }
     }
-    // On Input Change
     function onInput(e) {
       const value = e.target.value.trim()
-      // Updating value
       data.inputText = value
       data.activeIndex = 0
-      // Emit to parent
       ctx.emit('search', value)
-      // toggle dropdown
+
       toggleDropdown()
     }
-    // When focus to input
+
     function onFocus(e) {
-      // toggle dropdown
       toggleDropdown()
     }
-    // On Arrow Down press
+
     function onArrowDown(e) {
       data.activeIndex++
       if (data.activeIndex >= filteredOptions.value.length) {
         data.activeIndex = 0
       }
     }
-    // On Arrow Up press
     function onArrowUp(e) {
       data.activeIndex--
       if (data.activeIndex < 0) {
         data.activeIndex = filteredOptions.value.length - 1
       }
     }
-    // On ESC press
     function onESC(e) {
       data.showDropdown = !data.showDropdown
     }
-    // When Select Option
     function onSelectOption(e, index = data.activeIndex) {
       if (!data.showDropdown) {
         return
@@ -151,7 +131,6 @@ export default {
     function getOptionTitle(option) {
       return option.name
     }
-    // Return to Template
     return {
       ...toRefs(data),
       wrapperEl,
