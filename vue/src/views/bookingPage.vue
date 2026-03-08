@@ -17,12 +17,11 @@ const showCancelDialog = ref(false)
 const reservation = computed(() => {
   const id = parseInt(route.params.id)
   const booking = bookingStore.Bookings?.find(b => b.id === id)
-  console.log(booking)
   return booking
 })
 
 onMounted(async () => {
-  if (!bookingStore.bookings?.length) {
+  if (!bookingStore.Bookings?.length) {
     await bookingStore.getAllBookingsByUser()
   }
   isLoading.value = false

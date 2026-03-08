@@ -5,7 +5,7 @@ export default {
 </script>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, shallowRef } from 'vue'
 import { defineForm, field, isValidForm } from 'vue-yup-form'
 import * as yup from 'yup'
 import InputText from '@/volt/InputText.vue'
@@ -29,21 +29,14 @@ const boatTypes = ['motor', 'vela']
 
 const emits = defineEmits(['submit'])
 
-const handleSubmit = () => {
-  submitted.value = true
+function  handleSubmit () {
+submitted.value = true
   if (!isValidForm(form)) {
   } else {
     emits('submit', form)
   }
 }
 
-const handleCancel = () => {
-  console.log('Form cancelled')
-}
-
-const handleHelp = () => {
-  console.log('Help requested')
-}
 </script>
 
 <template>
@@ -121,7 +114,7 @@ const handleHelp = () => {
               id="length"
               name="length"
               type="number"
-              v-model="form.length.$value"
+              v-model.number="form.length.$value"
               placeholder="Introduce metros de eslora"
               class="w-full px-3 py-2 shadow-sm rounded-lg"
               :class="{ 'border-red-500': submitted && form.length.$error }"
@@ -139,7 +132,7 @@ const handleHelp = () => {
               id="beam"
               name="beam"
               type="number"
-              v-model="form.beam.$value"
+              v-model.number="form.beam.$value"
               placeholder="Introduce metros de manga"
               class="w-full px-3 py-2 shadow-sm rounded-lg"
               :class="{ 'border-red-500': submitted && form.beam.$error }"
@@ -157,7 +150,7 @@ const handleHelp = () => {
               id="draft"
               name="draft"
               type="number"
-              v-model="form.draft.$value"
+              v-model.number="form.draft.$value"
               placeholder="Introduce metros de calado"
               class="w-full px-3 py-2 shadow-sm rounded-lg"
               :class="{ 'border-red-500': submitted && form.draft.$error }"

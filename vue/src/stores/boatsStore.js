@@ -14,8 +14,8 @@ export const useBoatsStore = defineStore('boatsStore', {
       if (!resp.data) {
         console.log('no boats')
       }
-
-      return resp.data.map((rawBoat) => this.fromJson(rawBoat))
+      this.Boats = resp.data.map((rawBoat) => this.fromJson(rawBoat))
+      return this.Boats
     },
 
     fromJson(json) {

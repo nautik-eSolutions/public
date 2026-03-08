@@ -13,7 +13,6 @@ const boats = ref()
 
 onMounted(async () => {
   boats.value = await boatsStore.getBoats()
-  console.log(boats.value)
 })
 
 const handleDeleteBoat = async (boatId) => {

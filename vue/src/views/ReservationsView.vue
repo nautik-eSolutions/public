@@ -4,6 +4,7 @@ import ReservationCard from '@/components/reservation/ReservationCard.vue'
 import Header from '@/components/general/header.vue'
 import ReservationDetailsModal from '@/components/reservation/ReservationDetailModal.vue'
 import { useBookingStore } from '@/stores/bookingStore.js'
+import router from '@/router/index.js'
 
 const reservations = ref([])
 const bookingStore = useBookingStore()
@@ -28,17 +29,15 @@ const displayedReservations = computed(() => {
 
 function showReservationDetails(reservation) {
   selectedReservation.value = reservation
-  showDetailsModal.value = true
+  router.push(`/bookings/${reservation.id}`)
 }
 
-function handleCancelReservation(reservation) {}
 </script>
 
 <template>
   <Header />
   <div class="min-h-screen bg-gray-50">
     <div class="max-w-4xl mx-auto px-4 py-12">
-      <!-- Header -->
       <div class="mb-8">
         {{ $t('reservations.title') }}
         <h1 class="text-3xl font-bold text-slate-900"></h1>
@@ -109,7 +108,6 @@ function handleCancelReservation(reservation) {}
           :mooring-number="reservation.mooringNumber"
           :status="reservation.status"
           @view-details="showReservationDetails(reservation)"
-          @cancel="handleCancelReservation(reservation)"
         />
 
         <div
@@ -121,9 +119,4 @@ function handleCancelReservation(reservation) {}
       </div>
     </div>
   </div>
-  <ReservationDetailsModal
-    v-if="showDetailsModal"
-    :reservation="selectedReservation"
-    @close="showDetailsModal = false"
-  />
 </template>
