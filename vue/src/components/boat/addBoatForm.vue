@@ -196,6 +196,8 @@ const handleHelp = () => {
     </div>
   </div>
 </template>
-<style>
+<style lang="scss">
+::v-deep(.p-input){
 
+}
 </style>

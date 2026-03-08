@@ -7,7 +7,7 @@ export default {
 <script setup></script>
 
 <template>
-  <div class="grid grid-cols-7 gap-4 mb-3">
+  <div class="grid grid-cols-8 gap-4 mb-3">
     <div class="text-xs font-semibold text-gray-600 text-center">
       {{ $t('boats.tableHeaders.name') }}
     </div>
@@ -25,6 +25,9 @@ export default {
     </div>
     <div class="text-xs font-semibold text-gray-600 text-center">
       {{ $t('boats.tableHeaders.viewBoat') }}
+    </div>
+    <div class="text-xs font-semibold text-gray-600 text-center">
+      {{ $t('boats.tableHeaders.deleteBoat') }}
     </div>
   </div>
 </template>

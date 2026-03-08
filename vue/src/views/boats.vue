@@ -15,6 +15,15 @@ onMounted(async () => {
   boats.value = await boatsStore.getBoats()
   console.log(boats.value)
 })
+
+const handleDeleteBoat = async (boatId) => {
+  try {
+    await boatsStore.deleteBoat(boatId)
+    boats.value = await boatsStore.getBoats()
+  } catch (error) {
+    console.error('Error al eliminar el barco:', error)
+  }
+}
 </script>
 
 <template>
@@ -39,7 +48,7 @@ onMounted(async () => {
           <header-boat />
 
           <div class="flex-1 h-full">
-            <div v-for="boat in boats" class="mt-4">
+            <div v-for="boat in boats" :key="boat.id" class="mt-4">
               <boat-info
                 :name="boat.name"
                 :registerNumber="boat.registerNumber"
@@ -47,6 +56,7 @@ onMounted(async () => {
                 :bream="boat.beam"
                 :draft="boat.draft"
                 :boatId="boat.id"
+                @delete="handleDeleteBoat"
               />
             </div>
           </div>
