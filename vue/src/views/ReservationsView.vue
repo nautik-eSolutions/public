@@ -106,7 +106,6 @@ function handleCancelReservation(reservation) {}
           :end-date="reservation.endDate"
           :total-cost="reservation.totalCost"
           :boat-name="reservation.boatName"
-          :mooring-name="reservation.mooringName"
           :mooring-number="reservation.mooringNumber"
           :status="reservation.status"
           @view-details="showReservationDetails(reservation)"
