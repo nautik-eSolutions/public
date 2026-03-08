@@ -16,6 +16,7 @@ import { auth } from '@/main.js'
 import { Carousel, Slide, Navigation } from 'vue3-carousel'
 import 'vue3-carousel/dist/carousel.css'
 import { useI18n } from 'vue-i18n'
+import { landingSchema } from '@/utils/schemas.js'
 
 const ports = ref()
 const boats = ref()
@@ -94,6 +95,12 @@ const toggleItem = (item) => {
 }
 
 const isOpen = (item) => openItems.value.has(item)
+
+
+const script = document.createElement('script')
+script.type = 'application/ld+json'
+script.textContent = JSON.stringify(landingSchema)
+document.head.appendChild(script)
 </script>
 
 <template>
