@@ -20,8 +20,8 @@ const activeTab = ref('future')
 onMounted(async () => {
   const boatId = useRoute().params.id
   reservations.value = await bookingStore.getBookingsByBoat(boatId)
+  console.log(reservations.value)
   boat.value = await boatStore.getBoat(boatId)
-  console.log(boat)
   mounted.value = true
 })
 
@@ -144,7 +144,7 @@ function handleCancelReservation(reservation) {
                       : 'text-slate-500 hover:text-slate-700',
                   ]"
                 >
-                  {{ $t('reservations.tabs.active') || 'Activas' }}
+                  {{ $t('reservations.tabs.active') }}
                   <span
                     v-if="activeReservations.length"
                     class="border border-green-500 text-green-600 text-xs font-semibold rounded-full w-5 h-5 flex items-center justify-center"
@@ -162,7 +162,7 @@ function handleCancelReservation(reservation) {
                       : 'text-slate-500 hover:text-slate-700',
                   ]"
                 >
-                  {{ $t('reservations.tabs.past') || 'Pasadas' }}
+                  {{ $t('reservations.tabs.past')}}
                 </button>
               </div>
             </div>
@@ -188,7 +188,7 @@ function handleCancelReservation(reservation) {
                 class="text-center text-slate-400 py-16 text-sm"
               >
                 {{
-                  $t('reservations.empty') || 'No hay reservas en esta categoría para este barco'
+                  $t('reservations.empty')
                 }}
               </div>
             </div>

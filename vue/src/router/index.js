@@ -16,7 +16,7 @@ import createBooking from '@/views/createBooking.vue'
 import editBoat from '@/views/editBoat.vue'
 import ReservationsView from "@/views/ReservationsView.vue";
 import errorBooking from '@/views/errorBooking.vue'
-
+import bookingPage from '@/views/bookingPage.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -60,7 +60,7 @@ const router = createRouter({
 
     {
       path: '/bookings',
-      name: 'booking',
+      name: 'bookings',
       component: ReservationsView,
     },
 
@@ -105,6 +105,11 @@ const router = createRouter({
       path: '/payment-error',
       name: 'PaymentError',
       component: errorBooking,
+    },
+    {
+      path: '/bookings/:id',
+      name: 'booking',
+      component: bookingPage,
     },
   ],
 })

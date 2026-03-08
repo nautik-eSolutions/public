@@ -12,7 +12,6 @@ const emit = defineEmits(['back-to-home'])
 
 const summaryRows = [
   { icon: 'map-pin', label: 'Port', getValue: (b) => b.portName },
-  { icon: 'anchor', label: 'Mooring', getValue: (b) => b.mooringName?.label },
   { icon: 'sailboat', label: 'Boat', getValue: (b) => b.boatName },
   { icon: 'calendar', label: 'Check-in', getValue: (b) => b.startDate },
   { icon: 'calendar', label: 'Check-out', getValue: (b) => b.endDate },

@@ -1,6 +1,11 @@
 import { defineStore } from 'pinia'
 import * as BookingService from '@/service/BookingService.js'
-import { fetchBooking, getBookingByBoat, getBookings } from '@/service/BookingService.js'
+import {
+  fetchBooking,
+  getBookingByBoat,
+  getBookingById,
+  getBookings,
+} from '@/service/BookingService.js'
 import { getMooringCategory } from '@/service/MooringCategoryService.js'
 import { MooringCategoryPreBooking } from '@/model/MooringCategoryPreBooking.js'
 import { Booking } from '@/model/Booking.js'
@@ -12,6 +17,7 @@ export const useBookingStore = defineStore('bookingStore', {
   state: () => {
     return {
       Booking: [],
+      Bookings:[]
     }
   },
   actions: {
@@ -49,19 +55,23 @@ export const useBookingStore = defineStore('bookingStore', {
     },
     async getBookingsByBoat(boatId){
       const resp =  await getBookingByBoat(boatId);
-      return resp.data.data
+      return resp.data.data.map(booking=>Booking.fromJson(booking));
 
 
     },
+    async getBookingById(id){
+      const resp = await getBookingById(id);
+      console.log(resp)
+    }
+    ,
     async getAllBookings(){
       const resp = await getBookings()
 
     },
     async getAllBookingsByUser(){
-      const boatStore = useBoatStore()
-
       const resp = await getBookings()
-      return resp.data.data.map(booking => Booking.fromJson(booking));
+      this.Bookings = resp.data.data.map((booking) => Booking.fromJson(booking))
+      return this.Bookings
 
     },
 
@@ -94,5 +104,5 @@ export const useBookingStore = defineStore('bookingStore', {
     },
 
   },
-
+  persist: true
 })
