@@ -8,8 +8,7 @@ export default {
 import { ref } from 'vue'
 import { defineForm, field, isValidForm } from 'vue-yup-form'
 import * as yup from 'yup'
-
-
+import InputText from '@/volt/InputText.vue'
 
 const submitted = ref(false)
 
@@ -26,16 +25,9 @@ const generateForm = () => {
 
 const form = generateForm()
 
-const boatTypes = ['Tipo de barco', 'motor', 'vela']
+const boatTypes = ['motor', 'vela']
 
 const emits = defineEmits(['submit'])
-
-const handleFileUpload = (field, event) => {
-  const file = event.target.files[0]
-  if (file) {
-    formData.value[field] = file
-  }
-}
 
 const handleSubmit = () => {
   submitted.value = true
@@ -56,7 +48,6 @@ const handleHelp = () => {
 
 <template>
   <div class="max-w-5xl mx-auto px-6 py-8">
-    <!-- Back link -->
     <RouterLink to="/boats">
       <button
         class="text-blue-600 text-sm font-medium mb-6 hover:underline flex items-center gap-1"
@@ -65,112 +56,118 @@ const handleHelp = () => {
         <span>Volver</span>
       </button>
     </RouterLink>
-    <!-- Title card -->
     <div class="bg-principal-blue text-white rounded-xl px-8 py-6 mb-6">
       <h1 class="text-2xl font-bold">Añadir barco</h1>
     </div>
 
-    <!-- Form card -->
     <div class="bg-white rounded-xl border border-gray-200 shadow-sm p-8">
       <form @submit.prevent="handleSubmit" class="space-y-6">
-        <!-- Nombre del barco -->
-        <div class="grid grid-cols-3 gap-6 items-center">
-          <label class="text-sm font-semibold text-gray-900">Nombre del barco</label>
-          <input
-            v-model.trim="form.name.$value"
-            type="text"
-            placeholder="Introduce el nombre del barco"
-            class="col-span-2 px-4 py-2.5 border border-gray-300 rounded-lg text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-          />
-          <span class="text-red-500" v-if="submitted && form.name.$error">{{
-            form.name.$error.message
-          }}</span>
-        </div>
-
-        <!-- Matrícula -->
-        <div class="grid grid-cols-3 gap-6 items-center">
-          <label class="text-sm font-semibold text-gray-900">Matrícula</label>
-          <input
-            v-model.trim="form.registryNumber.$value"
-            type="text"
-            placeholder="Introduce la matrícula del barco"
-            class="col-span-2 px-4 py-2.5 border border-gray-300 rounded-lg text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-          />
-          <span class="text-red-500" v-if="submitted && form.registryNumber.$error">{{
-            form.registryNumber.$error.message
-          }}</span>
-        </div>
-
-        <!-- Tipo de barco -->
-        <div class="grid grid-cols-3 gap-6 items-center">
-          <label class="text-sm font-semibold text-gray-900">Tipo de barco</label>
-          <select
-            v-model.trim="form.boatType.$value"
-            class="col-span-2 px-4 py-2.5 border border-gray-300 rounded-lg text-sm text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent appearance-none bg-white"
-            style="
-              background-image: url('data:image/svg+xml;charset=UTF-8,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27currentColor%27 stroke-width=%272%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27%3e%3cpolyline points=%276 9 12 15 18 9%27%3e%3c/polyline%3e%3c/svg%3e');
-              background-repeat: no-repeat;
-              background-position: right 0.75rem center;
-              background-size: 1.25em 1.25em;
-              padding-right: 2.5rem;
-            "
+        <div class="grid grid-cols-3 gap-6 items-start">
+          <label for="boat-name" class="text-sm font-semibold text-gray-900"
+            >Nombre del barco</label
           >
-            <option v-for="type in boatTypes" :key="type" :value="type">{{ type }}</option>
-          </select>
+          <div class="col-span-2 flex flex-col gap-2 w-full">
+            <InputText
+              id="boat-name"
+              name="boat-name"
+              type="text"
+              v-model="form.name.$value"
+              placeholder="Introduce el nombre del barco"
+              class="w-full placeholder-gray px-3 py-2 shadow-sm rounded-lg"
+              :class="{ 'border-red-500': submitted && form.name.$error }"
+            />
+            <span v-if="submitted && form.name.$error" class="text-red-600 text-sm mt-1">
+              {{ form.name.$error.message }}
+            </span>
+          </div>
         </div>
 
-        <!-- Eslora -->
-        <div class="grid grid-cols-3 gap-6 items-center">
-          <label class="text-sm font-semibold text-gray-900">Eslora</label>
-          <input
-            v-model.trim="form.length.$value"
-            type="number"
-            step="0.01"
-            placeholder="Introduce metros de eslora"
-            class="col-span-2 px-4 py-2.5 border border-gray-300 rounded-lg text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-          />
-          <span class="text-red-500" v-if="submitted && form.length.$error">{{
-            form.length.$error.message
-          }}</span>
+        <div class="grid grid-cols-3 gap-6 items-start">
+          <label for="registry-number" class="text-sm font-semibold text-gray-900">Matrícula</label>
+          <div class="col-span-2 flex flex-col gap-2 w-full">
+            <InputText
+              id="registry-number"
+              name="registry-number"
+              type="text"
+              v-model="form.registryNumber.$value"
+              placeholder="Introduce la matrícula del barco"
+              class="w-full px-3 py-2 shadow-sm rounded-lg"
+              :class="{ 'border-red-500': submitted && form.registryNumber.$error }"
+            />
+            <span v-if="submitted && form.registryNumber.$error" class="text-red-600 text-sm mt-1">
+              {{ form.registryNumber.$error.message }}
+            </span>
+          </div>
         </div>
 
-        <!-- Manga -->
-        <div class="grid grid-cols-3 gap-6 items-center">
-          <label class="text-sm font-semibold text-gray-900">Manga</label>
-          <input
-            v-model.trim="form.beam.$value"
-            type="number"
-            step="0.01"
-            placeholder="Introduce metros de manga"
-            class="col-span-2 px-4 py-2.5 border border-gray-300 rounded-lg text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-          />
-          <span class="text-red-500" v-if="submitted && form.beam.$error">{{
-            form.beam.$error.message
-          }}</span>
+        <div class="grid grid-cols-3 gap-6 items-start">
+          <label for="boat-type" class="text-sm font-semibold text-gray-900">Tipo de barco</label>
+          <div class="col-span-2 flex flex-col gap-2 w-full">
+            <select
+              id="boat-type"
+              v-model.trim="form.boatType.$value"
+              placeholder="Selecciona un tipo"
+              class="w-full border-1 border-principal-blue outline-none px-3 py-2 shadow-sm rounded-lg"
+            >
+              <option v-for="type in boatTypes" :key="type" :value="type">{{ type }}</option>
+            </select>
+          </div>
         </div>
 
-        <!-- Calado -->
-        <div class="grid grid-cols-3 gap-6 items-center">
-          <label class="text-sm font-semibold text-gray-900">Calado</label>
-          <input
-            v-model.trim="form.draft.$value"
-            type="number"
-            step="0.01"
-            placeholder="Introduce metros de calado"
-            class="col-span-2 px-4 py-2.5 border border-gray-300 rounded-lg text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-          />
-          <span class="text-red-500" v-if="submitted && form.draft.$error">{{
-            form.draft.$error.message
-          }}</span>
+        <div class="grid grid-cols-3 gap-6 items-start">
+          <label for="length" class="text-sm font-semibold text-gray-900">Eslora</label>
+          <div class="col-span-2 flex flex-col gap-2 w-full">
+            <InputText
+              id="length"
+              name="length"
+              type="number"
+              v-model="form.length.$value"
+              placeholder="Introduce metros de eslora"
+              class="w-full px-3 py-2 shadow-sm rounded-lg"
+              :class="{ 'border-red-500': submitted && form.length.$error }"
+            />
+            <span v-if="submitted && form.length.$error" class="text-red-600 text-sm mt-1">
+              {{ form.length.$error.message }}
+            </span>
+          </div>
         </div>
 
-        <!-- Seguro de embarcación -->
+        <div class="grid grid-cols-3 gap-6 items-start">
+          <label for="beam" class="text-sm font-semibold text-gray-900">Manga</label>
+          <div class="col-span-2 flex flex-col gap-2 w-full">
+            <InputText
+              id="beam"
+              name="beam"
+              type="number"
+              v-model="form.beam.$value"
+              placeholder="Introduce metros de manga"
+              class="w-full px-3 py-2 shadow-sm rounded-lg"
+              :class="{ 'border-red-500': submitted && form.beam.$error }"
+            />
+            <span v-if="submitted && form.beam.$error" class="text-red-600 text-sm mt-1">
+              {{ form.beam.$error.message }}
+            </span>
+          </div>
+        </div>
 
-        <!-- Certificado de navegabilidad -->
+        <div class="grid grid-cols-3 gap-6 items-start">
+          <label for="draft" class="text-sm font-semibold text-gray-900">Calado</label>
+          <div class="col-span-2 flex flex-col gap-2 w-full">
+            <InputText
+              id="draft"
+              name="draft"
+              type="number"
+              v-model="form.draft.$value"
+              placeholder="Introduce metros de calado"
+              class="w-full px-3 py-2 shadow-sm rounded-lg"
+              :class="{ 'border-red-500': submitted && form.draft.$error }"
+            />
+            <span v-if="submitted && form.draft.$error" class="text-red-600 text-sm mt-1">
+              {{ form.draft.$error.message }}
+            </span>
+          </div>
+        </div>
 
-        <!-- Certificado de registro -->
-
-        <!-- Action buttons -->
         <div class="flex items-center justify-end gap-4 pt-4">
           <button
             type="button"
@@ -199,3 +196,6 @@ const handleHelp = () => {
     </div>
   </div>
 </template>
+<style>
+
+</style>

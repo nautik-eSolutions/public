@@ -124,8 +124,8 @@ const handleSubmit = async () => {
 </script>
 
 <template>
-  <div class="min-h-screen main-page flex items-center justify-center px-4 py-12 bg-gray-50">
-    <div class="w-full max-w-4xl">
+  <main class="min-h-screen main-page flex items-center justify-center px-4 py-12 bg-gray-50">
+    <section class="w-full max-w-4xl">
       <div class="bg-white rounded-xl shadow-lg border border-gray-200 p-8">
         <div class="mb-8 text-center">
           <h1 class="text-3xl font-bold text-gray-900 mb-2">
@@ -143,86 +143,74 @@ const handleSubmit = async () => {
             </h2>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div class="flex flex-col gap-1.5">
+              <div class="flex flex-col gap-2 w-full">
                 <label for="firstName" class="text-sm font-medium text-gray-700">
                   {{ $t('auth.register.firstName') }}
                   <span class="text-red-500">*</span>
                 </label>
-                <input
+                <InputText
                   type="text"
                   name="firstName"
                   id="firstName"
-                  v-model.trim="form.firstName.$value"
+                  v-model="form.firstName.$value"
                   placeholder="Juan"
-                  class="w-full border p-2.5 px-3 text-gray-900 outline-none border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                  class="w-full px-3 py-2 shadow-sm rounded-lg"
                   :class="{ 'border-red-500': submitted && form.firstName.$error }"
                 />
-                <span
-                  class="text-red-500 text-sm min-h-[20px]"
-                  v-if="submitted && form.firstName.$error"
-                >
+                <span v-if="submitted && form.firstName.$error" class="text-red-600 text-sm mt-1">
                   {{ form.firstName.$error.message }}
                 </span>
               </div>
-              <div class="flex flex-col gap-1.5">
+              <div class="flex flex-col gap-2 w-full">
                 <label for="lastName" class="text-sm font-medium text-gray-700">
                   {{ $t('auth.register.lastName') }}
                   <span class="text-red-500">*</span>
                 </label>
-                <input
+                <InputText
                   type="text"
                   name="lastName"
                   id="lastName"
-                  v-model.trim="form.lastName.$value"
+                  v-model="form.lastName.$value"
                   placeholder="Pérez García"
-                  class="w-full border p-2.5 px-3 text-gray-900 outline-none border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                  class="w-full px-3 py-2 shadow-sm rounded-lg"
                   :class="{ 'border-red-500': submitted && form.lastName.$error }"
                 />
-                <span
-                  class="text-red-500 text-sm min-h-[20px]"
-                  v-if="submitted && form.lastName.$error"
-                >
+                <span v-if="submitted && form.lastName.$error" class="text-red-600 text-sm mt-1">
                   {{ form.lastName.$error.message }}
                 </span>
               </div>
-              <div class="flex flex-col gap-1.5">
+              <div class="flex flex-col gap-2 w-full">
                 <label for="birthDate" class="text-sm font-medium text-gray-700">
                   {{ $t('auth.register.birthDate') }}
                   <span class="text-red-500">*</span>
                 </label>
-                <input
+                <InputText
                   type="date"
                   name="birthDate"
                   id="birthDate"
-                  v-model.trim="form.birthDate.$value"
-                  class="w-full border p-2.5 px-3 text-gray-900 outline-none border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                  v-model="form.birthDate.$value"
+                  class="w-full px-3 py-2 shadow-sm rounded-lg"
                   :class="{ 'border-red-500': submitted && form.birthDate.$error }"
                 />
-                <span
-                  class="text-red-500 text-sm min-h-[20px]"
-                  v-if="submitted && form.birthDate.$error"
-                >
+                <span v-if="submitted && form.birthDate.$error" class="text-red-600 text-sm mt-1">
                   {{ form.birthDate.$error.message }}
                 </span>
               </div>
-              <div class="flex flex-col gap-1.5">
+              <div class="flex flex-col gap-2 w-full">
                 <label for="idDocument" class="text-sm font-medium text-gray-700">
                   {{ $t('auth.register.idDocument') }}
                   <span class="text-red-500">*</span>
                 </label>
-                <input
+                <InputText
                   type="text"
                   name="idDocument"
                   id="idDocument"
-                  v-model.trim="form.idDocument.$value"
+                  v-model="form.idDocument.$value"
                   placeholder="12345678A"
-                  class="w-full border p-2.5 px-3 text-gray-900 outline-none border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition uppercase"
+                  class="w-full px-3 py-2 shadow-sm rounded-lg uppercase"
                   :class="{ 'border-red-500': submitted && form.idDocument.$error }"
                 />
-                <span
-                  class="text-red-500 text-sm min-h-[20px]"
-                  v-if="submitted && form.idDocument.$error"
-                >
+                <span v-if="submitted && form.idDocument.$error" class="text-red-600 text-sm mt-1">
                   {{ form.idDocument.$error.message }}
                 </span>
               </div>
@@ -234,86 +222,77 @@ const handleSubmit = async () => {
             </h2>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div class="flex flex-col gap-1.5">
+              <div class="flex flex-col gap-2 w-full">
                 <label for="email" class="text-sm font-medium text-gray-700">
                   {{ $t('auth.register.email') }}
                   <span class="text-red-500">*</span>
                 </label>
-                <input
+                <InputText
                   type="email"
                   name="email"
                   id="email"
-                  v-model.trim="form.email.$value"
+                  v-model="form.email.$value"
                   placeholder="correo@ejemplo.com"
-                  class="w-full border p-2.5 px-3 text-gray-900 outline-none border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                  class="w-full px-3 py-2 shadow-sm rounded-lg"
                   :class="{ 'border-red-500': submitted && form.email.$error }"
                 />
-                <span
-                  class="text-red-500 text-sm min-h-[20px]"
-                  v-if="submitted && form.email.$error"
-                >
+                <span v-if="submitted && form.email.$error" class="text-red-600 text-sm mt-1">
                   {{ form.email.$error.message }}
                 </span>
               </div>
-              <div class="flex flex-col gap-1.5">
+              <div class="flex flex-col gap-2 w-full">
                 <label for="userName" class="text-sm font-medium text-gray-700">
                   {{ $t('auth.register.username') }}
                   <span class="text-red-500">*</span>
                 </label>
-                <input
+                <InputText
                   type="text"
                   name="userName"
                   id="userName"
-                  v-model.trim="form.userName.$value"
+                  v-model="form.userName.$value"
                   placeholder="usuario123"
-                  class="w-full border p-2.5 px-3 text-gray-900 outline-none border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                  class="w-full px-3 py-2 shadow-sm rounded-lg"
                   :class="{ 'border-red-500': submitted && form.userName.$error }"
                 />
-                <span
-                  class="text-red-500 text-sm min-h-[20px]"
-                  v-if="submitted && form.userName.$error"
-                >
+                <span v-if="submitted && form.userName.$error" class="text-red-600 text-sm mt-1">
                   {{ form.userName.$error.message }}
                 </span>
               </div>
-              <div class="flex flex-col gap-1.5">
+              <div class="flex flex-col gap-2 w-full">
                 <label for="password" class="text-sm font-medium text-gray-700">
                   {{ $t('auth.register.password') }}
                   <span class="text-red-500">*</span>
                 </label>
-                <input
+                <InputText
                   type="password"
                   name="password"
                   id="password"
-                  v-model.trim="form.password.$value"
+                  v-model="form.password.$value"
                   placeholder="••••••••"
-                  class="w-full border p-2.5 px-3 text-gray-900 outline-none border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                  class="w-full px-3 py-2 shadow-sm rounded-lg"
                   :class="{ 'border-red-500': submitted && form.password.$error }"
                 />
-                <span
-                  class="text-red-500 text-sm min-h-[20px]"
-                  v-if="submitted && form.password.$error"
-                >
+                <span v-if="submitted && form.password.$error" class="text-red-600 text-sm mt-1">
                   {{ form.password.$error.message }}
                 </span>
               </div>
-              <div class="flex flex-col gap-1.5">
+              <div class="flex flex-col gap-2 w-full">
                 <label for="passwordValidation" class="text-sm font-medium text-gray-700">
                   {{ $t('auth.register.confirmPassword') }}
                   <span class="text-red-500">*</span>
                 </label>
-                <input
+                <InputText
                   type="password"
                   name="passwordValidation"
                   id="passwordValidation"
-                  v-model.trim="form.passwordValidation.$value"
+                  v-model="form.passwordValidation.$value"
                   placeholder="••••••••"
-                  class="w-full border p-2.5 px-3 text-gray-900 outline-none border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                  class="w-full px-3 py-2 shadow-sm rounded-lg"
                   :class="{ 'border-red-500': submitted && form.passwordValidation.$error }"
                 />
                 <span
-                  class="text-red-500 text-sm min-h-[20px]"
                   v-if="submitted && form.passwordValidation.$error"
+                  class="text-red-600 text-sm mt-1"
                 >
                   {{ form.passwordValidation.$error.message }}
                 </span>
@@ -353,8 +332,8 @@ const handleSubmit = async () => {
           </div>
         </form>
       </div>
-    </div>
-  </div>
+    </section>
+  </main>
 </template>
 
 <style scoped>
