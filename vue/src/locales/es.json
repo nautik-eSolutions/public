@@ -6,17 +6,19 @@
   },
   "header": {
     "greeting": "Hola",
+    "menu": "Menú",
+    "login": "Iniciar sesión",
+    "logout": "Cerrar sesión",
     "myBoats": "Mis barcos",
     "myDocumentation": "Mi documentación",
     "reservations": "Reservas",
     "invoices": "Facturas",
-    "logIn": "Iniciar sesión",
-    "logOut": "Cerrar sesión",
-    "loginDialog": {
+    "myMoorings": "Mis amarres",
+    "dialog": {
       "tagline": "Todo tu mundo náutico, a un solo inicio de sesión.",
       "subtitle": "Controla los precios, organiza tus viajes más fácilmente y haz tus reservas más rápido",
       "continueWithEmail": "Continuar con correo electrónico",
-      "continueWithFacebook": "Facebook"
+      "facebook": "Facebook"
     }
   },
   "footer": {
@@ -24,7 +26,7 @@
     "cookiePolicy": "Política de cookies",
     "privacySettings": "Configuración de privacidad",
     "privacyPolicy": "Política de privacidad",
-    "login": "Iniciar Sesión",
+    "login": "Iniciar sesión",
     "termsOfService": "Términos de servicios",
     "copyright": "© Port SL 2025"
   },
@@ -96,9 +98,7 @@
       "passwordPlaceholder": "Contraseña",
       "rememberMe": "Recuérdame",
       "forgotPassword": "¿Olvidaste tu contraseña?",
-      "submit": "Iniciar sesión",
-      "emailPlaceholder": "Correo electrónico",
-      "passwordPlaceholder": "Contraseña"
+      "submit": "Iniciar sesión"
     },
     "register": {
       "title": "Regístrate hoy",
@@ -111,7 +111,7 @@
       "lastName": "Apellidos",
       "birthDate": "Fecha de Nacimiento",
       "idDocument": "Documento de Identidad",
-      "email": "Correo Electrónico",
+      "email": "Correo electrónico",
       "emailPlaceholder": "correo@ejemplo.com",
       "username": "Nombre de Usuario",
       "usernamePlaceholder": "usuario123",
@@ -122,7 +122,10 @@
       "passwordReqUpper": "Al menos una letra mayúscula",
       "passwordReqLower": "Al menos una letra minúscula",
       "passwordReqNumber": "Al menos un número",
-      "submit": "Crear cuenta"
+      "submit": "Crear cuenta",
+      "confirmPasswordPlaceholder": "Confirmar contraseña",
+      "userName": "Nombre de usuario",
+      "userNamePlaceholder": "Nombre de usuario"
     },
     "validation": {
       "emailInvalid": "Correo electrónico no válido",
@@ -189,7 +192,10 @@
       "draftPlaceholder": "Introduce metros de calado",
       "help": "Ayuda",
       "cancel": "Cancelar",
-      "submit": "Continuar"
+      "submit": "Continuar",
+      "boatTypePlaceholder": "Tipo de barco",
+      "boatTypeMotor": "motor",
+      "boatTypeSail": "vela"
     }
   },
   "search": {
@@ -330,9 +336,22 @@
       "statusFuture": "Próxima",
       "statusActive": "Activa",
       "statusPast": "Pasada",
+      "statusCompleted": "Completada",
       "viewDetails": "Ver detalles",
       "contactSupport": "Contactar soporte",
       "cancel": "Cancelar"
+    },
+    "detail": {
+      "title": "Tu reserva en",
+      "zone": "Zona",
+      "boat": "Embarcación",
+      "mooring": "Amarre",
+      "mooringPending": "Se asignará 24h antes",
+      "stayPeriod": "Periodo de estancia",
+      "checkIn": "Check-in",
+      "checkOut": "Check-out",
+      "totalCost": "Coste total",
+      "bookedOn": "Reserva realizada el"
     },
     "confirmation": {
       "title": "Reserva",
@@ -435,7 +454,8 @@
     "edit": "Editar",
     "help": "Ayuda",
     "loading": "Cargando...",
-    "required": "*"
+    "required": "*",
+    "close": "Cerrar"
   },
   "booking": {
     "from": "Desde",

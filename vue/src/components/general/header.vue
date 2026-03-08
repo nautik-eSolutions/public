@@ -10,21 +10,22 @@ import Dialog from '@/volt/Dialog.vue'
 import Button from '../../volt/Button.vue'
 import router from '@/router/index.js'
 import { useAuthStore } from '@/stores/authStore.js'
-import Avatar from '@/volt/Avatar.vue'
 import Drawer from '@/volt/Drawer.vue'
 import Splitter from '@/volt/Splitter.vue'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { GoogleSignInButton } from 'vue3-google-signin'
 import { faCalendarDays, faReceipt, faShip, faUsers } from '@fortawesome/free-solid-svg-icons'
 import 'primeicons/primeicons.css'
+import { useI18n } from 'vue-i18n'
 
 
 const auth = useAuthStore()
+const { t } = useI18n()
 const visibleCard = ref(false)
 const visibleDrawer = ref(false)
 const greeting = ref()
 if (auth.isAuthenticated) {
-  greeting.value = 'Hola ' + auth.User.userName
+  greeting.value = t('header.greeting') + ' ' + auth.User.userName
 }
 
 function logout() {
@@ -63,7 +64,7 @@ function redirectToLogin() {
         </RouterLink>
       </div>
       <template v-if="!auth.isAuthenticated">
-        <Button label="Log in" icon="pi pi-sign-in" @click="visibleCard = true" />
+        <Button :label="$t('header.login')" icon="pi pi-sign-in" @click="visibleCard = true" />
       </template>
       <template v-else>
         <div class="flex gap-2">
@@ -71,46 +72,50 @@ function redirectToLogin() {
         </div>
       </template>
     </nav>
-    <Drawer v-model:visible="visibleDrawer" justify-center="justify-center" header="Menú">
+    <Drawer
+      v-model:visible="visibleDrawer"
+      justify-center="justify-center"
+      :header="$t('header.menu')"
+    >
       <div class="flex flex-col justify-between h-full gap-8">
         <div class="flex flex-col h-full mb-4">
           <RouterLink to="/boats">
             <div class="flex items-center gap-3 hover:bg-sky-950 p-2 rounded-md cursor-pointer">
               <FontAwesomeIcon :icon="faShip" size="xl" />
-              <span class="text-lg font-medium">Mis barcos</span>
+              <span class="text-lg font-medium">{{ $t('header.myBoats') }}</span>
             </div>
           </RouterLink>
           <Splitter />
           <RouterLink to="/bookings">
             <div class="flex items-center gap-3 hover:bg-sky-950 p-2 rounded-md cursor-pointer">
               <FontAwesomeIcon :icon="faUsers" size="xl" />
-              <span class="text-lg font-medium">Mi documentación</span>
+              <span class="text-lg font-medium">{{ $t('header.myDocumentation') }}</span>
             </div>
           </RouterLink>
           <Splitter />
           <RouterLink to="/bookings">
             <div class="flex items-center gap-3 hover:bg-sky-950 p-2 rounded-md cursor-pointer">
               <FontAwesomeIcon :icon="faCalendarDays" size="xl" />
-              <span class="text-lg font-medium">Reservas</span>
+              <span class="text-lg font-medium">{{ $t('header.reservations') }}</span>
             </div>
           </RouterLink>
           <Splitter />
           <RouterLink to="/invoices">
             <div class="flex items-center gap-3 hover:bg-sky-950 p-2 rounded-md cursor-pointer">
               <FontAwesomeIcon :icon="faReceipt" size="xl" />
-              <span class="text-lg font-medium">Facturas</span>
+              <span class="text-lg font-medium">{{ $t('header.invoices') }}</span>
             </div>
           </RouterLink>
           <Splitter />
           <RouterLink to="/fixed-moorings">
             <div class="flex items-center gap-3 hover:bg-sky-950 p-2 rounded-md cursor-pointer">
               <FontAwesomeIcon :icon="faReceipt" size="xl" />
-              <span class="text-lg font-medium">Mis amarres</span>
+              <span class="text-lg font-medium">{{ $t('header.myMoorings') }}</span>
             </div>
           </RouterLink>
         </div>
         <Button
-          label="Log out"
+          :label="$t('header.logout')"
           @click="logout"
           icon="pi pi-sign-out"
           style="background-color: darkred"
@@ -129,20 +134,30 @@ function redirectToLogin() {
           <h1 class="text-3xl" id="logos">NAUTIK</h1>
         </div>
         <h1 class="text-header text-left text-3xl font-extrabold">
-          Todo tu mundo náutico, a un solo inicio de sesión.
+          {{ $t('header.dialog.tagline') }}
         </h1>
         <h1 class="text-s">
-          Controla los precios, organiza tus viajes más fácilmente y haz tus reservas más rápido
+          {{ $t('header.dialog.subtitle') }}
         </h1>
         <div class="flex flex-col gap-4">
           <RouterLink to="/login">
-            <Button style="border-radius: 10px" label="Continuar con correo electrónico" />
+            <Button style="border-radius: 10px" :label="$t('header.dialog.continueWithEmail')" />
           </RouterLink>
           <GoogleSignInButton @success="handleLoginSuccess"> </GoogleSignInButton>
-          <Button style="border-radius: 10px" icon=" pi pi-facebook" label="Facebook" />
+          <Button
+            style="border-radius: 10px"
+            icon=" pi pi-facebook"
+            :label="$t('header.dialog.facebook')"
+          />
         </div>
       </div>
     </Dialog>
+
+    <select v-model="locale" @change="changeLanguage">
+      <option v-for="lang in availableLanguages" :key="lang.code" :value="lang.code">
+        {{ lang.name }}
+      </option>
+    </select>
   </header>
 </template>
 <style scoped>

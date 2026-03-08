@@ -5,7 +5,8 @@ export default {
 </script>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { defineForm, field, isValidForm } from 'vue-yup-form'
 import * as yup from 'yup'
 
@@ -24,7 +25,13 @@ const generateForm = () => {
 
 const form = generateForm()
 
-const boatTypes = ['Tipo de barco', 'motor', 'vela']
+const { t } = useI18n()
+
+const boatTypes = computed(() => [
+  t('boat.form.boatTypePlaceholder'),
+  t('boat.form.boatTypeMotor'),
+  t('boat.form.boatTypeSail'),
+])
 
 const emits = defineEmits(['submit'])
 
@@ -37,6 +44,7 @@ const handleFileUpload = (field, event) => {
 
 const handleSubmit = () => {
   submitted.value = true
+  console.log(form)
   if (!isValidForm(form)) {
   } else {
     emits('submit', form)
@@ -60,7 +68,7 @@ const handleHelp = () => {
         class="text-blue-600 text-sm font-medium mb-6 hover:underline flex items-center gap-1"
       >
         <span>&lt;</span>
-        <span>Volver</span>
+        <span>{{ $t('common.back') }}</span>
       </button>
     </RouterLink>
     <!-- Title card -->
@@ -68,10 +76,10 @@ const handleHelp = () => {
       <h1 class="text-2xl font-bold">{{ $t('boat.form.addTitle') }}</h1>
     </div>
 
-    <!-- Form card -->
+
     <div class="bg-white rounded-xl border border-gray-200 shadow-sm p-8">
       <form @submit.prevent="handleSubmit" class="space-y-6">
-        <!-- Nombre del barco -->
+
         <div class="grid grid-cols-3 gap-6 items-center">
           <label class="text-sm font-semibold text-gray-900">{{ $t('boat.form.name') }}</label>
           <input
@@ -85,7 +93,7 @@ const handleHelp = () => {
           }}</span>
         </div>
 
-        <!-- Matrícula -->
+
         <div class="grid grid-cols-3 gap-6 items-center">
           <label class="text-sm font-semibold text-gray-900">{{ $t('boat.form.registry') }}</label>
           <input
@@ -99,7 +107,6 @@ const handleHelp = () => {
           }}</span>
         </div>
 
-        <!-- Tipo de barco -->
         <div class="grid grid-cols-3 gap-6 items-center">
           <label class="text-sm font-semibold text-gray-900">{{ $t('boat.form.type') }}</label>
           <select
@@ -117,7 +124,6 @@ const handleHelp = () => {
           </select>
         </div>
 
-        <!-- Eslora -->
         <div class="grid grid-cols-3 gap-6 items-center">
           <label class="text-sm font-semibold text-gray-900">{{ $t('boat.length') }}</label>
           <input
