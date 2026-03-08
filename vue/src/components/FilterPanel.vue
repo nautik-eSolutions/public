@@ -82,7 +82,7 @@ const updatePriceRange = (value) => {
             class="w-4 h-4 text-[#3b3bf5] border-gray-300 rounded"
           />
           <FontAwesomeIcon :icon="faPlugCircleBolt" size="sm" />
-          <span class="text-sm text-gray-700">{{ $t('search.filterPanel.electricity62A') }}</span>
+          <span class="text-sm text-gray-700">{{ $t('search.filterPanel.electricity63A') }}</span>
         </label>
         <label
           class="flex items-center gap-2 cursor-pointer hover:bg-gray-50 p-2 rounded transition-colors"

@@ -180,10 +180,6 @@ function getServiceLabel(serviceName) {
       </div>
     </div>
   </div>
-
-      </div>
-    </div>
-  </div>
 </template>
 
 <style scoped></style>
