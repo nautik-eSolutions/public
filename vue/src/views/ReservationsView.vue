@@ -31,9 +31,7 @@ function showReservationDetails(reservation) {
   showDetailsModal.value = true
 }
 
-function handleCancelReservation(reservation) {
-
-}
+function handleCancelReservation(reservation) {}
 </script>
 
 <template>
@@ -119,7 +117,7 @@ function handleCancelReservation(reservation) {
           v-if="displayedReservations.length === 0"
           class="text-center text-slate-400 py-16 text-sm"
         >
-          No hay reservas en esta categoría.
+          {{ $t('reservations.empty') }}
         </div>
       </div>
     </div>

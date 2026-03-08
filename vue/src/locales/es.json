@@ -205,6 +205,15 @@
       "restaurants": "Restaurantes",
       "cleaning": "Limpieza",
       "price": "Precio",
+      "electricity16A": "Electricidad 16A",
+      "electricity32A": "Electricidad 32A",
+      "electricity63A": "Electricidad 63A",
+      "freshWater": "Agua Dulce",
+      "wifiPremium": "WiFi Premium",
+      "security247": "Seguridad 24/7",
+      "wasteDisposal": "Gestión Residuos",
+      "showersAndLockers": "Duchas y Taquillas",
+      "parking": "Aparcamiento",
       "applyFilters": "Aplicar filtros"
     },
     "resultsHeader": {
