@@ -28,7 +28,7 @@ export class Booking {
     if (start > now) {
       this.status = 'future'
     } else if (end < now) {
-      this.status = 'past'
+      this.status = 'past';
     } else {
       this.status = 'active'
     }

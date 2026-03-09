@@ -6,17 +6,19 @@
   },
   "header": {
     "greeting": "Hola",
+    "menu": "Menú",
+    "login": "Iniciar sesión",
+    "logout": "Cerrar sesión",
     "myBoats": "Mis barcos",
     "myDocumentation": "Mi documentación",
     "reservations": "Reservas",
     "invoices": "Facturas",
-    "logIn": "Iniciar sesión",
-    "logOut": "Cerrar sesión",
-    "loginDialog": {
+    "myMoorings": "Mis amarres",
+    "dialog": {
       "tagline": "Todo tu mundo náutico, a un solo inicio de sesión.",
       "subtitle": "Controla los precios, organiza tus viajes más fácilmente y haz tus reservas más rápido",
       "continueWithEmail": "Continuar con correo electrónico",
-      "continueWithFacebook": "Facebook"
+      "facebook": "Facebook"
     }
   },
   "footer": {
@@ -24,7 +26,7 @@
     "cookiePolicy": "Política de cookies",
     "privacySettings": "Configuración de privacidad",
     "privacyPolicy": "Política de privacidad",
-    "login": "Iniciar Sesión",
+    "login": "Iniciar sesión",
     "termsOfService": "Términos de servicios",
     "copyright": "© Port SL 2025"
   },
@@ -109,7 +111,7 @@
       "lastName": "Apellidos",
       "birthDate": "Fecha de Nacimiento",
       "idDocument": "Documento de Identidad",
-      "email": "Correo Electrónico",
+      "email": "Correo electrónico",
       "emailPlaceholder": "correo@ejemplo.com",
       "username": "Nombre de Usuario",
       "usernamePlaceholder": "usuario123",
@@ -120,7 +122,10 @@
       "passwordReqUpper": "Al menos una letra mayúscula",
       "passwordReqLower": "Al menos una letra minúscula",
       "passwordReqNumber": "Al menos un número",
-      "submit": "Crear cuenta"
+      "submit": "Crear cuenta",
+      "confirmPasswordPlaceholder": "Confirmar contraseña",
+      "userName": "Nombre de usuario",
+      "userNamePlaceholder": "Nombre de usuario"
     },
     "validation": {
       "emailInvalid": "Correo electrónico no válido",
@@ -187,7 +192,10 @@
       "draftPlaceholder": "Introduce metros de calado",
       "help": "Ayuda",
       "cancel": "Cancelar",
-      "submit": "Continuar"
+      "submit": "Continuar",
+      "boatTypePlaceholder": "Tipo de barco",
+      "boatTypeMotor": "motor",
+      "boatTypeSail": "vela"
     }
   },
   "search": {
@@ -249,23 +257,48 @@
     "mooringZones": "Zonas de amarre",
     "currentWeather": "Tiempo actual",
     "portFile": "Ficha del puerto",
+    "contactInfo": "Contacto e información",
     "city": "Ciudad",
     "address": "Dirección",
+    "phone": "Teléfono",
+    "email": "Email",
+    "vhf": "VHF",
+    "vhfChannel": "Canal",
+    "openingHours": "Horario",
     "zones": "Zonas",
     "moorings": "Amarres",
+    "gasStation": "Gasolinera",
+    "travelLift": "Travel lift",
+    "available": "Disponible",
+    "notAvailable": "No disponible",
     "admittedVessels": "Embarcaciones admitidas",
+    "eslora": "Eslora",
+    "manga": "Manga",
+    "calado": "Calado",
     "maxLength": "Eslora máx.",
     "maxBeam": "Manga máx.",
     "maxDraft": "Calado máx.",
+    "zonesSingular": "zona",
+    "zonesPlural": "zonas",
     "categories": "categoría",
-    "categoriesPlural": "categorías"
+    "categoriesPlural": "categorías",
+    "weatherNoCoords": "Sin coordenadas disponibles"
   },
   "createBooking": {
     "title": "Completar reserva",
     "billingAddress": "Dirección de facturación",
     "address": "Domicilio",
+    "addressPlaceholder": "Calle, número, piso, puerta...",
     "city": "Ciudad",
+    "cityPlaceholder": "Madrid",
     "country": "País",
+    "countryPlaceholder": "España",
+    "stay": "Estancia",
+    "includedServices": "Servicios incluidos",
+    "priceSummary": "Resumen del precio",
+    "basePrice": "Precio base",
+    "processing": "Procesando...",
+    "disclaimer": "Al completar esta reserva, aceptas nuestras condiciones de uso y política de privacidad. El usuario es responsable de verificar las condiciones del puerto y la disponibilidad del amarre. No nos hacemos responsables de cambios en las condiciones climáticas, del puerto o de cualquier circunstancia que impida el uso del amarre reservado. La cancelación de la reserva está sujeta a las políticas de cancelación del puerto.",
     "contactInfo": "Información de contacto",
     "email": "Correo electrónico",
     "phone": "Teléfono",
@@ -279,7 +312,16 @@
       "vat": "I.V.A",
       "total": "Total"
     },
-    "proceedToPayment": "Proceder al pago"
+    "proceedToPayment": "Proceder al pago",
+    "validation": {
+      "addressRequired": "El domicilio es obligatorio",
+      "addressMin": "El domicilio debe tener al menos 5 caracteres",
+      "cityRequired": "La ciudad es obligatoria",
+      "cityMin": "La ciudad debe tener al menos 2 caracteres",
+      "countryRequired": "El país es obligatorio",
+      "countryMin": "El país debe tener al menos 2 caracteres",
+      "paymentError": "Ha ocurrido un error al procesar el pago. Por favor, inténtelo de nuevo."
+    }
   },
   "reservations": {
     "title": "Mis reservas",
@@ -294,9 +336,22 @@
       "statusFuture": "Próxima",
       "statusActive": "Activa",
       "statusPast": "Pasada",
+      "statusCompleted": "Completada",
       "viewDetails": "Ver detalles",
       "contactSupport": "Contactar soporte",
       "cancel": "Cancelar"
+    },
+    "detail": {
+      "title": "Tu reserva en",
+      "zone": "Zona",
+      "boat": "Embarcación",
+      "mooring": "Amarre",
+      "mooringPending": "Se asignará 24h antes",
+      "stayPeriod": "Periodo de estancia",
+      "checkIn": "Check-in",
+      "checkOut": "Check-out",
+      "totalCost": "Coste total",
+      "bookedOn": "Reserva realizada el"
     },
     "confirmation": {
       "title": "Reserva",
@@ -399,7 +454,8 @@
     "edit": "Editar",
     "help": "Ayuda",
     "loading": "Cargando...",
-    "required": "*"
+    "required": "*",
+    "close": "Cerrar"
   },
   "booking": {
     "from": "Desde",

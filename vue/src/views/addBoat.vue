@@ -18,6 +18,7 @@ import router from '@/router/index.js'
 const boatStore = useBoatStore();
 
 function handleSubmit(form){
+  console.log(form.name.$value);
   boatStore.saveBoat(
    form.name.$value,
     form.registryNumber.$value,

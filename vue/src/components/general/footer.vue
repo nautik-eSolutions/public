@@ -1,6 +1,6 @@
 <script>
 export default {
-  name:"Footer"
+  name: 'Footer',
 }
 </script>
 
@@ -24,14 +24,14 @@ export default {
         </div>
       </div>
       <div class="grid grid-cols-2 gap-x-12 gap-y-2 text-sm">
-        <a href="#" class="hover:underline">Ayuda</a>
-        <a href="#" class="hover:underline">Política de cookies</a>
-        <a href="#" class="hover:underline">Configuración de privacidad</a>
-        <a href="#" class="hover:underline">Política de privacidad</a>
-        <a href="#" class="hover:underline">Iniciar Sesion</a>
-        <a href="#" class="hover:underline">Términos de servicios</a>
+        <a href="#" class="hover:underline">{{ $t('footer.help') }}</a>
+        <a href="#" class="hover:underline">{{ $t('footer.cookiePolicy') }}</a>
+        <a href="#" class="hover:underline">{{ $t('footer.privacySettings') }}</a>
+        <a href="#" class="hover:underline">{{ $t('footer.privacyPolicy') }}</a>
+        <a href="#" class="hover:underline">{{ $t('footer.login') }}</a>
+        <a href="#" class="hover:underline">{{ $t('footer.termsOfService') }}</a>
       </div>
     </div>
-    <div class="mt-12 text-center text-xs text-gray-400">© Port SL 2025</div>
+    <div class="mt-12 text-center text-xs text-gray-400">{{ $t('footer.copyright') }}</div>
   </footer>
 </template>

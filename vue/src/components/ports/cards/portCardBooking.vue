@@ -17,11 +17,13 @@ defineProps({
       <img class="w-full object-contain rounded" :src="imgSrc" />
     </div>
     <div class="p-5 flex flex-col justify-around gap-2">
-      <h2 class="text-3xl ">{{ portName }}</h2>
-      <h2 class="text-3xl ">{{ totalPrice }} €</h2>
-      <h3>{{ startingNightPrice }} € /noche</h3>
+      <h2 class="text-3xl">{{ portName }}</h2>
+      <h2 class="text-3xl">{{ totalPrice }} €</h2>
+      <h3>{{ startingNightPrice }} € /{{ $t('portCard.perNight') }}}</h3>
 
-      <button class="bg-[#1F3550] text-white h-8 rounded shadow">Reservar</button>
+      <button class="bg-[#1F3550] text-white h-8 rounded shadow">
+        {{ $t('portCard.bookButton') }}
+      </button>
     </div>
   </div>
 </template>

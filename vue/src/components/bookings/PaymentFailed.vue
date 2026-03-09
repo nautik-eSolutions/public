@@ -1,5 +1,6 @@
 <script setup>
-import { ref } from 'vue'
+import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 
 const props = defineProps({
   booking: {
@@ -10,17 +11,29 @@ const props = defineProps({
 
 const emit = defineEmits(['back-to-home'])
 
-const summaryRows = [
-  { icon: 'map-pin', label: 'Port', getValue: (b) => b.portName },
-  { icon: 'sailboat', label: 'Boat', getValue: (b) => b.boatName },
-  { icon: 'calendar', label: 'Check-in', getValue: (b) => b.startDate },
-  { icon: 'calendar', label: 'Check-out', getValue: (b) => b.endDate },
-  { icon: 'credit-card', label: 'Total Paid', getValue: (b) => b.totalCost + ' €', bold: true },
-]
+const { t } = useI18n()
+
+const summaryRows = computed(() => [
+  { icon: 'map-pin', label: t('paymentFailed.summaryRows.port'), getValue: (b) => b.portName },
+  {
+    icon: 'anchor',
+    label: t('paymentFailed.summaryRows.mooring'),
+    getValue: (b) => b.mooringName?.label,
+  },
+  { icon: 'sailboat', label: t('paymentFailed.summaryRows.boat'), getValue: (b) => b.boatName },
+  { icon: 'calendar', label: t('paymentFailed.summaryRows.checkIn'), getValue: (b) => b.startDate },
+  { icon: 'calendar', label: t('paymentFailed.summaryRows.checkOut'), getValue: (b) => b.endDate },
+  {
+    icon: 'credit-card',
+    label: t('paymentFailed.summaryRows.totalPaid'),
+    getValue: (b) => b.totalCost + ' €',
+    bold: true,
+  },
+])
 </script>
 
 <template>
-  <div class="min-h-screen  flex items-start justify-center py-10 px-4">
+  <div class="min-h-screen flex items-start justify-center py-10 px-4">
     <div class="w-full max-w-5xl flex flex-col gap-5">
       <div class="flex flex-col items-center gap-3 pt-2">
         <div class="w-14 h-14 rounded-full bg-red-100 flex items-center justify-center">
@@ -38,14 +51,14 @@ const summaryRows = [
             <line x1="6" y1="6" x2="18" y2="18" />
           </svg>
         </div>
-        <h1 class="text-3xl font-bold text-gray-900">Payment Failed</h1>
+        <h1 class="text-3xl font-bold text-gray-900">{{ $t('paymentFailed.title') }}</h1>
         <p class="text-m text-gray-500 text-center">
-          We couldn't process your payment. No charges were made.
+          {{ $t('paymentFailed.subtitle') }}
         </p>
         <span
           class="text-s font-medium px-3 py-1 rounded-full border border-red-400 text-red-500 bg-red-50"
         >
-          Transaction Unsuccessful
+          {{ $t('paymentFailed.badge') }}
         </span>
       </div>
 
@@ -67,7 +80,9 @@ const summaryRows = [
               <path d="M5 12H2a10 10 0 0 0 20 0h-3" />
             </svg>
           </div>
-          <h2 class="text-m font-semibold text-gray-800">Booking Details</h2>
+          <h2 class="text-m font-semibold text-gray-800">
+            {{ $t('paymentFailed.bookingDetails') }}
+          </h2>
         </div>
 
         <div class="flex flex-col divide-y divide-gray-100">
@@ -199,9 +214,9 @@ const summaryRows = [
           </svg>
         </div>
         <div>
-          <p class="text-m font-semibold text-gray-800 mb-1">No charges were made</p>
+          <p class="text-m font-semibold text-gray-800 mb-1">{{ $t('paymentFailed.noCharges') }}</p>
           <p class="text-s text-gray-600 leading-relaxed">
-            Since the transaction was not completed, no money has been deducted from your account.
+            {{ $t('paymentFailed.noChargesDetail') }}
           </p>
         </div>
       </div>
@@ -224,7 +239,7 @@ const summaryRows = [
             <line x1="19" y1="12" x2="5" y2="12" />
             <polyline points="12 19 5 12 12 5" />
           </svg>
-          Back to Home
+          {{ $t('paymentFailed.actions.backToHome') }}
         </button>
       </div>
     </div>

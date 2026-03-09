@@ -17,6 +17,7 @@ export const usePortStore = defineStore('portStore', {
       } else {
         data.value = resp.data.data
       }
+      console.log(data)
 
       this.Port = new PortShow(
         data.value.id,
@@ -25,12 +26,19 @@ export const usePortStore = defineStore('portStore', {
         data.value.zones,
         data.value.description ?? null,
         data.value.address ?? null,
+        data.value.email ?? null,
+        data.value.phoneNumber ?? null,
+        data.value.vhf_channel ?? null,
+        data.value.opening_hours ?? null,
+        data.value.gas_station ?? null,
+        data.value.travel_lift ?? null,
         data.value.latitude ?? null,
         data.value.longitude ?? null,
         data.value.total_moorings ?? null,
-        data.value.max_length,
-        data.value.max_beam,
-        data.value.max_draft,
+        data.value.max_length ?? null,
+        data.value.max_beam ?? null,
+        data.value.max_draft ?? null,
+        data.value.images,
       )
       return this.Port
     },

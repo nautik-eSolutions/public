@@ -38,14 +38,6 @@ const displayedReservations = computed(() => {
 function handleClick() {
   router.push('/boats/edit/' + boat.value.id)
 }
-
-function showReservationDetails(reservation) {
-  console.log('Ver detalles:', reservation)
-}
-
-function handleCancelReservation(reservation) {
-  console.log('Cancelar reserva:', reservation)
-}
 </script>
 
 <template>

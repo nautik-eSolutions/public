@@ -9,7 +9,8 @@ lerna-debug.log*
 
 docker-compose.yaml
 vendor
-
+Dockerfile
+.dockerignore
 node_modules
 .DS_Store
 dist

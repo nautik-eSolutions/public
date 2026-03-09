@@ -96,7 +96,7 @@ export const useBookingStore = defineStore('bookingStore', {
       const boat = await boatStore.getBoat(resp.data.data[0].boat_id)
       console.log(boat)
 
-      return Booking.fromJson(resp.data.data[0], boat.name)
+      return  Booking.fromJson(resp.data.data[0], boatStore)
     },
 
     async getInvoice(order){

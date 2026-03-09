@@ -5,10 +5,12 @@ export default {
 </script>
 
 <script setup>
-import { ref, shallowRef } from 'vue'
+import { ref, computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { defineForm, field, isValidForm } from 'vue-yup-form'
 import * as yup from 'yup'
-import InputText from '@/volt/InputText.vue'
+
+
 
 const submitted = ref(false)
 
@@ -25,7 +27,13 @@ const generateForm = () => {
 
 const form = generateForm()
 
-const boatTypes = ['motor', 'vela']
+const { t } = useI18n()
+
+const boatTypes = computed(() => [
+  t('boat.form.boatTypePlaceholder'),
+  t('boat.form.boatTypeMotor'),
+  t('boat.form.boatTypeSail'),
+])
 
 const emits = defineEmits(['submit'])
 
@@ -46,13 +54,14 @@ submitted.value = true
         class="text-blue-600 text-sm font-medium mb-6 hover:underline flex items-center gap-1"
       >
         <span>&lt;</span>
-        <span>Volver</span>
+        <span>{{ $t('common.back') }}</span>
       </button>
     </RouterLink>
     <div class="bg-principal-blue text-white rounded-xl px-8 py-6 mb-6">
-      <h1 class="text-2xl font-bold">Añadir barco</h1>
+      <h1 class="text-2xl font-bold">{{ $t('boat.form.addTitle') }}</h1>
     </div>
 
+    <!-- Form card -->
     <div class="bg-white rounded-xl border border-gray-200 shadow-sm p-8">
       <form @submit.prevent="handleSubmit" class="space-y-6">
         <div class="grid grid-cols-3 gap-6 items-start">
@@ -167,7 +176,7 @@ submitted.value = true
             @click="handleHelp"
             class="text-blue-600 font-semibold text-sm hover:underline"
           >
-            Ayuda
+            {{ $t('boat.form.help') }}
           </button>
 
           <button
@@ -175,22 +184,17 @@ submitted.value = true
             @click="handleCancel"
             class="px-8 py-2.5 bg-gray-200 text-gray-700 font-semibold text-sm rounded-lg hover:bg-gray-300 transition-colors"
           >
-            Cancelar
+            {{ $t('boat.form.cancel') }}
           </button>
 
           <button
             type="submit"
             class="px-8 py-2.5 bg-[#0a1e3d] text-white font-semibold text-sm rounded-lg hover:bg-principal-blue transition-colors"
           >
-            Continuar
+            {{ $t('boat.form.submit') }}
           </button>
         </div>
       </form>
     </div>
   </div>
 </template>
-<style lang="scss">
-::v-deep(.p-input){
-
-}
-</style>

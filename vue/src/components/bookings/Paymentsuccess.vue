@@ -1,5 +1,6 @@
 <script setup>
-import { ref } from 'vue'
+import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 
 const props = defineProps({
   booking: {
@@ -10,16 +11,29 @@ const props = defineProps({
 
 const emit = defineEmits(['view-bookings', 'download-invoice', 'back-to-home'])
 
+const { t } = useI18n()
 
-
-const summaryRows = [
-  { icon: 'map-pin', label: 'Port', getValue: (b) => b.portName },
-  { icon: 'anchor', label: 'Mooring', getValue: (b) => b.mooringName?.label },
-  { icon: 'sailboat', label: 'Boat', getValue: (b) => b.boatName },
-  { icon: 'calendar', label: 'Check-in', getValue: (b) => b.startDate },
-  { icon: 'calendar', label: 'Check-out', getValue: (b) => b.endDate },
-  { icon: 'credit-card', label: 'Total Paid', getValue: (b) => b.totalCost +" €", bold: true },
-]
+const summaryRows = computed(() => [
+  { icon: 'map-pin', label: t('paymentSuccess.summaryRows.port'), getValue: (b) => b.portName },
+  {
+    icon: 'anchor',
+    label: t('paymentSuccess.summaryRows.mooring'),
+    getValue: (b) => b.mooringName?.label,
+  },
+  { icon: 'sailboat', label: t('paymentSuccess.summaryRows.boat'), getValue: (b) => b.boatName },
+  {
+    icon: 'calendar',
+    label: t('paymentSuccess.summaryRows.checkIn'),
+    getValue: (b) => b.startDate,
+  },
+  { icon: 'calendar', label: t('paymentSuccess.summaryRows.checkOut'), getValue: (b) => b.endDate },
+  {
+    icon: 'credit-card',
+    label: t('paymentSuccess.summaryRows.totalPaid'),
+    getValue: (b) => b.totalCost + ' €',
+    bold: true,
+  },
+])
 </script>
 
 <template>
@@ -40,12 +54,12 @@ const summaryRows = [
             <polyline points="20 6 9 17 4 12" />
           </svg>
         </div>
-        <h1 class="text-3xl font-bold text-gray-900">Booking Confirmed</h1>
-        <p class="text-m text-gray-500 text-center">Your mooring has been successfully reserved.</p>
+        <h1 class="text-3xl font-bold text-gray-900">{{ $t('paymentSuccess.title') }}</h1>
+        <p class="text-m text-gray-500 text-center">{{ $t('paymentSuccess.subtitle') }}</p>
         <span
           class="text-s font-medium px-3 py-1 rounded-full border border-green-400 text-green-600 bg-green-50"
         >
-          Payment Successful
+          {{ $t('paymentSuccess.badge') }}
         </span>
       </div>
 
@@ -67,7 +81,9 @@ const summaryRows = [
               <path d="M5 12H2a10 10 0 0 0 20 0h-3" />
             </svg>
           </div>
-          <h2 class="text-m font-semibold text-gray-800">Booking Details</h2>
+          <h2 class="text-m font-semibold text-gray-800">
+            {{ $t('paymentSuccess.bookingDetails') }}
+          </h2>
         </div>
 
         <div class="flex flex-col divide-y divide-gray-100">
@@ -233,7 +249,9 @@ const summaryRows = [
           </svg>
         </div>
         <div class="flex flex-col gap-2">
-          <p class="text-m font-semibold text-gray-800">Confirmation Email Sent</p>
+          <p class="text-m font-semibold text-gray-800">
+            {{ $t('paymentSuccess.confirmationEmail') }}
+          </p>
         </div>
       </div>
 
@@ -257,7 +275,7 @@ const summaryRows = [
             <line x1="16" y1="13" x2="8" y2="13" />
             <line x1="16" y1="17" x2="8" y2="17" />
           </svg>
-          View My Bookings
+          {{ $t('paymentSuccess.actions.viewBookings') }}
         </button>
         <button
           @click="emit('download-invoice')"
@@ -277,7 +295,7 @@ const summaryRows = [
             <polyline points="7 10 12 15 17 10" />
             <line x1="12" y1="15" x2="12" y2="3" />
           </svg>
-          Download Invoice
+          {{ $t('paymentSuccess.actions.downloadInvoice') }}
         </button>
         <button
           @click="emit('back-to-home')"
@@ -296,7 +314,7 @@ const summaryRows = [
             <line x1="19" y1="12" x2="5" y2="12" />
             <polyline points="12 19 5 12 12 5" />
           </svg>
-          Back to Home
+          {{ $t('paymentSuccess.actions.backToHome') }}
         </button>
       </div>
     </div>

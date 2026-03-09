@@ -13,6 +13,7 @@ const selectedReservation = ref(null)
 
 onMounted(async () => {
   reservations.value = await bookingStore.getAllBookingsByUser()
+  console.log(reservations.value)
 })
 
 const activeTab = ref('future')
