@@ -17,6 +17,11 @@ import {
   faPlugCircleBolt,
 } from '@fortawesome/free-solid-svg-icons'
 import Splitter from '@/volt/Splitter.vue'
+import { useRouter } from 'vue-router'
+import { auth } from '@/main.js'
+
+const router = useRouter()
+
 const props = defineProps({
   id: [String, Number],
   portId: [String, Number],
@@ -32,7 +37,17 @@ const props = defineProps({
   description: String,
 })
 
-defineEmits(['click'])
+const emit = defineEmits(['click'])
+
+function handleBookClick(event) {
+  event.stopPropagation()
+  if (!auth.isAuthenticated) {
+    router.push('/login')
+  } else {
+    emit('click', { id: props.id, zoneName: props.zoneName, price: props.price })
+  }
+}
+
 function hasService(serviceName) {
   return props.services?.some((service) => service.name === serviceName)
 }
@@ -54,8 +69,9 @@ function getServiceLabel(serviceName) {
 
 <template>
   <div
-    @click="$emit('click', { id, zoneName, price })"
-    class="bg-white rounded-lg border border-gray-200 p-6 hover:shadow-lg transition-all duration-200 cursor-pointer hover:border-principal-blue group"
+    @click="auth.isAuthenticated && $emit('click', { id, zoneName, price })"
+    class="bg-white rounded-lg border border-gray-200 p-6 hover:shadow-lg transition-all duration-200 hover:border-principal-blue group"
+    :class="auth.isAuthenticated ? 'cursor-pointer' : 'cursor-default'"
   >
     <div class="flex items-center justify-between">
       <div class="flex-1">
@@ -172,10 +188,24 @@ function getServiceLabel(serviceName) {
           <p class="text-3xl font-bold text-gray-900">{{ Math.round(price).toFixed(2) }}€</p>
         </div>
         <button
+          v-if="auth.isAuthenticated"
+          @click.stop="handleBookClick"
           class="bg-principal-blue hover:bg-[#2929d4] text-white font-semibold py-3 px-8 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg flex items-center gap-2"
         >
           <i class="pi pi-calendar"></i>
           <span>{{ $t('portCard.bookButton') }}</span>
+        </button>
+
+        <button
+          v-else
+          @click.stop="handleBookClick"
+          class="bg-gray-700 hover:bg-gray-900 text-white font-semibold py-3 px-8 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg flex flex-col items-center gap-1"
+        >
+          <div class="flex items-center gap-2">
+            <i class="pi pi-lock"></i>
+            <span>{{ $t('portCard.loginToBook') }}</span>
+          </div>
+          <span class="text-xs font-normal opacity-75">{{ $t('portCard.loginToBookSub') }}</span>
         </button>
       </div>
     </div>
