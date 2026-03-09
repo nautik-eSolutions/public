@@ -3,21 +3,17 @@ import Password from '@/volt/Password.vue'
 import { ref } from 'vue'
 import Button from '@/volt/Button.vue'
 
+const firstPassword = ref()
+const secondPassword = ref()
 
-const firstPassword = ref();
-const secondPassword = ref();
-
-const emits =  defineEmits([
-  'submitPasswordForm'
-])
-function handleSubmit(){
-  if (firstPassword.value === secondPassword.value){
-    emits("submitPasswordForm",secondPassword);
-  }else{
-    console.log("error")
+const emits = defineEmits(['submitPasswordForm'])
+function handleSubmit() {
+  if (firstPassword.value === secondPassword.value) {
+    emits('submitPasswordForm', secondPassword)
+  } else {
+    console.log('error')
   }
 }
-
 </script>
 
 <template>
@@ -27,13 +23,13 @@ function handleSubmit(){
         <label
           for="password1"
           class="text-surface-900 dark:text-surface-0 font-medium leading-normal"
-          >Contraseña</label
+          >{{ $t('auth.register.password') }}</label
         >
         <Password
           id="password1"
           name="password1"
           v-model="firstPassword"
-          placeholder="Contraseña"
+          :placeholder="$t('auth.login.passwordPlaceholder')"
           :toggleMask="true"
           :feedback="false"
           input-class="w-full!"
@@ -43,14 +39,14 @@ function handleSubmit(){
         <label
           for="password2"
           class="text-surface-900 dark:text-surface-0 font-medium leading-normal"
-          >Repite la contraseña</label
+          >{{ $t('auth.register.confirmPassword') }}</label
         >
 
         <Password
           id="password2"
           name="password2"
           v-model="secondPassword"
-          placeholder="Confirmar contraseña"
+          :placeholder="$t('auth.register.confirmPasswordPlaceholder')"
           :toggleMask="true"
           :feedback="false"
           input-class="w-full!"
@@ -62,12 +58,12 @@ function handleSubmit(){
       ></div>
     </div>
 
-      <Button
-        label="Continuar"
-        type="submit"
-        class="w-full py-2 rounded-lg flex justify-center items-center gap-2"
-      >
-      </Button>
+    <Button
+      :label="$t('common.continue')"
+      type="submit"
+      class="w-full py-2 rounded-lg flex justify-center items-center gap-2"
+    >
+    </Button>
   </form>
 </template>
 

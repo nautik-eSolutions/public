@@ -4,6 +4,7 @@ import Footer from '@/components/general/footer.vue'
 import InputText from '@/volt/InputText.vue'
 import Splitter from '@/volt/Splitter.vue'
 import { onMounted, ref, shallowRef } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { useRoute } from 'vue-router'
 import { useBookingStore } from '@/stores/bookingStore.js'
 import { useBoatStore } from '@/stores/boatStore.js'
@@ -23,6 +24,7 @@ import {
 
 const bookingStore = useBookingStore()
 const boatStore = useBoatStore()
+const { t } = useI18n()
 const mooringCategory = ref()
 const mounted = ref(false)
 const boat = ref()
@@ -36,23 +38,23 @@ const generateForm = () => {
       '',
       yup
         .string()
-        .required('El domicilio es obligatorio')
-        .min(5, 'El domicilio debe tener al menos 5 caracteres'),
+        .required(t('createBooking.validation.addressRequired'))
+        .min(5, t('createBooking.validation.addressMin')),
     ),
     city: field(
       '',
       yup
         .string()
-        .required('La ciudad es obligatoria')
-        .min(2, 'La ciudad debe tener al menos 2 caracteres'),
+        .required(t('createBooking.validation.cityRequired'))
+        .min(2, t('createBooking.validation.cityMin')),
     ),
     country: field(
       '',
       yup
         .string()
-        .required('El país es obligatorio')
-        .min(2, 'El país debe tener al menos 2 caracteres'),
-    )
+        .required(t('createBooking.validation.countryRequired'))
+        .min(2, t('createBooking.validation.countryMin')),
+    ),
   })
 }
 
@@ -72,7 +74,6 @@ async function handleSubmit() {
   submitted.value = true
 
   if (!isValidForm(form.value)) {
-
     return
   }
   isSubmitting.value = true
@@ -109,7 +110,7 @@ async function handleSubmit() {
     paymentForm.submit()
   } catch (error) {
     console.error('Error:', error)
-    alert('Ha ocurrido un error al procesar el pago. Por favor, inténtelo de nuevo.')
+    alert(t('createBooking.validation.paymentError'))
   } finally {
     isSubmitting.value = false
   }
@@ -144,7 +145,7 @@ function formatDate(dateString) {
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <template v-if="mounted">
         <div class="bg-principal-blue text-white rounded-xl shadow-md mb-6">
-          <h1 class="py-4 px-6 text-2xl md:text-3xl font-bold">Completar reserva</h1>
+          <h1 class="py-4 px-6 text-2xl md:text-3xl font-bold">{{ $t('createBooking.title') }}</h1>
         </div>
 
         <div class="bg-white rounded-xl shadow-md p-6 mb-6">
@@ -158,21 +159,27 @@ function formatDate(dateString) {
           <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
             <div class="flex items-start gap-3">
               <div>
-                <div class="text-xs text-gray-500 uppercase tracking-wide">Zona</div>
+                <div class="text-xs text-gray-500 uppercase tracking-wide">
+                  {{ $t('createBooking.summary.zone') }}
+                </div>
                 <div class="font-semibold text-gray-900">{{ mooringCategory.zoneName }}</div>
               </div>
             </div>
 
             <div class="flex items-start gap-3">
               <div>
-                <div class="text-xs text-gray-500 uppercase tracking-wide">Embarcación</div>
+                <div class="text-xs text-gray-500 uppercase tracking-wide">
+                  {{ $t('createBooking.summary.boat') }}
+                </div>
                 <div class="font-semibold text-gray-900">{{ boat.name }}</div>
               </div>
             </div>
 
             <div class="flex items-start gap-3">
               <div>
-                <div class="text-xs text-gray-500 uppercase tracking-wide">Estancia</div>
+                <div class="text-xs text-gray-500 uppercase tracking-wide">
+                  {{ $t('createBooking.stay') }}
+                </div>
                 <div class="font-semibold text-gray-900 text-sm">
                   {{ formatDate(mooringCategory.startDate) }} -
                   {{ formatDate(mooringCategory.endDate) }}
@@ -183,7 +190,7 @@ function formatDate(dateString) {
 
           <div v-if="mooringCategory.services && mooringCategory.services.length > 0">
             <h3 class="text-sm font-semibold text-gray-700 mb-3 uppercase tracking-wide">
-              Servicios incluidos
+              {{ $t('createBooking.includedServices') }}
             </h3>
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
               <div
@@ -191,63 +198,63 @@ function formatDate(dateString) {
                 class="flex items-center gap-2 text-sm text-gray-600"
               >
                 <FontAwesomeIcon :icon="faPlug" class="text-gray-600" size="sm" />
-                <span>Electricidad 16A</span>
+                <span>{{ $t('search.filterPanel.electricity16A') }}</span>
               </div>
               <div
                 v-if="hasService('Electricity32A')"
                 class="flex items-center gap-2 text-sm text-gray-600"
               >
                 <FontAwesomeIcon :icon="faPlug" class="text-gray-600" size="sm" />
-                <span>Electricidad 32A</span>
+                <span>{{ $t('search.filterPanel.electricity32A') }}</span>
               </div>
               <div
                 v-if="hasService('Electricity63A')"
                 class="flex items-center gap-2 text-sm text-gray-600"
               >
                 <FontAwesomeIcon :icon="faPlug" class="text-gray-600" size="sm" />
-                <span>Electricidad 63A</span>
+                <span>{{ $t('search.filterPanel.electricity63A') }}</span>
               </div>
               <div
                 v-if="hasService('FreshWater')"
                 class="flex items-center gap-2 text-sm text-gray-600"
               >
                 <FontAwesomeIcon :icon="faDroplet" class="text-gray-600" size="sm" />
-                <span>Agua Dulce</span>
+                <span>{{ $t('search.filterPanel.freshWater') }}</span>
               </div>
               <div
                 v-if="hasService('WiFiPremium')"
                 class="flex items-center gap-2 text-sm text-gray-600"
               >
                 <FontAwesomeIcon :icon="faWifi" class="text-gray-600" size="sm" />
-                <span>WiFi Premium</span>
+                <span>{{ $t('search.filterPanel.wifiPremium') }}</span>
               </div>
               <div
                 v-if="hasService('Security247')"
                 class="flex items-center gap-2 text-sm text-gray-600"
               >
                 <FontAwesomeIcon :icon="faShield" class="text-gray-600" size="sm" />
-                <span>Seguridad 24/7</span>
+                <span>{{ $t('search.filterPanel.security247') }}</span>
               </div>
               <div
                 v-if="hasService('WasteDisposal')"
                 class="flex items-center gap-2 text-sm text-gray-600"
               >
                 <FontAwesomeIcon :icon="faTrash" class="text-gray-600" size="sm" />
-                <span>Gestión Residuos</span>
+                <span>{{ $t('search.filterPanel.wasteDisposal') }}</span>
               </div>
               <div
                 v-if="hasService('ShowersAndLockers')"
                 class="flex items-center gap-2 text-sm text-gray-600"
               >
                 <FontAwesomeIcon :icon="faShower" class="text-gray-600" size="sm" />
-                <span>Duchas y Taquillas</span>
+                <span>{{ $t('search.filterPanel.showersAndLockers') }}</span>
               </div>
               <div
                 v-if="hasService('Parking')"
                 class="flex items-center gap-2 text-sm text-gray-600"
               >
                 <FontAwesomeIcon :icon="faParking" class="text-gray-700" size="sm" />
-                <span>Aparcamiento</span>
+                <span>{{ $t('search.filterPanel.parking') }}</span>
               </div>
             </div>
           </div>
@@ -258,11 +265,13 @@ function formatDate(dateString) {
             <div class="lg:col-span-2">
               <div class="bg-white border border-gray-200 rounded-xl shadow-md p-6">
                 <div class="mb-6">
-                  <h2 class="text-xl font-bold text-gray-900 mb-4">Dirección de facturación</h2>
+                  <h2 class="text-xl font-bold text-gray-900 mb-4">
+                    {{ $t('createBooking.billingAddress') }}
+                  </h2>
 
                   <div class="mb-4">
                     <label for="address" class="block text-sm font-medium text-gray-700 mb-1">
-                      Domicilio <span class="text-red-500">*</span>
+                      {{ $t('createBooking.address') }} <span class="text-red-500">*</span>
                     </label>
                     <InputText
                       id="address"
@@ -271,7 +280,7 @@ function formatDate(dateString) {
                         'border border-gray-300 rounded-lg w-full',
                         { 'border-red-500': submitted && form.address.$error },
                       ]"
-                      placeholder="Calle, número, piso, puerta..."
+                      :placeholder="$t('createBooking.addressPlaceholder')"
                     />
                     <span v-if="submitted && form.address.$error" class="text-red-500 text-xs mt-1">
                       {{ form.address.$error.message }}
@@ -281,7 +290,7 @@ function formatDate(dateString) {
                   <div class="flex flex-col sm:flex-row gap-4">
                     <div class="flex-1">
                       <label for="city" class="block text-sm font-medium text-gray-700 mb-1">
-                        Ciudad <span class="text-red-500">*</span>
+                        {{ $t('createBooking.city') }} <span class="text-red-500">*</span>
                       </label>
                       <InputText
                         id="city"
@@ -290,7 +299,7 @@ function formatDate(dateString) {
                           'border border-gray-300 rounded-lg w-full',
                           { 'border-red-500': submitted && form.city.$error },
                         ]"
-                        placeholder="Madrid"
+                        :placeholder="$t('createBooking.cityPlaceholder')"
                       />
                       <span v-if="submitted && form.city.$error" class="text-red-500 text-xs mt-1">
                         {{ form.city.$error.message }}
@@ -299,7 +308,7 @@ function formatDate(dateString) {
 
                     <div class="flex-1">
                       <label for="country" class="block text-sm font-medium text-gray-700 mb-1">
-                        País <span class="text-red-500">*</span>
+                        {{ $t('createBooking.country') }} <span class="text-red-500">*</span>
                       </label>
                       <InputText
                         id="country"
@@ -308,7 +317,7 @@ function formatDate(dateString) {
                           'border border-gray-300 rounded-lg w-full',
                           { 'border-red-500': submitted && form.country.$error },
                         ]"
-                        placeholder="España"
+                        :placeholder="$t('createBooking.countryPlaceholder')"
                       />
                       <span
                         v-if="submitted && form.country.$error"
@@ -327,17 +336,19 @@ function formatDate(dateString) {
               <div
                 class="bg-white border border-gray-200 rounded-xl shadow-md p-6 lg:sticky lg:top-4"
               >
-                <h2 class="text-xl font-bold text-gray-900 mb-4">Resumen del precio</h2>
+                <h2 class="text-xl font-bold text-gray-900 mb-4">
+                  {{ $t('createBooking.priceSummary') }}
+                </h2>
 
                 <div class="space-y-3 mb-4">
                   <div class="flex justify-between text-sm">
-                    <span class="text-gray-600">Precio base</span>
+                    <span class="text-gray-600">{{ $t('createBooking.basePrice') }}</span>
                     <span class="font-medium text-gray-900">
                       {{ Math.round(mooringCategory.basePrice).toFixed(2) }}€
                     </span>
                   </div>
                   <div class="flex justify-between text-sm">
-                    <span class="text-gray-600">I.V.A. (21%)</span>
+                    <span class="text-gray-600">{{ $t('createBooking.summary.vat') }} (21%)</span>
                     <span class="font-medium text-gray-900">
                       {{ Math.round(mooringCategory.tax).toFixed(2) }}€
                     </span>
@@ -347,7 +358,9 @@ function formatDate(dateString) {
                 <Splitter class="my-4" />
 
                 <div class="flex justify-between items-center mb-6">
-                  <span class="text-lg font-bold text-gray-900">Total</span>
+                  <span class="text-lg font-bold text-gray-900">{{
+                    $t('createBooking.summary.total')
+                  }}</span>
                   <span class="text-2xl font-bold text-principal-blue">
                     {{ Math.round(mooringCategory.totalPrice).toFixed(2) }}€
                   </span>
@@ -357,8 +370,8 @@ function formatDate(dateString) {
                   type="submit"
                   class="w-full bg-principal-blue text-white rounded-lg shadow-lg p-3 text-center font-semibold transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  <span v-if="!isSubmitting">Proceder al pago</span>
-                  <span v-else>Procesando...</span>
+                  <span v-if="!isSubmitting">{{ $t('createBooking.proceedToPayment') }}</span>
+                  <span v-else>{{ $t('createBooking.processing') }}</span>
                 </button>
 
                 <div class="mt-6 pt-6 border-t border-gray-200">
@@ -369,12 +382,7 @@ function formatDate(dateString) {
                       size="sm"
                     />
                     <p class="leading-relaxed">
-                      Al completar esta reserva, aceptas nuestras condiciones de uso y política de
-                      privacidad. El usuario es responsable de verificar las condiciones del puerto
-                      y la disponibilidad del amarre. No nos hacemos responsables de cambios en las
-                      condiciones climáticas, del puerto o de cualquier circunstancia que impida el
-                      uso del amarre reservado. La cancelación de la reserva está sujeta a las
-                      políticas de cancelación del puerto.
+                      {{ $t('createBooking.disclaimer') }}
                     </p>
                   </div>
                 </div>

@@ -1,9 +1,3 @@
-<script>
-export default {
-  name: 'PersonalPage',
-}
-</script>
-
 <script setup>
 import Header from '@/components/general/header.vue'
 import Footer from '@/components/general/footer.vue'
@@ -19,8 +13,16 @@ const boats = ref()
 
 onMounted(async () => {
   boats.value = await boatsStore.getBoats()
-  console.log(boats.value)
 })
+
+const handleDeleteBoat = async (boatId) => {
+  try {
+    await boatsStore.deleteBoat(boatId)
+    boats.value = await boatsStore.getBoats()
+  } catch (error) {
+    console.error('Error al eliminar el barco:', error)
+  }
+}
 </script>
 
 <template>
@@ -28,26 +30,10 @@ onMounted(async () => {
   <section class="min-h-screen py-8">
     <div class="max-w-7xl mx-auto px-8">
       <div class="flex flex-col gap-6">
-        <h1 id="logos" class="font-bold text-3xl">
-          {{ $t('boats.pageTitle') }}
-        </h1>
-        <div class="bg-white rounded-xl border border-gray-200 shadow-sm p-4 h-2/5 w-full shrink-0">
-          <header-boat />
-
-          <div class="flex-1 h-full">
-            <div v-for="boat in boats" class="mt-4">
-              <boat-info
-                :name="boat.name"
-                :registerNumber="boat.registerNumber"
-                :length="boat.length"
-                :bream="boat.beam"
-                :draft="boat.draft"
-                :boatId="boat.id"
-              />
-            </div>
-          </div>
-        </div>
-        <div class="flex flex-row-reverse">
+        <div class="bg-principal-blue p-4 rounded-lg flex items-center justify-between">
+          <h1 class="font-bold text-3xl text-white">
+            {{ $t('boats.pageTitle') }}
+          </h1>
           <RouterLink to="/boats/add">
             <div class="text-white bg-principal-blue flex items-center rounded-lg gap-2 p-2">
               <FontAwesomeIcon :icon="faPlusCircle" size="lg" />
@@ -57,8 +43,27 @@ onMounted(async () => {
             </div>
           </RouterLink>
         </div>
+        <div class="bg-white rounded-xl border border-gray-200 shadow-sm p-4 h-2/5 w-full shrink-0">
+          <header-boat />
+
+          <div class="flex-1 h-full">
+            <div v-for="boat in boats" :key="boat.id" class="mt-4">
+              <boat-info
+                :name="boat.name"
+                :registerNumber="boat.registerNumber"
+                :length="boat.length"
+                :bream="boat.beam"
+                :draft="boat.draft"
+                :boatId="boat.id"
+                @delete="handleDeleteBoat"
+              />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
   <Footer />
 </template>
+
+<style scoped></style>

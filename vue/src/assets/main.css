@@ -30,7 +30,9 @@ input[type="date"]::-webkit-calendar-picker-indicator{
     letter-spacing: 0.2em;
     color: #05203D;
 }
-
+:root{
+    --p-inputtext-placeholder-color: #ff0000;
+}
 
 *{
     font-family: "Rubik SemiBold", sans-serif;

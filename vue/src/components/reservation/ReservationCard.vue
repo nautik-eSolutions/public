@@ -14,10 +14,10 @@ defineProps({
   endDate: { type: String, required: true },
   totalCost: { type: Number, required: true },
   boatName: { type: String, required: true },
-  status:{}
+  status: {},
 })
 
-defineEmits(['view-details', 'cancel'])
+defineEmits(['view-details'])
 </script>
 
 <template>
@@ -46,16 +46,7 @@ defineEmits(['view-details', 'cancel'])
         class="flex items-center gap-2 bg-principal-blue text-white text-sm font-medium px-4 py-2 rounded-lg hover:bg-slate-800 transition-colors"
       >
         <FontAwesomeIcon :icon="faEye" class="w-4 h-4" />
-        Ver detalles
-      </button>
-
-      <button
-        v-if="status !== 'past'"
-        @click="$emit('cancel')"
-        class="flex items-center gap-2 bg-red-900 text-white text-sm font-medium px-4 py-2 rounded-lg hover:bg-slate-800 transition-colors"
-      >
-        <FontAwesomeIcon :icon="faXmark" class="w-4 h-4" />
-        Cancelar
+        {{ $t('reservations.card.viewDetails') }}
       </button>
     </div>
   </div>

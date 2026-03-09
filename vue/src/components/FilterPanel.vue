@@ -39,10 +39,12 @@ const updatePriceRange = (value) => {
 
 <template>
   <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 sticky top-4">
-    <h3 class="text-lg font-bold text-gray-900 mb-4">Filtros</h3>
+    <h3 class="text-lg font-bold text-gray-900 mb-4">{{ $t('search.filterPanel.title') }}</h3>
 
     <div class="mb-6">
-      <h4 class="text-sm font-semibold text-gray-900 mb-3">Servicios</h4>
+      <h4 class="text-sm font-semibold text-gray-900 mb-3">
+        {{ $t('search.filterPanel.services') }}
+      </h4>
       <div class="flex flex-col gap-0.5">
         <label
           class="flex items-center gap-2 cursor-pointer hover:bg-gray-50 p-2 rounded transition-colors"
@@ -54,7 +56,7 @@ const updatePriceRange = (value) => {
             class="w-4 h-4 text-[#3b3bf5] border-gray-300 rounded"
           />
           <FontAwesomeIcon :icon="faPlugCircleBolt" size="sm" />
-          <span class="text-sm text-gray-700">Electricidad 16A</span>
+          <span class="text-sm text-gray-700">{{ $t('search.filterPanel.electricity16A') }}</span>
         </label>
 
         <label
@@ -67,7 +69,7 @@ const updatePriceRange = (value) => {
             class="w-4 h-4 text-[#3b3bf5] border-gray-300 rounded"
           />
           <FontAwesomeIcon :icon="faPlugCircleBolt" size="sm" />
-          <span class="text-sm text-gray-700">Electricidad 32A</span>
+          <span class="text-sm text-gray-700">{{ $t('search.filterPanel.electricity32A') }}</span>
         </label>
 
         <label
@@ -80,7 +82,7 @@ const updatePriceRange = (value) => {
             class="w-4 h-4 text-[#3b3bf5] border-gray-300 rounded"
           />
           <FontAwesomeIcon :icon="faPlugCircleBolt" size="sm" />
-          <span class="text-sm text-gray-700">Electricidad 63A</span>
+          <span class="text-sm text-gray-700">{{ $t('search.filterPanel.electricity63A') }}</span>
         </label>
         <label
           class="flex items-center gap-2 cursor-pointer hover:bg-gray-50 p-2 rounded transition-colors"
@@ -92,7 +94,7 @@ const updatePriceRange = (value) => {
             class="w-4 h-4 text-[#3b3bf5] border-gray-300 rounded"
           />
           <FontAwesomeIcon :icon="faDroplet" size="sm" />
-          <span class="text-sm text-gray-700">Agua Dulce</span>
+          <span class="text-sm text-gray-700">{{ $t('search.filterPanel.freshWater') }}</span>
         </label>
         <label
           class="flex items-center gap-2 cursor-pointer hover:bg-gray-50 p-2 rounded transition-colors"
@@ -104,7 +106,7 @@ const updatePriceRange = (value) => {
             class="w-4 h-4 text-[#3b3bf5] border-gray-300 rounded"
           />
           <FontAwesomeIcon :icon="faWifi" size="sm" />
-          <span class="text-sm text-gray-700">WiFi Premium</span>
+          <span class="text-sm text-gray-700">{{ $t('search.filterPanel.wifiPremium') }}</span>
         </label>
 
         <label
@@ -117,7 +119,7 @@ const updatePriceRange = (value) => {
             class="w-4 h-4 text-[#3b3bf5] border-gray-300 rounded"
           />
           <FontAwesomeIcon :icon="faShield" size="sm" />
-          <span class="text-sm text-gray-700">Seguridad 24/7</span>
+          <span class="text-sm text-gray-700">{{ $t('search.filterPanel.security247') }}</span>
         </label>
 
         <label
@@ -130,7 +132,7 @@ const updatePriceRange = (value) => {
             class="w-4 h-4 text-[#3b3bf5] border-gray-300 rounded"
           />
           <FontAwesomeIcon :icon="faTrash" size="sm" />
-          <span class="text-sm text-gray-700">Gestión Residuos</span>
+          <span class="text-sm text-gray-700">{{ $t('search.filterPanel.wasteDisposal') }}</span>
         </label>
         <label
           class="flex items-center gap-2 cursor-pointer hover:bg-gray-50 p-2 rounded transition-colors"
@@ -142,7 +144,9 @@ const updatePriceRange = (value) => {
             class="w-4 h-4 text-[#3b3bf5] border-gray-300 rounded"
           />
           <FontAwesomeIcon :icon="faShower" size="sm" />
-          <span class="text-sm text-gray-700">Duchas y Taquillas</span>
+          <span class="text-sm text-gray-700">{{
+            $t('search.filterPanel.showersAndLockers')
+          }}</span>
         </label>
         <label
           class="flex items-center gap-2 cursor-pointer hover:bg-gray-50 p-2 rounded transition-colors"
@@ -154,7 +158,7 @@ const updatePriceRange = (value) => {
             class="w-4 h-4 text-[#3b3bf5] border-gray-300 rounded"
           />
           <FontAwesomeIcon :icon="faParking" size="sm" />
-          <span class="text-sm text-gray-700">Aparcamiento</span>
+          <span class="text-sm text-gray-700">{{ $t('search.filterPanel.parking') }}</span>
         </label>
       </div>
     </div>

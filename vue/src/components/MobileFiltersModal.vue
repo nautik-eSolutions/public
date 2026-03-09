@@ -48,13 +48,15 @@ const applyFilters = () => {
     >
       <div @click.stop class="bg-white w-full rounded-t-2xl p-6 max-h-[80vh] overflow-y-auto">
         <div class="flex justify-between items-center mb-4">
-          <h3 class="text-lg font-bold text-gray-900">Filtros</h3>
+          <h3 class="text-lg font-bold text-gray-900">{{ $t('search.filters') }}</h3>
           <button @click="close" class="text-gray-500 hover:text-gray-700">
             <i class="pi pi-times text-xl"></i>
           </button>
         </div>
         <div class="mb-6">
-          <h4 class="text-sm font-semibold text-gray-900 mb-3">Servicios</h4>
+          <h4 class="text-sm font-semibold text-gray-900 mb-3">
+            {{ $t('search.services') }}
+          </h4>
           <div class="space-y-2">
             <label class="flex items-center gap-2 cursor-pointer">
               <input
@@ -63,7 +65,7 @@ const applyFilters = () => {
                 @change="updateFilter('wifi', $event.target.checked)"
                 class="w-4 h-4 text-[#3b3bf5] border-gray-300 rounded"
               />
-              <span class="text-sm text-gray-700">Wifi</span>
+              <span class="text-sm text-gray-700">{{ $t('search.filterPanel.wifi') }}</span>
             </label>
             <label class="flex items-center gap-2 cursor-pointer">
               <input
@@ -72,7 +74,7 @@ const applyFilters = () => {
                 @change="updateFilter('restaurantes', $event.target.checked)"
                 class="w-4 h-4 text-[#3b3bf5] border-gray-300 rounded"
               />
-              <span class="text-sm text-gray-700">Restaurantes</span>
+              <span class="text-sm text-gray-700">{{ $t('search.filterPanel.restaurants') }}</span>
             </label>
             <label class="flex items-center gap-2 cursor-pointer">
               <input
@@ -81,14 +83,15 @@ const applyFilters = () => {
                 @change="updateFilter('limpieza', $event.target.checked)"
                 class="w-4 h-4 text-[#3b3bf5] border-gray-300 rounded"
               />
-              <span class="text-sm text-gray-700">Limpieza</span>
+              <span class="text-sm text-gray-700">{{ $t('search.filterPanel.cleaning') }}</span>
             </label>
           </div>
         </div>
 
         <div class="mb-6">
           <h4 class="text-sm font-semibold text-gray-900 mb-3">
-            Precio: {{ filters.priceRange[0] }}€ - {{ filters.priceRange[1] }}€
+            {{ $t('search.filterPanel.price') }}: {{ filters.priceRange[0] }}€ -
+            {{ filters.priceRange[1] }}€
           </h4>
           <input
             type="range"
@@ -104,7 +107,7 @@ const applyFilters = () => {
           @click="applyFilters"
           class="w-full bg-[#3b3bf5] text-white py-3 rounded-lg font-semibold hover:bg-[#2f2fcc] transition-colors"
         >
-          Aplicar filtros
+          {{ $t('search.filterPanel.applyFilters') }}
         </button>
       </div>
     </div>
