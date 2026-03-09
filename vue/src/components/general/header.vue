@@ -128,8 +128,39 @@ function redirectToLogin() {
         </template>
       </div>
 
-
       <Dialog v-model:visible="visibleCard" modal header=" " :style="{ width: '30rem' }">
+        <Dialog v-model:visible="visibleCard" modal header=" " :style="{ width: '30rem' }">
+          <div
+            class="flex flex-col gap-3 py-2 px-2 justify-center content-center align-middle items-center"
+          >
+            <div
+              class="logo flex flex-row justify-center gap-2 align-middle content-center items-center"
+            >
+              <img class="h-15" src="../../assets/logoWOletter.png" alt="logo" />
+              <h1 class="text-3xl" id="logos">NAUTIK</h1>
+            </div>
+            <h1 class="text-header text-left text-3xl font-extrabold">
+              {{ $t('header.dialog.tagline') }}
+            </h1>
+            <h1 class="text-s">
+              {{ $t('header.dialog.subtitle') }}
+            </h1>
+            <div class="flex flex-col gap-4">
+              <RouterLink to="/login">
+                <Button
+                  style="border-radius: 10px"
+                  :label="$t('header.dialog.continueWithEmail')"
+                />
+              </RouterLink>
+              <GoogleSignInButton @success="handleLoginSuccess"> </GoogleSignInButton>
+              <Button
+                style="border-radius: 10px"
+                icon=" pi pi-facebook"
+                :label="$t('header.dialog.facebook')"
+              />
+            </div>
+          </div>
+        </Dialog>
       </Dialog>
     </nav>
   </header>
