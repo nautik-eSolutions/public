@@ -24,6 +24,7 @@ const formData = ref({
   dates: '',
   length: '',
   beam: '',
+  draft: '',
 })
 
 const today = new Date()
@@ -90,6 +91,7 @@ function handleSubmit() {
           <div
             class="bg-white w-full rounded-md md:rounded-tl-2xl md:rounded-bl-2xl md:w-4/5 px-2 py-1 shadow-lg"
           >
+            <!-- DESKTOP -->
             <div class="hidden md:flex items-end gap-2">
               <div class="flex-1 px-4 py-2">
                 <label class="block text-xs font-semibold uppercase text-gray-600 mb-2">
@@ -122,7 +124,7 @@ function handleSubmit() {
                 />
               </div>
               <template v-if="!auth.isAuthenticated">
-                <div class="w-32 px-4 py-2">
+                <div class="w-28 px-4 py-2">
                   <label class="block text-xs font-semibold uppercase text-gray-600 mb-2">
                     {{ $t('landing.search.lengthLabel') }}
                   </label>
@@ -135,12 +137,25 @@ function handleSubmit() {
                     class="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-[#3b3bf5] focus:border-transparent transition"
                   />
                 </div>
-                <div class="w-32 px-4 py-2">
+                <div class="w-28 px-4 py-2">
                   <label class="block text-xs font-semibold uppercase text-gray-600 mb-2">
                     {{ $t('landing.search.beamLabel') }}
                   </label>
                   <input
                     v-model="formData.beam"
+                    type="number"
+                    step="0.1"
+                    min="0"
+                    placeholder="0.0"
+                    class="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-[#3b3bf5] focus:border-transparent transition"
+                  />
+                </div>
+                <div class="w-28 px-4 py-2">
+                  <label class="block text-xs font-semibold uppercase text-gray-600 mb-2">
+                    {{ $t('boat.draft') }}
+                  </label>
+                  <input
+                    v-model="formData.draft"
                     type="number"
                     step="0.1"
                     min="0"
@@ -234,7 +249,7 @@ function handleSubmit() {
                 />
               </div>
               <template v-if="!auth.isAuthenticated">
-                <div class="grid grid-cols-2 gap-4 px-4 py-2">
+                <div class="grid grid-cols-3 gap-4 px-4 py-2">
                   <div>
                     <label class="block text-xs font-semibold uppercase text-gray-600 mb-2">
                       {{ $t('landing.search.lengthLabel') }}
@@ -254,6 +269,19 @@ function handleSubmit() {
                     </label>
                     <input
                       v-model="formData.beam"
+                      type="number"
+                      step="0.1"
+                      min="0"
+                      placeholder="0.0"
+                      class="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-[#3b3bf5] focus:border-transparent"
+                    />
+                  </div>
+                  <div>
+                    <label class="block text-xs font-semibold uppercase text-gray-600 mb-2">
+                      {{ $t('boat.draft') }}
+                    </label>
+                    <input
+                      v-model="formData.draft"
                       type="number"
                       step="0.1"
                       min="0"

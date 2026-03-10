@@ -14,6 +14,7 @@ import Header from '@/components/general/header.vue'
 const route = useRoute()
 const router = useRouter()
 const routeParams = route.params
+const routeQuery = route.query
 
 const mooringCategories = ref([])
 const sortBy = ref('recommended')
@@ -45,21 +46,20 @@ const { filteredAndSorted } = useFiltering(mooringCategories, filters, sortBy)
 
 function handleCardClick(data) {
   router.push(
-    `/bookings/boat/${routeParams.boatName}/${routeParams.boatId}/port/${routeParams.portName}/category/${data.id}/dates/${routeParams.startDate}/${routeParams.endDate}`,
+    `/bookings/boat/${routeQuery.boatName}/${routeQuery.boatId}/port/${routeParams.portName}/category/${data.id}/dates/${routeQuery.startDate}/${routeQuery.endDate}`,
   )
 }
 
 onMounted(async () => {
   mooringCategories.value = await MooringCategoryService.getMooringCategories(
     routeParams.id,
-    routeParams.length,
-    routeParams.beam,
-    routeParams.draft,
-    routeParams.startDate,
-    routeParams.endDate,
+    routeQuery.length,
+    routeQuery.beam,
+    routeQuery.draft,
+    routeQuery.startDate,
+    routeQuery.endDate,
   )
-  console.log(mooringCategories
-  )
+  console.log(mooringCategories)
 })
 </script>
 
@@ -68,10 +68,10 @@ onMounted(async () => {
 
   <PortSearchedBar
     :portName="routeParams.portName"
-    :length="routeParams.length"
-    :beam="routeParams.beam"
-    :startDate="routeParams.startDate"
-    :endDate="routeParams.endDate"
+    :length="routeQuery.length"
+    :beam="routeQuery.beam"
+    :startDate="routeQuery.startDate"
+    :endDate="routeQuery.endDate"
   />
 
   <section class="max-w-6xl mx-auto px-4 mb-12">
@@ -85,7 +85,7 @@ onMounted(async () => {
         class="lg:hidden fixed bottom-4 right-4 bg-[#3b3bf5] text-white px-6 py-3 rounded-full shadow-lg z-50 flex items-center gap-2 hover:bg-[#2f2fcc] transition-colors"
       >
         <i class="pi pi-filter text-lg"></i>
-        {{$t('search.filters')}}
+        {{ $t('search.filters') }}
       </button>
 
       <MobileFiltersModal

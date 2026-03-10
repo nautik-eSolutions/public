@@ -33,16 +33,21 @@ onMounted(async () => {
 })
 
 function handleSubmit(formData) {
+  const isAuth = auth.isAuthenticated
+  const boat = isAuth ? formData.value.boat : null
+
   router.push({
     name: 'search',
     params: {
       id: formData.value.port.id,
       portName: formData.value.port.name,
-      boatName: formData.value.boat.name,
-      boatId: formData.value.boat.id,
-      length: formData.value.boat.length,
-      beam: formData.value.boat.beam,
-      draft: formData.value.boat.draft,
+    },
+    query: {
+      boatName: boat?.name ?? undefined,
+      boatId: boat?.id ?? undefined,
+      length: isAuth ? boat?.length : formData.value.length,
+      beam: isAuth ? boat?.beam : formData.value.beam,
+      draft: isAuth ? boat?.draft : formData.value.draft,
       startDate: new Date(formData.value.dates.at(0)).toLocaleDateString().replaceAll('/', '-'),
       endDate: new Date(formData.value.dates.at(1)).toLocaleDateString().replaceAll('/', '-'),
     },
@@ -51,7 +56,7 @@ function handleSubmit(formData) {
 
 const puertos = ref([
   {
-    nombre: 'Port d’Andratx',
+    nombre: "Port d'Andratx",
     imagen:
       'https://mallorcacaprice.com/wp-content/uploads/2024/10/fira-marinera-port-andratx.webp',
     clase: 'h-64',
@@ -65,7 +70,7 @@ const puertos = ref([
     id: 9,
   },
   {
-    nombre: 'Marina Cala D’Or',
+    nombre: "Marina Cala D'Or",
     imagen: 'https://www.yachtdigest.com/wp-content/uploads/2024/03/marina-de-cala-dor-01.jpg',
     clase: 'h-80',
     id: 11,

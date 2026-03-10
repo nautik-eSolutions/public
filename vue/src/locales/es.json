@@ -248,7 +248,9 @@
     "power": "Potencia",
     "water": "Agua",
     "wasteCollection": "Recogida de residuos",
-    "perNight": "€ /noche"
+    "perNight": "€ /noche",
+    "loginToBook": "Inicia sesión para reservar",
+    "loginToBookSub": "Es gratis y solo tarda un momento"
   },
   "port": {
     "loading": "Cargando puerto...",

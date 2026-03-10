@@ -9,8 +9,7 @@ import { ref, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { defineForm, field, isValidForm } from 'vue-yup-form'
 import * as yup from 'yup'
-
-
+import InputText from 'primevue/inputtext'
 
 const submitted = ref(false)
 
@@ -37,14 +36,13 @@ const boatTypes = computed(() => [
 
 const emits = defineEmits(['submit'])
 
-function  handleSubmit () {
-submitted.value = true
+function handleSubmit() {
+  submitted.value = true
   if (!isValidForm(form)) {
   } else {
     emits('submit', form)
   }
 }
-
 </script>
 
 <template>

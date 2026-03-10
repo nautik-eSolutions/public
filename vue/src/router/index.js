@@ -8,13 +8,13 @@ import addBoat from '@/views/addBoat.vue'
 import login from '@/views/login.vue'
 import { auth } from '@/main.js'
 import register from '@/views/register.vue'
-import Passwords from '../components/register/passwords.vue';
+import Passwords from '../components/register/passwords.vue'
 import EmailUserName from '@/components/register/emailUserName.vue'
 import PersonalRegister from '@/views/personalRegister.vue'
 import BoatPage from '@/views/boatPage.vue'
 import createBooking from '@/views/createBooking.vue'
 import editBoat from '@/views/editBoat.vue'
-import ReservationsView from "@/views/ReservationsView.vue";
+import ReservationsView from '@/views/ReservationsView.vue'
 import errorBooking from '@/views/errorBooking.vue'
 import bookingPage from '@/views/bookingPage.vue'
 const router = createRouter({
@@ -26,7 +26,7 @@ const router = createRouter({
       component: LandingPage,
     },
     {
-      path: '/search/:id/:portName/:boatName/:boatId/:length/:beam/:draft/:startDate/:endDate',
+      path: '/search/:id/:portName',
       name: 'search',
       component: SearchPage,
     },
@@ -114,14 +114,10 @@ const router = createRouter({
   ],
 })
 
-
-
-router.beforeEach( (to, from) => {
-
+router.beforeEach((to, from) => {
   if (to.meta.requiresAuth && !auth.isAuthenticated) {
     return {
       path: '/login',
-
     }
   }
 })
