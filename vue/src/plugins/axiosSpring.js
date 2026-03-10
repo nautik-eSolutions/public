@@ -2,7 +2,7 @@ import axios from 'axios'
 import { auth } from '@/main.js'
 
 const axiosSpring = axios.create({
-  baseURL: 'http://localhost:8085/api/v1',
+  baseURL: 'import.meta.env.VITE_ADMIN_URL',
 })
 axiosSpring.interceptors.request.use((config) => {
   const token = auth.springToken

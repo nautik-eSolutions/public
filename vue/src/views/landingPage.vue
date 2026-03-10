@@ -93,7 +93,7 @@ const toggleItem = (item) => {
   }
   openItems.value = new Set(openItems.value)
 }
-
+const test = import.meta.env.VITE_WEB_URL
 const isOpen = (item) => openItems.value.has(item)
 
 
@@ -105,7 +105,6 @@ document.head.appendChild(script)
 
 <template>
   <Header />
-
   <template v-if="ports">
     <PortMainSearch :ports="ports" :boats="boats" v-on:submit="handleSubmit" />
   </template>
