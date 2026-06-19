@@ -3,7 +3,7 @@ export default {
   name: 'register',
 }
 </script>
-
+//Cypress not approved
 <script setup>
 import { ref, shallowRef } from 'vue'
 import { useUserStore } from '@/stores/userStore.js'
