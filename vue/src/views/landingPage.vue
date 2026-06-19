@@ -4,6 +4,8 @@ export default {
 }
 </script>
 <script setup>
+
+//Cypress not approved
 import { computed, defineAsyncComponent, onMounted, ref } from 'vue'
 import Footer from '../components/general/footer.vue'
 import portCard from '../components/ports/cards/portCard.vue'
